@@ -759,6 +759,77 @@
             box-shadow: var(--shadow-sm);
         }
 
+        /* Copy Button Styles */
+        .textarea-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            color: var(--primary);
+            padding: 6px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            backdrop-filter: blur(10px);
+            user-select: none;
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 255, 136, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 255, 136, 0.3);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn.copied {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .copy-btn .icon {
+            font-size: 14px;
+        }
+
+        .copy-btn .text {
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Mobile optimized copy button */
+        @media (max-width: 768px) {
+            .copy-btn {
+                padding: 8px 10px;
+                font-size: 14px;
+                min-width: 44px;
+                min-height: 44px;
+                justify-content: center;
+            }
+            
+            .copy-btn .text {
+                display: none;
+            }
+            
+            .copy-btn .icon {
+                font-size: 16px;
+            }
+        }
+
         /* Footer */
         .footer {
             background: var(--surface);
@@ -907,7 +978,7 @@
             <a href="/" class="logo">TestCodePro</a>
             <ul class="nav-links">
                 <li><a href="#ferramentas">Ferramentas</a></li>
-                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="about.html">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
@@ -1050,7 +1121,13 @@
                     <button onclick="generateDocument()" class="btn">Gerar Documento</button>
                     <button onclick="clearDocOutput()" class="btn btn-secondary">Limpar</button>
                 </div>
-                <textarea id="docOutput" class="output-area" placeholder="Documentos gerados aparecerão aqui..." readonly></textarea>
+                <div class="textarea-wrapper">
+                    <textarea id="docOutput" class="output-area" placeholder="Documentos gerados aparecerão aqui..." readonly></textarea>
+                    <button class="copy-btn" onclick="copyToClipboard('docOutput', this)">
+                        <span class="icon">📋</span>
+                        <span class="text">Copiar</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Password Generator -->
@@ -1076,7 +1153,13 @@
                     <input type="number" id="passwordCount" min="1" max="20" value="1" placeholder="Quantidade">
                     <button onclick="generatePassword()" class="btn">Gerar Senhas</button>
                 </div>
-                <textarea id="passwordOutput" class="output-area" placeholder="Senhas geradas aparecerão aqui..." readonly></textarea>
+                <div class="textarea-wrapper">
+                    <textarea id="passwordOutput" class="output-area" placeholder="Senhas geradas aparecerão aqui..." readonly></textarea>
+                    <button class="copy-btn" onclick="copyToClipboard('passwordOutput', this)">
+                        <span class="icon">📋</span>
+                        <span class="text">Copiar</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Credit Card Generator -->
@@ -1099,7 +1182,13 @@
                     <input type="number" id="cardCount" min="1" max="20" value="1" placeholder="Quantidade">
                     <button onclick="generateCreditCard()" class="btn">Gerar Cartões</button>
                 </div>
-                <textarea id="cardOutput" class="output-area" placeholder="Cartões gerados aparecerão aqui..." readonly></textarea>
+                <div class="textarea-wrapper">
+                    <textarea id="cardOutput" class="output-area" placeholder="Cartões gerados aparecerão aqui..." readonly></textarea>
+                    <button class="copy-btn" onclick="copyToClipboard('cardOutput', this)">
+                        <span class="icon">📋</span>
+                        <span class="text">Copiar</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Bank Account Generator -->
@@ -1119,7 +1208,13 @@
                     <input type="number" id="bankCount" min="1" max="20" value="1" placeholder="Quantidade">
                     <button onclick="generateBankAccount()" class="btn">Gerar Contas</button>
                 </div>
-                <textarea id="bankOutput" class="output-area" placeholder="Contas bancárias geradas aparecerão aqui..." readonly></textarea>
+                <div class="textarea-wrapper">
+                    <textarea id="bankOutput" class="output-area" placeholder="Contas bancárias geradas aparecerão aqui..." readonly></textarea>
+                    <button class="copy-btn" onclick="copyToClipboard('bankOutput', this)">
+                        <span class="icon">📋</span>
+                        <span class="text">Copiar</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Text Comparison Tool -->
@@ -1131,10 +1226,22 @@
                 </div>
                 <div class="comparison-input-container">
                     <div class="comparison-side">
-                        <textarea id="text1" placeholder="Cole o primeiro texto aqui..."></textarea>
+                        <div class="textarea-wrapper">
+                            <textarea id="text1" placeholder="Cole o primeiro texto aqui..."></textarea>
+                            <button class="copy-btn" onclick="copyToClipboard('text1', this)">
+                                <span class="icon">📋</span>
+                                <span class="text">Copiar</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="comparison-side">
-                        <textarea id="text2" placeholder="Cole o segundo texto aqui..."></textarea>
+                        <div class="textarea-wrapper">
+                            <textarea id="text2" placeholder="Cole o segundo texto aqui..."></textarea>
+                            <button class="copy-btn" onclick="copyToClipboard('text2', this)">
+                                <span class="icon">📋</span>
+                                <span class="text">Copiar</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div id="comparisonResult" class="comparison-result-container" style="display: none;">
@@ -1158,8 +1265,20 @@
                     <button onclick="minifyCode()" class="btn btn-secondary">Minificar</button>
                 </div>
                 <div class="code-container">
-                    <textarea id="codeInput" placeholder="Cole seu código aqui..."></textarea>
-                    <textarea id="codeOutput" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                    <div class="textarea-wrapper">
+                        <textarea id="codeInput" placeholder="Cole seu código aqui..."></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('codeInput', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
+                    <div class="textarea-wrapper">
+                        <textarea id="codeOutput" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('codeOutput', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -1174,7 +1293,13 @@
                     <input type="number" id="uuidCount" min="1" max="100" value="1" placeholder="Quantidade">
                     <button onclick="generateUUID()" class="btn">Gerar UUID</button>
                 </div>
-                <textarea id="uuidOutput" class="output-area" placeholder="UUIDs gerados aparecerão aqui..." readonly></textarea>
+                <div class="textarea-wrapper">
+                    <textarea id="uuidOutput" class="output-area" placeholder="UUIDs gerados aparecerão aqui..." readonly></textarea>
+                    <button class="copy-btn" onclick="copyToClipboard('uuidOutput', this)">
+                        <span class="icon">📋</span>
+                        <span class="text">Copiar</span>
+                    </button>
+                </div>
             </div>
 
             <!-- SQL Formatter -->
@@ -1185,8 +1310,20 @@
                     <button onclick="compactSQL()" class="btn btn-secondary">Compactar SQL</button>
                 </div>
                 <div class="code-container">
-                    <textarea id="sqlInput" placeholder="Cole sua query SQL aqui..."></textarea>
-                    <textarea id="sqlOutput" placeholder="SQL formatado aparecerá aqui..." readonly></textarea>
+                    <div class="textarea-wrapper">
+                        <textarea id="sqlInput" placeholder="Cole sua query SQL aqui..."></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('sqlInput', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
+                    <div class="textarea-wrapper">
+                        <textarea id="sqlOutput" placeholder="SQL formatado aparecerá aqui..." readonly></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('sqlOutput', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -1221,8 +1358,20 @@
                     <button onclick="decodeBase64()" class="btn btn-secondary">Decodificar</button>
                 </div>
                 <div class="code-container">
-                    <textarea id="base64Input" placeholder="Texto para codificar/decodificar..."></textarea>
-                    <textarea id="base64Output" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                    <div class="textarea-wrapper">
+                        <textarea id="base64Input" placeholder="Texto para codificar/decodificar..."></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('base64Input', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
+                    <div class="textarea-wrapper">
+                        <textarea id="base64Output" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('base64Output', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -1234,8 +1383,20 @@
                     <button onclick="decodeURL()" class="btn btn-secondary">Decodificar URL</button>
                 </div>
                 <div class="code-container">
-                    <textarea id="urlInput" placeholder="URL para codificar/decodificar..."></textarea>
-                    <textarea id="urlOutput" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                    <div class="textarea-wrapper">
+                        <textarea id="urlInput" placeholder="URL para codificar/decodificar..."></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('urlInput', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
+                    <div class="textarea-wrapper">
+                        <textarea id="urlOutput" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                        <button class="copy-btn" onclick="copyToClipboard('urlOutput', this)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2229,9 +2390,91 @@ Conta: ${account}-${checkDigit}`;
                     .catch(registrationError => console.log('SW registration failed'));
             });
         }
+
+        // Copy to Clipboard Function
+        function copyToClipboard(textareaId, buttonElement) {
+            const textarea = document.getElementById(textareaId);
+            const text = textarea.value;
+            
+            if (!text.trim()) {
+                // Show feedback for empty content
+                buttonElement.innerHTML = '<span class="icon">⚠️</span><span class="text">Vazio</span>';
+                buttonElement.classList.add('copied');
+                setTimeout(() => {
+                    buttonElement.innerHTML = '<span class="icon">📋</span><span class="text">Copiar</span>';
+                    buttonElement.classList.remove('copied');
+                }, 1500);
+                return;
+            }
+            
+            // Try modern Clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    // Fallback if Clipboard API fails
+                    fallbackCopyToClipboard(text, buttonElement);
+                });
+            } else {
+                // Fallback for older browsers or non-secure contexts
+                fallbackCopyToClipboard(text, buttonElement);
+            }
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+                showCopyError(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Show success feedback
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '<span class="icon">✅</span><span class="text">Copiado!</span>';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Show error feedback
+        function showCopyError(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '<span class="icon">❌</span><span class="text">Erro</span>';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
     </script>
 
     <!-- Google Analytics (replace with your tracking ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+</body>
+</html>
