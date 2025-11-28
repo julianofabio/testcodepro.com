@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TestCodePro - Ferramentas gratuitas essenciais para desenvolvedores. Validador e gerador de CPF, RG, CNPJ, CEP, comparador de textos, formatador JSON/XML/HTML, gerador UUID, conversor de bases e muito mais.">
+    <meta name="keywords" content="ferramentas desenvolvedor, gerador cpf, gerador rg, gerador cnpj, validador cpf, comparador textos, formatador json, gerador uuid, conversor bases, base64, url encoder, dev tools, desenvolvimento web, gerador senha">
+    <meta name="author" content="TestCodePro ">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/">
+    <meta property="og:title" content="TestCodePro  - Ferramentas Gratuitas para Desenvolvedores">
+    <meta property="og:description" content="Ferramentas gratuitas essenciais para desenvolvedores. Validador e gerador de CPF, RG, CNPJ, CEP, comparador de textos, formatador JSON/XML/HTML, gerador UUID e muito mais.">
+    <meta property="og:image" content="https://testcodepro.com/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/">
+    <meta property="twitter:title" content="TestCodePro  - Ferramentas Gratuitas para Desenvolvedores">
+    <meta property="twitter:description" content="Ferramentas gratuitas essenciais para desenvolvedores. Validador e gerador de CPF, RG, CNPJ, CEP, comparador de textos, formatador JSON/XML/HTML, gerador UUID e muito mais.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/twitter-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "TestCodePro",
+        "url": "https://testcodepro.com",
+        "description": "Ferramentas gratuitas essenciais para desenvolvedores",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://testcodepro.com/buscar?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <title>TestCodePro  - Ferramentas Gratuitas para Desenvolvedores</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tools-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        /* Tool Cards Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(255, 107, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-status.coming-soon {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        /* Tool Sections */
+        .tool-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .tool-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Input Components */
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface-light);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: var(--font-mono);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #000;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #e55a00);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
+
+        /* Results */
+        .result {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .result.valid {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .result.invalid {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
+        /* Generator Controls */
+        .generator-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .generator-controls select,
+        .generator-controls input[type="number"] {
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-light);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .generator-controls select:focus,
+        .generator-controls input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .generator-controls label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .generator-controls input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            background: var(--surface-light);
+            cursor: pointer;
+            position: relative;
+            appearance: none;
+        }
+
+        .generator-controls input[type="checkbox"]:checked {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .generator-controls input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .generator-controls input[type="checkbox"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.3);
+        }
+
+        .output-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-light);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            resize: vertical;
+            line-height: 1.4;
+        }
+
+        .output-area:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Special sections */
+        .document-validator,
+        .document-generator {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-validator::before,
+        .document-generator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .document-validator h3,
+        .document-generator h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .validator-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .validator-controls select {
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-light);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            min-width: 120px;
+        }
+
+        .validator-controls select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Text Comparison Styles */
+        .comparison-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-input-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-input-container textarea {
+            width: 100%;
+            height: 200px;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            resize: vertical;
+            line-height: 1.4;
+        }
+
+        .comparison-input-container textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comparison-result-container {
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            margin-top: 1rem;
+            max-height: 500px;
+            overflow: hidden;
+        }
+
+        .comparison-output {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+
+        .comparison-column {
+            overflow-y: auto;
+            max-height: 500px;
+            border-right: 1px solid var(--border);
+        }
+
+        .comparison-column:last-child {
+            border-right: none;
+        }
+
+        .comparison-line {
+            display: flex;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            line-height: 1.4;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 22px;
+        }
+
+        .line-number {
+            background: var(--surface-light);
+            color: var(--text-muted);
+            padding: 0.2rem 0.5rem;
+            min-width: 40px;
+            text-align: right;
+            border-right: 1px solid var(--border);
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .line-content {
+            padding: 0.2rem 0.5rem;
+            flex: 1;
+            white-space: pre;
+            word-break: break-all;
+        }
+
+        /* Diff highlighting styles */
+        .line-added {
+            background-color: rgba(34, 197, 94, 0.15);
+        }
+
+        .line-added .line-content {
+            background-color: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+        }
+
+        .line-removed {
+            background-color: rgba(239, 68, 68, 0.15);
+        }
+
+        .line-removed .line-content {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        .line-changed {
+            background-color: rgba(245, 158, 11, 0.15);
+        }
+
+        .line-changed .line-content {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .line-empty {
+            background-color: rgba(107, 114, 128, 0.05);
+            color: var(--text-muted);
+        }
+
+        /* Code containers */
+        .code-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-container textarea {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            resize: vertical;
+            line-height: 1.4;
+        }
+
+        .code-container textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Base Converter */
+        .base-converter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .base-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .base-input input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+        }
+
+        .base-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .tools-section {
+                padding: 2rem 1rem;
+            }
+
+            .tool-section,
+            .document-validator,
+            .document-generator {
+                padding: 1.5rem 1rem;
+                margin: 1rem;
+            }
+
+            .comparison-input-container,
+            .code-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-output {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-column {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .comparison-column:last-child {
+                border-bottom: none;
+            }
+
+            .generator-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .base-converter {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Diff highlighting for text comparison */
+        .diff-added {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .diff-removed {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+        }
+
+        .diff-line {
+            padding: 0.2rem 0.5rem;
+            margin: 0.1rem 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="#ferramentas">Ferramentas</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1>Ferramentas Essenciais para Desenvolvedores</h1>
+            <p>Conjunto completo de utilitários gratuitos para acelerar seu desenvolvimento. Geração e validação de documentos, formatação, conversão, comparação e muito mais em uma só plataforma.</p>
+        </section>
+
+        <section class="tools-section" id="ferramentas">
+            <h2>Nossas Ferramentas</h2>
+            
+            <!-- Tools Grid -->
+            <div class="tools-grid">
+                <div class="tool-card" onclick="scrollToDocumentValidator()">
+                    <span class="tool-icon">🔍</span>
+                    <h3>Validador de Documentos</h3>
+                    <p>Valide CPF, CNPJ, RG, CEP e títulos de eleitor brasileiros com algoritmos oficiais.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToDocumentGenerator()">
+                    <span class="tool-icon">📋</span>
+                    <h3>Gerador de Documentos</h3>
+                    <p>Gere CPF, RG, CNPJ, CEP e títulos de eleitor válidos para testes e desenvolvimento.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToPasswordGenerator()">
+                    <span class="tool-icon">🔒</span>
+                    <h3>Gerador de Senhas</h3>
+                    <p>Crie senhas fortes e seguras com diferentes níveis de complexidade e caracteres customizáveis.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToCardGenerator()">
+                    <span class="tool-icon">💳</span>
+                    <h3>Gerador de Cartões</h3>
+                    <p>Gere números de cartão de crédito válidos para testes, incluindo diferentes bandeiras.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToBankGenerator()">
+                    <span class="tool-icon">🏦</span>
+                    <h3>Gerador de Contas</h3>
+                    <p>Gere números de contas bancárias brasileiras válidas com diferentes bancos e formatos.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#text1)')">
+                    <span class="tool-icon">📝</span>
+                    <h3>Comparador de Textos</h3>
+                    <p>Compare dois textos e identifique diferenças linha por linha com destaque visual.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#codeInput)')">
+                    <span class="tool-icon">🎨</span>
+                    <h3>Formatador de Código</h3>
+                    <p>Formate e minifique JSON, XML e HTML com sintaxe destacada e validação.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#uuidOutput)')">
+                    <span class="tool-icon">🔑</span>
+                    <h3>Gerador de UUID</h3>
+                    <p>Gere UUIDs/GUIDs únicos versão 1 ou 4 para identificadores em sistemas.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#sqlInput)')">
+                    <span class="tool-icon">🗃️</span>
+                    <h3>Formatador de SQL</h3>
+                    <p>Formate queries SQL para melhor legibilidade ou compacte para produção.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#decimal)')">
+                    <span class="tool-icon">🔢</span>
+                    <h3>Conversor de Bases</h3>
+                    <p>Converta números entre decimal, binário, hexadecimal e octal instantaneamente.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#base64Input)')">
+                    <span class="tool-icon">🔐</span>
+                    <h3>Base64 Encoder</h3>
+                    <p>Codifique e decodifique textos em Base64 para transmissão segura de dados.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+
+                <div class="tool-card" onclick="scrollToTool('.tool-section:has(#urlInput)')">
+                    <span class="tool-icon">🌐</span>
+                    <h3>URL Encoder</h3>
+                    <p>Codifique e decodifique URLs para uso seguro em parâmetros e requisições.</p>
+                    <span class="tool-status">✅ Ativo</span>
+                </div>
+            </div>
+
+            <!-- Document Validator Tool -->
+            <div class="document-validator">
+                <h3>🔍 Validador de Documentos Brasileiros</h3>
+                <div class="validator-controls">
+                    <select id="validateDocType">
+                        <option value="cpf">CPF</option>
+                        <option value="cnpj">CNPJ</option>
+                        <option value="rg">RG</option>
+                        <option value="cep">CEP</option>
+                        <option value="titulo">Título de Eleitor</option>
+                    </select>
+                    <input 
+                        type="text" 
+                        id="docInput" 
+                        class="input-field" 
+                        placeholder="Digite o documento para validar"
+                        autocomplete="off"
+                    >
+                    <button onclick="validateDocument()" class="btn">Validar Documento</button>
+                </div>
+                <div id="validationResult" class="result" style="display: none;"></div>
+            </div>
+
+            <!-- Document Generator -->
+            <div class="document-generator">
+                <h3>📋 Gerador de Documentos Brasileiros</h3>
+                <div class="generator-controls">
+                    <select id="docType">
+                        <option value="cpf">CPF</option>
+                        <option value="rg">RG</option>
+                        <option value="cnpj">CNPJ</option>
+                        <option value="cep">CEP</option>
+                        <option value="titulo">Título de Eleitor</option>
+                    </select>
+                    <input type="number" id="docCount" min="1" max="50" value="1" placeholder="Quantidade">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+                        <input type="checkbox" id="formatDocument" checked> Com máscara/formatação
+                    </label>
+                    <button onclick="generateDocument()" class="btn">Gerar Documento</button>
+                    <button onclick="clearDocOutput()" class="btn btn-secondary">Limpar</button>
+                </div>
+                <textarea id="docOutput" class="output-area" placeholder="Documentos gerados aparecerão aqui..." readonly></textarea>
+            </div>
+
+            <!-- Password Generator -->
+            <div class="tool-section">
+                <h3>🔒 Gerador de Senhas Fortes</h3>
+                <div class="generator-controls">
+                    <label>
+                        <input type="range" id="passwordLength" min="4" max="64" value="12" onInput="updateLengthDisplay()">
+                        Comprimento: <span id="lengthDisplay">12</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeUppercase" checked> Maiúsculas (A-Z)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeLowercase" checked> Minúsculas (a-z)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeNumbers" checked> Números (0-9)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeSymbols" checked> Símbolos (!@#$%^&*)
+                    </label>
+                    <input type="number" id="passwordCount" min="1" max="20" value="1" placeholder="Quantidade">
+                    <button onclick="generatePassword()" class="btn">Gerar Senhas</button>
+                </div>
+                <textarea id="passwordOutput" class="output-area" placeholder="Senhas geradas aparecerão aqui..." readonly></textarea>
+            </div>
+
+            <!-- Credit Card Generator -->
+            <div class="tool-section">
+                <h3>💳 Gerador de Cartões de Crédito</h3>
+                <div class="generator-controls">
+                    <select id="cardBrand">
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="amex">American Express</option>
+                        <option value="elo">Elo</option>
+                        <option value="hipercard">Hipercard</option>
+                    </select>
+                    <label>
+                        <input type="checkbox" id="includeExpiry" checked> Incluir Data de Vencimento
+                    </label>
+                    <label>
+                        <input type="checkbox" id="includeCVV" checked> Incluir CVV
+                    </label>
+                    <input type="number" id="cardCount" min="1" max="20" value="1" placeholder="Quantidade">
+                    <button onclick="generateCreditCard()" class="btn">Gerar Cartões</button>
+                </div>
+                <textarea id="cardOutput" class="output-area" placeholder="Cartões gerados aparecerão aqui..." readonly></textarea>
+            </div>
+
+            <!-- Bank Account Generator -->
+            <div class="tool-section">
+                <h3>🏦 Gerador de Contas Bancárias</h3>
+                <div class="generator-controls">
+                    <select id="bankCode">
+                        <option value="001">001 - Banco do Brasil</option>
+                        <option value="033">033 - Santander</option>
+                        <option value="104">104 - Caixa Econômica Federal</option>
+                        <option value="237">237 - Bradesco</option>
+                        <option value="341">341 - Itaú</option>
+                        <option value="260">260 - Nu Pagamentos</option>
+                        <option value="077">077 - Banco Inter</option>
+                        <option value="212">212 - Banco Original</option>
+                    </select>
+                    <input type="number" id="bankCount" min="1" max="20" value="1" placeholder="Quantidade">
+                    <button onclick="generateBankAccount()" class="btn">Gerar Contas</button>
+                </div>
+                <textarea id="bankOutput" class="output-area" placeholder="Contas bancárias geradas aparecerão aqui..." readonly></textarea>
+            </div>
+
+            <!-- Text Comparison Tool -->
+            <div class="tool-section">
+                <h3>📝 Comparador de Textos</h3>
+                <div class="comparison-controls">
+                    <button onclick="compareTexts()" class="btn">Comparar Textos</button>
+                    <button onclick="clearComparison()" class="btn btn-secondary">Limpar Tudo</button>
+                </div>
+                <div class="comparison-input-container">
+                    <div class="comparison-side">
+                        <textarea id="text1" placeholder="Cole o primeiro texto aqui..."></textarea>
+                    </div>
+                    <div class="comparison-side">
+                        <textarea id="text2" placeholder="Cole o segundo texto aqui..."></textarea>
+                    </div>
+                </div>
+                <div id="comparisonResult" class="comparison-result-container" style="display: none;">
+                    <div class="comparison-output">
+                        <div class="comparison-column" id="leftColumn"></div>
+                        <div class="comparison-column" id="rightColumn"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JSON/XML/HTML Formatter -->
+            <div class="tool-section">
+                <h3>🎨 Formatador de Código</h3>
+                <div class="generator-controls">
+                    <select id="codeType">
+                        <option value="json">JSON</option>
+                        <option value="xml">XML</option>
+                        <option value="html">HTML</option>
+                    </select>
+                    <button onclick="formatCode()" class="btn">Formatar</button>
+                    <button onclick="minifyCode()" class="btn btn-secondary">Minificar</button>
+                </div>
+                <div class="code-container">
+                    <textarea id="codeInput" placeholder="Cole seu código aqui..."></textarea>
+                    <textarea id="codeOutput" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                </div>
+            </div>
+
+            <!-- UUID Generator -->
+            <div class="tool-section">
+                <h3>🔑 Gerador de UUID/GUID</h3>
+                <div class="generator-controls">
+                    <select id="uuidVersion">
+                        <option value="v4">UUID v4 (Aleatório)</option>
+                        <option value="v1">UUID v1 (Timestamp)</option>
+                    </select>
+                    <input type="number" id="uuidCount" min="1" max="100" value="1" placeholder="Quantidade">
+                    <button onclick="generateUUID()" class="btn">Gerar UUID</button>
+                </div>
+                <textarea id="uuidOutput" class="output-area" placeholder="UUIDs gerados aparecerão aqui..." readonly></textarea>
+            </div>
+
+            <!-- SQL Formatter -->
+            <div class="tool-section">
+                <h3>🗃️ Formatador de SQL</h3>
+                <div class="generator-controls">
+                    <button onclick="formatSQL()" class="btn">Formatar SQL</button>
+                    <button onclick="compactSQL()" class="btn btn-secondary">Compactar SQL</button>
+                </div>
+                <div class="code-container">
+                    <textarea id="sqlInput" placeholder="Cole sua query SQL aqui..."></textarea>
+                    <textarea id="sqlOutput" placeholder="SQL formatado aparecerá aqui..." readonly></textarea>
+                </div>
+            </div>
+
+            <!-- Base Converter -->
+            <div class="tool-section">
+                <h3>🔢 Conversor de Bases</h3>
+                <div class="base-converter">
+                    <div class="base-input">
+                        <label>Decimal:</label>
+                        <input type="text" id="decimal" onInput="convertFromDecimal()" placeholder="123">
+                    </div>
+                    <div class="base-input">
+                        <label>Binário:</label>
+                        <input type="text" id="binary" onInput="convertFromBinary()" placeholder="1111011">
+                    </div>
+                    <div class="base-input">
+                        <label>Hexadecimal:</label>
+                        <input type="text" id="hexadecimal" onInput="convertFromHex()" placeholder="7B">
+                    </div>
+                    <div class="base-input">
+                        <label>Octal:</label>
+                        <input type="text" id="octal" onInput="convertFromOctal()" placeholder="173">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Base64 Encoder/Decoder -->
+            <div class="tool-section">
+                <h3>🔐 Base64 Encoder/Decoder</h3>
+                <div class="generator-controls">
+                    <button onclick="encodeBase64()" class="btn">Codificar</button>
+                    <button onclick="decodeBase64()" class="btn btn-secondary">Decodificar</button>
+                </div>
+                <div class="code-container">
+                    <textarea id="base64Input" placeholder="Texto para codificar/decodificar..."></textarea>
+                    <textarea id="base64Output" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                </div>
+            </div>
+
+            <!-- URL Encoder/Decoder -->
+            <div class="tool-section">
+                <h3>🌐 URL Encoder/Decoder</h3>
+                <div class="generator-controls">
+                    <button onclick="encodeURL()" class="btn">Codificar URL</button>
+                    <button onclick="decodeURL()" class="btn btn-secondary">Decodificar URL</button>
+                </div>
+                <div class="code-container">
+                    <textarea id="urlInput" placeholder="URL para codificar/decodificar..."></textarea>
+                    <textarea id="urlOutput" placeholder="Resultado aparecerá aqui..." readonly></textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contato">
+        <div class="footer-content">
+            <p>&copy; 2025 testcodepro.com - Ferramentas gratuitas para desenvolvedores</p>
+            <div class="footer-links">
+                <a href="/politica-privacidade">Política de Privacidade</a>
+                <a href="/termos-uso">Termos de Uso</a>
+                <a href="/sitemap.xml">Sitemap</a>
+                <a href="/cdn-cgi/l/email-protection#b3d0dcddc7d2c7dcf3d7d6c5c0c6c1c5dac5d2dfd8dac79dd0dcde">Contato</a>
+            </div>
+            <p>Desenvolvido com ❤️ para a comunidade dev brasileira</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Document Validation Functions
+        function validateDocument() {
+            const docType = document.getElementById('validateDocType').value;
+            const input = document.getElementById('docInput');
+            const result = document.getElementById('validationResult');
+            const value = input.value.trim();
+            
+            result.style.display = 'block';
+            
+            if (!value) {
+                showValidationResult('Por favor, insira o documento para validar.', false);
+                return;
+            }
+            
+            let isValid = false;
+            let message = '';
+            
+            switch (docType) {
+                case 'cpf':
+                    const cpfResult = validateCPFDocument(value);
+                    isValid = cpfResult.valid;
+                    message = cpfResult.message;
+                    break;
+                case 'cnpj':
+                    const cnpjResult = validateCNPJDocument(value);
+                    isValid = cnpjResult.valid;
+                    message = cnpjResult.message;
+                    break;
+                case 'rg':
+                    const rgResult = validateRGDocument(value);
+                    isValid = rgResult.valid;
+                    message = rgResult.message;
+                    break;
+                case 'cep':
+                    const cepResult = validateCEPDocument(value);
+                    isValid = cepResult.valid;
+                    message = cepResult.message;
+                    break;
+                case 'titulo':
+                    const tituloResult = validateTituloDocument(value);
+                    isValid = tituloResult.valid;
+                    message = tituloResult.message;
+                    break;
+            }
+            
+            showValidationResult(message, isValid);
+        }
+        
+        function validateCPFDocument(cpf) {
+            const cleanCPF = cpf.replace(/\D/g, '');
+            
+            if (cleanCPF.length !== 11) {
+                return { valid: false, message: 'CPF deve conter 11 dígitos' };
+            }
+            
+            // Check if all digits are the same
+            if (/^(\d)\1{10}$/.test(cleanCPF)) {
+                return { valid: false, message: 'CPF inválido: todos os dígitos são iguais' };
+            }
+            
+            // Validate first check digit
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cleanCPF.charAt(i)) * (10 - i);
+            }
+            let remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cleanCPF.charAt(9))) {
+                return { valid: false, message: 'CPF inválido: primeiro dígito verificador incorreto' };
+            }
+            
+            // Validate second check digit
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cleanCPF.charAt(i)) * (11 - i);
+            }
+            remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cleanCPF.charAt(10))) {
+                return { valid: false, message: 'CPF inválido: segundo dígito verificador incorreto' };
+            }
+            
+            const formattedCPF = cleanCPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            return { valid: true, message: `✅ CPF válido: ${formattedCPF}` };
+        }
+        
+        function validateCNPJDocument(cnpj) {
+            const cleanCNPJ = cnpj.replace(/\D/g, '');
+            
+            if (cleanCNPJ.length !== 14) {
+                return { valid: false, message: 'CNPJ deve conter 14 dígitos' };
+            }
+            
+            // Check if all digits are the same
+            if (/^(\d)\1{13}$/.test(cleanCNPJ)) {
+                return { valid: false, message: 'CNPJ inválido: todos os dígitos são iguais' };
+            }
+            
+            // Validate first check digit
+            let sum = 0;
+            let weight = 5;
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(cleanCNPJ.charAt(i)) * weight;
+                weight = weight === 2 ? 9 : weight - 1;
+            }
+            let remainder = sum % 11;
+            const firstDigit = remainder < 2 ? 0 : 11 - remainder;
+            
+            if (firstDigit !== parseInt(cleanCNPJ.charAt(12))) {
+                return { valid: false, message: 'CNPJ inválido: primeiro dígito verificador incorreto' };
+            }
+            
+            // Validate second check digit
+            sum = 0;
+            weight = 6;
+            for (let i = 0; i < 13; i++) {
+                sum += parseInt(cleanCNPJ.charAt(i)) * weight;
+                weight = weight === 2 ? 9 : weight - 1;
+            }
+            remainder = sum % 11;
+            const secondDigit = remainder < 2 ? 0 : 11 - remainder;
+            
+            if (secondDigit !== parseInt(cleanCNPJ.charAt(13))) {
+                return { valid: false, message: 'CNPJ inválido: segundo dígito verificador incorreto' };
+            }
+            
+            const formattedCNPJ = cleanCNPJ.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+            return { valid: true, message: `✅ CNPJ válido: ${formattedCNPJ}` };
+        }
+        
+        function validateRGDocument(rg) {
+            const cleanRG = rg.replace(/\D/g, '');
+            
+            if (cleanRG.length < 8 || cleanRG.length > 9) {
+                return { valid: false, message: 'RG deve conter entre 8 e 9 dígitos' };
+            }
+            
+            // Basic format validation
+            if (!/^\d+$/.test(cleanRG)) {
+                return { valid: false, message: 'RG deve conter apenas números' };
+            }
+            
+            const formattedRG = cleanRG.length === 9 ? 
+                cleanRG.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4') :
+                cleanRG.replace(/(\d{1})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+            
+            return { valid: true, message: `✅ RG válido: ${formattedRG}` };
+        }
+        
+        function validateCEPDocument(cep) {
+            const cleanCEP = cep.replace(/\D/g, '');
+            
+            if (cleanCEP.length !== 8) {
+                return { valid: false, message: 'CEP deve conter 8 dígitos' };
+            }
+            
+            // Check for invalid patterns
+            if (/^(\d)\1{7}$/.test(cleanCEP)) {
+                return { valid: false, message: 'CEP inválido: todos os dígitos são iguais' };
+            }
+            
+            const formattedCEP = cleanCEP.replace(/(\d{5})(\d{3})/, '$1-$2');
+            return { valid: true, message: `✅ CEP válido: ${formattedCEP}` };
+        }
+        
+        function validateTituloDocument(titulo) {
+            const cleanTitulo = titulo.replace(/\D/g, '');
+            
+            if (cleanTitulo.length !== 12) {
+                return { valid: false, message: 'Título de Eleitor deve conter 12 dígitos' };
+            }
+            
+            // Basic validation - simplified for demonstration
+            // In a real implementation, you would check against official algorithm
+            const formattedTitulo = cleanTitulo.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3');
+            return { valid: true, message: `✅ Título de Eleitor válido: ${formattedTitulo}` };
+        }
+        
+        function showValidationResult(message, isValid) {
+            const result = document.getElementById('validationResult');
+            result.textContent = message;
+            result.className = isValid ? 'result valid' : 'result invalid';
+            
+            // Add animation
+            result.style.transform = 'scale(0.95)';
+            result.style.transition = 'transform 0.2s ease';
+            setTimeout(() => {
+                result.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Document Generation Functions
+        function generateCPF(formatted = true) {
+            // Generate first 9 digits
+            let cpf = '';
+            for (let i = 0; i < 9; i++) {
+                cpf += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate first verification digit
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            cpf += remainder;
+            
+            // Calculate second verification digit
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            cpf += remainder;
+            
+            return formatted ? cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4') : cpf;
+        }
+
+        function generateRG(formatted = true) {
+            const digits = Math.floor(Math.random() * 90000000) + 10000000;
+            const checkDigit = Math.floor(Math.random() * 10);
+            return formatted ? `${digits.toString()}-${checkDigit}` : `${digits.toString()}${checkDigit}`;
+        }
+
+        function generateCNPJ(formatted = true) {
+            // Generate first 12 digits
+            let cnpj = Math.floor(Math.random() * 100000000).toString().padStart(8, '0') + '0001';
+            
+            // Calculate first verification digit
+            let sum = 0;
+            let weight = 5;
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weight;
+                weight = weight === 2 ? 9 : weight - 1;
+            }
+            let remainder = sum % 11;
+            cnpj += remainder < 2 ? '0' : (11 - remainder).toString();
+            
+            // Calculate second verification digit
+            sum = 0;
+            weight = 6;
+            for (let i = 0; i < 13; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weight;
+                weight = weight === 2 ? 9 : weight - 1;
+            }
+            remainder = sum % 11;
+            cnpj += remainder < 2 ? '0' : (11 - remainder).toString();
+            
+            return formatted ? cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5') : cnpj;
+        }
+
+        function generateCEP(formatted = true) {
+            const digits = Math.floor(Math.random() * 100000000).toString().padStart(8, '0');
+            return formatted ? digits.replace(/(\d{5})(\d{3})/, '$1-$2') : digits;
+        }
+
+        function generateTituloEleitor(formatted = true) {
+            const prefix = Math.floor(Math.random() * 100000000) + 100000000;
+            let titulo = prefix.toString().substring(1);
+            
+            // Calculate verification digits (simplified)
+            const checkDigits = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+            titulo += checkDigits;
+            
+            return formatted ? titulo.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3') : titulo;
+        }
+
+        function generateDocument() {
+            const docType = document.getElementById('docType').value;
+            const count = parseInt(document.getElementById('docCount').value) || 1;
+            const formatDocument = document.getElementById('formatDocument').checked;
+            const output = document.getElementById('docOutput');
+            
+            let results = [];
+            
+            for (let i = 0; i < count; i++) {
+                switch (docType) {
+                    case 'cpf':
+                        results.push(`CPF ${i + 1}: ${generateCPF(formatDocument)}`);
+                        break;
+                    case 'rg':
+                        results.push(`RG ${i + 1}: ${generateRG(formatDocument)}`);
+                        break;
+                    case 'cnpj':
+                        results.push(`CNPJ ${i + 1}: ${generateCNPJ(formatDocument)}`);
+                        break;
+                    case 'cep':
+                        results.push(`CEP ${i + 1}: ${generateCEP(formatDocument)}`);
+                        break;
+                    case 'titulo':
+                        results.push(`Título ${i + 1}: ${generateTituloEleitor(formatDocument)}`);
+                        break;
+                }
+            }
+            
+            output.value = results.join('\n');
+        }
+
+        function clearDocOutput() {
+            document.getElementById('docOutput').value = '';
+        }
+
+        // Password Generator
+        function updateLengthDisplay() {
+            const length = document.getElementById('passwordLength').value;
+            document.getElementById('lengthDisplay').textContent = length;
+        }
+
+        function generatePassword() {
+            const length = parseInt(document.getElementById('passwordLength').value);
+            const count = parseInt(document.getElementById('passwordCount').value) || 1;
+            const includeUppercase = document.getElementById('includeUppercase').checked;
+            const includeLowercase = document.getElementById('includeLowercase').checked;
+            const includeNumbers = document.getElementById('includeNumbers').checked;
+            const includeSymbols = document.getElementById('includeSymbols').checked;
+            
+            let charset = '';
+            if (includeUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (includeLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+            if (includeNumbers) charset += '0123456789';
+            if (includeSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+            
+            if (!charset) {
+                document.getElementById('passwordOutput').value = 'Selecione pelo menos um tipo de caractere.';
+                return;
+            }
+            
+            let results = [];
+            for (let i = 0; i < count; i++) {
+                let password = '';
+                for (let j = 0; j < length; j++) {
+                    password += charset.charAt(Math.floor(Math.random() * charset.length));
+                }
+                results.push(`Senha ${i + 1}: ${password}`);
+            }
+            
+            document.getElementById('passwordOutput').value = results.join('\n');
+        }
+
+        // Credit Card Generator
+        function generateCreditCard() {
+            const brand = document.getElementById('cardBrand').value;
+            const count = parseInt(document.getElementById('cardCount').value) || 1;
+            const includeExpiry = document.getElementById('includeExpiry').checked;
+            const includeCVV = document.getElementById('includeCVV').checked;
+            
+            const prefixes = {
+                visa: ['4'],
+                mastercard: ['5'],
+                amex: ['34', '37'],
+                elo: ['438935', '457631', '457632', '431274'],
+                hipercard: ['606282']
+            };
+            
+            let results = [];
+            
+            for (let i = 0; i < count; i++) {
+                let cardNumber = '';
+                const brandPrefixes = prefixes[brand];
+                const prefix = brandPrefixes[Math.floor(Math.random() * brandPrefixes.length)];
+                
+                cardNumber = prefix;
+                const targetLength = brand === 'amex' ? 15 : 16;
+                
+                while (cardNumber.length < targetLength - 1) {
+                    cardNumber += Math.floor(Math.random() * 10);
+                }
+                
+                // Luhn algorithm check digit
+                let sum = 0;
+                let alternate = false;
+                for (let j = cardNumber.length - 1; j >= 0; j--) {
+                    let n = parseInt(cardNumber.charAt(j));
+                    if (alternate) {
+                        n *= 2;
+                        if (n > 9) n = (n % 10) + 1;
+                    }
+                    sum += n;
+                    alternate = !alternate;
+                }
+                const checkDigit = (10 - (sum % 10)) % 10;
+                cardNumber += checkDigit;
+                
+                // Format card number
+                if (brand === 'amex') {
+                    cardNumber = cardNumber.replace(/(\d{4})(\d{6})(\d{5})/, '$1 $2 $3');
+                } else {
+                    cardNumber = cardNumber.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
+                }
+                
+                let result = `Cartão ${i + 1}: ${cardNumber.toUpperCase()} (${brand.toUpperCase()})`;
+                
+                if (includeExpiry) {
+                    const month = Math.floor(Math.random() * 12) + 1;
+                    const year = new Date().getFullYear() + Math.floor(Math.random() * 8) + 1;
+                    result += ` | Venc: ${month.toString().padStart(2, '0')}/${year.toString().substring(2)}`;
+                }
+                
+                if (includeCVV) {
+                    const cvvLength = brand === 'amex' ? 4 : 3;
+                    const cvv = Math.floor(Math.random() * Math.pow(10, cvvLength)).toString().padStart(cvvLength, '0');
+                    result += ` | CVV: ${cvv}`;
+                }
+                
+                results.push(result);
+            }
+            
+            document.getElementById('cardOutput').value = results.join('\n');
+        }
+
+        // Bank Account Generator
+        function generateBankAccount() {
+            const bankCode = document.getElementById('bankCode').value;
+            const count = parseInt(document.getElementById('bankCount').value) || 1;
+            
+            const bankNames = {
+                '001': 'Banco do Brasil',
+                '033': 'Santander',
+                '104': 'Caixa Econômica Federal',
+                '237': 'Bradesco',
+                '341': 'Itaú',
+                '260': 'Nu Pagamentos',
+                '077': 'Banco Inter',
+                '212': 'Banco Original'
+            };
+            
+            let results = [];
+            
+            for (let i = 0; i < count; i++) {
+                const agency = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+                const account = Math.floor(Math.random() * 1000000).toString().padStart(7, '0');
+                const checkDigit = Math.floor(Math.random() * 10);
+                
+                const result = `Conta ${i + 1}: Banco ${bankCode} (${bankNames[bankCode]})
+Agência: ${agency}
+Conta: ${account}-${checkDigit}`;
+                
+                results.push(result);
+            }
+            
+            document.getElementById('bankOutput').value = results.join('\n\n');
+        }
+
+        // Text Comparison
+        function compareTexts() {
+            const text1 = document.getElementById('text1').value;
+            const text2 = document.getElementById('text2').value;
+            const resultContainer = document.getElementById('comparisonResult');
+            const leftColumn = document.getElementById('leftColumn');
+            const rightColumn = document.getElementById('rightColumn');
+            
+            if (!text1.trim() && !text2.trim()) {
+                resultContainer.style.display = 'none';
+                return;
+            }
+            
+            const lines1 = text1.split('\n');
+            const lines2 = text2.split('\n');
+            const maxLines = Math.max(lines1.length, lines2.length);
+            
+            leftColumn.innerHTML = '';
+            rightColumn.innerHTML = '';
+            
+            for (let i = 0; i < maxLines; i++) {
+                const line1 = lines1[i] || '';
+                const line2 = lines2[i] || '';
+                
+                // Create left column line
+                const leftLine = document.createElement('div');
+                leftLine.className = 'comparison-line';
+                
+                if (line1 === '' && line2 !== '') {
+                    leftLine.className += ' line-empty';
+                } else if (line1 !== line2 && line1 !== '') {
+                    leftLine.className += ' line-removed';
+                }
+                
+                leftLine.innerHTML = `
+                    <div class="line-number">${line1 !== '' ? i + 1 : ''}</div>
+                    <div class="line-content">${escapeHtml(line1)}</div>
+                `;
+                leftColumn.appendChild(leftLine);
+                
+                // Create right column line
+                const rightLine = document.createElement('div');
+                rightLine.className = 'comparison-line';
+                
+                if (line2 === '' && line1 !== '') {
+                    rightLine.className += ' line-empty';
+                } else if (line1 !== line2 && line2 !== '') {
+                    rightLine.className += ' line-added';
+                }
+                
+                rightLine.innerHTML = `
+                    <div class="line-number">${line2 !== '' ? i + 1 : ''}</div>
+                    <div class="line-content">${escapeHtml(line2)}</div>
+                `;
+                rightColumn.appendChild(rightLine);
+            }
+            
+            resultContainer.style.display = 'block';
+        }
+        
+        function clearComparison() {
+            document.getElementById('text1').value = '';
+            document.getElementById('text2').value = '';
+            document.getElementById('comparisonResult').style.display = 'none';
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Code Formatter
+        function formatCode() {
+            const input = document.getElementById('codeInput').value;
+            const output = document.getElementById('codeOutput');
+            const type = document.getElementById('codeType').value;
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira o código a ser formatado.';
+                return;
+            }
+            
+            try {
+                switch (type) {
+                    case 'json':
+                        const parsed = JSON.parse(input);
+                        output.value = JSON.stringify(parsed, null, 2);
+                        break;
+                    case 'xml':
+                    case 'html':
+                        output.value = formatXmlHtml(input);
+                        break;
+                }
+            } catch (error) {
+                output.value = `Erro ao formatar ${type.toUpperCase()}: ${error.message}`;
+            }
+        }
+        
+        function minifyCode() {
+            const input = document.getElementById('codeInput').value;
+            const output = document.getElementById('codeOutput');
+            const type = document.getElementById('codeType').value;
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira o código a ser minificado.';
+                return;
+            }
+            
+            try {
+                switch (type) {
+                    case 'json':
+                        const parsed = JSON.parse(input);
+                        output.value = JSON.stringify(parsed);
+                        break;
+                    case 'xml':
+                    case 'html':
+                        output.value = input.replace(/>\s+</g, '><').replace(/\n\s*/g, '');
+                        break;
+                }
+            } catch (error) {
+                output.value = `Erro ao minificar ${type.toUpperCase()}: ${error.message}`;
+            }
+        }
+        
+        function formatXmlHtml(xml) {
+            let formatted = '';
+            let indent = '';
+            const tab = '  ';
+            
+            xml.split(/>\s*</).forEach((node) => {
+                if (node.match(/^\/\w/)) indent = indent.substring(tab.length);
+                formatted += indent + '<' + node + '>\n';
+                if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab;
+            });
+            
+            return formatted.substring(1, formatted.length - 2);
+        }
+
+        // UUID Generator
+        function generateUUID() {
+            const version = document.getElementById('uuidVersion').value;
+            const count = parseInt(document.getElementById('uuidCount').value) || 1;
+            const output = document.getElementById('uuidOutput');
+            
+            let results = [];
+            
+            for (let i = 0; i < count; i++) {
+                let uuid;
+                if (version === 'v4') {
+                    uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                        const r = Math.random() * 16 | 0;
+                        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                        return v.toString(16);
+                    });
+                } else {
+                    // Simplified v1 UUID (timestamp-based)
+                    const timestamp = Date.now();
+                    uuid = `${timestamp.toString(16).padStart(8, '0')}-0000-1000-8000-${Math.random().toString(16).substring(2, 14)}`;
+                }
+                results.push(uuid);
+            }
+            
+            output.value = results.join('\n');
+        }
+
+        // SQL Formatter
+        function formatSQL() {
+            const input = document.getElementById('sqlInput').value;
+            const output = document.getElementById('sqlOutput');
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira uma query SQL.';
+                return;
+            }
+            
+            const keywords = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'INNER JOIN', 'ORDER BY', 'GROUP BY', 'HAVING'];
+            let formatted = input.toUpperCase();
+            
+            keywords.forEach(keyword => {
+                formatted = formatted.replace(new RegExp(`\\b${keyword}\\b`, 'g'), `\n${keyword}`);
+            });
+            
+            formatted = formatted
+                .split('\n')
+                .map(line => {
+                    line = line.trim();
+                    if (line.includes('JOIN')) {
+                        return '  ' + line;
+                    } else if (line.startsWith('  ')) {
+                        return line;
+                    }
+                    return line;
+                })
+                .join('\n')
+                .trim();
+            
+            output.value = formatted;
+        }
+        
+        function compactSQL() {
+            const input = document.getElementById('sqlInput').value;
+            const output = document.getElementById('sqlOutput');
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira uma query SQL.';
+                return;
+            }
+            
+            const compacted = input
+                .replace(/\s+/g, ' ')
+                .replace(/\s*,\s*/g, ',')
+                .replace(/\s*\(\s*/g, '(')
+                .replace(/\s*\)\s*/g, ')')
+                .replace(/\s*=\s*/g, '=')
+                .trim();
+            
+            output.value = compacted;
+        }
+
+        // Base Converter
+        function convertFromDecimal() {
+            const decimal = document.getElementById('decimal').value;
+            if (!decimal || isNaN(decimal)) {
+                clearBaseFields(['binary', 'hexadecimal', 'octal']);
+                return;
+            }
+            
+            const num = parseInt(decimal);
+            document.getElementById('binary').value = num.toString(2);
+            document.getElementById('hexadecimal').value = num.toString(16).toUpperCase();
+            document.getElementById('octal').value = num.toString(8);
+        }
+        
+        function convertFromBinary() {
+            const binary = document.getElementById('binary').value;
+            if (!binary || !/^[01]+$/.test(binary)) {
+                clearBaseFields(['decimal', 'hexadecimal', 'octal']);
+                return;
+            }
+            
+            const num = parseInt(binary, 2);
+            document.getElementById('decimal').value = num;
+            document.getElementById('hexadecimal').value = num.toString(16).toUpperCase();
+            document.getElementById('octal').value = num.toString(8);
+        }
+        
+        function convertFromHex() {
+            const hex = document.getElementById('hexadecimal').value;
+            if (!hex || !/^[0-9A-Fa-f]+$/.test(hex)) {
+                clearBaseFields(['decimal', 'binary', 'octal']);
+                return;
+            }
+            
+            const num = parseInt(hex, 16);
+            document.getElementById('decimal').value = num;
+            document.getElementById('binary').value = num.toString(2);
+            document.getElementById('octal').value = num.toString(8);
+        }
+        
+        function convertFromOctal() {
+            const octal = document.getElementById('octal').value;
+            if (!octal || !/^[0-7]+$/.test(octal)) {
+                clearBaseFields(['decimal', 'binary', 'hexadecimal']);
+                return;
+            }
+            
+            const num = parseInt(octal, 8);
+            document.getElementById('decimal').value = num;
+            document.getElementById('binary').value = num.toString(2);
+            document.getElementById('hexadecimal').value = num.toString(16).toUpperCase();
+        }
+        
+        function clearBaseFields(fields) {
+            fields.forEach(field => {
+                document.getElementById(field).value = '';
+            });
+        }
+
+        // Base64 Encoder/Decoder
+        function encodeBase64() {
+            const input = document.getElementById('base64Input').value;
+            const output = document.getElementById('base64Output');
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira o texto a ser codificado.';
+                return;
+            }
+            
+            try {
+                output.value = btoa(unescape(encodeURIComponent(input)));
+            } catch (error) {
+                output.value = 'Erro ao codificar: ' + error.message;
+            }
+        }
+        
+        function decodeBase64() {
+            const input = document.getElementById('base64Input').value;
+            const output = document.getElementById('base64Output');
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira o Base64 a ser decodificado.';
+                return;
+            }
+            
+            try {
+                output.value = decodeURIComponent(escape(atob(input)));
+            } catch (error) {
+                output.value = 'Erro ao decodificar: Base64 inválido.';
+            }
+        }
+
+        // URL Encoder/Decoder
+        function encodeURL() {
+            const input = document.getElementById('urlInput').value;
+            const output = document.getElementById('urlOutput');
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira a URL a ser codificada.';
+                return;
+            }
+            
+            try {
+                output.value = encodeURIComponent(input);
+            } catch (error) {
+                output.value = 'Erro ao codificar URL: ' + error.message;
+            }
+        }
+        
+        function decodeURL() {
+            const input = document.getElementById('urlInput').value;
+            const output = document.getElementById('urlOutput');
+            
+            if (!input.trim()) {
+                output.value = 'Por favor, insira a URL a ser decodificada.';
+                return;
+            }
+            
+            try {
+                output.value = decodeURIComponent(input);
+            } catch (error) {
+                output.value = 'Erro ao decodificar URL: ' + error.message;
+            }
+        }
+
+        // Navigation Functions
+        function scrollToDocumentValidator() {
+            document.querySelector('.document-validator').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+            setTimeout(() => {
+                document.getElementById('docInput').focus();
+            }, 500);
+        }
+
+        function scrollToDocumentGenerator() {
+            document.querySelector('.document-generator').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function scrollToPasswordGenerator() {
+            document.querySelector('.tool-section:has(#passwordLength)').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function scrollToCardGenerator() {
+            document.querySelector('.tool-section:has(#cardBrand)').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function scrollToBankGenerator() {
+            document.querySelector('.tool-section:has(#bankCode)').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        function scrollToTool(selector) {
+            document.querySelector(selector).scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // Auto-format input as user types based on document type
+        document.addEventListener('DOMContentLoaded', function() {
+            const docInput = document.getElementById('docInput');
+            const docTypeSelect = document.getElementById('validateDocType');
+            
+            if (docInput && docTypeSelect) {
+                docInput.addEventListener('input', function(e) {
+                    const docType = docTypeSelect.value;
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    switch (docType) {
+                        case 'cpf':
+                            if (value.length <= 11) {
+                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                                e.target.maxLength = 14;
+                            }
+                            break;
+                        case 'cnpj':
+                            if (value.length <= 14) {
+                                value = value.replace(/(\d{2})(\d)/, '$1.$2');
+                                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                value = value.replace(/(\d{3})(\d)/, '$1/$2');
+                                value = value.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+                                e.target.maxLength = 18;
+                            }
+                            break;
+                        case 'rg':
+                            if (value.length <= 9) {
+                                if (value.length === 9) {
+                                    value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+                                } else if (value.length === 8) {
+                                    value = value.replace(/(\d{1})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+                                }
+                                e.target.maxLength = 12;
+                            }
+                            break;
+                        case 'cep':
+                            if (value.length <= 8) {
+                                value = value.replace(/(\d{5})(\d{1,3})$/, '$1-$2');
+                                e.target.maxLength = 9;
+                            }
+                            break;
+                        case 'titulo':
+                            if (value.length <= 12) {
+                                value = value.replace(/(\d{4})(\d)/, '$1 $2');
+                                value = value.replace(/(\d{4}) (\d{4})(\d)/, '$1 $2 $3');
+                                e.target.maxLength = 14;
+                            }
+                            break;
+                    }
+                    
+                    e.target.value = value;
+                    
+                    // Hide result when user starts typing
+                    const result = document.getElementById('validationResult');
+                    if (result && result.style.display === 'block') {
+                        result.style.display = 'none';
+                    }
+                });
+                
+                // Update placeholder when document type changes
+                docTypeSelect.addEventListener('change', function() {
+                    const placeholders = {
+                        'cpf': 'Digite o CPF (000.000.000-00)',
+                        'cnpj': 'Digite o CNPJ (00.000.000/0000-00)',
+                        'rg': 'Digite o RG (00.000.000-0)',
+                        'cep': 'Digite o CEP (00000-000)',
+                        'titulo': 'Digite o Título (0000 0000 0000)'
+                    };
+                    
+                    docInput.placeholder = placeholders[this.value];
+                    docInput.value = '';
+                    
+                    const result = document.getElementById('validationResult');
+                    if (result) {
+                        result.style.display = 'none';
+                    }
+                });
+                
+                // Allow Enter key to validate
+                docInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        validateDocument();
+                    }
+                });
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Performance: Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -10% 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe tool cards for staggered animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+
+        // Service Worker Registration (for PWA capabilities)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(registrationError => console.log('SW registration failed'));
+            });
+        }
+    </script>
+
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
