@@ -437,12 +437,12 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="index.html" class="logo">TestCodePro</a>
+            <a href="/" class="logo">TestCodePro</a>
             <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index.html">Ferramentas</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="/">Início</a></li>
+                <li><a href="/#ferramentas">Ferramentas</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
+                <li><a href="/contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -469,6 +469,11 @@
                         <option value="rg">RG - Registro Geral</option>
                         <option value="cep">CEP - Código de Endereçamento Postal</option>
                         <option value="titulo">Título de Eleitor</option>
+                        <option value="cnh">CNH - Carteira Nacional de Habilitação</option>
+                        <option value="conta">Conta Bancária</option>
+                        <option value="placa">Placa de Veículo</option>
+                        <option value="passaporte">Passaporte</option>
+                        <option value="pis">PIS/PASEP</option>
                         <option value="all">Gerar Todos os Documentos</option>
                     </select>
                 </div>
@@ -635,6 +640,97 @@
             return titulo.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3');
         }
 
+        // Generate CNH
+        function generateCNH() {
+            let cnh = '';
+            for (let i = 0; i < 9; i++) {
+                cnh += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate check digits for CNH (simplified)
+            let sum1 = 0, sum2 = 0;
+            for (let i = 0; i < 9; i++) {
+                sum1 += parseInt(cnh[i]) * (9 - i);
+                sum2 += parseInt(cnh[i]) * (1 + i);
+            }
+            
+            let check1 = sum1 % 11;
+            check1 = check1 < 2 ? 0 : 11 - check1;
+            cnh += check1;
+            
+            let check2 = (sum2 + check1 * 2) % 11;
+            check2 = check2 < 2 ? 0 : 11 - check2;
+            cnh += check2;
+            
+            return cnh;
+        }
+
+        // Generate Conta Bancária
+        function generateContaBancaria() {
+            const agencia = Math.floor(Math.random() * 9000) + 1000;
+            const agenciaDigit = Math.floor(Math.random() * 10);
+            const conta = Math.floor(Math.random() * 9000000) + 1000000;
+            const contaDigit = Math.floor(Math.random() * 10);
+            
+            return `${agencia}-${agenciaDigit} / ${conta}-${contaDigit}`;
+        }
+
+        // Generate Placa de Veículo (Mercosul format)
+        function generatePlacaVeiculo() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            
+            let placa = '';
+            for (let i = 0; i < 3; i++) {
+                placa += letters[Math.floor(Math.random() * letters.length)];
+            }
+            placa += numbers[Math.floor(Math.random() * numbers.length)];
+            placa += letters[Math.floor(Math.random() * letters.length)];
+            for (let i = 0; i < 2; i++) {
+                placa += numbers[Math.floor(Math.random() * numbers.length)];
+            }
+            
+            return placa;
+        }
+
+        // Generate Passaporte
+        function generatePassaporte() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            
+            let passaporte = '';
+            // Brazilian passport format: 2 letters + 6 numbers
+            for (let i = 0; i < 2; i++) {
+                passaporte += letters[Math.floor(Math.random() * letters.length)];
+            }
+            for (let i = 0; i < 6; i++) {
+                passaporte += numbers[Math.floor(Math.random() * numbers.length)];
+            }
+            
+            return passaporte;
+        }
+
+        // Generate PIS/PASEP
+        function generatePIS() {
+            let pis = '';
+            for (let i = 0; i < 10; i++) {
+                pis += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate check digit
+            const weights = [3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            let sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(pis[i]) * weights[i];
+            }
+            
+            let remainder = sum % 11;
+            let checkDigit = remainder < 2 ? 0 : 11 - remainder;
+            pis += checkDigit;
+            
+            return pis.replace(/(\d{3})(\d{5})(\d{2})(\d{1})/, '$1.$2.$3-$4');
+        }
+
         // Main generation function
         function generateDocuments() {
             const docType = document.getElementById('documentType').value;
@@ -650,6 +746,11 @@
                 documents.push({ type: 'RG', value: generateRG() });
                 documents.push({ type: 'CEP', value: generateCEP() });
                 documents.push({ type: 'Título de Eleitor', value: generateTitulo() });
+                documents.push({ type: 'CNH', value: generateCNH() });
+                documents.push({ type: 'Conta Bancária', value: generateContaBancaria() });
+                documents.push({ type: 'Placa de Veículo', value: generatePlacaVeiculo() });
+                documents.push({ type: 'Passaporte', value: generatePassaporte() });
+                documents.push({ type: 'PIS/PASEP', value: generatePIS() });
             } else {
                 let value = '';
                 let type = '';
@@ -674,6 +775,26 @@
                     case 'titulo':
                         value = generateTitulo();
                         type = 'Título de Eleitor';
+                        break;
+                    case 'cnh':
+                        value = generateCNH();
+                        type = 'CNH';
+                        break;
+                    case 'conta':
+                        value = generateContaBancaria();
+                        type = 'Conta Bancária';
+                        break;
+                    case 'placa':
+                        value = generatePlacaVeiculo();
+                        type = 'Placa de Veículo';
+                        break;
+                    case 'passaporte':
+                        value = generatePassaporte();
+                        type = 'Passaporte';
+                        break;
+                    case 'pis':
+                        value = generatePIS();
+                        type = 'PIS/PASEP';
                         break;
                 }
                 

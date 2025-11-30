@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de documentos do Canadá - SIN, Driver's Licence, Health Card, Passport e Postal Code para testes.">
+    <meta name="keywords" content="gerador documentos canada, sin generator, health card canada, postal code canada">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>Gerador de Documentos Canadá - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .document-card {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .document-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .document-icon {
+            font-size: 1.5rem;
+        }
+
+        .document-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: var(--surface);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            user-select: all;
+            cursor: text;
+        }
+
+        .document-description {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #16a34a;
+            transform: translateY(-1px);
+        }
+
+        .btn-small.copied {
+            background: var(--primary);
+        }
+
+        .btn-regenerate {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-regenerate:hover {
+            background: #5555eb;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--surface-light);
+            border: 2px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/#ferramentas">Ferramentas</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
+                <li><a href="/contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <div class="country-flag">🇨🇦</div>
+                <h1 class="tool-title">Gerador de Documentos Canadá</h1>
+                <p class="tool-description">
+                    Gere documentos do Canadá válidos para testes e desenvolvimento. 
+                    Todos os números são fictícios e devem ser usados apenas para fins de teste.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Documents Grid -->
+                <div class="documents-grid">
+                    <!-- SIN -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Social Insurance Number</span>
+                            <span class="document-icon">🆔</span>
+                        </div>
+                        <div class="document-value" id="sin">123-456-789</div>
+                        <div class="document-description">SIN - Número de seguro social canadense (9 dígitos)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('sin', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateSIN()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Driver's Licence -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Driver's Licence</span>
+                            <span class="document-icon">🚗</span>
+                        </div>
+                        <div class="document-value" id="driverLicence">A1234-56789-12345</div>
+                        <div class="document-description">Carteira de motorista (varia por província)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('driverLicence', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateDriverLicence()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Health Card -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Health Card</span>
+                            <span class="document-icon">🏥</span>
+                        </div>
+                        <div class="document-value" id="healthCard">1234 567 890 ON</div>
+                        <div class="document-description">Cartão de saúde provincial (formato varia por província)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('healthCard', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateHealthCard()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Passport -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Passport Number</span>
+                            <span class="document-icon">📘</span>
+                        </div>
+                        <div class="document-value" id="passport">AB123456</div>
+                        <div class="document-description">Passaporte canadense (8 caracteres)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('passport', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePassport()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Postal Code -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Postal Code</span>
+                            <span class="document-icon">📮</span>
+                        </div>
+                        <div class="document-value" id="postalCode">K1A 0A9</div>
+                        <div class="document-description">Código postal canadense (formato A1A 1A1)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('postalCode', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePostalCode()">Gerar Novo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Gerar Todos os Documentos</button>
+                </div>
+
+                <!-- Warning -->
+                <div class="warning-box">
+                    <div class="warning-title">
+                        ⚠️ Aviso Importante
+                    </div>
+                    <div class="warning-text">
+                        Todos os documentos gerados são fictícios e destinados exclusivamente para fins de teste, 
+                        desenvolvimento e demonstração. O uso destes números para fins fraudulentos é ilegal 
+                        e pode resultar em consequências legais graves. Use com responsabilidade.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Generate SIN (Social Insurance Number)
+        function generateSIN() {
+            // SIN uses Luhn algorithm for validation
+            let sin = '';
+            
+            // Generate first 8 digits
+            for (let i = 0; i < 8; i++) {
+                if (i === 0) {
+                    // First digit cannot be 0 or 8
+                    sin += Math.floor(Math.random() * 7) + 1;
+                } else {
+                    sin += Math.floor(Math.random() * 10);
+                }
+            }
+            
+            // Calculate check digit using Luhn algorithm
+            const checkDigit = calculateLuhnCheckDigit(sin);
+            sin += checkDigit;
+            
+            // Format as XXX-XXX-XXX
+            const formatted = sin.replace(/(\d{3})(\d{3})(\d{3})/, '$1-$2-$3');
+            document.getElementById('sin').textContent = formatted;
+        }
+
+        // Generate Driver's Licence (varies by province)
+        function generateDriverLicence() {
+            const provinces = {
+                'ON': () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 100000).toString().padStart(5, '0')}-${Math.floor(Math.random() * 100000).toString().padStart(5, '0')}-${Math.floor(Math.random() * 100000).toString().padStart(5, '0')}`,
+                'BC': () => `${Math.floor(Math.random() * 10000000).toString().padStart(7, '0')}`,
+                'AB': () => `${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}-${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}`,
+                'QC': () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}${Math.floor(Math.random() * 100).toString().padStart(2, '0')}`
+            };
+            
+            const provinceKeys = Object.keys(provinces);
+            const randomProvince = provinceKeys[Math.floor(Math.random() * provinceKeys.length)];
+            const licence = provinces[randomProvince]();
+            
+            document.getElementById('driverLicence').textContent = licence;
+        }
+
+        // Generate Health Card
+        function generateHealthCard() {
+            const provinces = ['ON', 'BC', 'AB', 'QC', 'NS', 'NB', 'MB', 'SK', 'PE', 'NL'];
+            const province = provinces[Math.floor(Math.random() * provinces.length)];
+            
+            // Generate 10 digit number
+            let healthCard = '';
+            for (let i = 0; i < 10; i++) {
+                healthCard += Math.floor(Math.random() * 10);
+            }
+            
+            // Format as XXXX XXX XXX XX
+            const formatted = `${healthCard.substr(0, 4)} ${healthCard.substr(4, 3)} ${healthCard.substr(7, 3)} ${province}`;
+            document.getElementById('healthCard').textContent = formatted;
+        }
+
+        // Generate Canadian Passport
+        function generatePassport() {
+            // Format: 2 letters + 6 digits
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let passport = '';
+            
+            for (let i = 0; i < 2; i++) {
+                passport += letters[Math.floor(Math.random() * letters.length)];
+            }
+            
+            for (let i = 0; i < 6; i++) {
+                passport += Math.floor(Math.random() * 10);
+            }
+            
+            document.getElementById('passport').textContent = passport;
+        }
+
+        // Generate Canadian Postal Code
+        function generatePostalCode() {
+            // Format: A1A 1A1 (Letter-Digit-Letter space Digit-Letter-Digit)
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            // Excluding certain letters that are not used in postal codes
+            const postalLetters = 'ABCEGHJKLMNPRSTVWXYZ';
+            
+            let postalCode = '';
+            postalCode += postalLetters[Math.floor(Math.random() * postalLetters.length)];
+            postalCode += Math.floor(Math.random() * 10);
+            postalCode += postalLetters[Math.floor(Math.random() * postalLetters.length)];
+            postalCode += ' ';
+            postalCode += Math.floor(Math.random() * 10);
+            postalCode += postalLetters[Math.floor(Math.random() * postalLetters.length)];
+            postalCode += Math.floor(Math.random() * 10);
+            
+            document.getElementById('postalCode').textContent = postalCode;
+        }
+
+        // Luhn algorithm for SIN validation
+        function calculateLuhnCheckDigit(number) {
+            let sum = 0;
+            let alternate = false;
+            
+            // Process digits from right to left
+            for (let i = number.length - 1; i >= 0; i--) {
+                let digit = parseInt(number[i]);
+                
+                if (alternate) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit = Math.floor(digit / 10) + (digit % 10);
+                    }
+                }
+                
+                sum += digit;
+                alternate = !alternate;
+            }
+            
+            return (10 - (sum % 10)) % 10;
+        }
+
+        // Generate all documents
+        function generateAllDocuments() {
+            generateSIN();
+            generateDriverLicence();
+            generateHealthCard();
+            generatePassport();
+            generatePostalCode();
+        }
+
+        // Copy function
+        function copyValue(elementId, buttonElement) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopy(text, buttonElement);
+                });
+            } else {
+                fallbackCopy(text, buttonElement);
+            }
+        }
+
+        function fallbackCopy(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = '✅ Copiado!';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.textContent = originalText;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Initialize documents on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAllDocuments();
+        });
+    </script>
+</body>
+</html>

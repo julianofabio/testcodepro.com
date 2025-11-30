@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de documentos dos Estados Unidos - SSN, Driver's License, Passport, State ID, Vehicle Registration e ZIP Code para testes.">
+    <meta name="keywords" content="gerador documentos eua, ssn generator, zip code generator, driver license usa, passport usa">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/gerador-documentos-usa.html">
+    <meta property="og:title" content="Gerador de Documentos USA - TestCodePro">
+    <meta property="og:description" content="Gere documentos americanos válidos para testes: SSN, Driver's License, Passport, State ID e mais.">
+    <meta property="og:image" content="https://testcodepro.com/assets/usa-docs-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/gerador-documentos-usa.html">
+    <meta property="twitter:title" content="Gerador de Documentos USA - TestCodePro">
+    <meta property="twitter:description" content="Gere documentos americanos para testes.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/usa-docs-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/gerador-documentos-usa.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gerador de Documentos USA",
+        "url": "https://testcodepro.com/gerador-documentos-usa.html",
+        "description": "Gerador de documentos americanos para testes e desenvolvimento",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Gerador de Documentos USA - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .document-card {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .document-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .document-icon {
+            font-size: 1.5rem;
+        }
+
+        .document-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: var(--surface);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            user-select: all;
+            cursor: text;
+        }
+
+        .document-description {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #16a34a;
+            transform: translateY(-1px);
+        }
+
+        .btn-small.copied {
+            background: var(--primary);
+        }
+
+        .btn-regenerate {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-regenerate:hover {
+            background: #5555eb;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--surface-light);
+            border: 2px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/#ferramentas">Ferramentas</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
+                <li><a href="/contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <div class="country-flag">🇺🇸</div>
+                <h1 class="tool-title">Gerador de Documentos USA</h1>
+                <p class="tool-description">
+                    Gere documentos dos Estados Unidos válidos para testes e desenvolvimento. 
+                    Todos os números são fictícios e devem ser usados apenas para fins de teste.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Documents Grid -->
+                <div class="documents-grid">
+                    <!-- SSN -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Social Security Number (SSN)</span>
+                            <span class="document-icon">🆔</span>
+                        </div>
+                        <div class="document-value" id="ssn">000-00-0000</div>
+                        <div class="document-description">Número de identificação social usado para benefícios e impostos</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('ssn', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateSSN()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Driver's License -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Driver's License</span>
+                            <span class="document-icon">🚗</span>
+                        </div>
+                        <div class="document-value" id="driverLicense">A1234567</div>
+                        <div class="document-description">Carteira de motorista (formato varia por estado)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('driverLicense', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateDriverLicense()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Passport -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Passport Number</span>
+                            <span class="document-icon">📘</span>
+                        </div>
+                        <div class="document-value" id="passport">123456789</div>
+                        <div class="document-description">Número do passaporte americano (9 dígitos)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('passport', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePassport()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- State ID -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">State ID Number</span>
+                            <span class="document-icon">🪪</span>
+                        </div>
+                        <div class="document-value" id="stateId">S12345678</div>
+                        <div class="document-description">Documento de identidade estadual</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('stateId', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateStateId()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Registration -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Vehicle Registration</span>
+                            <span class="document-icon">🚙</span>
+                        </div>
+                        <div class="document-value" id="vehicleReg">ABC 1234</div>
+                        <div class="document-description">Placa de registro do veículo</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('vehicleReg', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateVehicleReg()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- ZIP Code -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">ZIP Code</span>
+                            <span class="document-icon">📮</span>
+                        </div>
+                        <div class="document-value" id="zipCode">12345-6789</div>
+                        <div class="document-description">Código postal americano (ZIP+4 format)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('zipCode', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateZipCode()">Gerar Novo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Gerar Todos os Documentos</button>
+                </div>
+
+                <!-- Warning -->
+                <div class="warning-box">
+                    <div class="warning-title">
+                        ⚠️ Aviso Importante
+                    </div>
+                    <div class="warning-text">
+                        Todos os documentos gerados são fictícios e destinados exclusivamente para fins de teste, 
+                        desenvolvimento e demonstração. O uso destes números para fins fraudulentos é ilegal 
+                        e pode resultar em consequências legais graves. Use com responsabilidade.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Generate Social Security Number
+        function generateSSN() {
+            // SSN format: XXX-XX-XXXX
+            // Area number (001-665, 667-899): avoid 000, 666, and 900-999
+            let area;
+            do {
+                area = Math.floor(Math.random() * 899) + 1;
+            } while (area === 666 || area >= 900);
+            
+            // Group number (01-99): avoid 00
+            const group = Math.floor(Math.random() * 99) + 1;
+            
+            // Serial number (0001-9999): avoid 0000
+            const serial = Math.floor(Math.random() * 9999) + 1;
+            
+            const ssn = `${area.toString().padStart(3, '0')}-${group.toString().padStart(2, '0')}-${serial.toString().padStart(4, '0')}`;
+            document.getElementById('ssn').textContent = ssn;
+        }
+
+        // Generate Driver's License
+        function generateDriverLicense() {
+            const states = {
+                'CA': () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 10000000).toString().padStart(7, '0')}`,
+                'NY': () => `${Math.floor(Math.random() * 900000000 + 100000000)}`,
+                'FL': () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}`,
+                'TX': () => `${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}`,
+                'IL': () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 100000000).toString().padStart(8, '0')}`
+            };
+            
+            const stateKeys = Object.keys(states);
+            const randomState = stateKeys[Math.floor(Math.random() * stateKeys.length)];
+            const license = states[randomState]();
+            
+            document.getElementById('driverLicense').textContent = license;
+        }
+
+        // Generate Passport Number
+        function generatePassport() {
+            const passport = Math.floor(Math.random() * 900000000 + 100000000).toString();
+            document.getElementById('passport').textContent = passport;
+        }
+
+        // Generate State ID
+        function generateStateId() {
+            const letter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            const numbers = Math.floor(Math.random() * 100000000).toString().padStart(8, '0');
+            const stateId = `${letter}${numbers}`;
+            document.getElementById('stateId').textContent = stateId;
+        }
+
+        // Generate Vehicle Registration
+        function generateVehicleReg() {
+            const formats = [
+                () => `${generateRandomLetters(3)} ${generateRandomNumbers(4)}`,
+                () => `${generateRandomLetters(3)} ${generateRandomNumbers(3)}`,
+                () => `${generateRandomNumbers(3)} ${generateRandomLetters(3)}`,
+                () => `${generateRandomLetters(2)}${generateRandomNumbers(5)}`
+            ];
+            
+            const format = formats[Math.floor(Math.random() * formats.length)];
+            document.getElementById('vehicleReg').textContent = format();
+        }
+
+        // Generate ZIP Code
+        function generateZipCode() {
+            const zip5 = Math.floor(Math.random() * 90000 + 10000).toString();
+            const zip4 = Math.floor(Math.random() * 9000 + 1000).toString();
+            const zipCode = `${zip5}-${zip4}`;
+            document.getElementById('zipCode').textContent = zipCode;
+        }
+
+        // Helper functions
+        function generateRandomLetters(length) {
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            }
+            return result;
+        }
+
+        function generateRandomNumbers(length) {
+            return Math.floor(Math.random() * Math.pow(10, length)).toString().padStart(length, '0');
+        }
+
+        // Generate all documents
+        function generateAllDocuments() {
+            generateSSN();
+            generateDriverLicense();
+            generatePassport();
+            generateStateId();
+            generateVehicleReg();
+            generateZipCode();
+        }
+
+        // Copy function
+        function copyValue(elementId, buttonElement) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopy(text, buttonElement);
+                });
+            } else {
+                fallbackCopy(text, buttonElement);
+            }
+        }
+
+        function fallbackCopy(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = '✅ Copiado!';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.textContent = originalText;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Initialize documents on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAllDocuments();
+        });
+    </script>
+</body>
+</html>

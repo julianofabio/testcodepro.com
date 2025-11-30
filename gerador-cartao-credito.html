@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de Cartão de Crédito online - Gere números de cartão válidos para testes com Visa, Mastercard, American Express e mais.">
+    <meta name="keywords" content="gerador cartao credito, credit card generator, visa mastercard generator, numero cartao teste">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/gerador-cartao-credito.html">
+    <meta property="og:title" content="Gerador de Cartão de Crédito - TestCodePro">
+    <meta property="og:description" content="Gere números de cartão de crédito válidos para testes com diferentes bandeiras e formatos.">
+    <meta property="og:image" content="https://testcodepro.com/assets/credit-card-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/gerador-cartao-credito.html">
+    <meta property="twitter:title" content="Gerador de Cartão de Crédito - TestCodePro">
+    <meta property="twitter:description" content="Gere números de cartão de crédito para testes.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/credit-card-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/gerador-cartao-credito.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gerador de Cartão de Crédito",
+        "url": "https://testcodepro.com/gerador-cartao-credito.html",
+        "description": "Gerador de números de cartão de crédito para testes",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Gerador de Cartão de Crédito - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
+        }
+
+        .card-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-type {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card-type.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .card-type:hover {
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-pattern {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Generated Card Display */
+        .card-display {
+            margin: 2rem 0;
+        }
+
+        .credit-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .credit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .card-type-display {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card-number-display {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-field {
+            text-align: center;
+        }
+
+        .card-field-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-field-value {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        /* Data Display */
+        .data-display {
+            background: var(--background);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .data-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .data-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .data-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .data-value {
+            font-family: var(--font-mono);
+            color: var(--primary);
+            user-select: all;
+        }
+
+        .data-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #16a34a;
+        }
+
+        .btn-small.copied {
+            background: var(--primary);
+        }
+
+        /* Format Options */
+        .format-options {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .format-toggle {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .format-toggle.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        .format-toggle:hover:not(.active) {
+            border-color: var(--primary);
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--surface-light);
+            border: 2px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .card-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card-details {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .format-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/#ferramentas">Ferramentas</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
+                <li><a href="/contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">💳 Gerador de Cartão de Crédito</h1>
+                <p class="tool-description">
+                    Gere números de cartão de crédito válidos para testes com diferentes bandeiras. 
+                    Algoritmo Luhn implementado para garantir validade matemática.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Card Type Selection -->
+                <div class="card-selector">
+                    <div class="card-type active" data-type="visa">
+                        <div class="card-icon">💙</div>
+                        <div class="card-name">Visa</div>
+                        <div class="card-pattern">4XXX XXXX XXXX XXXX</div>
+                    </div>
+                    
+                    <div class="card-type" data-type="mastercard">
+                        <div class="card-icon">🔴</div>
+                        <div class="card-name">Mastercard</div>
+                        <div class="card-pattern">5XXX XXXX XXXX XXXX</div>
+                    </div>
+                    
+                    <div class="card-type" data-type="amex">
+                        <div class="card-icon">🟢</div>
+                        <div class="card-name">American Express</div>
+                        <div class="card-pattern">3XXX XXXXXX XXXXX</div>
+                    </div>
+                    
+                    <div class="card-type" data-type="discover">
+                        <div class="card-icon">🟠</div>
+                        <div class="card-name">Discover</div>
+                        <div class="card-pattern">6XXX XXXX XXXX XXXX</div>
+                    </div>
+                    
+                    <div class="card-type" data-type="diners">
+                        <div class="card-icon">⚫</div>
+                        <div class="card-name">Diners Club</div>
+                        <div class="card-pattern">30XX XXXXXX XXXX</div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Display -->
+                <div class="card-display">
+                    <div class="credit-card">
+                        <div class="card-header">
+                            <div class="card-brand" id="cardBrand">VISA</div>
+                            <div class="card-type-display" id="cardType">Credit Card</div>
+                        </div>
+                        <div class="card-number-display" id="cardNumberDisplay">4532 1234 5678 9012</div>
+                        <div class="card-details">
+                            <div class="card-field">
+                                <div class="card-field-label">Exp Date</div>
+                                <div class="card-field-value" id="expiryDisplay">12/28</div>
+                            </div>
+                            <div class="card-field">
+                                <div class="card-field-label">CVV</div>
+                                <div class="card-field-value" id="cvvDisplay">123</div>
+                            </div>
+                            <div class="card-field">
+                                <div class="card-field-label">Name</div>
+                                <div class="card-field-value">JOHN SMITH</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Options -->
+                <div class="format-options">
+                    <div class="format-toggle active" data-format="formatted">Com Formatação</div>
+                    <div class="format-toggle" data-format="plain">Sem Formatação</div>
+                </div>
+
+                <!-- Data Display -->
+                <div class="data-display">
+                    <div class="data-title">Dados do Cartão</div>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <span class="data-label">Número do Cartão:</span>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span class="data-value" id="cardNumberData">4532 1234 5678 9012</span>
+                                <div class="data-actions">
+                                    <button class="btn-small" onclick="copyValue('cardNumberData', this)">Copiar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-item">
+                            <span class="data-label">Data de Expiração:</span>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span class="data-value" id="expiryData">12/28</span>
+                                <div class="data-actions">
+                                    <button class="btn-small" onclick="copyValue('expiryData', this)">Copiar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-item">
+                            <span class="data-label">CVV:</span>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span class="data-value" id="cvvData">123</span>
+                                <div class="data-actions">
+                                    <button class="btn-small" onclick="copyValue('cvvData', this)">Copiar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-item">
+                            <span class="data-label">Nome do Portador:</span>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span class="data-value" id="nameData">JOHN SMITH</span>
+                                <div class="data-actions">
+                                    <button class="btn-small" onclick="copyValue('nameData', this)">Copiar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn-primary" onclick="generateCard()">🔄 Gerar Novo Cartão</button>
+                    <button class="btn-secondary" onclick="copyAllData()">📋 Copiar Todos os Dados</button>
+                </div>
+
+                <!-- Warning -->
+                <div class="warning-box">
+                    <div class="warning-title">
+                        ⚠️ Aviso Importante
+                    </div>
+                    <div class="warning-text">
+                        Os números de cartão gerados são válidos apenas matematicamente (algoritmo Luhn) e são destinados 
+                        exclusivamente para testes de desenvolvimento. Estes não são cartões reais e não podem ser usados 
+                        para transações financeiras. O uso inadequado pode ser ilegal.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentCardType = 'visa';
+        let currentFormat = 'formatted';
+        let cardData = {};
+
+        // Card type prefixes and patterns
+        const cardTypes = {
+            visa: { prefixes: ['4'], lengths: [16], name: 'VISA' },
+            mastercard: { prefixes: ['51', '52', '53', '54', '55'], lengths: [16], name: 'MASTERCARD' },
+            amex: { prefixes: ['34', '37'], lengths: [15], name: 'AMEX' },
+            discover: { prefixes: ['6011', '644', '645', '646', '647', '648', '649', '65'], lengths: [16], name: 'DISCOVER' },
+            diners: { prefixes: ['300', '301', '302', '303', '304', '305'], lengths: [14], name: 'DINERS' }
+        };
+
+        // Generate names for cards
+        const firstNames = ['John', 'Jane', 'Michael', 'Sarah', 'David', 'Emma', 'Robert', 'Lisa', 'William', 'Maria'];
+        const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];
+
+        // Card type selection
+        document.querySelectorAll('.card-type').forEach(type => {
+            type.addEventListener('click', function() {
+                document.querySelectorAll('.card-type').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentCardType = this.getAttribute('data-type');
+                generateCard();
+            });
+        });
+
+        // Format toggle
+        document.querySelectorAll('.format-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                document.querySelectorAll('.format-toggle').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentFormat = this.getAttribute('data-format');
+                updateCardDisplay();
+            });
+        });
+
+        // Generate credit card number using Luhn algorithm
+        function generateCardNumber(type) {
+            const cardType = cardTypes[type];
+            const prefix = cardType.prefixes[Math.floor(Math.random() * cardType.prefixes.length)];
+            const length = cardType.lengths[0];
+            
+            let cardNumber = prefix;
+            
+            // Fill remaining digits (except last one for checksum)
+            while (cardNumber.length < length - 1) {
+                cardNumber += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate Luhn checksum
+            const checksum = calculateLuhnChecksum(cardNumber);
+            cardNumber += checksum;
+            
+            return cardNumber;
+        }
+
+        // Calculate Luhn checksum
+        function calculateLuhnChecksum(cardNumber) {
+            let sum = 0;
+            let isEven = true;
+            
+            // Process digits from right to left
+            for (let i = cardNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(cardNumber[i]);
+                
+                if (isEven) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                
+                sum += digit;
+                isEven = !isEven;
+            }
+            
+            return (10 - (sum % 10)) % 10;
+        }
+
+        // Generate expiry date (1-5 years in future)
+        function generateExpiryDate() {
+            const currentDate = new Date();
+            const futureDate = new Date();
+            futureDate.setFullYear(currentDate.getFullYear() + Math.floor(Math.random() * 5) + 1);
+            futureDate.setMonth(Math.floor(Math.random() * 12));
+            
+            const month = (futureDate.getMonth() + 1).toString().padStart(2, '0');
+            const year = futureDate.getFullYear().toString().substr(2);
+            
+            return `${month}/${year}`;
+        }
+
+        // Generate CVV
+        function generateCVV(type) {
+            const length = type === 'amex' ? 4 : 3;
+            let cvv = '';
+            for (let i = 0; i < length; i++) {
+                cvv += Math.floor(Math.random() * 10);
+            }
+            return cvv;
+        }
+
+        // Generate random name
+        function generateName() {
+            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+            return `${firstName} ${lastName}`.toUpperCase();
+        }
+
+        // Format card number
+        function formatCardNumber(number, type) {
+            if (currentFormat === 'plain') {
+                return number;
+            }
+            
+            switch (type) {
+                case 'amex':
+                    return `${number.substr(0, 4)} ${number.substr(4, 6)} ${number.substr(10, 5)}`;
+                case 'diners':
+                    return `${number.substr(0, 4)} ${number.substr(4, 6)} ${number.substr(10, 4)}`;
+                default:
+                    return `${number.substr(0, 4)} ${number.substr(4, 4)} ${number.substr(8, 4)} ${number.substr(12, 4)}`;
+            }
+        }
+
+        // Generate new card
+        function generateCard() {
+            const cardNumber = generateCardNumber(currentCardType);
+            const expiryDate = generateExpiryDate();
+            const cvv = generateCVV(currentCardType);
+            const name = generateName();
+            
+            cardData = {
+                number: cardNumber,
+                expiry: expiryDate,
+                cvv: cvv,
+                name: name,
+                type: currentCardType,
+                brand: cardTypes[currentCardType].name
+            };
+            
+            updateCardDisplay();
+        }
+
+        // Update card display
+        function updateCardDisplay() {
+            const formattedNumber = formatCardNumber(cardData.number, cardData.type);
+            
+            // Update card visual
+            document.getElementById('cardBrand').textContent = cardData.brand;
+            document.getElementById('cardNumberDisplay').textContent = formattedNumber;
+            document.getElementById('expiryDisplay').textContent = cardData.expiry;
+            document.getElementById('cvvDisplay').textContent = cardData.cvv;
+            
+            // Update data display
+            document.getElementById('cardNumberData').textContent = formattedNumber;
+            document.getElementById('expiryData').textContent = cardData.expiry;
+            document.getElementById('cvvData').textContent = cardData.cvv;
+            document.getElementById('nameData').textContent = cardData.name;
+        }
+
+        // Copy individual value
+        function copyValue(elementId, buttonElement) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopy(text, buttonElement);
+                });
+            } else {
+                fallbackCopy(text, buttonElement);
+            }
+        }
+
+        // Copy all data
+        function copyAllData() {
+            const formattedNumber = formatCardNumber(cardData.number, cardData.type);
+            const allData = `Número: ${formattedNumber}\nExpiração: ${cardData.expiry}\nCVV: ${cardData.cvv}\nNome: ${cardData.name}`;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(allData).then(() => {
+                    alert('Todos os dados copiados!');
+                }).catch(() => {
+                    fallbackCopyAll(allData);
+                });
+            } else {
+                fallbackCopyAll(allData);
+            }
+        }
+
+        // Fallback copy methods
+        function fallbackCopy(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function fallbackCopyAll(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('Todos os dados copiados!');
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = '✅ Copiado!';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.textContent = originalText;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Initialize with a card
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCard();
+        });
+    </script>
+</body>
+</html>
