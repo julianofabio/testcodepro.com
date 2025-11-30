@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor TOON online - Converta JSON para TOON, XML para TOON, CSV para TOON e vice-versa. Ferramenta para transformação de dados estruturados.">
+    <meta name="keywords" content="conversor toon, toon converter, json to toon, xml to toon, csv to toon, data converter, format converter">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/conversor-toon.html">
+    <meta property="og:title" content="Conversor TOON - TestCodePro">
+    <meta property="og:description" content="Converta entre TOON, JSON, XML e CSV. Transformação de dados estruturados de forma simples e eficiente.">
+    <meta property="og:image" content="https://testcodepro.com/assets/toon-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/conversor-toon.html">
+    <meta property="twitter:title" content="Conversor TOON - TestCodePro">
+    <meta property="twitter:description" content="Converta entre formatos TOON, JSON, XML e CSV.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/toon-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/conversor-toon.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Conversor TOON",
+        "url": "https://testcodepro.com/conversor-toon.html",
+        "description": "Conversor entre formatos TOON, JSON, XML e CSV",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Conversor TOON - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .converter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .format-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--background);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+        }
+
+        .format-select {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            padding: 0.5rem;
+            font-weight: 600;
+        }
+
+        .convert-arrow {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0 1rem;
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .converter-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+        }
+
+        .btn-small.success {
+            background: var(--success);
+        }
+
+        .text-editor {
+            width: 100%;
+            height: 400px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .text-editor:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .text-editor.readonly {
+            background: var(--surface-light);
+            cursor: default;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Status Display */
+        .status-display {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .status-display.success {
+            border: 2px solid var(--success);
+        }
+
+        .status-display.error {
+            border: 2px solid var(--error);
+        }
+
+        .status-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .status-message {
+            font-weight: 600;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .format-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .format-example {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .example-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .example-code {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: var(--background);
+            padding: 0.5rem;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .converter-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .converter-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls .btn-primary,
+            .controls .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .text-editor {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html">Ferramentas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🔄 Conversor TOON</h1>
+                <p class="tool-description">
+                    Converta entre formatos TOON, JSON, XML e CSV. TOON é um formato estruturado 
+                    baseado em indentação que facilita a leitura e organização de dados.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Converter Controls -->
+                <div class="converter-controls">
+                    <div class="format-selector">
+                        <span>De:</span>
+                        <select id="fromFormat" class="format-select">
+                            <option value="json">JSON</option>
+                            <option value="xml">XML</option>
+                            <option value="csv">CSV</option>
+                            <option value="toon">TOON</option>
+                        </select>
+                    </div>
+                    <div class="convert-arrow">→</div>
+                    <div class="format-selector">
+                        <span>Para:</span>
+                        <select id="toFormat" class="format-select">
+                            <option value="toon">TOON</option>
+                            <option value="json">JSON</option>
+                            <option value="xml">XML</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Converter Grid -->
+                <div class="converter-grid">
+                    <div class="converter-panel">
+                        <div class="panel-header">
+                            <span class="panel-title" id="inputTitle">Entrada (JSON)</span>
+                            <div class="panel-actions">
+                                <button class="btn-small" onclick="clearInput()">Limpar</button>
+                                <button class="btn-small" onclick="loadSample()">Exemplo</button>
+                            </div>
+                        </div>
+                        <textarea id="inputText" class="text-editor" placeholder="Cole seu código aqui..."></textarea>
+                    </div>
+
+                    <div class="converter-panel">
+                        <div class="panel-header">
+                            <span class="panel-title" id="outputTitle">Saída (TOON)</span>
+                            <div class="panel-actions">
+                                <button class="btn-small" onclick="copyOutput()" id="copyBtn">Copiar</button>
+                            </div>
+                        </div>
+                        <textarea id="outputText" class="text-editor readonly" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button onclick="convertData()" class="btn-primary">Converter</button>
+                    <button onclick="clearAll()" class="btn-secondary">Limpar Tudo</button>
+                </div>
+
+                <!-- Status Display -->
+                <div id="statusDisplay" class="status-display">
+                    <div style="display: flex; align-items: center;">
+                        <span id="statusIcon" class="status-icon"></span>
+                        <span id="statusMessage" class="status-message"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Sobre o Formato TOON</h2>
+                <p class="info-text">
+                    TOON (Tree Object Oriented Notation) é um formato de dados baseado em indentação que oferece uma alternativa limpa e legível ao JSON e XML. Utiliza espaços para definir hierarquia e dois pontos para separar chaves e valores.
+                </p>
+                
+                <div class="format-examples">
+                    <div class="format-example">
+                        <div class="example-title">Formato TOON</div>
+                        <div class="example-code">usuario:
+  nome: João Silva
+  idade: 30
+  endereco:
+    rua: Rua das Flores, 123
+    cidade: São Paulo
+  hobbies:
+    - leitura
+    - natação</div>
+                    </div>
+                    
+                    <div class="format-example">
+                        <div class="example-title">Equivalente JSON</div>
+                        <div class="example-code">{
+  "usuario": {
+    "nome": "João Silva",
+    "idade": 30,
+    "endereco": {
+      "rua": "Rua das Flores, 123",
+      "cidade": "São Paulo"
+    },
+    "hobbies": ["leitura", "natação"]
+  }
+}</div>
+                    </div>
+                    
+                    <div class="format-example">
+                        <div class="example-title">Formato CSV</div>
+                        <div class="example-code">nome,idade,rua,cidade,hobby1,hobby2
+João Silva,30,"Rua das Flores, 123",São Paulo,leitura,natação</div>
+                    </div>
+                </div>
+
+                <p class="info-text" style="margin-top: 1.5rem;">
+                    <strong>Vantagens do TOON:</strong> Sintaxe limpa, fácil leitura humana, menos verboso que XML, suporte a arrays e objetos aninhados, e ideal para arquivos de configuração.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Update titles when format changes
+        document.getElementById('fromFormat').addEventListener('change', updateTitles);
+        document.getElementById('toFormat').addEventListener('change', updateTitles);
+
+        function updateTitles() {
+            const fromFormat = document.getElementById('fromFormat').value.toUpperCase();
+            const toFormat = document.getElementById('toFormat').value.toUpperCase();
+            
+            document.getElementById('inputTitle').textContent = `Entrada (${fromFormat})`;
+            document.getElementById('outputTitle').textContent = `Saída (${toFormat})`;
+        }
+
+        // Load sample data
+        function loadSample() {
+            const fromFormat = document.getElementById('fromFormat').value;
+            const samples = {
+                json: `{
+  "usuario": {
+    "nome": "João Silva",
+    "idade": 30,
+    "email": "joao@email.com",
+    "endereco": {
+      "rua": "Rua das Flores, 123",
+      "cidade": "São Paulo",
+      "cep": "01234-567"
+    },
+    "hobbies": ["leitura", "natação", "culinária"],
+    "ativo": true
+  }
+}`,
+                xml: `<?xml version="1.0" encoding="UTF-8"?>
+<usuario>
+  <nome>João Silva</nome>
+  <idade>30</idade>
+  <email>joao@email.com</email>
+  <endereco>
+    <rua>Rua das Flores, 123</rua>
+    <cidade>São Paulo</cidade>
+    <cep>01234-567</cep>
+  </endereco>
+  <hobbies>
+    <hobby>leitura</hobby>
+    <hobby>natação</hobby>
+    <hobby>culinária</hobby>
+  </hobbies>
+  <ativo>true</ativo>
+</usuario>`,
+                csv: `nome,idade,email,rua,cidade,cep,hobby1,hobby2,hobby3,ativo
+João Silva,30,joao@email.com,"Rua das Flores, 123",São Paulo,01234-567,leitura,natação,culinária,true`,
+                toon: `usuario:
+  nome: João Silva
+  idade: 30
+  email: joao@email.com
+  endereco:
+    rua: Rua das Flores, 123
+    cidade: São Paulo
+    cep: 01234-567
+  hobbies:
+    - leitura
+    - natação
+    - culinária
+  ativo: true`
+            };
+            
+            document.getElementById('inputText').value = samples[fromFormat] || '';
+        }
+
+        // Convert data
+        function convertData() {
+            const fromFormat = document.getElementById('fromFormat').value;
+            const toFormat = document.getElementById('toFormat').value;
+            const inputText = document.getElementById('inputText').value.trim();
+            
+            if (!inputText) {
+                showStatus('error', 'Entrada vazia', 'Digite ou carregue dados para converter.');
+                return;
+            }
+
+            try {
+                let data = parseInput(inputText, fromFormat);
+                let output = formatOutput(data, toFormat);
+                
+                document.getElementById('outputText').value = output;
+                showStatus('success', 'Conversão realizada!', 
+                          `Convertido de ${fromFormat.toUpperCase()} para ${toFormat.toUpperCase()}.`);
+                
+            } catch (error) {
+                showStatus('error', 'Erro na conversão', error.message);
+                document.getElementById('outputText').value = '';
+            }
+        }
+
+        // Parse input based on format
+        function parseInput(input, format) {
+            switch (format) {
+                case 'json':
+                    return JSON.parse(input);
+                case 'xml':
+                    return parseXML(input);
+                case 'csv':
+                    return parseCSV(input);
+                case 'toon':
+                    return parseTOON(input);
+                default:
+                    throw new Error('Formato de entrada não suportado');
+            }
+        }
+
+        // Format output based on format
+        function formatOutput(data, format) {
+            switch (format) {
+                case 'json':
+                    return JSON.stringify(data, null, 2);
+                case 'xml':
+                    return formatXML(data);
+                case 'csv':
+                    return formatCSV(data);
+                case 'toon':
+                    return formatTOON(data);
+                default:
+                    throw new Error('Formato de saída não suportado');
+            }
+        }
+
+        // Parse XML (simplified)
+        function parseXML(xmlString) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(xmlString, 'application/xml');
+            const errorNode = doc.querySelector('parsererror');
+            if (errorNode) {
+                throw new Error('XML inválido: ' + errorNode.textContent);
+            }
+            return xmlToObject(doc.documentElement);
+        }
+
+        // Convert XML node to object
+        function xmlToObject(node) {
+            let obj = {};
+            
+            // Handle attributes
+            if (node.attributes && node.attributes.length > 0) {
+                for (let attr of node.attributes) {
+                    obj['@' + attr.name] = attr.value;
+                }
+            }
+            
+            // Handle child nodes
+            if (node.childNodes && node.childNodes.length > 0) {
+                for (let child of node.childNodes) {
+                    if (child.nodeType === 1) { // Element node
+                        const nodeName = child.nodeName;
+                        const childObj = xmlToObject(child);
+                        
+                        if (obj[nodeName]) {
+                            if (Array.isArray(obj[nodeName])) {
+                                obj[nodeName].push(childObj);
+                            } else {
+                                obj[nodeName] = [obj[nodeName], childObj];
+                            }
+                        } else {
+                            obj[nodeName] = childObj;
+                        }
+                    } else if (child.nodeType === 3 && child.textContent.trim()) { // Text node
+                        return child.textContent.trim();
+                    }
+                }
+            }
+            
+            return obj;
+        }
+
+        // Parse CSV
+        function parseCSV(csvString) {
+            const lines = csvString.trim().split('\n');
+            if (lines.length < 2) {
+                throw new Error('CSV deve ter pelo menos uma linha de cabeçalho e uma de dados');
+            }
+            
+            const headers = parseCSVLine(lines[0]);
+            const data = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                const row = {};
+                
+                headers.forEach((header, index) => {
+                    row[header] = values[index] || '';
+                });
+                
+                data.push(row);
+            }
+            
+            return data;
+        }
+
+        // Parse CSV line
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            
+            result.push(current.trim());
+            return result;
+        }
+
+        // Parse TOON format
+        function parseTOON(toonString) {
+            const lines = toonString.split('\n');
+            const stack = [{}];
+            const indentStack = [-1];
+            
+            for (let line of lines) {
+                if (!line.trim()) continue;
+                
+                const indent = line.length - line.trimLeft().length;
+                const trimmed = line.trim();
+                
+                // Handle array items
+                if (trimmed.startsWith('- ')) {
+                    const value = trimmed.substring(2);
+                    const currentLevel = stack[stack.length - 1];
+                    
+                    if (!Array.isArray(currentLevel)) {
+                        throw new Error('Array item fora de contexto');
+                    }
+                    
+                    currentLevel.push(parseValue(value));
+                    continue;
+                }
+                
+                // Handle key-value pairs
+                if (trimmed.includes(':')) {
+                    const [key, ...valueParts] = trimmed.split(':');
+                    const value = valueParts.join(':').trim();
+                    
+                    // Adjust stack based on indentation
+                    while (indentStack.length > 1 && indent <= indentStack[indentStack.length - 1]) {
+                        stack.pop();
+                        indentStack.pop();
+                    }
+                    
+                    const currentLevel = stack[stack.length - 1];
+                    
+                    if (value === '') {
+                        // Empty value indicates nested object or array
+                        const newObj = {};
+                        currentLevel[key.trim()] = newObj;
+                        stack.push(newObj);
+                        indentStack.push(indent);
+                    } else {
+                        currentLevel[key.trim()] = parseValue(value);
+                    }
+                } else if (trimmed === '-') {
+                    // Start of array
+                    const currentLevel = stack[stack.length - 1];
+                    const lastKey = Object.keys(currentLevel).pop();
+                    const arr = [];
+                    currentLevel[lastKey] = arr;
+                    stack.push(arr);
+                    indentStack.push(indent);
+                }
+            }
+            
+            return stack[0];
+        }
+
+        // Parse value with type inference
+        function parseValue(value) {
+            if (value === 'true') return true;
+            if (value === 'false') return false;
+            if (value === 'null') return null;
+            if (/^\d+$/.test(value)) return parseInt(value);
+            if (/^\d*\.?\d+$/.test(value)) return parseFloat(value);
+            return value;
+        }
+
+        // Format to XML
+        function formatXML(obj, rootName = 'root') {
+            let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+            xml += objectToXML(obj, rootName);
+            return xml;
+        }
+
+        // Convert object to XML
+        function objectToXML(obj, nodeName, indent = '') {
+            if (Array.isArray(obj)) {
+                let xml = '';
+                obj.forEach(item => {
+                    xml += objectToXML(item, nodeName, indent);
+                });
+                return xml;
+            }
+            
+            if (typeof obj === 'object' && obj !== null) {
+                let xml = `${indent}<${nodeName}>\n`;
+                
+                Object.keys(obj).forEach(key => {
+                    if (key.startsWith('@')) {
+                        // Handle attributes (simplified)
+                        return;
+                    }
+                    xml += objectToXML(obj[key], key, indent + '  ');
+                });
+                
+                xml += `${indent}</${nodeName}>\n`;
+                return xml;
+            }
+            
+            return `${indent}<${nodeName}>${obj}</${nodeName}>\n`;
+        }
+
+        // Format to CSV
+        function formatCSV(data) {
+            if (!Array.isArray(data)) {
+                data = [data];
+            }
+            
+            if (data.length === 0) {
+                return '';
+            }
+            
+            // Get all unique keys
+            const allKeys = new Set();
+            data.forEach(item => {
+                if (typeof item === 'object' && item !== null) {
+                    Object.keys(item).forEach(key => allKeys.add(key));
+                }
+            });
+            
+            const headers = Array.from(allKeys);
+            let csv = headers.join(',') + '\n';
+            
+            data.forEach(item => {
+                const row = headers.map(header => {
+                    let value = item[header] || '';
+                    if (typeof value === 'object') {
+                        value = JSON.stringify(value);
+                    }
+                    // Escape quotes and wrap in quotes if necessary
+                    if (value.toString().includes(',') || value.toString().includes('"')) {
+                        value = '"' + value.toString().replace(/"/g, '""') + '"';
+                    }
+                    return value;
+                });
+                csv += row.join(',') + '\n';
+            });
+            
+            return csv;
+        }
+
+        // Format to TOON
+        function formatTOON(obj, indent = '') {
+            if (Array.isArray(obj)) {
+                return obj.map(item => {
+                    if (typeof item === 'object' && item !== null) {
+                        return indent + '-\n' + formatTOON(item, indent + '  ');
+                    } else {
+                        return indent + '- ' + item;
+                    }
+                }).join('\n');
+            }
+            
+            if (typeof obj === 'object' && obj !== null) {
+                return Object.keys(obj).map(key => {
+                    const value = obj[key];
+                    
+                    if (Array.isArray(value)) {
+                        return indent + key + ':\n' + value.map(item => {
+                            if (typeof item === 'object' && item !== null) {
+                                return formatTOON(item, indent + '  - ');
+                            } else {
+                                return indent + '  - ' + item;
+                            }
+                        }).join('\n');
+                    } else if (typeof value === 'object' && value !== null) {
+                        return indent + key + ':\n' + formatTOON(value, indent + '  ');
+                    } else {
+                        return indent + key + ': ' + value;
+                    }
+                }).join('\n');
+            }
+            
+            return obj.toString();
+        }
+
+        // Clear input
+        function clearInput() {
+            document.getElementById('inputText').value = '';
+            hideStatus();
+        }
+
+        // Clear all
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            hideStatus();
+        }
+
+        // Copy output
+        function copyOutput() {
+            const outputText = document.getElementById('outputText').value;
+            const button = document.getElementById('copyBtn');
+            
+            if (!outputText.trim()) {
+                showStatus('error', 'Nada para copiar', 'O campo de resultado está vazio.');
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(outputText).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    fallbackCopyToClipboard(outputText, button);
+                });
+            } else {
+                fallbackCopyToClipboard(outputText, button);
+            }
+        }
+
+        // Show status function
+        function showStatus(type, message, details) {
+            const display = document.getElementById('statusDisplay');
+            const icon = document.getElementById('statusIcon');
+            const messageEl = document.getElementById('statusMessage');
+            
+            display.className = `status-display ${type}`;
+            
+            if (type === 'success') {
+                icon.textContent = '✅';
+            } else {
+                icon.textContent = '❌';
+            }
+            
+            messageEl.textContent = message + (details ? ' - ' + details : '');
+            display.style.display = 'block';
+        }
+
+        // Hide status function
+        function hideStatus() {
+            document.getElementById('statusDisplay').style.display = 'none';
+        }
+
+        // Copy functionality
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+                showCopyError(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✅ Copiado!';
+            buttonElement.classList.add('success');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('success');
+            }, 2000);
+        }
+
+        function showCopyError(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '❌ Erro';
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+            }, 2000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTitles();
+            loadSample();
+        });
+    </script>
+</body>
+</html>

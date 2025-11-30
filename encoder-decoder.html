@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encoder e Decoder online - Codifique e decodifique texto em Base64, URL Encoding, HTML Entities e outros formatos. Ferramenta gratuita para desenvolvedores.">
+    <meta name="keywords" content="encoder decoder, base64, url encoding, html entities, encode decode, text encoder, text decoder, base64 encoder">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/encoder-decoder.html">
+    <meta property="og:title" content="Encoder/Decoder Online - TestCodePro">
+    <meta property="og:description" content="Codifique e decodifique texto em Base64, URL Encoding, HTML Entities e outros formatos online.">
+    <meta property="og:image" content="https://testcodepro.com/assets/encoder-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/encoder-decoder.html">
+    <meta property="twitter:title" content="Encoder/Decoder Online - TestCodePro">
+    <meta property="twitter:description" content="Codifique e decodifique texto em diversos formatos online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/encoder-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/encoder-decoder.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Encoder/Decoder",
+        "url": "https://testcodepro.com/encoder-decoder.html",
+        "description": "Ferramenta online para codificar e decodificar texto em diversos formatos",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Encoder/Decoder Online - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .encoding-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .encoding-tab {
+            background: var(--background);
+            color: var(--text-secondary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .encoding-tab.active {
+            background: var(--primary);
+            color: var(--background);
+            border-color: var(--primary);
+        }
+
+        .encoding-tab:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .encoder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .encoder-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .panel-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+        }
+
+        .btn-small.success {
+            background: var(--success);
+        }
+
+        .text-area {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .text-area:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .text-area.readonly {
+            background: var(--surface-light);
+            cursor: default;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Status Display */
+        .status-display {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .status-display.success {
+            border: 2px solid var(--success);
+        }
+
+        .status-display.error {
+            border: 2px solid var(--error);
+        }
+
+        .status-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .status-message {
+            font-weight: 600;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .encodings-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .encoding-info-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .encoding-info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .encoding-info-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .encoder-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .encoding-selector {
+                justify-content: stretch;
+            }
+
+            .encoding-tab {
+                flex: 1;
+                text-align: center;
+                font-size: 0.8rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls .btn-primary,
+            .controls .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .text-area {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html">Ferramentas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🔄 Encoder/Decoder</h1>
+                <p class="tool-description">
+                    Codifique e decodifique texto em Base64, URL Encoding, HTML Entities e outros formatos. 
+                    Ferramenta essencial para desenvolvedores web.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Encoding Type Selection -->
+                <div class="encoding-selector">
+                    <div class="encoding-tab active" data-type="base64">Base64</div>
+                    <div class="encoding-tab" data-type="url">URL Encoding</div>
+                    <div class="encoding-tab" data-type="html">HTML Entities</div>
+                    <div class="encoding-tab" data-type="unicode">Unicode</div>
+                    <div class="encoding-tab" data-type="jwt">JWT Decoder</div>
+                </div>
+
+                <!-- Encoder Container -->
+                <div class="encoder-container">
+                    <div class="encoder-panel">
+                        <div class="panel-header">
+                            <div>
+                                <span class="panel-title">Texto Original</span>
+                                <span class="panel-info" id="inputInfo">(Digite o texto para codificar)</span>
+                            </div>
+                            <div class="panel-actions">
+                                <button class="btn-small" onclick="clearInput()">Limpar</button>
+                            </div>
+                        </div>
+                        <textarea id="inputText" class="text-area" placeholder="Digite ou cole seu texto aqui..."></textarea>
+                    </div>
+
+                    <div class="encoder-panel">
+                        <div class="panel-header">
+                            <div>
+                                <span class="panel-title">Texto Processado</span>
+                                <span class="panel-info" id="outputInfo">(Resultado aparecerá aqui)</span>
+                            </div>
+                            <div class="panel-actions">
+                                <button class="btn-small" onclick="copyOutput()" id="copyBtn">Copiar</button>
+                            </div>
+                        </div>
+                        <textarea id="outputText" class="text-area readonly" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button onclick="encodeText()" class="btn-primary" id="encodeBtn">Codificar</button>
+                    <button onclick="decodeText()" class="btn-secondary" id="decodeBtn">Decodificar</button>
+                </div>
+
+                <!-- Status Display -->
+                <div id="statusDisplay" class="status-display">
+                    <div style="display: flex; align-items: center;">
+                        <span id="statusIcon" class="status-icon"></span>
+                        <span id="statusMessage" class="status-message"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Tipos de Codificação</h2>
+                <p class="info-text">
+                    Diferentes tipos de codificação são usados para diferentes propósitos na programação e web:
+                </p>
+                
+                <div class="encodings-info">
+                    <div class="encoding-info-card">
+                        <div class="encoding-info-title">Base64</div>
+                        <div class="encoding-info-desc">
+                            Codificação binária para texto. Usado para transmitir dados binários em protocolos de texto como email e HTTP.
+                        </div>
+                    </div>
+                    
+                    <div class="encoding-info-card">
+                        <div class="encoding-info-title">URL Encoding</div>
+                        <div class="encoding-info-desc">
+                            Codifica caracteres especiais para URLs. Essencial para passar parâmetros com espaços e caracteres especiais.
+                        </div>
+                    </div>
+                    
+                    <div class="encoding-info-card">
+                        <div class="encoding-info-title">HTML Entities</div>
+                        <div class="encoding-info-desc">
+                            Converte caracteres especiais para entidades HTML. Previne problemas de renderização e ataques XSS.
+                        </div>
+                    </div>
+                    
+                    <div class="encoding-info-card">
+                        <div class="encoding-info-title">Unicode</div>
+                        <div class="encoding-info-desc">
+                            Converte caracteres para códigos Unicode. Útil para trabalhar com caracteres especiais e emojis.
+                        </div>
+                    </div>
+                    
+                    <div class="encoding-info-card">
+                        <div class="encoding-info-title">JWT Decoder</div>
+                        <div class="encoding-info-desc">
+                            Decodifica tokens JWT para visualizar header e payload. Ferramenta essencial para debugging de autenticação.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentType = 'base64';
+
+        // Tab switching functionality
+        document.querySelectorAll('.encoding-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.encoding-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentType = this.getAttribute('data-type');
+                
+                // Update UI based on selected type
+                updateUI();
+                
+                // Clear previous content
+                document.getElementById('inputText').value = '';
+                document.getElementById('outputText').value = '';
+                hideStatus();
+            });
+        });
+
+        // Update UI based on encoding type
+        function updateUI() {
+            const inputInfo = document.getElementById('inputInfo');
+            const outputInfo = document.getElementById('outputInfo');
+            const encodeBtn = document.getElementById('encodeBtn');
+            const decodeBtn = document.getElementById('decodeBtn');
+            
+            switch (currentType) {
+                case 'base64':
+                    inputInfo.textContent = '(Digite o texto para codificar)';
+                    outputInfo.textContent = '(Texto codificado em Base64)';
+                    encodeBtn.textContent = 'Codificar';
+                    decodeBtn.textContent = 'Decodificar';
+                    decodeBtn.style.display = 'block';
+                    break;
+                case 'url':
+                    inputInfo.textContent = '(Digite a URL ou texto)';
+                    outputInfo.textContent = '(Texto com URL encoding)';
+                    encodeBtn.textContent = 'Codificar URL';
+                    decodeBtn.textContent = 'Decodificar URL';
+                    decodeBtn.style.display = 'block';
+                    break;
+                case 'html':
+                    inputInfo.textContent = '(Digite o texto com caracteres especiais)';
+                    outputInfo.textContent = '(Texto com HTML entities)';
+                    encodeBtn.textContent = 'Codificar HTML';
+                    decodeBtn.textContent = 'Decodificar HTML';
+                    decodeBtn.style.display = 'block';
+                    break;
+                case 'unicode':
+                    inputInfo.textContent = '(Digite o texto)';
+                    outputInfo.textContent = '(Códigos Unicode)';
+                    encodeBtn.textContent = 'Para Unicode';
+                    decodeBtn.textContent = 'De Unicode';
+                    decodeBtn.style.display = 'block';
+                    break;
+                case 'jwt':
+                    inputInfo.textContent = '(Cole o token JWT)';
+                    outputInfo.textContent = '(Header e Payload decodificados)';
+                    encodeBtn.textContent = 'Decodificar JWT';
+                    decodeBtn.style.display = 'none';
+                    break;
+            }
+        }
+
+        // Encoding functions
+        function encodeText() {
+            const inputText = document.getElementById('inputText').value;
+            
+            if (!inputText.trim()) {
+                showStatus('error', 'Texto vazio', 'Digite algum texto para processar.');
+                return;
+            }
+
+            try {
+                let result = '';
+                
+                switch (currentType) {
+                    case 'base64':
+                        result = btoa(unescape(encodeURIComponent(inputText)));
+                        break;
+                    case 'url':
+                        result = encodeURIComponent(inputText);
+                        break;
+                    case 'html':
+                        result = encodeHTML(inputText);
+                        break;
+                    case 'unicode':
+                        result = toUnicode(inputText);
+                        break;
+                    case 'jwt':
+                        result = decodeJWT(inputText);
+                        break;
+                }
+
+                document.getElementById('outputText').value = result;
+                showStatus('success', 'Processamento concluído!', 
+                          `Texto processado com ${currentType.toUpperCase()}.`);
+                
+            } catch (error) {
+                showStatus('error', 'Erro no processamento', error.message);
+                document.getElementById('outputText').value = '';
+            }
+        }
+
+        // Decoding functions
+        function decodeText() {
+            const inputText = document.getElementById('inputText').value;
+            
+            if (!inputText.trim()) {
+                showStatus('error', 'Texto vazio', 'Digite algum texto para decodificar.');
+                return;
+            }
+
+            try {
+                let result = '';
+                
+                switch (currentType) {
+                    case 'base64':
+                        result = decodeURIComponent(escape(atob(inputText)));
+                        break;
+                    case 'url':
+                        result = decodeURIComponent(inputText);
+                        break;
+                    case 'html':
+                        result = decodeHTML(inputText);
+                        break;
+                    case 'unicode':
+                        result = fromUnicode(inputText);
+                        break;
+                }
+
+                document.getElementById('outputText').value = result;
+                showStatus('success', 'Decodificação concluída!', 
+                          `Texto decodificado de ${currentType.toUpperCase()}.`);
+                
+            } catch (error) {
+                showStatus('error', 'Erro na decodificação', error.message);
+                document.getElementById('outputText').value = '';
+            }
+        }
+
+        // HTML encoding/decoding
+        function encodeHTML(text) {
+            const htmlEntities = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;',
+                '/': '&#x2F;',
+                '`': '&#x60;',
+                '=': '&#x3D;'
+            };
+            
+            return text.replace(/[&<>"'`=\/]/g, function(s) {
+                return htmlEntities[s];
+            });
+        }
+
+        function decodeHTML(text) {
+            const htmlEntities = {
+                '&amp;': '&',
+                '&lt;': '<',
+                '&gt;': '>',
+                '&quot;': '"',
+                '&#39;': "'",
+                '&#x2F;': '/',
+                '&#x60;': '`',
+                '&#x3D;': '='
+            };
+            
+            return text.replace(/&[a-zA-Z0-9#x]+;/g, function(entity) {
+                return htmlEntities[entity] || entity;
+            });
+        }
+
+        // Unicode encoding/decoding
+        function toUnicode(text) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                const code = text.charCodeAt(i);
+                result += '\\u' + ('0000' + code.toString(16)).slice(-4) + ' ';
+            }
+            return result.trim();
+        }
+
+        function fromUnicode(text) {
+            return text.replace(/\\u([0-9a-fA-F]{4})/g, function(match, hex) {
+                return String.fromCharCode(parseInt(hex, 16));
+            });
+        }
+
+        // JWT decoding
+        function decodeJWT(token) {
+            try {
+                const parts = token.split('.');
+                if (parts.length !== 3) {
+                    throw new Error('Token JWT inválido - deve ter 3 partes separadas por pontos');
+                }
+
+                const header = JSON.parse(atob(parts[0].replace(/-/g, '+').replace(/_/g, '/')));
+                const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+
+                return JSON.stringify({
+                    header: header,
+                    payload: payload,
+                    signature: parts[2]
+                }, null, 2);
+                
+            } catch (error) {
+                throw new Error('Token JWT inválido ou mal formado');
+            }
+        }
+
+        // Clear input function
+        function clearInput() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            hideStatus();
+        }
+
+        // Copy output function
+        function copyOutput() {
+            const outputText = document.getElementById('outputText').value;
+            const button = document.getElementById('copyBtn');
+            
+            if (!outputText.trim()) {
+                showStatus('error', 'Nada para copiar', 'O campo de resultado está vazio.');
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(outputText).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    fallbackCopyToClipboard(outputText, button);
+                });
+            } else {
+                fallbackCopyToClipboard(outputText, button);
+            }
+        }
+
+        // Show status function
+        function showStatus(type, message, details) {
+            const display = document.getElementById('statusDisplay');
+            const icon = document.getElementById('statusIcon');
+            const messageEl = document.getElementById('statusMessage');
+            
+            display.className = `status-display ${type}`;
+            
+            if (type === 'success') {
+                icon.textContent = '✅';
+            } else {
+                icon.textContent = '❌';
+            }
+            
+            messageEl.textContent = message + (details ? ' - ' + details : '');
+            display.style.display = 'block';
+        }
+
+        // Hide status function
+        function hideStatus() {
+            document.getElementById('statusDisplay').style.display = 'none';
+        }
+
+        // Copy functionality
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+                showCopyError(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✅ Copiado!';
+            buttonElement.classList.add('success');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('success');
+            }, 2000);
+        }
+
+        function showCopyError(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '❌ Erro';
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+            }, 2000);
+        }
+
+        // Initialize UI
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUI();
+        });
+    </script>
+</body>
+</html>
