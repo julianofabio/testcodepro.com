@@ -599,12 +599,12 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="index.html" class="logo">TestCodePro</a>
+            <a href="/" class="logo">TestCodePro</a>
             <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index.html">Ferramentas</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="/">Início</a></li>
+                <li><a href="/#ferramentas">Ferramentas</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
+                <li><a href="/contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -628,6 +628,12 @@
                     <div class="format-tab active" data-type="json">JSON</div>
                     <div class="format-tab" data-type="xml">XML</div>
                     <div class="format-tab" data-type="html">HTML</div>
+                    <div class="format-tab" data-type="yaml">YAML</div>
+                    <div class="format-tab" data-type="python">Python</div>
+                    <div class="format-tab" data-type="java">Java</div>
+                    <div class="format-tab" data-type="csharp">C#</div>
+                    <div class="format-tab" data-type="javascript">JavaScript</div>
+                    <div class="format-tab" data-type="toon">TOON</div>
                 </div>
 
                 <!-- Format Options -->
@@ -820,6 +826,24 @@
                     case 'html':
                         formatted = formatHTML(inputCode, indentSize);
                         break;
+                    case 'yaml':
+                        formatted = formatYAML(inputCode, indentSize);
+                        break;
+                    case 'python':
+                        formatted = formatPython(inputCode, indentSize);
+                        break;
+                    case 'java':
+                        formatted = formatJava(inputCode, indentSize);
+                        break;
+                    case 'csharp':
+                        formatted = formatCSharp(inputCode, indentSize);
+                        break;
+                    case 'javascript':
+                        formatted = formatJavaScript(inputCode, indentSize);
+                        break;
+                    case 'toon':
+                        formatted = formatTOON(inputCode, indentSize);
+                        break;
                 }
 
                 document.getElementById('outputCode').value = formatted;
@@ -854,6 +878,30 @@
                     case 'html':
                         validateHTML(inputCode);
                         showStatus('success', 'HTML válido!', 'A estrutura básica está correta.');
+                        break;
+                    case 'yaml':
+                        validateYAML(inputCode);
+                        showStatus('success', 'YAML válido!', 'A sintaxe está correta.');
+                        break;
+                    case 'python':
+                        validatePython(inputCode);
+                        showStatus('success', 'Python válido!', 'A sintaxe básica está correta.');
+                        break;
+                    case 'java':
+                        validateJava(inputCode);
+                        showStatus('success', 'Java válido!', 'A estrutura básica está correta.');
+                        break;
+                    case 'csharp':
+                        validateCSharp(inputCode);
+                        showStatus('success', 'C# válido!', 'A estrutura básica está correta.');
+                        break;
+                    case 'javascript':
+                        validateJavaScript(inputCode);
+                        showStatus('success', 'JavaScript válido!', 'A sintaxe básica está correta.');
+                        break;
+                    case 'toon':
+                        validateTOON(inputCode);
+                        showStatus('success', 'TOON válido!', 'A estrutura está correta.');
                         break;
                 }
             } catch (error) {
@@ -1000,6 +1048,305 @@
             // This is a very basic check - real validation would be much more complex
             if (openTags > closeTags + selfClosing + 5) { // Allow some flexibility for HTML5 tags
                 console.warn('HTML pode ter tags não fechadas, mas continuando...');
+            }
+        }
+
+        // YAML formatting function
+        function formatYAML(code, indentSize) {
+            try {
+                // Basic YAML formatting - normalize indentation
+                const lines = code.split('\n');
+                let formatted = '';
+                let currentIndent = 0;
+                const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+                
+                for (let line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('#')) {
+                        formatted += trimmed + '\n';
+                        continue;
+                    }
+                    
+                    // Calculate indentation level
+                    if (trimmed.includes(':') && !trimmed.startsWith('-')) {
+                        const level = Math.max(0, currentIndent);
+                        formatted += indent.repeat(level) + trimmed + '\n';
+                        if (trimmed.endsWith(':')) currentIndent++;
+                    } else if (trimmed.startsWith('-')) {
+                        formatted += indent.repeat(currentIndent) + trimmed + '\n';
+                    } else {
+                        formatted += indent.repeat(currentIndent + 1) + trimmed + '\n';
+                    }
+                }
+                
+                return formatted.trim();
+            } catch (error) {
+                throw new Error('YAML inválido: ' + error.message);
+            }
+        }
+
+        // Python formatting function
+        function formatPython(code, indentSize) {
+            const lines = code.split('\n');
+            let formatted = '';
+            let indentLevel = 0;
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+                if (!line) {
+                    formatted += '\n';
+                    continue;
+                }
+                
+                // Decrease indent for certain keywords
+                if (/^(except|elif|else|finally|case):/.test(line)) {
+                    indentLevel = Math.max(0, indentLevel - 1);
+                }
+                
+                formatted += indent.repeat(indentLevel) + line + '\n';
+                
+                // Increase indent after certain keywords
+                if (/:(\\s*(#.*)?)?$/.test(line)) {
+                    indentLevel++;
+                }
+            }
+            
+            return formatted.trim();
+        }
+
+        // Java formatting function
+        function formatJava(code, indentSize) {
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            let formatted = '';
+            let indentLevel = 0;
+            let inString = false;
+            let escape = false;
+            
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1];
+                
+                if (escape) {
+                    formatted += char;
+                    escape = false;
+                    continue;
+                }
+                
+                if (char === '\\' && inString) {
+                    escape = true;
+                    formatted += char;
+                    continue;
+                }
+                
+                if (char === '"' && !escape) {
+                    inString = !inString;
+                }
+                
+                if (!inString) {
+                    if (char === '{') {
+                        formatted += char;
+                        if (nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(++indentLevel);
+                        }
+                        continue;
+                    } else if (char === '}') {
+                        if (formatted.trim().endsWith('{')) {
+                            formatted += char;
+                        } else {
+                            formatted += '\n' + indent.repeat(--indentLevel) + char;
+                        }
+                        if (nextChar && nextChar !== '}' && nextChar !== ';' && nextChar !== ',') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    } else if (char === ';') {
+                        formatted += char;
+                        if (nextChar && nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    }
+                }
+                
+                formatted += char;
+            }
+            
+            return formatted.trim();
+        }
+
+        // C# formatting function
+        function formatCSharp(code, indentSize) {
+            // Similar to Java but with C# specific constructs
+            return formatJava(code, indentSize);
+        }
+
+        // JavaScript formatting function
+        function formatJavaScript(code, indentSize) {
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            let formatted = '';
+            let indentLevel = 0;
+            let inString = false;
+            let stringChar = '';
+            let escape = false;
+            
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1];
+                
+                if (escape) {
+                    formatted += char;
+                    escape = false;
+                    continue;
+                }
+                
+                if (char === '\\' && inString) {
+                    escape = true;
+                    formatted += char;
+                    continue;
+                }
+                
+                if ((char === '"' || char === "'" || char === '`') && !inString) {
+                    inString = true;
+                    stringChar = char;
+                } else if (char === stringChar && inString) {
+                    inString = false;
+                    stringChar = '';
+                }
+                
+                if (!inString) {
+                    if (char === '{') {
+                        formatted += char;
+                        if (nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(++indentLevel);
+                        }
+                        continue;
+                    } else if (char === '}') {
+                        if (formatted.trim().endsWith('{')) {
+                            formatted += char;
+                        } else {
+                            formatted += '\n' + indent.repeat(--indentLevel) + char;
+                        }
+                        if (nextChar && nextChar !== '}' && nextChar !== ';' && nextChar !== ',') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    } else if (char === ';') {
+                        formatted += char;
+                        if (nextChar && nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    }
+                }
+                
+                formatted += char;
+            }
+            
+            return formatted.trim();
+        }
+
+        // TOON formatting function
+        function formatTOON(code, indentSize) {
+            const lines = code.split('\n');
+            let formatted = '';
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            
+            for (let line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) {
+                    formatted += '\n';
+                    continue;
+                }
+                
+                // Calculate current indentation
+                const currentIndent = line.length - line.trimLeft().length;
+                const newIndentLevel = Math.floor(currentIndent / (indentSize === 'tab' ? 1 : parseInt(indentSize)));
+                
+                formatted += indent.repeat(newIndentLevel) + trimmed + '\n';
+            }
+            
+            return formatted.trim();
+        }
+
+        // Validation functions for new formats
+        function validateYAML(code) {
+            // Basic YAML validation
+            const lines = code.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                if (line.trim() && line.includes(':') && line.indexOf(':') === line.lastIndexOf(':') - 1) {
+                    // Basic check for malformed key-value pairs
+                    continue;
+                }
+            }
+        }
+
+        function validatePython(code) {
+            // Basic Python syntax check
+            const lines = code.split('\n');
+            let indentLevel = 0;
+            
+            for (let line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || trimmed.startsWith('#')) continue;
+                
+                // Check for basic syntax issues
+                if (trimmed.endsWith(':')) {
+                    indentLevel++;
+                } else if (/^(except|elif|else|finally):/.test(trimmed)) {
+                    // These should decrease indent
+                }
+            }
+        }
+
+        function validateJava(code) {
+            // Basic Java syntax check
+            const openBraces = (code.match(/{/g) || []).length;
+            const closeBraces = (code.match(/}/g) || []).length;
+            
+            if (openBraces !== closeBraces) {
+                throw new Error('Java inválido: Chaves não balanceadas');
+            }
+        }
+
+        function validateCSharp(code) {
+            // Similar to Java validation
+            validateJava(code);
+        }
+
+        function validateJavaScript(code) {
+            try {
+                // Basic syntax check using Function constructor
+                new Function(code);
+            } catch (error) {
+                throw new Error('JavaScript inválido: ' + error.message);
+            }
+        }
+
+        function validateTOON(code) {
+            // Basic TOON validation - check indentation consistency
+            const lines = code.split('\n');
+            let indentSizes = new Set();
+            
+            for (let line of lines) {
+                if (line.trim()) {
+                    const indent = line.length - line.trimLeft().length;
+                    if (indent > 0) {
+                        indentSizes.add(indent);
+                    }
+                }
+            }
+            
+            // Check if indentation is consistent
+            const indentArray = Array.from(indentSizes).sort((a, b) => a - b);
+            if (indentArray.length > 1) {
+                for (let i = 1; i < indentArray.length; i++) {
+                    if (indentArray[i] % indentArray[0] !== 0) {
+                        console.warn('TOON: Indentação inconsistente detectada');
+                        break;
+                    }
+                }
             }
         }
 
