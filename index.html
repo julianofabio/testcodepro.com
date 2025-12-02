@@ -288,6 +288,265 @@
             margin-right: auto;
         }
 
+        /* Search Section */
+        .search-section {
+            background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(255,107,0,0.05) 100%);
+            padding: 3rem 0;
+            margin-top: -1px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-wrapper {
+            position: relative;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-wrapper:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 40px rgba(0,255,136,0.15);
+        }
+
+        .search-wrapper.focused {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,255,136,0.1), 0 8px 40px rgba(0,255,136,0.15);
+        }
+
+        .search-icon {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-left: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .search-wrapper.focused .search-icon {
+            color: var(--primary);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem 0.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .search-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,255,136,0.3);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-top: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+        }
+
+        .search-result-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(0,255,136,0.1);
+        }
+
+        .search-result-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .search-result-content {
+            flex: 1;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .search-no-results {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Popular Section */
+        .popular-section {
+            padding: 80px 0;
+            background: var(--background);
+        }
+
+        .popular-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .popular-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .popular-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .popular-card {
+            background: var(--surface);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popular-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(255,107,0,0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .popular-card:hover::before {
+            opacity: 1;
+        }
+
+        .popular-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,255,136,0.2);
+        }
+
+        .popular-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .popular-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .popular-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .popular-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .popular-card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .popular-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .popular-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
         /* Tools Grid */
         .tools-section {
             padding: 4rem 0;
@@ -424,6 +683,25 @@
                 font-size: 1.1rem;
             }
 
+            .search-wrapper {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-button {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .popular-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .popular-card {
+                padding: 1.5rem;
+            }
+
             .tools-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -471,7 +749,7 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="/#ferramentas">Ferramentas</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="/">Contato</a></li>
+                <li><a href="/#ferramentas">Contato</a></li>
             </ul>
             <div class="mobile-menu-toggle">
                 <span></span>
@@ -488,6 +766,79 @@
             <div class="container">
                 <h1>Ferramentas para Desenvolvedores</h1>
                 <p>Conjunto completo de ferramentas gratuitas e essenciais para desenvolvimento web. Validadores, geradores, formatadores e muito mais.</p>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <div class="search-wrapper" id="searchWrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Digite o nome da ferramenta que você procura...">
+                        <button class="search-button" onclick="performSearch()">
+                            Buscar
+                        </button>
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Tools Section -->
+        <section class="popular-section">
+            <div class="container">
+                <div class="popular-header">
+                    <h2 class="popular-title">🔥 Mais Populares</h2>
+                    <p class="popular-subtitle">As ferramentas mais utilizadas pelos nossos usuários</p>
+                </div>
+                
+                <div class="popular-grid">
+                    <!-- Gerador de Senhas -->
+                    <a href="gerador-senhas.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-badge">#1 Mais Usado</span>
+                            <span class="popular-icon">🔐</span>
+                            <h3 class="popular-card-title">Gerador de Senhas</h3>
+                            <p class="popular-card-description">Crie senhas seguras e personalizáveis com diferentes níveis de complexidade. Essencial para segurança online.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">⚡ Instantâneo</span>
+                                <span class="popular-stat">🛡️ Seguro</span>
+                                <span class="popular-stat">⭐ 4.9/5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Gerador de QR Code -->
+                    <a href="gerador-qrcode.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-badge">#2 Trending</span>
+                            <span class="popular-icon">📱</span>
+                            <h3 class="popular-card-title">Gerador de QR Code</h3>
+                            <p class="popular-card-description">Crie códigos QR para URLs, texto, email, telefone, WiFi e muito mais. Download em alta qualidade.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">📸 HD Quality</span>
+                                <span class="popular-stat">💾 Download</span>
+                                <span class="popular-stat">⭐ 4.8/5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Formatador de Código -->
+                    <a href="formatador.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-badge">#3 Dev Favorite</span>
+                            <span class="popular-icon">🎨</span>
+                            <h3 class="popular-card-title">Formatador de Código</h3>
+                            <p class="popular-card-description">Formate JSON, XML, HTML, YAML, Python, JavaScript e outros. Indentação automática e validação.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">🔧 9 Formatos</span>
+                                <span class="popular-stat">✅ Validação</span>
+                                <span class="popular-stat">⭐ 4.9/5</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -779,8 +1130,121 @@
                     .catch(registrationError => console.log('SW registration failed'));
             });
         }
+
+        // Search functionality
+        const tools = [
+            { name: 'Validador de Senha', icon: '🔐', url: 'validador-senha.html', description: 'Teste se sua senha é forte ou fraca', keywords: 'senha password validar teste segurança forte fraca' },
+            { name: 'Validador de Formatos', icon: '✅', url: 'validador-formatos.html', description: 'Valide JSON, YAML, XML e TOON', keywords: 'json yaml xml toon validador formato syntax' },
+            { name: 'Regex Tester', icon: '🔍', url: 'regex-tester.html', description: 'Teste expressões regulares online', keywords: 'regex expressão regular teste pattern match' },
+            { name: 'Beautifier/Minifier', icon: '🎨', url: 'beautifier-minifier.html', description: 'Formate ou comprima HTML, CSS e JS', keywords: 'beautify minify html css javascript formatar comprimir' },
+            { name: 'API Client', icon: '🌐', url: 'api-client.html', description: 'Testador de requisições HTTP/REST', keywords: 'api http rest client postman requisição test' },
+            { name: 'Gerador de Lorem Ipsum', icon: '📝', url: 'gerador-lorem-ipsum.html', description: 'Gere texto placeholder para design', keywords: 'lorem ipsum placeholder texto dummy design' },
+            { name: 'Conversor de Timestamp', icon: '🕐', url: 'conversor-timestamp.html', description: 'Converte timestamp UNIX para data', keywords: 'timestamp unix epoch data hora converter' },
+            { name: 'Gerador de Senhas', icon: '🔐', url: 'gerador-senhas.html', description: 'Crie senhas seguras e personalizáveis', keywords: 'senha password gerar criar segura forte' },
+            { name: 'Gerador de Documentos', icon: '🎲', url: 'gerador-documentos.html', description: 'Gere CPF, CNPJ, RG e outros documentos', keywords: 'cpf cnpj rg documento brasileiro gerar' },
+            { name: 'Gerador de QR Code', icon: '📱', url: 'gerador-qrcode.html', description: 'Crie códigos QR personalizados', keywords: 'qr code gerar qrcode barcode url texto' },
+            { name: 'Formatador de Código', icon: '🎨', url: 'formatador.html', description: 'Formate JSON, XML, HTML e outros', keywords: 'json xml html yaml python javascript formatar' },
+            { name: 'Gerador UUID', icon: '🔑', url: 'gerador-uuid.html', description: 'Gere identificadores únicos universais', keywords: 'uuid guid identificador único universal' },
+            { name: 'Conversor de Bases', icon: '🔢', url: 'conversor-bases.html', description: 'Converta entre bases numéricas', keywords: 'binário octal decimal hexadecimal base converter' },
+            { name: 'Encoder/Decoder', icon: '🔄', url: 'encoder-decoder.html', description: 'Codifique e decodifique texto', keywords: 'base64 url encode decode codificar decodificar' },
+            { name: 'Gerador de Hash', icon: '🛡️', url: 'gerador-hash.html', description: 'Gere hashes MD5, SHA-256 e outros', keywords: 'hash md5 sha256 sha512 criptografia' },
+            { name: 'Comparador de Textos', icon: '📊', url: 'comparador-textos.html', description: 'Compare textos lado a lado', keywords: 'comparar texto diferença diff compare' },
+            { name: 'Gerador de API Keys', icon: '🔐', url: 'gerador-apikeys.html', description: 'Gere chaves de API seguras', keywords: 'api key chave token gerar seguro' },
+            { name: 'Conversor TOON', icon: '🔄', url: 'conversor-toon.html', description: 'Converta entre TOON, JSON e XML', keywords: 'toon json xml converter formato' },
+            { name: 'Conversor para PDF', icon: '📄', url: 'conversor-pdf.html', description: 'Converta documentos para PDF', keywords: 'pdf converter docx xlsx txt html' },
+            { name: 'Ferramentas de Texto', icon: '📝', url: 'ferramentas-texto.html', description: 'Conte caracteres, organize linhas', keywords: 'texto contador caracteres linhas maiúscula minúscula' },
+            { name: 'Gerador de Cartão de Crédito', icon: '💳', url: 'gerador-cartao-credito.html', description: 'Gere números de cartão para testes', keywords: 'cartão crédito visa mastercard teste número' }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchWrapper = document.getElementById('searchWrapper');
+
+        // Search input focus/blur events
+        searchInput.addEventListener('focus', () => {
+            searchWrapper.classList.add('focused');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                searchWrapper.classList.remove('focused');
+                searchResults.style.display = 'none';
+            }, 200);
+        });
+
+        // Search input events
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const filteredTools = tools.filter(tool => 
+                tool.name.toLowerCase().includes(query) ||
+                tool.description.toLowerCase().includes(query) ||
+                tool.keywords.toLowerCase().includes(query)
+            );
+
+            displaySearchResults(filteredTools, query);
+        });
+
+        // Enter key to search
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+
+        function displaySearchResults(results, query) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-no-results">Nenhuma ferramenta encontrada para "' + query + '"</div>';
+            } else {
+                searchResults.innerHTML = results.map(tool => `
+                    <div class="search-result-item" onclick="window.location.href='${tool.url}'">
+                        <span class="search-result-icon">${tool.icon}</span>
+                        <div class="search-result-content">
+                            <div class="search-result-title">${tool.name}</div>
+                            <div class="search-result-description">${tool.description}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            searchResults.style.display = 'block';
+        }
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (!query) {
+                return;
+            }
+
+            const tool = tools.find(tool => 
+                tool.name.toLowerCase().includes(query) ||
+                tool.keywords.toLowerCase().includes(query)
+            );
+
+            if (tool) {
+                window.location.href = tool.url;
+            } else {
+                // Scroll to tools section if no exact match
+                document.getElementById('ferramentas').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchWrapper.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
-            position: fixed;
             
