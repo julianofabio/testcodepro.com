@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="API Client - Testador de requisições HTTP/REST online. Alternativa simples ao Postman para desenvolvedores.">
+    <meta name="keywords" content="api client, rest tester, http client, postman alternative, api testing">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>API Client - Testador HTTP/REST - TestCodePro</title>
+    
+    <!-- Language Selector CSS -->
+    <link rel="stylesheet" href="/css/language-selector.css">
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Request Section */
+        .request-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .request-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .method-selector {
+            position: relative;
+        }
+
+        .method-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--background);
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 100px;
+        }
+
+        .method-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .method-get { color: var(--success); }
+        .method-post { color: var(--primary); }
+        .method-put { color: var(--warning); }
+        .method-delete { color: var(--error); }
+        .method-patch { color: var(--accent); }
+
+        .url-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .send-btn {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        .send-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab:hover {
+            color: var(--primary);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Headers */
+        .headers-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .header-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            align-items: center;
+        }
+
+        .header-input {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .header-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .add-header-btn {
+            background: var(--primary);
+            color: var(--background);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .remove-header-btn {
+            background: var(--error);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        /* Body */
+        .body-section textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+        }
+
+        .body-section textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .body-format-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .format-btn {
+            padding: 0.5rem 1rem;
+            background: var(--surface-light);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .format-btn:hover {
+            border-color: var(--primary);
+        }
+
+        /* Response Section */
+        .response-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .response-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .response-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .response-status {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .status-2xx {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+        }
+
+        .status-4xx, .status-5xx {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+        }
+
+        .status-3xx {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .response-time {
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .response-content {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .response-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 3rem;
+            font-style: italic;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .quick-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--surface-light);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .quick-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .request-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .url-input {
+                order: 2;
+            }
+
+            .send-btn {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .quick-btn {
+                width: 100%;
+            }
+
+            .header-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/" data-i18n="nav.home">Início</a></li>
+                <li><a href="/#ferramentas" data-i18n="nav.tools">Ferramentas</a></li>
+                <li><a href="/sobre.html" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="/contato.html" data-i18n="nav.contact">Contato</a></li>
+                <li><div id="language-selector"></div></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🌐 API Client</h1>
+                <p class="tool-description">
+                    Testador de requisições HTTP/REST online. Alternativa simples ao Postman 
+                    para testar APIs rapidamente no navegador.
+                </p>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="setQuickRequest('jsonplaceholder')">
+                    📝 JSONPlaceholder API
+                </button>
+                <button class="quick-btn" onclick="setQuickRequest('httpbin')">
+                    🔧 HTTPBin Test
+                </button>
+                <button class="quick-btn" onclick="setQuickRequest('github')">
+                    🐙 GitHub API
+                </button>
+                <button class="quick-btn" onclick="setQuickRequest('cep')">
+                    📍 ViaCEP API
+                </button>
+            </div>
+
+            <!-- Request Section -->
+            <div class="request-section">
+                <div class="request-header">
+                    <select class="method-select" id="methodSelect">
+                        <option value="GET" class="method-get">GET</option>
+                        <option value="POST" class="method-post">POST</option>
+                        <option value="PUT" class="method-put">PUT</option>
+                        <option value="DELETE" class="method-delete">DELETE</option>
+                        <option value="PATCH" class="method-patch">PATCH</option>
+                        <option value="HEAD">HEAD</option>
+                        <option value="OPTIONS">OPTIONS</option>
+                    </select>
+                    
+                    <input type="text" 
+                           class="url-input" 
+                           id="urlInput" 
+                           placeholder="https://jsonplaceholder.typicode.com/posts/1"
+                           value="https://jsonplaceholder.typicode.com/posts/1">
+                    
+                    <button class="send-btn" id="sendBtn" onclick="sendRequest()">
+                        <span id="sendBtnText">🚀 Enviar</span>
+                    </button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="headers">📝 Headers</button>
+                    <button class="tab" data-tab="body">📄 Body</button>
+                    <button class="tab" data-tab="auth">🔐 Auth</button>
+                    <button class="tab" data-tab="params">⚙️ Params</button>
+                </div>
+
+                <!-- Headers Tab -->
+                <div class="tab-content active" id="headersTab">
+                    <div class="headers-section" id="headersSection">
+                        <div class="header-item">
+                            <input type="text" class="header-input" placeholder="Header" value="Content-Type">
+                            <input type="text" class="header-input" placeholder="Value" value="application/json">
+                            <button class="remove-header-btn" onclick="removeHeader(this)">🗑️</button>
+                        </div>
+                    </div>
+                    <button class="add-header-btn" onclick="addHeader()">+ Adicionar Header</button>
+                </div>
+
+                <!-- Body Tab -->
+                <div class="tab-content" id="bodyTab">
+                    <div class="body-format-buttons">
+                        <button class="format-btn" onclick="formatJson()">📄 Format JSON</button>
+                        <button class="format-btn" onclick="minifyJson()">📦 Minify JSON</button>
+                        <button class="format-btn" onclick="clearBody()">🗑️ Clear</button>
+                    </div>
+                    <div class="body-section">
+                        <textarea id="requestBody" placeholder='{\n  "title": "foo",\n  "body": "bar",\n  "userId": 1\n}'></textarea>
+                    </div>
+                </div>
+
+                <!-- Auth Tab -->
+                <div class="tab-content" id="authTab">
+                    <div style="padding: 2rem; text-align: center; color: var(--text-muted);">
+                        🚧 Autenticação - Em desenvolvimento
+                        <br><small>Use headers personalizados para Authorization por enquanto</small>
+                    </div>
+                </div>
+
+                <!-- Params Tab -->
+                <div class="tab-content" id="paramsTab">
+                    <div style="padding: 2rem; text-align: center; color: var(--text-muted);">
+                        🚧 Query Parameters - Em desenvolvimento
+                        <br><small>Adicione parâmetros diretamente na URL por enquanto</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Response Section -->
+            <div class="response-section">
+                <div class="response-header">
+                    <h3 class="response-title">📨 Resposta</h3>
+                    <div class="response-status" id="responseStatus" style="display: none;">
+                        <span class="status-badge" id="statusBadge">200</span>
+                        <span class="response-time" id="responseTime">0ms</span>
+                    </div>
+                </div>
+                
+                <div class="response-content" id="responseContent">
+                    <div class="response-empty">
+                        Clique em "Enviar" para fazer uma requisição e ver a resposta aqui...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentRequest = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupTabs();
+            setupMethodSelect();
+        });
+
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.dataset.tab;
+                    switchTab(targetTab);
+                });
+            });
+        }
+
+        function setupMethodSelect() {
+            const select = document.getElementById('methodSelect');
+            select.addEventListener('change', function() {
+                const method = this.value;
+                updateMethodColor();
+                
+                // Show/hide body tab based on method
+                const bodyTab = document.querySelector('[data-tab="body"]');
+                if (['GET', 'HEAD', 'OPTIONS'].includes(method)) {
+                    bodyTab.style.display = 'none';
+                    if (bodyTab.classList.contains('active')) {
+                        switchTab('headers');
+                    }
+                } else {
+                    bodyTab.style.display = 'block';
+                }
+            });
+            
+            updateMethodColor();
+        }
+
+        function updateMethodColor() {
+            const select = document.getElementById('methodSelect');
+            const method = select.value;
+            
+            select.className = 'method-select';
+            select.classList.add(`method-${method.toLowerCase()}`);
+        }
+
+        function switchTab(tabName) {
+            // Remove active from all tabs and contents
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Add active to selected tab and content
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}Tab`).classList.add('active');
+        }
+
+        function addHeader() {
+            const headersSection = document.getElementById('headersSection');
+            const headerItem = document.createElement('div');
+            headerItem.className = 'header-item';
+            headerItem.innerHTML = `
+                <input type="text" class="header-input" placeholder="Header">
+                <input type="text" class="header-input" placeholder="Value">
+                <button class="remove-header-btn" onclick="removeHeader(this)">🗑️</button>
+            `;
+            headersSection.appendChild(headerItem);
+        }
+
+        function removeHeader(button) {
+            const headerItem = button.parentElement;
+            const headersSection = document.getElementById('headersSection');
+            
+            // Keep at least one header
+            if (headersSection.children.length > 1) {
+                headerItem.remove();
+            }
+        }
+
+        function formatJson() {
+            const textarea = document.getElementById('requestBody');
+            try {
+                const parsed = JSON.parse(textarea.value);
+                textarea.value = JSON.stringify(parsed, null, 2);
+            } catch (error) {
+                showToast('JSON inválido para formatação', 'error');
+            }
+        }
+
+        function minifyJson() {
+            const textarea = document.getElementById('requestBody');
+            try {
+                const parsed = JSON.parse(textarea.value);
+                textarea.value = JSON.stringify(parsed);
+            } catch (error) {
+                showToast('JSON inválido para minificação', 'error');
+            }
+        }
+
+        function clearBody() {
+            document.getElementById('requestBody').value = '';
+        }
+
+        function setQuickRequest(type) {
+            const urlInput = document.getElementById('urlInput');
+            const methodSelect = document.getElementById('methodSelect');
+            const bodyTextarea = document.getElementById('requestBody');
+
+            switch (type) {
+                case 'jsonplaceholder':
+                    urlInput.value = 'https://jsonplaceholder.typicode.com/posts/1';
+                    methodSelect.value = 'GET';
+                    bodyTextarea.value = '';
+                    break;
+                    
+                case 'httpbin':
+                    urlInput.value = 'https://httpbin.org/post';
+                    methodSelect.value = 'POST';
+                    bodyTextarea.value = JSON.stringify({
+                        "test": true,
+                        "message": "Hello from API Client!"
+                    }, null, 2);
+                    switchTab('body');
+                    break;
+                    
+                case 'github':
+                    urlInput.value = 'https://api.github.com/users/octocat';
+                    methodSelect.value = 'GET';
+                    bodyTextarea.value = '';
+                    break;
+                    
+                case 'cep':
+                    urlInput.value = 'https://viacep.com.br/ws/01310-100/json/';
+                    methodSelect.value = 'GET';
+                    bodyTextarea.value = '';
+                    break;
+            }
+            
+            updateMethodColor();
+        }
+
+        async function sendRequest() {
+            const url = document.getElementById('urlInput').value.trim();
+            const method = document.getElementById('methodSelect').value;
+            const sendBtn = document.getElementById('sendBtn');
+            const sendBtnText = document.getElementById('sendBtnText');
+            
+            if (!url) {
+                showToast('Digite uma URL válida', 'error');
+                return;
+            }
+
+            // Prepare headers
+            const headers = {};
+            const headerItems = document.querySelectorAll('#headersSection .header-item');
+            headerItems.forEach(item => {
+                const inputs = item.querySelectorAll('.header-input');
+                const key = inputs[0].value.trim();
+                const value = inputs[1].value.trim();
+                if (key && value) {
+                    headers[key] = value;
+                }
+            });
+
+            // Prepare body
+            let body = null;
+            if (!['GET', 'HEAD', 'OPTIONS'].includes(method)) {
+                const bodyContent = document.getElementById('requestBody').value.trim();
+                if (bodyContent) {
+                    body = bodyContent;
+                }
+            }
+
+            // Show loading state
+            sendBtn.disabled = true;
+            sendBtnText.innerHTML = '<span class="loading"></span> Enviando...';
+
+            const startTime = Date.now();
+            
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: headers,
+                    body: body,
+                    mode: 'cors'
+                });
+
+                const endTime = Date.now();
+                const responseTime = endTime - startTime;
+
+                await displayResponse(response, responseTime);
+                
+            } catch (error) {
+                const endTime = Date.now();
+                const responseTime = endTime - startTime;
+                
+                displayError(error, responseTime);
+            } finally {
+                // Reset button state
+                sendBtn.disabled = false;
+                sendBtnText.innerHTML = '🚀 Enviar';
+            }
+        }
+
+        async function displayResponse(response, responseTime) {
+            const statusElement = document.getElementById('responseStatus');
+            const statusBadge = document.getElementById('statusBadge');
+            const timeElement = document.getElementById('responseTime');
+            const contentElement = document.getElementById('responseContent');
+
+            // Show status
+            statusElement.style.display = 'flex';
+            statusBadge.textContent = `${response.status} ${response.statusText}`;
+            timeElement.textContent = `${responseTime}ms`;
+
+            // Set status color
+            const statusClass = getStatusClass(response.status);
+            statusBadge.className = `status-badge ${statusClass}`;
+
+            // Get response content
+            let content = '';
+            try {
+                const text = await response.text();
+                
+                // Try to format as JSON if possible
+                try {
+                    const json = JSON.parse(text);
+                    content = JSON.stringify(json, null, 2);
+                } catch {
+                    content = text;
+                }
+                
+            } catch (error) {
+                content = `Error reading response: ${error.message}`;
+            }
+
+            contentElement.textContent = content || '(Empty response)';
+            
+            showToast('Requisição enviada com sucesso!');
+        }
+
+        function displayError(error, responseTime) {
+            const statusElement = document.getElementById('responseStatus');
+            const statusBadge = document.getElementById('statusBadge');
+            const timeElement = document.getElementById('responseTime');
+            const contentElement = document.getElementById('responseContent');
+
+            statusElement.style.display = 'flex';
+            statusBadge.textContent = 'ERROR';
+            statusBadge.className = 'status-badge status-5xx';
+            timeElement.textContent = `${responseTime}ms`;
+
+            let errorMessage = error.message;
+            
+            // Provide more user-friendly error messages
+            if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                errorMessage = 'Erro de CORS ou rede. A API pode não permitir requisições do navegador.';
+            }
+
+            contentElement.textContent = `Erro na requisição:\n\n${errorMessage}`;
+            
+            showToast('Erro na requisição', 'error');
+        }
+
+        function getStatusClass(status) {
+            if (status >= 200 && status < 300) return 'status-2xx';
+            if (status >= 300 && status < 400) return 'status-3xx';
+            if (status >= 400 && status < 500) return 'status-4xx';
+            if (status >= 500) return 'status-5xx';
+            return '';
+        }
+
+        function showToast(message, type = 'success') {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: ${type === 'error' ? 'var(--error)' : 'var(--success)'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                z-index: 10000;
+                animation: slideInUp 0.3s ease;
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Initialize with default request
+        setQuickRequest('jsonplaceholder');
+    </script>
+
+    <!-- Internationalization Script -->
+    <script src="/js/i18n.js"></script>
+</body>
+</html>
