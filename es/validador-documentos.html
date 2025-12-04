@@ -12,7 +12,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Validador de documentos brasileiros gratuito - Valida CPF, CNPJ, RG, Código Postal y Título de Elector online. Verificação rápida e precisa de documentos.">
+    <meta name="description" content="Validador de documentos brasileños gratuito - Valida CPF, CNPJ, RG, CEP y Título de Elector en línea. Verificación rápida y precisa de documentos.">
     <meta name="keywords" content="validador cpf, validador cnpj, validador rg, validador cep, validador titulo eleitor, validar documentos brasileiros">
     <meta name="author" content="TestCodePro">
     <meta name="robots" content="index, follow">
@@ -21,14 +21,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testcodepro.com/validador-documentos.html">
     <meta property="og:title" content="Validador de Documentos Brasileños - TestCodePro">
-    <meta property="og:description" content="Valida CPF, CNPJ, RG, Código Postal y Título de Elector online. Ferramenta gratuita e precisa para verificação de documentos brasileiros.">
+    <meta property="og:description" content="Valida CPF, CNPJ, RG, CEP y Título de Elector en línea. Herramienta gratuita y precisa para verificación de documentos brasileños.">
     <meta property="og:image" content="https://testcodepro.com/assets/validador-og.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://testcodepro.com/validador-documentos.html">
     <meta property="twitter:title" content="Validador de Documentos Brasileños - TestCodePro">
-    <meta property="twitter:description" content="Valida CPF, CNPJ, RG, Código Postal y Título de Elector online. Ferramenta gratuita e precisa.">
+    <meta property="twitter:description" content="Valida CPF, CNPJ, RG, CEP y Título de Elector en línea. Herramienta gratuita y precisa.">
     <meta property="twitter:image" content="https://testcodepro.com/assets/validador-twitter.jpg">
 
     <!-- Canonical URL -->
@@ -43,14 +43,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Structured Fecha -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Validador de Documentos Brasileños",
+        "name": "Validador de Documentos Brasileiros",
         "url": "https://testcodepro.com/validador-documentos.html",
-        "description": "Validador online de documentos brasileiros: CPF, CNPJ, RG, Código Postal e Título de Eleitor",
+        "description": "Validador online de documentos brasileiros: CPF, CNPJ, RG, CEP e Título de Eleitor",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "All",
         "offers": {
@@ -464,7 +464,7 @@
             <ul class="nav-links">
                 <li><a href="/es/">Inicio</a></li>
                 <li><a href="/es/#ferramentas">Herramientas</a></li>
-                <li><a href="sobre.html">Acerca de</a></li>
+                <li><a href="/es/about.html">Acerca de</a></li>
                 <li><a href="/es/">Contacto</a></li>
             
                 <li>
@@ -490,7 +490,7 @@
             <div class="tool-header">
                 <h1 class="tool-title">📄 Validador de Documentos</h1>
                 <p class="tool-description">
-                    Valide documentos brasileiros de forma rápida e precisa. Suporte para CPF, CNPJ, RG, Código Postal e Título de Eleitor.
+                    Valida documentos brasileños de forma rápida y precisa. Soporte para CPF, CNPJ, RG, CEP y Título de Elector.
                 </p>
             </div>
 
@@ -499,17 +499,17 @@
                 <div class="form-group">
                     <label for="documentType" class="form-label">Tipo de Documento</label>
                     <select id="documentType" class="form-select">
-                        <option value="cpf">CPF - Cadastro de Pessoas Físicas</option>
-                        <option value="cnpj">CNPJ - Cadastro Nacional da Pessoa Jurídica</option>
-                        <option value="rg">RG - Registro Geral</option>
-                        <option value="cep">Código Postal - Código de Endereçamento Postal</option>
-                        <option value="titulo">Título de Eleitor</option>
+                        <option value="cpf">CPF - Registro de Personas Físicas</option>
+                        <option value="cnpj">CNPJ - Registro Nacional de Persona Jurídica</option>
+                        <option value="rg">RG - Registro General (ID)</option>
+                        <option value="cep">CEP - Código Postal</option>
+                        <option value="titulo">Título de Elector</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="documentInput" class="form-label">Número do Documento</label>
-                    <input type="text" id="documentInput" class="form-input" placeholder="Digite o CPF (000.000.000-00)">
+                    <label for="documentInput" class="form-label">Número del Documento</label>
+                    <input type="text" id="documentInput" class="form-input" placeholder="Ingresa CPF (000.000.000-00)">
                 </div>
 
                 <button onclick="validateDocument()" class="btn-primary">Validar Documento</button>
@@ -523,21 +523,21 @@
 
             <!-- Info Section -->
             <div class="info-section">
-                <h2 class="info-title">Como funciona?</h2>
+                <h2 class="info-title">¿Cómo funciona?</h2>
                 <p class="info-text">
-                    Nosso validador verifica a autenticidade dos documentos utilizando os algoritmos oficiais de validação:
+                    Nuestro validador verifica la autenticidad de los documentos utilizando los algoritmos oficiales de validación:
                 </p>
                 <ul class="info-list">
-                    <li>CPF: Validação por dígitos verificadores conforme Receita Federal</li>
-                    <li>CNPJ: Verificação usando algoritmo oficial da Receita Federal</li>
-                    <li>RG: Validação básica de formato e estrutura</li>
-                    <li>Código Postal: Verificação de formato padrão dos Correios</li>
-                    <li>Título de Eleitor: Validação conforme TSE</li>
+                    <li>CPF: Validación por dígitos verificadores según Receita Federal</li>
+                    <li>CNPJ: Verificación usando algoritmo oficial de Receita Federal</li>
+                    <li>RG: Validación básica de formato y estructura</li>
+                    <li>CEP: Verificación de formato estándar de Correos</li>
+                    <li>Título de Elector: Validación según TSE</li>
                 </ul>
                 <p class="info-text">
-                    <strong>Importante:</strong> Esta ferramenta valida apenas a estrutura matemática dos documentos. 
-                    Para verificar se um documento está realmente ativo ou pertence a uma pessoa específica, 
-                    consulte os órgãos oficiais competentes.
+                    <strong>Importante:</strong> Esta herramienta solo valida la estructura matemática de los documentos. 
+                    Para verificar si un documento está realmente activo o pertenece a una persona específica, 
+                    consulte los organismos oficiales competentes.
                 </p>
             </div>
         </div>
@@ -606,7 +606,7 @@
             return rg.length >= 7 && rg.length <= 9;
         }
 
-        function validateCódigo Postal(cep) {
+        function validateCEP(cep) {
             cep = cep.replace(/[^\d]/g, '');
             return cep.length === 8 && /^\d{8}$/.test(cep);
         }
@@ -657,7 +657,7 @@
             const resultText = document.getElementById('resultText');
             
             if (!docValue.trim()) {
-                showResult(false, 'Por favor, digite um documento para validar.');
+                showResult(false, 'Por favor, ingresa un documento para validar.');
                 return;
             }
             
@@ -667,23 +667,23 @@
             switch (docType) {
                 case 'cpf':
                     isValid = validateCPF(docValue);
-                    message = isValid ? 'CPF válido!' : 'CPF inválido!';
+                    message = isValid ? '¡CPF válido!' : '¡CPF inválido!';
                     break;
                 case 'cnpj':
                     isValid = validateCNPJ(docValue);
-                    message = isValid ? 'CNPJ válido!' : 'CNPJ inválido!';
+                    message = isValid ? '¡CNPJ válido!' : '¡CNPJ inválido!';
                     break;
                 case 'rg':
                     isValid = validateRG(docValue);
-                    message = isValid ? 'RG com formato válido!' : 'RG com formato inválido!';
+                    message = isValid ? '¡RG con formato válido!' : '¡RG con formato inválido!';
                     break;
                 case 'cep':
-                    isValid = validateCódigo Postal(docValue);
-                    message = isValid ? 'Código Postal com formato válido!' : 'Código Postal com formato inválido!';
+                    isValid = validateCEP(docValue);
+                    message = isValid ? '¡CEP con formato válido!' : '¡CEP con formato inválido!';
                     break;
                 case 'titulo':
                     isValid = validateTitulo(docValue);
-                    message = isValid ? 'Título de Eleitor válido!' : 'Título de Eleitor inválido!';
+                    message = isValid ? '¡Título de Elector válido!' : '¡Título de Elector inválido!';
                     break;
             }
             
@@ -761,11 +761,11 @@
         // Update placeholder when document type changes
         document.getElementById('documentType').addEventListener('change', function() {
             const placeholders = {
-                'cpf': 'Digite o CPF (000.000.000-00)',
-                'cnpj': 'Digite o CNPJ (00.000.000/0000-00)',
-                'rg': 'Digite o RG (00.000.000-0)',
-                'cep': 'Digite o Código Postal (00000-000)',
-                'titulo': 'Digite o Título (0000 0000 0000)'
+                'cpf': 'Ingresa CPF (000.000.000-00)',
+                'cnpj': 'Ingresa CNPJ (00.000.000/0000-00)',
+                'rg': 'Ingresa RG (00.000.000-0)',
+                'cep': 'Ingresa CEP (00000-000)',
+                'titulo': 'Ingresa Título (0000 0000 0000)'
             };
             
             const input = document.getElementById('documentInput');
