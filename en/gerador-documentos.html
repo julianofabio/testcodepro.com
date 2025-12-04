@@ -12,7 +12,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gerador de documentos brasileiros para testes - Gere CPF (Brazilian ID), CNPJ (Company ID), RG (ID Card), CEP (Postal Code) e Voter ID válidos for system development and testing.">
+    <meta name="description" content="Brazilian document generator for testing - Generate valid CPF, CNPJ, RG, CEP and Voter ID for software development and system testing.">
     <meta name="keywords" content="gerador cpf, gerador cnpj, gerador rg, gerador cep, gerador titulo eleitor, documentos para teste, cpf fake, cnpj fake">
     <meta name="author" content="TestCodePro">
     <meta name="robots" content="index, follow">
@@ -21,14 +21,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testcodepro.com/gerador-documentos.html">
     <meta property="og:title" content="Brazilian Document Generator - TestCodePro">
-    <meta property="og:description" content="Gere CPF (Brazilian ID), CNPJ (Company ID), RG (ID Card), CEP (Postal Code) e Voter ID válidos para testes de sistema. Fictitious but mathematically correct documents.">
+    <meta property="og:description" content="Generate valid CPF, CNPJ, RG, CEP and Voter ID for system testing. Fictitious but mathematically correct documents.">
     <meta property="og:image" content="https://testcodepro.com/assets/gerador-og.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://testcodepro.com/gerador-documentos.html">
     <meta property="twitter:title" content="Brazilian Document Generator - TestCodePro">
-    <meta property="twitter:description" content="Gere documentos brasileiros válidos para testes de sistema.">
+    <meta property="twitter:description" content="Generate valid Brazilian documents for system testing.">
     <meta property="twitter:image" content="https://testcodepro.com/assets/gerador-twitter.jpg">
 
     <!-- Canonical URL -->
@@ -48,9 +48,9 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Brazilian Document Generator",
+        "name": "Gerador de Documentos Brasileiros",
         "url": "https://testcodepro.com/gerador-documentos.html",
-        "description": "Gerador de documentos brasileiros para testes: CPF (Brazilian ID), CNPJ (Company ID), RG (ID Card), CEP (Postal Code) e Voter ID",
+        "description": "Gerador de documentos brasileiros para testes: CPF, CNPJ, RG, CEP e Título de Eleitor",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "All",
         "offers": {
@@ -509,7 +509,7 @@
             <div class="tool-header">
                 <h1 class="tool-title">🎲 Document Generator</h1>
                 <p class="tool-description">
-                    Gere documentos brasileiros válidos para testes e desenvolvimento. 
+                    Generate valid Brazilian documents for testing and development. 
                     Fictitious but mathematically correct documents.
                 </p>
             </div>
@@ -517,23 +517,23 @@
             <!-- Tool Content -->
             <div class="tool-content">
                 <div class="form-group">
-                    <label for="documentType" class="form-label">Tipo de Documento</label>
+                    <label for="documentType" class="form-label">Document Type</label>
                     <select id="documentType" class="form-select">
-                        <option value="cpf">CPF (Brazilian ID) - Cadastro de Pessoas Físicas</option>
-                        <option value="cnpj">CNPJ (Company ID) - Cadastro Nacional da Pessoa Jurídica</option>
-                        <option value="rg">RG (ID Card) - Registro Geral</option>
-                        <option value="cep">CEP (Postal Code) - Código de Endereçamento Postal</option>
+                        <option value="cpf">CPF - Individual Taxpayer Registry</option>
+                        <option value="cnpj">CNPJ - National Corporate Taxpayer Registry</option>
+                        <option value="rg">RG - General Registry (ID)</option>
+                        <option value="cep">CEP - Postal Code</option>
                         <option value="titulo">Voter ID</option>
-                        <option value="cnh">Driver's License - Carteira Nacional de Habilitação</option>
+                        <option value="cnh">CNH - Driver's License</option>
                         <option value="conta">Bank Account</option>
                         <option value="placa">Vehicle Plate</option>
                         <option value="passaporte">Passport</option>
                         <option value="pis">PIS/PASEP</option>
-                        <option value="all">Generate All os Documentos</option>
+                        <option value="all">Generate All Documents</option>
                     </select>
                 </div>
 
-                <button onclick="generateDocuments()" class="btn-primary">Generate Documentos</button>
+                <button onclick="generateDocuments()" class="btn-primary">Generate Documents</button>
 
                 <!-- Generated Documents Display -->
                 <div id="generatedDocs" class="generated-docs">
@@ -543,33 +543,33 @@
 
             <!-- Warning Section -->
             <div class="warning-box">
-                <div class="warning-title">⚠️ Importante - Uso Responsável</div>
-                <p>Estes documentos são FICTÍCIOS e destinados exclusivamente para:</p>
+                <div class="warning-title">⚠️ Important - Responsible Use</div>
+                <p>These documents are FICTITIOUS and intended exclusively for:</p>
                 <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-                    <li>Testes de software e sistemas</li>
-                    <li>Desenvolvimento de aplicações</li>
-                    <li>Validação de formulários</li>
-                    <li>Demonstrações técnicas</li>
+                    <li>Software and system testing</li>
+                    <li>Application development</li>
+                    <li>Form validation</li>
+                    <li>Technical demonstrations</li>
                 </ul>
-                <p><strong>NÃO</strong> utilize estes documentos para fins oficiais, cadastros reais ou qualquer atividade que possa configurar fraude ou uso indevido de documentos.</p>
+                <p><strong>DO NOT</strong> use these documents for official purposes, real registrations, or any activity that could constitute fraud or misuse of documents.</p>
             </div>
 
             <!-- Info Section -->
             <div class="info-section">
-                <h2 class="info-title">Como funciona?</h2>
+                <h2 class="info-title">How does it work?</h2>
                 <p class="info-text">
-                    Nosso gerador cria documentos que seguem as regras matemáticas oficiais:
+                    Our generator creates documents that follow official mathematical rules:
                 </p>
                 <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
-                    <li><strong>CPF (Brazilian ID):</strong> Gera números com dígitos verificadores válidos conforme algoritmo da Receita Federal</li>
-                    <li><strong>CNPJ (Company ID):</strong> Cria números empresariais válidos matematicamente</li>
-                    <li><strong>RG (ID Card):</strong> Gera números de registro geral com formatação padrão</li>
-                    <li><strong>CEP (Postal Code):</strong> Cria códigos postais com formato válido dos Correios</li>
-                    <li><strong>Voter ID:</strong> Gera números válidos conforme TSE</li>
+                    <li><strong>CPF:</strong> Generates numbers with valid check digits according to the Federal Revenue algorithm</li>
+                    <li><strong>CNPJ:</strong> Creates mathematically valid business numbers</li>
+                    <li><strong>RG:</strong> Generates general registry numbers with standard formatting</li>
+                    <li><strong>CEP:</strong> Creates postal codes with valid Post Office format</li>
+                    <li><strong>Voter ID:</strong> Generates valid numbers according to TSE</li>
                 </ul>
                 <p class="info-text">
-                    All os documentos passarão na validação de algoritmos, mas são completamente fictícios 
-                    e não correspondem a pessoas ou entidades reais.
+                    All documents will pass algorithm validation, but are completely fictitious 
+                    and do not correspond to real people or entities.
                 </p>
             </div>
         </div>
@@ -577,7 +577,7 @@
 
     <script>
         // Document generation functions
-        function generateCPF (Brazilian ID)() {
+        function generateCPF() {
             let cpf = '';
             for (let i = 0; i < 9; i++) {
                 cpf += Math.floor(Math.random() * 10);
@@ -601,11 +601,11 @@
             if (checkDigit2 === 10 || checkDigit2 === 11) checkDigit2 = 0;
             cpf += checkDigit2;
             
-            // Format CPF (Brazilian ID)
+            // Format CPF
             return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
         }
 
-        function generateCNPJ (Company ID)() {
+        function generateCNPJ() {
             let cnpj = '';
             for (let i = 0; i < 12; i++) {
                 cnpj += Math.floor(Math.random() * 10);
@@ -629,11 +629,11 @@
             let checkDigit2 = sum % 11 < 2 ? 0 : 11 - (sum % 11);
             cnpj += checkDigit2;
             
-            // Format CNPJ (Company ID)
+            // Format CNPJ
             return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
         }
 
-        function generateRG (ID Card)() {
+        function generateRG() {
             let rg = '';
             for (let i = 0; i < 8; i++) {
                 rg += Math.floor(Math.random() * 10);
@@ -641,17 +641,17 @@
             const checkDigit = Math.floor(Math.random() * 10);
             rg += checkDigit;
             
-            // Format RG (ID Card)
+            // Format RG
             return rg.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
         }
 
-        function generateCEP (Postal Code)() {
+        function generateCEP() {
             let cep = '';
             for (let i = 0; i < 8; i++) {
                 cep += Math.floor(Math.random() * 10);
             }
             
-            // Format CEP (Postal Code)
+            // Format CEP
             return cep.replace(/(\d{5})(\d{3})/, '$1-$2');
         }
 
@@ -695,14 +695,14 @@
             return titulo.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3');
         }
 
-        // Generate Driver's License
-        function generateDriver's License() {
+        // Generate CNH
+        function generateCNH() {
             let cnh = '';
             for (let i = 0; i < 9; i++) {
                 cnh += Math.floor(Math.random() * 10);
             }
             
-            // Calculate check digits for Driver's License (simplified)
+            // Calculate check digits for CNH (simplified)
             let sum1 = 0, sum2 = 0;
             for (let i = 0; i < 9; i++) {
                 sum1 += parseInt(cnh[i]) * (9 - i);
@@ -720,7 +720,7 @@
             return cnh;
         }
 
-        // Generate Bank Account
+        // Generate Conta Bancária
         function generateContaBancaria() {
             const agencia = Math.floor(Math.random() * 9000) + 1000;
             const agenciaDigit = Math.floor(Math.random() * 10);
@@ -730,7 +730,7 @@
             return `${agencia}-${agenciaDigit} / ${conta}-${contaDigit}`;
         }
 
-        // Generate Vehicle Plate (Mercosul format)
+        // Generate Placa de Veículo (Mercosul format)
         function generatePlacaVeiculo() {
             const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const numbers = '0123456789';
@@ -748,8 +748,8 @@
             return placa;
         }
 
-        // Generate Passport
-        function generatePassport() {
+        // Generate Passaporte
+        function generatePassaporte() {
             const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const numbers = '0123456789';
             
@@ -796,15 +796,15 @@
             const documents = [];
             
             if (docType === 'all') {
-                documents.push({ type: 'CPF (Brazilian ID)', value: generateCPF (Brazilian ID)() });
-                documents.push({ type: 'CNPJ (Company ID)', value: generateCNPJ (Company ID)() });
-                documents.push({ type: 'RG (ID Card)', value: generateRG (ID Card)() });
-                documents.push({ type: 'CEP (Postal Code)', value: generateCEP (Postal Code)() });
+                documents.push({ type: 'CPF', value: generateCPF() });
+                documents.push({ type: 'CNPJ', value: generateCNPJ() });
+                documents.push({ type: 'RG', value: generateRG() });
+                documents.push({ type: 'CEP', value: generateCEP() });
                 documents.push({ type: 'Voter ID', value: generateTitulo() });
-                documents.push({ type: 'Driver's License', value: generateDriver's License() });
+                documents.push({ type: 'CNH', value: generateCNH() });
                 documents.push({ type: 'Bank Account', value: generateContaBancaria() });
                 documents.push({ type: 'Vehicle Plate', value: generatePlacaVeiculo() });
-                documents.push({ type: 'Passport', value: generatePassport() });
+                documents.push({ type: 'Passport', value: generatePassaporte() });
                 documents.push({ type: 'PIS/PASEP', value: generatePIS() });
             } else {
                 let value = '';
@@ -812,28 +812,28 @@
                 
                 switch (docType) {
                     case 'cpf':
-                        value = generateCPF (Brazilian ID)();
-                        type = 'CPF (Brazilian ID)';
+                        value = generateCPF();
+                        type = 'CPF';
                         break;
                     case 'cnpj':
-                        value = generateCNPJ (Company ID)();
-                        type = 'CNPJ (Company ID)';
+                        value = generateCNPJ();
+                        type = 'CNPJ';
                         break;
                     case 'rg':
-                        value = generateRG (ID Card)();
-                        type = 'RG (ID Card)';
+                        value = generateRG();
+                        type = 'RG';
                         break;
                     case 'cep':
-                        value = generateCEP (Postal Code)();
-                        type = 'CEP (Postal Code)';
+                        value = generateCEP();
+                        type = 'CEP';
                         break;
                     case 'titulo':
                         value = generateTitulo();
                         type = 'Voter ID';
                         break;
                     case 'cnh':
-                        value = generateDriver's License();
-                        type = 'Driver's License';
+                        value = generateCNH();
+                        type = 'CNH';
                         break;
                     case 'conta':
                         value = generateContaBancaria();
@@ -844,7 +844,7 @@
                         type = 'Vehicle Plate';
                         break;
                     case 'passaporte':
-                        value = generatePassport();
+                        value = generatePassaporte();
                         type = 'Passport';
                         break;
                     case 'pis':
@@ -903,8 +903,8 @@
                 document.execCommand('copy');
                 showCopySuccess(buttonElement);
             } catch (err) {
-                console.error('Errorr copying:', err);
-                showCopyErrorr(buttonElement);
+                console.error('Error copying:', err);
+                showCopyError(buttonElement);
             } finally {
                 document.body.removeChild(textArea);
             }
@@ -923,7 +923,7 @@
         }
 
         // Show error feedback
-        function showCopyErrorr(buttonElement) {
+        function showCopyError(buttonElement) {
             const originalContent = buttonElement.innerHTML;
             buttonElement.innerHTML = '<span class="icon">❌</span><span class="text">Error</span>';
             buttonElement.classList.add('copied');

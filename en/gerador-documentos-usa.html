@@ -12,7 +12,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gerador de documentos dos United States - SSN (Social Security Number), Driver's License, Passport, State ID, Vehicle Registration e ZIP Code para testes.">
+    <meta name="description" content="Gerador de documentos dos Estados Unidos - SSN, Driver's License, Passport, State ID, Vehicle Registration e ZIP Code para testes.">
     <meta name="keywords" content="gerador documentos eua, ssn generator, zip code generator, driver license usa, passport usa">
     <meta name="author" content="TestCodePro">
     <meta name="robots" content="index, follow">
@@ -20,14 +20,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://testcodepro.com/gerador-documentos-usa.html">
-    <meta property="og:title" content="Document Generator USA - TestCodePro">
-    <meta property="og:description" content="Gere documentos americanos válidos para testes: SSN (Social Security Number), Driver's License, Passport, State ID e mais.">
+    <meta property="og:title" content="Gerador de Documentos USA - TestCodePro">
+    <meta property="og:description" content="Gere documentos americanos válidos para testes: SSN, Driver's License, Passport, State ID e mais.">
     <meta property="og:image" content="https://testcodepro.com/assets/usa-docs-og.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://testcodepro.com/gerador-documentos-usa.html">
-    <meta property="twitter:title" content="Document Generator USA - TestCodePro">
+    <meta property="twitter:title" content="Gerador de Documentos USA - TestCodePro">
     <meta property="twitter:description" content="Gere documentos americanos para testes.">
     <meta property="twitter:image" content="https://testcodepro.com/assets/usa-docs-twitter.jpg">
 
@@ -48,9 +48,9 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Document Generator USA",
+        "name": "Gerador de Documentos USA",
         "url": "https://testcodepro.com/gerador-documentos-usa.html",
-        "description": "Gerador de documentos americanos para testes e desenvolvimento",
+        "description": "American document generator for testing e desenvolvimento",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "All",
         "offers": {
@@ -65,7 +65,7 @@
     }
     </script>
 
-    <title>Document Generator USA - TestCodePro</title>
+    <title>Gerador de Documentos USA - TestCodePro</title>
     
     <style>
         :root {
@@ -487,10 +487,10 @@
             <!-- Tool Header -->
             <div class="tool-header">
                 <div class="country-flag">🇺🇸</div>
-                <h1 class="tool-title">Document Generator USA</h1>
+                <h1 class="tool-title">Gerador de Documentos USA</h1>
                 <p class="tool-description">
-                    Gere documentos dos United States válidos para testes e desenvolvimento. 
-                    All os números são fictícios e devem ser usados apenas para fins de teste.
+                    Gere documentos dos Estados Unidos válidos para testes e desenvolvimento. 
+                    Todos os números são fictícios e devem ser usados apenas para fins de teste.
                 </p>
             </div>
 
@@ -498,17 +498,17 @@
             <div class="tool-content">
                 <!-- Documents Grid -->
                 <div class="documents-grid">
-                    <!-- SSN (Social Security Number) -->
+                    <!-- SSN -->
                     <div class="document-card">
                         <div class="document-header">
-                            <span class="document-title">Social Security Number (SSN (Social Security Number))</span>
+                            <span class="document-title">Social Security Number (SSN)</span>
                             <span class="document-icon">🆔</span>
                         </div>
                         <div class="document-value" id="ssn">000-00-0000</div>
                         <div class="document-description">Número de identificação social usado para benefícios e impostos</div>
                         <div class="document-actions">
-                            <button class="btn-small" onclick="copyValue('ssn', this)">Copy</button>
-                            <button class="btn-small btn-regenerate" onclick="generateSSN (Social Security Number)()">Generate Novo</button>
+                            <button class="btn-small" onclick="copyValue('ssn', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateSSN()">Gerar Novo</button>
                         </div>
                     </div>
 
@@ -521,8 +521,8 @@
                         <div class="document-value" id="driverLicense">A1234567</div>
                         <div class="document-description">Carteira de motorista (formato varia por estado)</div>
                         <div class="document-actions">
-                            <button class="btn-small" onclick="copyValue('driverLicense', this)">Copy</button>
-                            <button class="btn-small btn-regenerate" onclick="generateDriverLicense()">Generate Novo</button>
+                            <button class="btn-small" onclick="copyValue('driverLicense', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateDriverLicense()">Gerar Novo</button>
                         </div>
                     </div>
 
@@ -535,8 +535,8 @@
                         <div class="document-value" id="passport">123456789</div>
                         <div class="document-description">Número do passaporte americano (9 dígitos)</div>
                         <div class="document-actions">
-                            <button class="btn-small" onclick="copyValue('passport', this)">Copy</button>
-                            <button class="btn-small btn-regenerate" onclick="generatePassport()">Generate Novo</button>
+                            <button class="btn-small" onclick="copyValue('passport', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePassport()">Gerar Novo</button>
                         </div>
                     </div>
 
@@ -549,8 +549,8 @@
                         <div class="document-value" id="stateId">S12345678</div>
                         <div class="document-description">Documento de identidade estadual</div>
                         <div class="document-actions">
-                            <button class="btn-small" onclick="copyValue('stateId', this)">Copy</button>
-                            <button class="btn-small btn-regenerate" onclick="generateStateId()">Generate Novo</button>
+                            <button class="btn-small" onclick="copyValue('stateId', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateStateId()">Gerar Novo</button>
                         </div>
                     </div>
 
@@ -563,8 +563,8 @@
                         <div class="document-value" id="vehicleReg">ABC 1234</div>
                         <div class="document-description">Placa de registro do veículo</div>
                         <div class="document-actions">
-                            <button class="btn-small" onclick="copyValue('vehicleReg', this)">Copy</button>
-                            <button class="btn-small btn-regenerate" onclick="generateVehicleReg()">Generate Novo</button>
+                            <button class="btn-small" onclick="copyValue('vehicleReg', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateVehicleReg()">Gerar Novo</button>
                         </div>
                     </div>
 
@@ -577,24 +577,24 @@
                         <div class="document-value" id="zipCode">12345-6789</div>
                         <div class="document-description">Código postal americano (ZIP+4 format)</div>
                         <div class="document-actions">
-                            <button class="btn-small" onclick="copyValue('zipCode', this)">Copy</button>
-                            <button class="btn-small btn-regenerate" onclick="generateZipCode()">Generate Novo</button>
+                            <button class="btn-small" onclick="copyValue('zipCode', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateZipCode()">Gerar Novo</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Controls -->
                 <div class="controls">
-                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Generate All os Documentos</button>
+                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Gerar Todos os Documentos</button>
                 </div>
 
                 <!-- Warning -->
                 <div class="warning-box">
                     <div class="warning-title">
-                        ⚠️ Warning Importante
+                        ⚠️ Aviso Importante
                     </div>
                     <div class="warning-text">
-                        All os documentos gerados são fictícios e destinados exclusivamente para fins de teste, 
+                        Todos os documentos gerados são fictícios e destinados exclusivamente para fins de teste, 
                         desenvolvimento e demonstração. O uso destes números para fins fraudulentos é ilegal 
                         e pode resultar em consequências legais graves. Use com responsabilidade.
                     </div>
@@ -605,8 +605,8 @@
 
     <script>
         // Generate Social Security Number
-        function generateSSN (Social Security Number)() {
-            // SSN (Social Security Number) format: XXX-XX-XXXX
+        function generateSSN() {
+            // SSN format: XXX-XX-XXXX
             // Area number (001-665, 667-899): avoid 000, 666, and 900-999
             let area;
             do {
@@ -690,7 +690,7 @@
 
         // Generate all documents
         function generateAllDocuments() {
-            generateSSN (Social Security Number)();
+            generateSSN();
             generateDriverLicense();
             generatePassport();
             generateStateId();
@@ -728,7 +728,7 @@
                 document.execCommand('copy');
                 showCopySuccess(buttonElement);
             } catch (err) {
-                console.error('Errorr copying:', err);
+                console.error('Erro ao copiar:', err);
             } finally {
                 document.body.removeChild(textArea);
             }
@@ -736,7 +736,7 @@
 
         function showCopySuccess(buttonElement) {
             const originalText = buttonElement.textContent;
-            buttonElement.textContent = '✅ Copied!';
+            buttonElement.textContent = '✅ Copiado!';
             buttonElement.classList.add('copied');
             
             setTimeout(() => {
