@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Validador de documentos brasileiros gratuito - Validate CPF, CNPJ, RG, Postal Code and Voter ID online. Verificação rápida e precisa de documentos.">
+    <meta name="keywords" content="validador cpf, validador cnpj, validador rg, validador cep, validador titulo eleitor, validar documentos brasileiros">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/validador-documentos.html">
+    <meta property="og:title" content="Brazilian Document Validator - TestCodePro">
+    <meta property="og:description" content="Validate CPF, CNPJ, RG, Postal Code and Voter ID online. Ferramenta gratuita e precisa para verificação de documentos brasileiros.">
+    <meta property="og:image" content="https://testcodepro.com/assets/validador-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/validador-documentos.html">
+    <meta property="twitter:title" content="Brazilian Document Validator - TestCodePro">
+    <meta property="twitter:description" content="Validate CPF, CNPJ, RG, Postal Code and Voter ID online. Ferramenta gratuita e precisa.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/validador-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/validador-documentos.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Date -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Brazilian Document Validator",
+        "url": "https://testcodepro.com/validador-documentos.html",
+        "description": "Validador online de documentos brasileiros: CPF, CNPJ, RG, Postal Code e Título de Eleitor",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Brazilian Document Validator - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-select,
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus,
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Result Display */
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+            display: none;
+        }
+
+        .result.success {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .result.error {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .result-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .result-text {
+            font-weight: 600;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .info-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/en/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/#ferramentas">Tools</a></li>
+                <li><a href="sobre.html">About</a></li>
+                <li><a href="/en/">Contact</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">📄 Document Validator</h1>
+                <p class="tool-description">
+                    Valide documentos brasileiros de forma rápida e precisa. Suporte para CPF, CNPJ, RG, Postal Code e Título de Eleitor.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <div class="form-group">
+                    <label for="documentType" class="form-label">Tipo de Documento</label>
+                    <select id="documentType" class="form-select">
+                        <option value="cpf">CPF - Cadastro de Pessoas Físicas</option>
+                        <option value="cnpj">CNPJ - Cadastro Nacional da Pessoa Jurídica</option>
+                        <option value="rg">RG - Registro Geral</option>
+                        <option value="cep">Postal Code - Código de Endereçamento Postal</option>
+                        <option value="titulo">Título de Eleitor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="documentInput" class="form-label">Número do Documento</label>
+                    <input type="text" id="documentInput" class="form-input" placeholder="Digite o CPF (000.000.000-00)">
+                </div>
+
+                <button onclick="validateDocument()" class="btn-primary">Validate Documento</button>
+
+                <!-- Result Display -->
+                <div id="validationResult" class="result">
+                    <span id="resultIcon" class="result-icon"></span>
+                    <span id="resultText" class="result-text"></span>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Como funciona?</h2>
+                <p class="info-text">
+                    Nosso validador verifica a autenticidade dos documentos utilizando os algoritmos oficiais de validação:
+                </p>
+                <ul class="info-list">
+                    <li>CPF: Validação por dígitos verificadores conforme Receita Federal</li>
+                    <li>CNPJ: Verificação usando algoritmo oficial da Receita Federal</li>
+                    <li>RG: Validação básica de formato e estrutura</li>
+                    <li>Postal Code: Verificação de formato padrão dos Correios</li>
+                    <li>Título de Eleitor: Validação conforme TSE</li>
+                </ul>
+                <p class="info-text">
+                    <strong>Importante:</strong> Esta ferramenta valida apenas a estrutura matemática dos documentos. 
+                    Para verificar se um documento está realmente ativo ou pertence a uma pessoa específica, 
+                    consulte os órgãos oficiais competentes.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Document validation functions
+        function validateCPF(cpf) {
+            cpf = cpf.replace(/[^\d]/g, '');
+            
+            if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+                return false;
+            }
+            
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let checkDigit = 11 - (sum % 11);
+            if (checkDigit === 10 || checkDigit === 11) checkDigit = 0;
+            if (checkDigit !== parseInt(cpf.charAt(9))) return false;
+            
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            checkDigit = 11 - (sum % 11);
+            if (checkDigit === 10 || checkDigit === 11) checkDigit = 0;
+            if (checkDigit !== parseInt(cpf.charAt(10))) return false;
+            
+            return true;
+        }
+
+        function validateCNPJ(cnpj) {
+            cnpj = cnpj.replace(/[^\d]/g, '');
+            
+            if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) {
+                return false;
+            }
+            
+            let weights = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            let sum = 0;
+            
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weights[i];
+            }
+            
+            let checkDigit = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+            if (checkDigit !== parseInt(cnpj.charAt(12))) return false;
+            
+            weights = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            sum = 0;
+            
+            for (let i = 0; i < 13; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weights[i];
+            }
+            
+            checkDigit = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+            if (checkDigit !== parseInt(cnpj.charAt(13))) return false;
+            
+            return true;
+        }
+
+        function validateRG(rg) {
+            rg = rg.replace(/[^\d]/g, '');
+            return rg.length >= 7 && rg.length <= 9;
+        }
+
+        function validatePostal Code(cep) {
+            cep = cep.replace(/[^\d]/g, '');
+            return cep.length === 8 && /^\d{8}$/.test(cep);
+        }
+
+        function validateTitulo(titulo) {
+            titulo = titulo.replace(/[^\d]/g, '');
+            if (titulo.length !== 12) return false;
+            
+            let sequence1 = titulo.substring(0, 8);
+            let sequence2 = titulo.substring(8, 10);
+            let sequence3 = titulo.substring(10, 12);
+            
+            let sum1 = 0;
+            for (let i = 0; i < 8; i++) {
+                sum1 += parseInt(sequence1.charAt(i)) * (i + 2);
+            }
+            
+            let checkDigit1 = sum1 % 11;
+            if (checkDigit1 === 0 || checkDigit1 === 1) {
+                checkDigit1 = 0;
+            } else {
+                checkDigit1 = 11 - checkDigit1;
+            }
+            
+            let sum2 = 0;
+            for (let i = 0; i < 8; i++) {
+                sum2 += parseInt(sequence1.charAt(i)) * (i + 7);
+            }
+            sum2 += checkDigit1 * 2;
+            
+            let checkDigit2 = sum2 % 11;
+            if (checkDigit2 === 0 || checkDigit2 === 1) {
+                checkDigit2 = 0;
+            } else {
+                checkDigit2 = 11 - checkDigit2;
+            }
+            
+            return parseInt(sequence2.charAt(0)) === checkDigit1 && 
+                   parseInt(sequence2.charAt(1)) === checkDigit2;
+        }
+
+        // Main validation function
+        function validateDocument() {
+            const docType = document.getElementById('documentType').value;
+            const docValue = document.getElementById('documentInput').value;
+            const result = document.getElementById('validationResult');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultText = document.getElementById('resultText');
+            
+            if (!docValue.trim()) {
+                showResult(false, 'Por favor, digite um documento para validar.');
+                return;
+            }
+            
+            let isValid = false;
+            let message = '';
+            
+            switch (docType) {
+                case 'cpf':
+                    isValid = validateCPF(docValue);
+                    message = isValid ? 'CPF válido!' : 'CPF inválido!';
+                    break;
+                case 'cnpj':
+                    isValid = validateCNPJ(docValue);
+                    message = isValid ? 'CNPJ válido!' : 'CNPJ inválido!';
+                    break;
+                case 'rg':
+                    isValid = validateRG(docValue);
+                    message = isValid ? 'RG com formato válido!' : 'RG com formato inválido!';
+                    break;
+                case 'cep':
+                    isValid = validatePostal Code(docValue);
+                    message = isValid ? 'Postal Code com formato válido!' : 'Postal Code com formato inválido!';
+                    break;
+                case 'titulo':
+                    isValid = validateTitulo(docValue);
+                    message = isValid ? 'Título de Eleitor válido!' : 'Título de Eleitor inválido!';
+                    break;
+            }
+            
+            showResult(isValid, message);
+        }
+
+        function showResult(isValid, message) {
+            const result = document.getElementById('validationResult');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultText = document.getElementById('resultText');
+            
+            result.className = `result ${isValid ? 'success' : 'error'}`;
+            resultIcon.textContent = isValid ? '✅' : '❌';
+            resultText.textContent = message;
+            result.style.display = 'block';
+        }
+
+        // Auto-format input based on document type
+        document.getElementById('documentInput').addEventListener('input', function(e) {
+            const docType = document.getElementById('documentType').value;
+            let value = e.target.value.replace(/[^\d]/g, '');
+            
+            switch (docType) {
+                case 'cpf':
+                    if (value.length <= 11) {
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                        e.target.maxLength = 14;
+                    }
+                    break;
+                case 'cnpj':
+                    if (value.length <= 14) {
+                        value = value.replace(/(\d{2})(\d)/, '$1.$2');
+                        value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                        value = value.replace(/(\d{3})(\d)/, '$1/$2');
+                        value = value.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+                        e.target.maxLength = 18;
+                    }
+                    break;
+                case 'rg':
+                    if (value.length <= 9) {
+                        if (value.length === 9) {
+                            value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+                        } else if (value.length === 8) {
+                            value = value.replace(/(\d{1})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+                        }
+                        e.target.maxLength = 12;
+                    }
+                    break;
+                case 'cep':
+                    if (value.length <= 8) {
+                        value = value.replace(/(\d{5})(\d{1,3})$/, '$1-$2');
+                        e.target.maxLength = 9;
+                    }
+                    break;
+                case 'titulo':
+                    if (value.length <= 12) {
+                        value = value.replace(/(\d{4})(\d)/, '$1 $2');
+                        value = value.replace(/(\d{4}) (\d{4})(\d)/, '$1 $2 $3');
+                        e.target.maxLength = 14;
+                    }
+                    break;
+            }
+            
+            e.target.value = value;
+            
+            // Hide result when user starts typing
+            const result = document.getElementById('validationResult');
+            if (result && result.style.display === 'block') {
+                result.style.display = 'none';
+            }
+        });
+        
+        // Update placeholder when document type changes
+        document.getElementById('documentType').addEventListener('change', function() {
+            const placeholders = {
+                'cpf': 'Digite o CPF (000.000.000-00)',
+                'cnpj': 'Digite o CNPJ (00.000.000/0000-00)',
+                'rg': 'Digite o RG (00.000.000-0)',
+                'cep': 'Digite o Postal Code (00000-000)',
+                'titulo': 'Digite o Título (0000 0000 0000)'
+            };
+            
+            const input = document.getElementById('documentInput');
+            input.placeholder = placeholders[this.value];
+            input.value = '';
+            
+            const result = document.getElementById('validationResult');
+            if (result) {
+                result.style.display = 'none';
+            }
+        });
+        
+        // Allow Enter key to validate
+        document.getElementById('documentInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateDocument();
+            }
+        });
+    </script>
+</body>
+</html>

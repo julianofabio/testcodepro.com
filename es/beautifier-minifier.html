@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beautifier e Minifier de HTML, CSS e JavaScript - Formatea o comprime seu código frontend online.">
+    <meta name="keywords" content="html beautifier, css minifier, javascript formatter, code beautify, minify css js html">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>Beautifier/Minifier HTML/CSS/JS - TestCodePro</title>
+    
+    <!-- Language Selector CSS -->
+    <link rel="stylesheet" href="/css/language-selector.css">
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            background: var(--surface);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+        }
+
+        .lang-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .editor-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-header {
+            background: var(--surface-light);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .editor-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .editor-textarea {
+            width: 100%;
+            min-height: 500px;
+            padding: 1.5rem;
+            border: none;
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            resize: none;
+            outline: none;
+            flex: 1;
+        }
+
+        .editor-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Action Buttons */
+        .actions-section {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: #e55a00;
+            transform: translateY(-1px);
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+            transform: translateY(-1px);
+        }
+
+        .btn-clear {
+            background: var(--error);
+        }
+
+        .btn-clear:hover {
+            background: #dc2626;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--font-mono);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .reduction-positive {
+            color: var(--success);
+        }
+
+        .reduction-negative {
+            color: var(--error);
+        }
+
+        /* Options Panel */
+        .options-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .options-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+
+        .option-checkbox {
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: var(--primary);
+        }
+
+        .option-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Examples */
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .example-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .example-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .example-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem;
+            background: var(--background);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .example-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 10000;
+            animation: slideInUp 0.3s ease;
+            display: none;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-area {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .language-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .lang-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .actions-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/es/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/es/" data-i18n="nav.home">Inicio</a></li>
+                <li><a href="/es/#ferramentas" data-i18n="nav.tools">Herramientas</a></li>
+                <li><a href="/es/about.html" data-i18n="nav.about">Acerca de</a></li>
+                <li><a href="/es/#ferramentas" data-i18n="nav.contact">Contacto</a></li>
+                
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Español ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option active" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🎨 Beautifier/Minifier</h1>
+                <p class="tool-description">
+                    Formate (beautify) ou comprima (minify) seu código HTML, CSS y JavaScript. 
+                    Otimize para desenvolvimento ou produção.
+                </p>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="html">
+                    🏷️ HTML
+                </button>
+                <button class="lang-btn" data-lang="css">
+                    🎨 CSS
+                </button>
+                <button class="lang-btn" data-lang="javascript">
+                    ⚡ JavaScript
+                </button>
+            </div>
+
+            <!-- Options Panel -->
+            <div class="options-panel" id="optionsPanel">
+                <h3 class="options-title">🛠️ Opciones de Formatação</h3>
+                
+                <!-- HTML Options -->
+                <div id="htmlOptions" class="option-group">
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="htmlIndent" checked>
+                        <span class="option-text">Indentar código</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="htmlWrapAttributes" checked>
+                        <span class="option-text">Quebrar atributos longos</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="htmlPreserveNewlines">
+                        <span class="option-text">Preservar quebras de linha</span>
+                    </label>
+                </div>
+
+                <!-- CSS Options -->
+                <div id="cssOptions" class="option-group" style="display: none;">
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="cssIndent" checked>
+                        <span class="option-text">Indentar código</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="cssNewlineAfterRule" checked>
+                        <span class="option-text">Nova linha após regras</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="cssSpaceAroundSelector" checked>
+                        <span class="option-text">Espaço ao redor de seletores</span>
+                    </label>
+                </div>
+
+                <!-- JavaScript Options -->
+                <div id="jsOptions" class="option-group" style="display: none;">
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="jsIndent" checked>
+                        <span class="option-text">Indentar código</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="jsSpaceInParen">
+                        <span class="option-text">Espaço em parênteses</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="checkbox" class="option-checkbox" id="jsPreserveNewlines" checked>
+                        <span class="option-text">Preservar quebras de linha</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <!-- Input Editor -->
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <div class="editor-title">
+                            📝 Código Original
+                        </div>
+                        <div class="editor-actions">
+                            <button class="btn-small" onclick="loadExample()">📖 Ejemplo</button>
+                            <button class="btn-small btn-clear" onclick="clearInput()">🗑️ Limpiar</button>
+                        </div>
+                    </div>
+                    <textarea 
+                        id="inputCode" 
+                        class="editor-textarea" 
+                        placeholder="Cole ou digite seu código aqui..."
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+
+                <!-- Output Editor -->
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <div class="editor-title">
+                            ✨ Código Processado
+                        </div>
+                        <div class="editor-actions">
+                            <button class="btn-small" onclick="copyOutput()">📋 Copiar</button>
+                            <button class="btn-small" onclick="downloadOutput()">💾 Download</button>
+                        </div>
+                    </div>
+                    <textarea 
+                        id="outputCode" 
+                        class="editor-textarea" 
+                        placeholder="O código processado aparecerá aqui..."
+                        readonly
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions-section">
+                <button class="btn btn-primary" onclick="beautifyCode()">
+                    ✨ Beautify (Formatear)
+                </button>
+                <button class="btn btn-secondary" onclick="minifyCode()">
+                    📦 Minify (Comprimir)
+                </button>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="originalSize">0</div>
+                        <div class="stat-label">Tamanho Original</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="processedSize">0</div>
+                        <div class="stat-label">Tamanho Processado</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="sizeDifference">0</div>
+                        <div class="stat-label">Diferença</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="compressionRatio">0%</div>
+                        <div class="stat-label">Compressão</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Examples -->
+            <div class="examples">
+                <div class="example-card" id="htmlExamples">
+                    <h3 class="example-title">📄 Ejemplos HTML</h3>
+                    <button class="example-btn" onclick="loadHtmlExample('basic')">HTML Básico</button>
+                    <button class="example-btn" onclick="loadHtmlExample('form')">Formulário</button>
+                    <button class="example-btn" onclick="loadHtmlExample('table')">Tabela</button>
+                    <button class="example-btn" onclick="loadHtmlExample('minified')">HTML Minificado</button>
+                </div>
+
+                <div class="example-card" id="cssExamples" style="display: none;">
+                    <h3 class="example-title">🎨 Ejemplos CSS</h3>
+                    <button class="example-btn" onclick="loadCssExample('basic')">CSS Básico</button>
+                    <button class="example-btn" onclick="loadCssExample('flexbox')">Flexbox</button>
+                    <button class="example-btn" onclick="loadCssExample('grid')">CSS Grid</button>
+                    <button class="example-btn" onclick="loadCssExample('minified')">CSS Minificado</button>
+                </div>
+
+                <div class="example-card" id="jsExamples" style="display: none;">
+                    <h3 class="example-title">⚡ Ejemplos JavaScript</h3>
+                    <button class="example-btn" onclick="loadJsExample('function')">Função</button>
+                    <button class="example-btn" onclick="loadJsExample('object')">Objeto</button>
+                    <button class="example-btn" onclick="loadJsExample('async')">Async/Await</button>
+                    <button class="example-btn" onclick="loadJsExample('minified')">JS Minificado</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        let currentLanguage = 'html';
+
+        // Examples for each language
+        const examples = {
+            html: {
+                basic: '<!DOCTYPE html><html><head><title>Ejemplo</title></head><body><h1>Olá Mundo</h1><p>Este é um parágrafo de exemplo.</p></body></html>',
+                form: '<form><div><label for="nome">Nome:</label><input type="text" id="nome" name="nome" required></div><div><label for="email">Email:</label><input type="email" id="email" name="email" required></div><button type="submit">Enviar</button></form>',
+                table: '<table><thead><tr><th>Nome</th><th>Idade</th><th>Cidade</th></tr></thead><tbody><tr><td>João</td><td>30</td><td>São Paulo</td></tr><tr><td>Maria</td><td>25</td><td>Rio de Janeiro</td></tr></tbody></table>',
+                minified: '<!DOCTYPE html><html><head><title>Minified</title></head><body><div class="container"><h1>Title</h1><p>Content here</p><button onclick="doSomething()">Click</button></div></body></html>'
+            },
+            css: {
+                basic: 'body { margin: 0; font-family: Arial, sans-serif; } h1 { color: #333; margin-bottom: 20px; } p { line-height: 1.6; color: #666; }',
+                flexbox: '.container { display: flex; justify-content: space-between; align-items: center; } .item { flex: 1; padding: 20px; margin: 10px; background: #f5f5f5; border-radius: 8px; }',
+                grid: '.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; } .grid-item { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }',
+                minified: 'body{margin:0;font-family:Arial,sans-serif}h1{color:#333;margin-bottom:20px}p{line-height:1.6;color:#666}.container{max-width:1200px;margin:0 auto;padding:20px}'
+            },
+            javascript: {
+                function: 'function calculateSum(a, b) { const result = a + b; console.log(`Soma de ${a} + ${b} = ${result}`); return result; } const numbers = [1, 2, 3, 4, 5]; const total = numbers.reduce((sum, num) => sum + num, 0);',
+                object: 'const user = { name: "João Silva", age: 30, email: "joao@email.com", getInfo() { return `${this.name} (${this.age}) - ${this.email}`; } }; console.log(user.getInfo());',
+                async: 'async function fetchUserData(userId) { try { const response = await fetch(`/api/users/${userId}`); const userData = await response.json(); return userData; } catch (error) { console.error("Error ao buscar dados:", error); throw error; } }',
+                minified: 'function calculate(a,b){return a+b}const data={name:"Test",value:123};document.addEventListener("DOMContentLoaded",function(){console.log("Ready");});'
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupLanguageButtons();
+            setupInputListener();
+            loadExample();
+        });
+
+        function setupLanguageButtons() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    switchLanguage(lang);
+                });
+            });
+        }
+
+        function setupInputListener() {
+            const inputCode = document.getElementById('inputCode');
+            inputCode.addEventListener('input', updateStats);
+        }
+
+        function switchLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+            // Update current language
+            currentLanguage = lang;
+
+            // Show/hide options
+            document.querySelectorAll('[id$="Options"]').forEach(opt => {
+                opt.style.display = 'none';
+            });
+            const optionsId = lang === 'javascript' ? 'jsOptions' : `${lang}Options`;
+            const optionsEl = document.getElementById(optionsId);
+            if (optionsEl) {
+                optionsEl.style.display = 'block';
+            }
+
+            // Show/hide examples
+            document.querySelectorAll('[id$="Examples"]').forEach(ex => {
+                ex.style.display = 'none';
+            });
+            const examplesId = lang === 'javascript' ? 'jsExamples' : `${lang}Examples`;
+            const examplesEl = document.getElementById(examplesId);
+            if (examplesEl) {
+                examplesEl.style.display = 'block';
+            }
+
+            // Clear editor and load example
+            document.getElementById('inputCode').value = '';
+            document.getElementById('outputCode').value = '';
+            loadExample();
+        }
+
+        function loadExample() {
+            const example = examples[currentLanguage].basic;
+            document.getElementById('inputCode').value = example;
+            updateStats();
+        }
+
+        function loadHtmlExample(type) {
+            document.getElementById('inputCode').value = examples.html[type];
+            updateStats();
+        }
+
+        function loadCssExample(type) {
+            document.getElementById('inputCode').value = examples.css[type];
+            updateStats();
+        }
+
+        function loadJsExample(type) {
+            document.getElementById('inputCode').value = examples.javascript[type];
+            updateStats();
+        }
+
+        function beautifyCode() {
+            const input = document.getElementById('inputCode').value.trim();
+            if (!input) {
+                showToast('Digite algum código primeiro!', 'error');
+                return;
+            }
+
+            let beautified;
+            try {
+                switch (currentLanguage) {
+                    case 'html':
+                        beautified = beautifyHtml(input);
+                        break;
+                    case 'css':
+                        beautified = beautifyCss(input);
+                        break;
+                    case 'javascript':
+                        beautified = beautifyJs(input);
+                        break;
+                }
+
+                document.getElementById('outputCode').value = beautified;
+                updateStats();
+                showToast('Código formatado com sucesso!');
+            } catch (error) {
+                showToast(`Errorr al formatear: ${error.message}`, 'error');
+            }
+        }
+
+        function minifyCode() {
+            const input = document.getElementById('inputCode').value.trim();
+            if (!input) {
+                showToast('Digite algum código primeiro!', 'error');
+                return;
+            }
+
+            let minified;
+            try {
+                switch (currentLanguage) {
+                    case 'html':
+                        minified = minifyHtml(input);
+                        break;
+                    case 'css':
+                        minified = minifyCss(input);
+                        break;
+                    case 'javascript':
+                        minified = minifyJs(input);
+                        break;
+                }
+
+                document.getElementById('outputCode').value = minified;
+                updateStats();
+                showToast('Código comprimido com sucesso!');
+            } catch (error) {
+                showToast(`Error ao comprimir: ${error.message}`, 'error');
+            }
+        }
+
+        function beautifyHtml(html) {
+            let formatted = html;
+            let indent = 0;
+            const indentStr = '  ';
+            
+            // Basic HTML beautification
+            formatted = formatted.replace(/>\s*</g, '><');
+            formatted = formatted.replace(/></g, '>\n<');
+            
+            const lines = formatted.split('\n');
+            let result = [];
+            
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (!trimmed) return;
+                
+                if (trimmed.startsWith('</')) {
+                    indent = Math.max(0, indent - 1);
+                }
+                
+                result.push(indentStr.repeat(indent) + trimmed);
+                
+                if (trimmed.startsWith('<') && !trimmed.startsWith('</') && !trimmed.endsWith('/>')) {
+                    const tagMatch = trimmed.match(/<([^>\s]+)/);
+                    if (tagMatch) {
+                        const tag = tagMatch[1];
+                        if (!['img', 'br', 'hr', 'input', 'meta', 'link'].includes(tag)) {
+                            indent++;
+                        }
+                    }
+                }
+            });
+            
+            return result.join('\n');
+        }
+
+        function beautifyCss(css) {
+            let formatted = css;
+            
+            // Remove extra whitespace
+            formatted = formatted.replace(/\s+/g, ' ');
+            
+            // Add newlines after braces
+            formatted = formatted.replace(/\{/g, ' {\n  ');
+            formatted = formatted.replace(/\}/g, '\n}\n');
+            formatted = formatted.replace(/;/g, ';\n  ');
+            formatted = formatted.replace(/,/g, ',\n');
+            
+            // Clean up extra newlines
+            formatted = formatted.replace(/\n\s*\n/g, '\n');
+            formatted = formatted.replace(/\n\s*\}/g, '\n}');
+            formatted = formatted.replace(/\{\s*\n\s*\}/g, '{}');
+            
+            return formatted.trim();
+        }
+
+        function beautifyJs(js) {
+            let formatted = js;
+            let indent = 0;
+            const indentStr = '  ';
+            
+            // Basic JavaScript beautification
+            formatted = formatted.replace(/;/g, ';\n');
+            formatted = formatted.replace(/\{/g, ' {\n');
+            formatted = formatted.replace(/\}/g, '\n}\n');
+            formatted = formatted.replace(/,/g, ',\n');
+            
+            const lines = formatted.split('\n');
+            let result = [];
+            
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (!trimmed) return;
+                
+                if (trimmed.includes('}')) {
+                    indent = Math.max(0, indent - 1);
+                }
+                
+                result.push(indentStr.repeat(indent) + trimmed);
+                
+                if (trimmed.includes('{')) {
+                    indent++;
+                }
+            });
+            
+            return result.join('\n');
+        }
+
+        function minifyHtml(html) {
+            return html
+                .replace(/>\s+</g, '><')
+                .replace(/\s+/g, ' ')
+                .replace(/\s+>/g, '>')
+                .replace(/>\s+/g, '>')
+                .trim();
+        }
+
+        function minifyCss(css) {
+            return css
+                .replace(/\s+/g, ' ')
+                .replace(/;\s*}/g, '}')
+                .replace(/\s*{\s*/g, '{')
+                .replace(/;\s*/g, ';')
+                .replace(/,\s*/g, ',')
+                .replace(/:\s*/g, ':')
+                .trim();
+        }
+
+        function minifyJs(js) {
+            return js
+                .replace(/\s+/g, ' ')
+                .replace(/;\s*/g, ';')
+                .replace(/,\s*/g, ',')
+                .replace(/\{\s*/g, '{')
+                .replace(/\}\s*/g, '}')
+                .replace(/\(\s*/g, '(')
+                .replace(/\s*\)/g, ')')
+                .trim();
+        }
+
+        function clearInput() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('outputCode').value = '';
+            updateStats();
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputCode').value;
+            
+            if (!output) {
+                showToast('Nada para copiar!', 'error');
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(output).then(() => {
+                    showToast('Código copiado!');
+                });
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = output;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Código copiado!');
+            }
+        }
+
+        function downloadOutput() {
+            const output = document.getElementById('outputCode').value;
+            
+            if (!output) {
+                showToast('Nada para baixar!', 'error');
+                return;
+            }
+
+            const extensions = {
+                html: 'html',
+                css: 'css',
+                javascript: 'js'
+            };
+
+            const blob = new Blob([output], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `processed.${extensions[currentLanguage]}`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast('Arquivo baixado!');
+        }
+
+        function updateStats() {
+            const original = document.getElementById('inputCode').value;
+            const processed = document.getElementById('outputCode').value;
+            
+            const originalSize = new Blob([original]).size;
+            const processedSize = new Blob([processed]).size;
+            const difference = originalSize - processedSize;
+            const compressionRatio = originalSize > 0 ? ((difference / originalSize) * 100) : 0;
+            
+            document.getElementById('originalSize').textContent = formatBytes(originalSize);
+            document.getElementById('processedSize').textContent = formatBytes(processedSize);
+            
+            const diffElement = document.getElementById('sizeDifference');
+            const ratioElement = document.getElementById('compressionRatio');
+            
+            if (difference > 0) {
+                diffElement.textContent = `-${formatBytes(difference)}`;
+                diffElement.className = 'stat-value reduction-positive';
+                ratioElement.textContent = `${compressionRatio.toFixed(1)}%`;
+                ratioElement.className = 'stat-value reduction-positive';
+            } else if (difference < 0) {
+                diffElement.textContent = `+${formatBytes(Math.abs(difference))}`;
+                diffElement.className = 'stat-value reduction-negative';
+                ratioElement.textContent = `+${Math.abs(compressionRatio).toFixed(1)}%`;
+                ratioElement.className = 'stat-value reduction-negative';
+            } else {
+                diffElement.textContent = '0';
+                diffElement.className = 'stat-value';
+                ratioElement.textContent = '0%';
+                ratioElement.className = 'stat-value';
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round((bytes / Math.pow(k, i)) * 10) / 10 + ' ' + sizes[i];
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type === 'error' ? 'error' : 'success'}`;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initialize stats
+        updateStats();
+    </script>
+
+    
+    <script>
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            const currentPath = window.location.pathname;
+            const filename = currentPath.split('/').pop();
+            window.location.href = '/' + lang + '/' + filename;
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                var dropdown = document.getElementById('languageDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

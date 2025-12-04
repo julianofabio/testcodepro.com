@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de senhas fortes e seguras online - Crie senhas personalizáveis com diferentes níveis de complexidade. Ferramenta gratuita para gerar senhas seguras.">
+    <meta name="keywords" content="gerador senha, senha forte, senha segura, gerar password, criar senha, senha aleatória, password generator, segurança">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/gerador-senhas.html">
+    <meta property="og:title" content="Generador de Contraseñas Fuertes - TestCodePro">
+    <meta property="og:description" content="Crie senhas seguras e personalizáveis com diferentes níveis de complexidade. Gerador gratuito de senhas fortes.">
+    <meta property="og:image" content="https://testcodepro.com/assets/senha-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/gerador-senhas.html">
+    <meta property="twitter:title" content="Generador de Contraseñas Fuertes - TestCodePro">
+    <meta property="twitter:description" content="Crie senhas seguras e personalizáveis online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/senha-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/gerador-senhas.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Fecha -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Generador de Contraseñas Fuertes",
+        "url": "https://testcodepro.com/gerador-senhas.html",
+        "description": "Gerador online de senhas fortes e seguras com opções de personalização",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Generador de Contraseñas Fuertes - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--primary);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            accent-color: var(--primary);
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .range-input {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: var(--background);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .range-input::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .range-value {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--background);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Generated Password Display */
+        .password-result {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .password-display {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .password-text {
+            flex: 1;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            word-break: break-all;
+            user-select: all;
+        }
+
+        .copy-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #5555eb;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+        }
+
+        /* Password Strength Meter */
+        .strength-meter {
+            margin-top: 1rem;
+        }
+
+        .strength-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .strength-fill {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .strength-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .strength-weak {
+            background: var(--error);
+            width: 25%;
+        }
+
+        .strength-medium {
+            background: var(--warning);
+            width: 50%;
+        }
+
+        .strength-strong {
+            background: var(--success);
+            width: 75%;
+        }
+
+        .strength-very-strong {
+            background: var(--primary);
+            width: 100%;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .tips-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .password-display {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+
+            .copy-btn {
+                justify-content: center;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/es/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/es/">Inicio</a></li>
+                <li><a href="/es/#ferramentas">Herramientas</a></li>
+                <li><a href="sobre.html">Acerca de</a></li>
+                <li><a href="/es/">Contacto</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Español ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option active" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🔐 Generador de Contraseñas</h1>
+                <p class="tool-description">
+                    Crie senhas seguras e personalizáveis com diferentes níveis de complexidade. 
+                    Configure comprimento, caracteres especiais e muito mais.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <div class="form-group">
+                    <label for="passwordLength" class="form-label">
+                        Longitud da Senha
+                        <span id="lengthValue" class="range-value">12</span>
+                    </label>
+                    <input type="range" id="passwordLength" class="range-input" min="4" max="128" value="12">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tipos de Caracteres</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lowercase" checked>
+                            <label for="lowercase">Letras minúsculas (a-z)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="uppercase" checked>
+                            <label for="uppercase">Letras mayúsculas (A-Z)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="numbers" checked>
+                            <label for="numbers">Números (0-9)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="symbols" checked>
+                            <label for="symbols">Símbolos (!@#$%^&*)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="excludeSimilar" class="form-label">Opções Adicionais</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="excludeSimilar">
+                            <label for="excludeSimilar">Excluir caracteres similares (0, O, l, 1)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="excludeAmbiguous">
+                            <label for="excludeAmbiguous">Excluir caracteres ambiguos ({ } [ ] ( ) / \ ' " ` ~ , ; . < >)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="generatePassword()" class="btn-primary">Generar Senha</button>
+
+                <!-- Password Result -->
+                <div id="passwordResult" class="password-result">
+                    <div class="password-display">
+                        <div id="generatedPassword" class="password-text"></div>
+                        <button class="copy-btn" onclick="copyPassword()">
+                            <span class="icon">📋</span>
+                            <span class="text">Copiar</span>
+                        </button>
+                    </div>
+                    
+                    <div class="strength-meter">
+                        <div class="strength-bar">
+                            <div id="strengthFill" class="strength-fill"></div>
+                        </div>
+                        <div id="strengthText" class="strength-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Dicas de Segurança</h2>
+                <p class="info-text">
+                    Uma senha forte é sua primeira linha de defesa contra ataques cibernéticos. Siga estas melhores práticas:
+                </p>
+                <ul class="tips-list">
+                    <li>Use pelo menos 12 caracteres (16+ é ainda melhor)</li>
+                    <li>Combine letras maiúsculas, minúsculas, números e símbolos</li>
+                    <li>Evite palavras do dicionário ou informações pessoais</li>
+                    <li>Use uma senha única para cada conta importante</li>
+                    <li>Considere usar um gerenciador de senhas</li>
+                    <li>Ative a autenticação de dois fatores quando possível</li>
+                    <li>Nunca compartilhe suas senhas por email ou mensagem</li>
+                    <li>Altere senhas regularmente, especialmente se suspeitar de comprometimento</li>
+                </ul>
+                <p class="info-text">
+                    <strong>Importante:</strong> Esta ferramenta gera senhas localmente em seu navegador. 
+                    Nenhuma senha é enviada para nossos servidores, garantindo sua privacidade e segurança.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Update length display
+        document.getElementById('passwordLength').addEventListener('input', function(e) {
+            document.getElementById('lengthValue').textContent = e.target.value;
+        });
+
+        // Generate password function
+        function generatePassword() {
+            const length = parseInt(document.getElementById('passwordLength').value);
+            const lowercase = document.getElementById('lowercase').checked;
+            const uppercase = document.getElementById('uppercase').checked;
+            const numbers = document.getElementById('numbers').checked;
+            const symbols = document.getElementById('symbols').checked;
+            const excludeSimilar = document.getElementById('excludeSimilar').checked;
+            const excludeAmbiguous = document.getElementById('excludeAmbiguous').checked;
+
+            // Character sets
+            let charset = '';
+            let lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+            let uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let numberChars = '0123456789';
+            let symbolChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+            // Exclude similar characters if requested
+            if (excludeSimilar) {
+                lowercaseChars = lowercaseChars.replace(/[il]/g, '');
+                uppercaseChars = uppercaseChars.replace(/[IL]/g, '');
+                numberChars = numberChars.replace(/[01]/g, '');
+                symbolChars = symbolChars.replace(/[|]/g, '');
+            }
+
+            // Exclude ambiguous characters if requested
+            if (excludeAmbiguous) {
+                symbolChars = '!@#$%^&*()_+-=';
+            }
+
+            // Build charset
+            if (lowercase) charset += lowercaseChars;
+            if (uppercase) charset += uppercaseChars;
+            if (numbers) charset += numberChars;
+            if (symbols) charset += symbolChars;
+
+            // Check if at least one character type is selected
+            if (charset === '') {
+                alert('Por favor, selecione pelo menos um tipo de caractere.');
+                return;
+            }
+
+            // Generate password
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+
+            // Ensure password meets requirements (at least one of each selected type)
+            let hasRequiredChars = true;
+            if (lowercase && !/[a-z]/.test(password)) hasRequiredChars = false;
+            if (uppercase && !/[A-Z]/.test(password)) hasRequiredChars = false;
+            if (numbers && !/[0-9]/.test(password)) hasRequiredChars = false;
+            if (symbols && !/[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password)) hasRequiredChars = false;
+
+            // If password doesn't meet requirements, regenerate (max 10 attempts)
+            let attempts = 0;
+            while (!hasRequiredChars && attempts < 10) {
+                password = '';
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * charset.length);
+                    password += charset[randomIndex];
+                }
+                
+                hasRequiredChars = true;
+                if (lowercase && !/[a-z]/.test(password)) hasRequiredChars = false;
+                if (uppercase && !/[A-Z]/.test(password)) hasRequiredChars = false;
+                if (numbers && !/[0-9]/.test(password)) hasRequiredChars = false;
+                if (symbols && !/[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password)) hasRequiredChars = false;
+                
+                attempts++;
+            }
+
+            // Display password
+            document.getElementById('generatedPassword').textContent = password;
+            document.getElementById('passwordResult').style.display = 'block';
+
+            // Calculate and display strength
+            calculateStrength(password);
+        }
+
+        // Calculate password strength
+        function calculateStrength(password) {
+            let score = 0;
+            let feedback = '';
+
+            // Length bonus
+            if (password.length >= 8) score += 25;
+            if (password.length >= 12) score += 25;
+            if (password.length >= 16) score += 25;
+
+            // Character variety bonus
+            if (/[a-z]/.test(password)) score += 10;
+            if (/[A-Z]/.test(password)) score += 10;
+            if (/[0-9]/.test(password)) score += 10;
+            if (/[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password)) score += 15;
+
+            // Determine strength level
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+
+            if (score < 30) {
+                strengthFill.className = 'strength-fill strength-weak';
+                feedback = 'Débil';
+                strengthText.style.color = 'var(--error)';
+            } else if (score < 60) {
+                strengthFill.className = 'strength-fill strength-medium';
+                feedback = 'Media';
+                strengthText.style.color = 'var(--warning)';
+            } else if (score < 90) {
+                strengthFill.className = 'strength-fill strength-strong';
+                feedback = 'Fuerte';
+                strengthText.style.color = 'var(--success)';
+            } else {
+                strengthFill.className = 'strength-fill strength-very-strong';
+                feedback = 'Muito Fuerte';
+                strengthText.style.color = 'var(--primary)';
+            }
+
+            strengthText.textContent = `Força da Senha: ${feedback}`;
+        }
+
+        // Copy password to clipboard
+        function copyPassword() {
+            const password = document.getElementById('generatedPassword').textContent;
+            const button = document.querySelector('.copy-btn');
+
+            if (!password) return;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(password).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    fallbackCopyToClipboard(password, button);
+                });
+            } else {
+                fallbackCopyToClipboard(password, button);
+            }
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Errorr al copiar:', err);
+                showCopyErrorr(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Show success feedback
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '<span class="icon">✅</span><span class="text">Copiada!</span>';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Show error feedback
+        function showCopyErrorr(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '<span class="icon">❌</span><span class="text">Error</span>';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

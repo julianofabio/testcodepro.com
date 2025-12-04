@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de documentos brasileiros para testes - Gere CPF (Brazilian ID), CNPJ (Company ID), RG (ID Card), CEP (Postal Code) e Voter ID válidos for system development and testing.">
+    <meta name="keywords" content="gerador cpf, gerador cnpj, gerador rg, gerador cep, gerador titulo eleitor, documentos para teste, cpf fake, cnpj fake">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/gerador-documentos.html">
+    <meta property="og:title" content="Brazilian Document Generator - TestCodePro">
+    <meta property="og:description" content="Gere CPF (Brazilian ID), CNPJ (Company ID), RG (ID Card), CEP (Postal Code) e Voter ID válidos para testes de sistema. Fictitious but mathematically correct documents.">
+    <meta property="og:image" content="https://testcodepro.com/assets/gerador-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/gerador-documentos.html">
+    <meta property="twitter:title" content="Brazilian Document Generator - TestCodePro">
+    <meta property="twitter:description" content="Gere documentos brasileiros válidos para testes de sistema.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/gerador-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/gerador-documentos.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Brazilian Document Generator",
+        "url": "https://testcodepro.com/gerador-documentos.html",
+        "description": "Gerador de documentos brasileiros para testes: CPF (Brazilian ID), CNPJ (Company ID), RG (ID Card), CEP (Postal Code) e Voter ID",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Brazilian Document Generator - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Generated Documents Display */
+        .generated-docs {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .doc-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .doc-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .copy-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-btn:hover {
+            background: #5555eb;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--warning);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .warning-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .doc-item {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .copy-btn {
+                justify-content: center;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/en/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/#ferramentas">Tools</a></li>
+                <li><a href="/en/about.html">About</a></li>
+                <li><a href="/en/">Contact</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🎲 Document Generator</h1>
+                <p class="tool-description">
+                    Gere documentos brasileiros válidos para testes e desenvolvimento. 
+                    Fictitious but mathematically correct documents.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <div class="form-group">
+                    <label for="documentType" class="form-label">Tipo de Documento</label>
+                    <select id="documentType" class="form-select">
+                        <option value="cpf">CPF (Brazilian ID) - Cadastro de Pessoas Físicas</option>
+                        <option value="cnpj">CNPJ (Company ID) - Cadastro Nacional da Pessoa Jurídica</option>
+                        <option value="rg">RG (ID Card) - Registro Geral</option>
+                        <option value="cep">CEP (Postal Code) - Código de Endereçamento Postal</option>
+                        <option value="titulo">Voter ID</option>
+                        <option value="cnh">Driver's License - Carteira Nacional de Habilitação</option>
+                        <option value="conta">Bank Account</option>
+                        <option value="placa">Vehicle Plate</option>
+                        <option value="passaporte">Passport</option>
+                        <option value="pis">PIS/PASEP</option>
+                        <option value="all">Generate All os Documentos</option>
+                    </select>
+                </div>
+
+                <button onclick="generateDocuments()" class="btn-primary">Generate Documentos</button>
+
+                <!-- Generated Documents Display -->
+                <div id="generatedDocs" class="generated-docs">
+                    <!-- Documents will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Warning Section -->
+            <div class="warning-box">
+                <div class="warning-title">⚠️ Importante - Uso Responsável</div>
+                <p>Estes documentos são FICTÍCIOS e destinados exclusivamente para:</p>
+                <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                    <li>Testes de software e sistemas</li>
+                    <li>Desenvolvimento de aplicações</li>
+                    <li>Validação de formulários</li>
+                    <li>Demonstrações técnicas</li>
+                </ul>
+                <p><strong>NÃO</strong> utilize estes documentos para fins oficiais, cadastros reais ou qualquer atividade que possa configurar fraude ou uso indevido de documentos.</p>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Como funciona?</h2>
+                <p class="info-text">
+                    Nosso gerador cria documentos que seguem as regras matemáticas oficiais:
+                </p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                    <li><strong>CPF (Brazilian ID):</strong> Gera números com dígitos verificadores válidos conforme algoritmo da Receita Federal</li>
+                    <li><strong>CNPJ (Company ID):</strong> Cria números empresariais válidos matematicamente</li>
+                    <li><strong>RG (ID Card):</strong> Gera números de registro geral com formatação padrão</li>
+                    <li><strong>CEP (Postal Code):</strong> Cria códigos postais com formato válido dos Correios</li>
+                    <li><strong>Voter ID:</strong> Gera números válidos conforme TSE</li>
+                </ul>
+                <p class="info-text">
+                    All os documentos passarão na validação de algoritmos, mas são completamente fictícios 
+                    e não correspondem a pessoas ou entidades reais.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Document generation functions
+        function generateCPF (Brazilian ID)() {
+            let cpf = '';
+            for (let i = 0; i < 9; i++) {
+                cpf += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate first check digit
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let checkDigit1 = 11 - (sum % 11);
+            if (checkDigit1 === 10 || checkDigit1 === 11) checkDigit1 = 0;
+            cpf += checkDigit1;
+            
+            // Calculate second check digit
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            let checkDigit2 = 11 - (sum % 11);
+            if (checkDigit2 === 10 || checkDigit2 === 11) checkDigit2 = 0;
+            cpf += checkDigit2;
+            
+            // Format CPF (Brazilian ID)
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        function generateCNPJ (Company ID)() {
+            let cnpj = '';
+            for (let i = 0; i < 12; i++) {
+                cnpj += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate first check digit
+            const weights1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            let sum = 0;
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weights1[i];
+            }
+            let checkDigit1 = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+            cnpj += checkDigit1;
+            
+            // Calculate second check digit
+            const weights2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            sum = 0;
+            for (let i = 0; i < 13; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weights2[i];
+            }
+            let checkDigit2 = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+            cnpj += checkDigit2;
+            
+            // Format CNPJ (Company ID)
+            return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+        }
+
+        function generateRG (ID Card)() {
+            let rg = '';
+            for (let i = 0; i < 8; i++) {
+                rg += Math.floor(Math.random() * 10);
+            }
+            const checkDigit = Math.floor(Math.random() * 10);
+            rg += checkDigit;
+            
+            // Format RG (ID Card)
+            return rg.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+        }
+
+        function generateCEP (Postal Code)() {
+            let cep = '';
+            for (let i = 0; i < 8; i++) {
+                cep += Math.floor(Math.random() * 10);
+            }
+            
+            // Format CEP (Postal Code)
+            return cep.replace(/(\d{5})(\d{3})/, '$1-$2');
+        }
+
+        function generateTitulo() {
+            let titulo = '';
+            for (let i = 0; i < 8; i++) {
+                titulo += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate first check digit
+            let sum = 0;
+            for (let i = 0; i < 8; i++) {
+                sum += parseInt(titulo.charAt(i)) * (i + 2);
+            }
+            let checkDigit1 = sum % 11;
+            if (checkDigit1 === 0 || checkDigit1 === 1) {
+                checkDigit1 = 0;
+            } else {
+                checkDigit1 = 11 - checkDigit1;
+            }
+            
+            // Calculate second check digit
+            sum = 0;
+            for (let i = 0; i < 8; i++) {
+                sum += parseInt(titulo.charAt(i)) * (i + 7);
+            }
+            sum += checkDigit1 * 2;
+            let checkDigit2 = sum % 11;
+            if (checkDigit2 === 0 || checkDigit2 === 1) {
+                checkDigit2 = 0;
+            } else {
+                checkDigit2 = 11 - checkDigit2;
+            }
+            
+            titulo += checkDigit1.toString() + checkDigit2.toString();
+            
+            // Add state digits (random)
+            titulo += Math.floor(Math.random() * 100).toString().padStart(2, '0');
+            
+            // Format Título
+            return titulo.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3');
+        }
+
+        // Generate Driver's License
+        function generateDriver's License() {
+            let cnh = '';
+            for (let i = 0; i < 9; i++) {
+                cnh += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate check digits for Driver's License (simplified)
+            let sum1 = 0, sum2 = 0;
+            for (let i = 0; i < 9; i++) {
+                sum1 += parseInt(cnh[i]) * (9 - i);
+                sum2 += parseInt(cnh[i]) * (1 + i);
+            }
+            
+            let check1 = sum1 % 11;
+            check1 = check1 < 2 ? 0 : 11 - check1;
+            cnh += check1;
+            
+            let check2 = (sum2 + check1 * 2) % 11;
+            check2 = check2 < 2 ? 0 : 11 - check2;
+            cnh += check2;
+            
+            return cnh;
+        }
+
+        // Generate Bank Account
+        function generateContaBancaria() {
+            const agencia = Math.floor(Math.random() * 9000) + 1000;
+            const agenciaDigit = Math.floor(Math.random() * 10);
+            const conta = Math.floor(Math.random() * 9000000) + 1000000;
+            const contaDigit = Math.floor(Math.random() * 10);
+            
+            return `${agencia}-${agenciaDigit} / ${conta}-${contaDigit}`;
+        }
+
+        // Generate Vehicle Plate (Mercosul format)
+        function generatePlacaVeiculo() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            
+            let placa = '';
+            for (let i = 0; i < 3; i++) {
+                placa += letters[Math.floor(Math.random() * letters.length)];
+            }
+            placa += numbers[Math.floor(Math.random() * numbers.length)];
+            placa += letters[Math.floor(Math.random() * letters.length)];
+            for (let i = 0; i < 2; i++) {
+                placa += numbers[Math.floor(Math.random() * numbers.length)];
+            }
+            
+            return placa;
+        }
+
+        // Generate Passport
+        function generatePassport() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            
+            let passaporte = '';
+            // Brazilian passport format: 2 letters + 6 numbers
+            for (let i = 0; i < 2; i++) {
+                passaporte += letters[Math.floor(Math.random() * letters.length)];
+            }
+            for (let i = 0; i < 6; i++) {
+                passaporte += numbers[Math.floor(Math.random() * numbers.length)];
+            }
+            
+            return passaporte;
+        }
+
+        // Generate PIS/PASEP
+        function generatePIS() {
+            let pis = '';
+            for (let i = 0; i < 10; i++) {
+                pis += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate check digit
+            const weights = [3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            let sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(pis[i]) * weights[i];
+            }
+            
+            let remainder = sum % 11;
+            let checkDigit = remainder < 2 ? 0 : 11 - remainder;
+            pis += checkDigit;
+            
+            return pis.replace(/(\d{3})(\d{5})(\d{2})(\d{1})/, '$1.$2.$3-$4');
+        }
+
+        // Main generation function
+        function generateDocuments() {
+            const docType = document.getElementById('documentType').value;
+            const container = document.getElementById('generatedDocs');
+            
+            container.innerHTML = '';
+            
+            const documents = [];
+            
+            if (docType === 'all') {
+                documents.push({ type: 'CPF (Brazilian ID)', value: generateCPF (Brazilian ID)() });
+                documents.push({ type: 'CNPJ (Company ID)', value: generateCNPJ (Company ID)() });
+                documents.push({ type: 'RG (ID Card)', value: generateRG (ID Card)() });
+                documents.push({ type: 'CEP (Postal Code)', value: generateCEP (Postal Code)() });
+                documents.push({ type: 'Voter ID', value: generateTitulo() });
+                documents.push({ type: 'Driver's License', value: generateDriver's License() });
+                documents.push({ type: 'Bank Account', value: generateContaBancaria() });
+                documents.push({ type: 'Vehicle Plate', value: generatePlacaVeiculo() });
+                documents.push({ type: 'Passport', value: generatePassport() });
+                documents.push({ type: 'PIS/PASEP', value: generatePIS() });
+            } else {
+                let value = '';
+                let type = '';
+                
+                switch (docType) {
+                    case 'cpf':
+                        value = generateCPF (Brazilian ID)();
+                        type = 'CPF (Brazilian ID)';
+                        break;
+                    case 'cnpj':
+                        value = generateCNPJ (Company ID)();
+                        type = 'CNPJ (Company ID)';
+                        break;
+                    case 'rg':
+                        value = generateRG (ID Card)();
+                        type = 'RG (ID Card)';
+                        break;
+                    case 'cep':
+                        value = generateCEP (Postal Code)();
+                        type = 'CEP (Postal Code)';
+                        break;
+                    case 'titulo':
+                        value = generateTitulo();
+                        type = 'Voter ID';
+                        break;
+                    case 'cnh':
+                        value = generateDriver's License();
+                        type = 'Driver's License';
+                        break;
+                    case 'conta':
+                        value = generateContaBancaria();
+                        type = 'Bank Account';
+                        break;
+                    case 'placa':
+                        value = generatePlacaVeiculo();
+                        type = 'Vehicle Plate';
+                        break;
+                    case 'passaporte':
+                        value = generatePassport();
+                        type = 'Passport';
+                        break;
+                    case 'pis':
+                        value = generatePIS();
+                        type = 'PIS/PASEP';
+                        break;
+                }
+                
+                documents.push({ type, value });
+            }
+            
+            documents.forEach(doc => {
+                const docElement = document.createElement('div');
+                docElement.className = 'doc-item';
+                docElement.innerHTML = `
+                    <div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.25rem;">${doc.type}</div>
+                        <div class="doc-value">${doc.value}</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('${doc.value}', this)">
+                        <span class="icon">📋</span>
+                        <span class="text">Copy</span>
+                    </button>
+                `;
+                container.appendChild(docElement);
+            });
+            
+            container.style.display = 'block';
+        }
+
+        // Copy to Clipboard Function
+        function copyToClipboard(text, buttonElement) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopyToClipboard(text, buttonElement);
+                });
+            } else {
+                fallbackCopyToClipboard(text, buttonElement);
+            }
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Errorr copying:', err);
+                showCopyErrorr(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Show success feedback
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '<span class="icon">✅</span><span class="text">Copied!</span>';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Show error feedback
+        function showCopyErrorr(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '<span class="icon">❌</span><span class="text">Error</span>';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

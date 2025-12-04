@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Validador de JSON, YAML, XML e TOON - Verifique se seus arquivos estão com sintaxe correta e identifique erros.">
+    <meta name="keywords" content="validador json, validar yaml, xml validator, toon validator, syntax checker">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>Validador JSON/YAML/XML/TOON - TestCodePro</title>
+    
+    <!-- Language Selector CSS -->
+    <link rel="stylesheet" href="/css/language-selector.css">
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Format Selector */
+        .format-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .format-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            background: var(--surface);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .format-btn.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+        }
+
+        .format-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .editor-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .editor-header {
+            background: var(--surface-light);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .editor-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .editor-textarea {
+            width: 100%;
+            min-height: 400px;
+            padding: 1.5rem;
+            border: none;
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .validation-status {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-icon {
+            font-size: 1.5rem;
+        }
+
+        .status-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .status-valid {
+            color: var(--success);
+        }
+
+        .status-invalid {
+            color: var(--error);
+        }
+
+        .status-pending {
+            color: var(--text-muted);
+        }
+
+        .error-details {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .file-info {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .file-info h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        /* Action Buttons */
+        .btn-small {
+            background: var(--primary);
+            color: var(--background);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--surface-light);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .examples {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .examples h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .example-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem;
+            background: var(--background);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .example-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content-area {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .format-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .format-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/pt/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/pt/" data-i18n="nav.home">Início</a></li>
+                <li><a href="/pt/#ferramentas" data-i18n="nav.tools">Ferramentas</a></li>
+                <li><a href="/pt/about.html" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="/pt/#ferramentas" data-i18n="nav.contact">Contato</a></li>
+                
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Português ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option active" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">✅ Validador de Formatos</h1>
+                <p class="tool-description">
+                    Valide JSON, YAML, XML e TOON instantaneamente. Identifique erros de sintaxe 
+                    e obtenha informações detalhadas sobre seus arquivos.
+                </p>
+            </div>
+
+            <!-- Format Selector -->
+            <div class="format-selector">
+                <button class="format-btn active" data-format="json">📄 JSON</button>
+                <button class="format-btn" data-format="yaml">📋 YAML</button>
+                <button class="format-btn" data-format="xml">🏷️ XML</button>
+                <button class="format-btn" data-format="toon">🎭 TOON</button>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <!-- Editor Section -->
+                <div class="editor-section">
+                    <div class="editor-header">
+                        <div class="editor-title">Editor de <span id="currentFormat">JSON</span></div>
+                        <div class="editor-actions">
+                            <button class="btn-small" onclick="loadExample()">📖 Exemplo</button>
+                            <button class="btn-small btn-secondary" onclick="clearEditor()">🗑️ Limpar</button>
+                            <button class="btn-small btn-secondary" onclick="copyContent()">📋 Copiar</button>
+                        </div>
+                    </div>
+                    <textarea 
+                        id="codeEditor" 
+                        class="editor-textarea" 
+                        placeholder="Cole ou digite seu código aqui..."
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Validation Status -->
+                    <div class="validation-status">
+                        <div class="status-header">
+                            <span class="status-icon" id="statusIcon">⏳</span>
+                            <span class="status-text" id="statusText">Aguardando código...</span>
+                        </div>
+                        <div id="errorDetails" class="error-details" style="display: none;"></div>
+                    </div>
+
+                    <!-- File Information -->
+                    <div class="file-info">
+                        <h3>📊 Informações</h3>
+                        <div class="info-item">
+                            <span class="info-label">Caracteres:</span>
+                            <span class="info-value" id="charCount">0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Linhas:</span>
+                            <span class="info-value" id="lineCount">0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Tamanho:</span>
+                            <span class="info-value" id="sizeInfo">0 bytes</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Formato:</span>
+                            <span class="info-value" id="formatInfo">JSON</span>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="examples">
+                        <h3>💡 Exemplos</h3>
+                        <button class="example-btn" onclick="loadExample('valid')">✅ Exemplo Válido</button>
+                        <button class="example-btn" onclick="loadExample('invalid')">❌ Exemplo com Erro</button>
+                        <button class="example-btn" onclick="loadExample('complex')">🔧 Exemplo Complexo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentFormat = 'json';
+        let validationTimeout;
+
+        // Examples for each format
+        const examples = {
+            json: {
+                valid: '{\n  "name": "João Silva",\n  "age": 30,\n  "email": "joao@email.com",\n  "active": true,\n  "hobbies": ["programação", "leitura", "música"]\n}',
+                invalid: '{\n  "name": "João Silva",\n  "age": 30,\n  "email": "joao@email.com"\n  "active": true\n}',
+                complex: '{\n  "users": [\n    {\n      "id": 1,\n      "name": "João",\n      "profile": {\n        "avatar": "avatar1.jpg",\n        "preferences": {\n          "theme": "dark",\n          "notifications": true\n        }\n      }\n    }\n  ],\n  "metadata": {\n    "version": "1.0",\n    "created": "2024-01-01T00:00:00Z"\n  }\n}'
+            },
+            yaml: {
+                valid: 'name: João Silva\nage: 30\nemail: joao@email.com\nactive: true\nhobbies:\n  - programação\n  - leitura\n  - música',
+                invalid: 'name: João Silva\nage: 30\nemail: joao@email.com\n  active: true\nhobbies:\n- programação',
+                complex: 'database:\n  host: localhost\n  port: 5432\n  credentials:\n    username: admin\n    password: secret\n\nservices:\n  - name: web\n    replicas: 3\n    resources:\n      cpu: 100m\n      memory: 128Mi\n  - name: worker\n    replicas: 2\n    env:\n      LOG_LEVEL: debug'
+            },
+            xml: {
+                valid: '<?xml version="1.0" encoding="UTF-8"?>\n<person>\n  <name>João Silva</name>\n  <age>30</age>\n  <email>joao@email.com</email>\n  <active>true</active>\n  <hobbies>\n    <hobby>programação</hobby>\n    <hobby>leitura</hobby>\n    <hobby>música</hobby>\n  </hobbies>\n</person>',
+                invalid: '<?xml version="1.0" encoding="UTF-8"?>\n<person>\n  <name>João Silva</name>\n  <age>30</age>\n  <email>joao@email.com</email>\n  <active>true</active>\n  <hobbies>\n    <hobby>programação</hobby>\n    <hobby>leitura\n  </hobbies>\n</person>',
+                complex: '<?xml version="1.0" encoding="UTF-8"?>\n<catalog xmlns:book="http://example.com/book">\n  <book:item id="1" category="programming">\n    <title lang="pt">JavaScript: O Guia Definitivo</title>\n    <author>\n      <firstName>David</firstName>\n      <lastName>Flanagan</lastName>\n    </author>\n    <price currency="BRL">89.90</price>\n    <availability>in-stock</availability>\n  </book:item>\n</catalog>'
+            },
+            toon: {
+                valid: 'TOON_VERSION: 1.0\nNAME: João Silva\nAGE: 30\nEMAIL: joao@email.com\nACTIVE: TRUE\nHOBBIES: [programação, leitura, música]',
+                invalid: 'TOON_VERSION: 1.0\nNAME: João Silva\nAGE: 30\nEMAIL: joao@email.com\nACTIVE: TRUE\nHOBBIES: [programação, leitura, música',
+                complex: 'TOON_VERSION: 1.0\nUSERS: {\n  USER_1: {\n    NAME: João\n    PROFILE: {\n      AVATAR: avatar1.jpg\n      PREFERENCES: {\n        THEME: dark\n        NOTIFICATIONS: TRUE\n      }\n    }\n  }\n}\nMETADATA: {\n  VERSION: 1.0\n  CREATED: 2024-01-01T00:00:00Z\n}'
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFormatButtons();
+            setupEditor();
+            loadExample('valid');
+        });
+
+        function setupFormatButtons() {
+            const formatButtons = document.querySelectorAll('.format-btn');
+            formatButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const format = this.dataset.format;
+                    switchFormat(format);
+                });
+            });
+        }
+
+        function setupEditor() {
+            const editor = document.getElementById('codeEditor');
+            editor.addEventListener('input', function() {
+                clearTimeout(validationTimeout);
+                validationTimeout = setTimeout(validateCode, 500);
+                updateFileInfo();
+            });
+        }
+
+        function switchFormat(format) {
+            // Update active button
+            document.querySelectorAll('.format-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-format="${format}"]`).classList.add('active');
+
+            // Update current format
+            currentFormat = format;
+            document.getElementById('currentFormat').textContent = format.toUpperCase();
+            document.getElementById('formatInfo').textContent = format.toUpperCase();
+
+            // Clear editor and load example
+            document.getElementById('codeEditor').value = '';
+            loadExample('valid');
+        }
+
+        function loadExample(type = 'valid') {
+            const example = examples[currentFormat][type];
+            document.getElementById('codeEditor').value = example;
+            validateCode();
+            updateFileInfo();
+        }
+
+        function clearEditor() {
+            document.getElementById('codeEditor').value = '';
+            resetValidation();
+            updateFileInfo();
+        }
+
+        function copyContent() {
+            const content = document.getElementById('codeEditor').value;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(content).then(() => {
+                    showToast('Conteúdo copiado!');
+                });
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = content;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Conteúdo copiado!');
+            }
+        }
+
+        function validateCode() {
+            const code = document.getElementById('codeEditor').value.trim();
+            
+            if (!code) {
+                resetValidation();
+                return;
+            }
+
+            try {
+                switch (currentFormat) {
+                    case 'json':
+                        validateJSON(code);
+                        break;
+                    case 'yaml':
+                        validateYAML(code);
+                        break;
+                    case 'xml':
+                        validateXML(code);
+                        break;
+                    case 'toon':
+                        validateTOON(code);
+                        break;
+                }
+            } catch (error) {
+                showValidationError(error.message);
+            }
+        }
+
+        function validateJSON(code) {
+            try {
+                JSON.parse(code);
+                showValidationSuccess('JSON válido!');
+            } catch (error) {
+                showValidationError(`JSON inválido: ${error.message}`);
+            }
+        }
+
+        function validateYAML(code) {
+            // Basic YAML validation (simplified)
+            try {
+                // Check for basic YAML structure
+                const lines = code.split('\n');
+                let indentStack = [0];
+                
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+                    if (line.trim() === '' || line.trim().startsWith('#')) continue;
+                    
+                    const indent = line.length - line.trimStart().length;
+                    
+                    // Check for valid key-value pairs
+                    if (line.includes(':') && !line.trim().startsWith('-')) {
+                        const parts = line.split(':');
+                        if (parts.length < 2 || parts[0].trim() === '') {
+                            throw new Error(`Linha ${i + 1}: Chave inválida`);
+                        }
+                    }
+                }
+                
+                showValidationSuccess('YAML válido!');
+            } catch (error) {
+                showValidationError(`YAML inválido: ${error.message}`);
+            }
+        }
+
+        function validateXML(code) {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(code, 'text/xml');
+                
+                const errorNode = doc.querySelector('parsererror');
+                if (errorNode) {
+                    throw new Error(errorNode.textContent);
+                }
+                
+                showValidationSuccess('XML válido!');
+            } catch (error) {
+                showValidationError(`XML inválido: ${error.message}`);
+            }
+        }
+
+        function validateTOON(code) {
+            // Basic TOON validation (custom format)
+            try {
+                const lines = code.split('\n').filter(line => line.trim() !== '');
+                
+                if (!lines[0].startsWith('TOON_VERSION:')) {
+                    throw new Error('Arquivo TOON deve começar com TOON_VERSION');
+                }
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line.includes(':') && !line.includes('{') && !line.includes('}') && !line.includes('[') && !line.includes(']')) {
+                        if (line !== '') {
+                            throw new Error(`Linha ${i + 1}: Formato inválido`);
+                        }
+                    }
+                }
+                
+                showValidationSuccess('TOON válido!');
+            } catch (error) {
+                showValidationError(`TOON inválido: ${error.message}`);
+            }
+        }
+
+        function showValidationSuccess(message) {
+            document.getElementById('statusIcon').textContent = '✅';
+            document.getElementById('statusText').textContent = message;
+            document.getElementById('statusText').className = 'status-text status-valid';
+            document.getElementById('errorDetails').style.display = 'none';
+        }
+
+        function showValidationError(message) {
+            document.getElementById('statusIcon').textContent = '❌';
+            document.getElementById('statusText').textContent = 'Erro de sintaxe';
+            document.getElementById('statusText').className = 'status-text status-invalid';
+            
+            const errorDetails = document.getElementById('errorDetails');
+            errorDetails.textContent = message;
+            errorDetails.style.display = 'block';
+        }
+
+        function resetValidation() {
+            document.getElementById('statusIcon').textContent = '⏳';
+            document.getElementById('statusText').textContent = 'Aguardando código...';
+            document.getElementById('statusText').className = 'status-text status-pending';
+            document.getElementById('errorDetails').style.display = 'none';
+        }
+
+        function updateFileInfo() {
+            const content = document.getElementById('codeEditor').value;
+            const lines = content.split('\n').length;
+            const chars = content.length;
+            const bytes = new Blob([content]).size;
+            
+            document.getElementById('charCount').textContent = chars.toLocaleString();
+            document.getElementById('lineCount').textContent = lines.toLocaleString();
+            document.getElementById('sizeInfo').textContent = formatBytes(bytes);
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 bytes';
+            const k = 1024;
+            const sizes = ['bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round((bytes / Math.pow(k, i)) * 10) / 10 + ' ' + sizes[i];
+        }
+
+        function showToast(message) {
+            // Simple toast notification
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--success);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                z-index: 10000;
+                animation: slideInUp 0.3s ease;
+            `;
+            
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Initialize file info
+        updateFileInfo();
+    </script>
+
+    
+    <script>
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            const currentPath = window.location.pathname;
+            const filename = currentPath.split('/').pop();
+            window.location.href = '/' + lang + '/' + filename;
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                var dropdown = document.getElementById('languageDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

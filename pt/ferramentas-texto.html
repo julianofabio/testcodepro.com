@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ferramentas de Texto online - Contar caracteres, remover espaços, converter maiúsculas/minúsculas, ordenar linhas, remover duplicatas e muito mais.">
+    <meta name="keywords" content="ferramentas texto, contar caracteres, remover espaços, maiuscula minuscula, ordenar linhas, remover duplicatas, manipular texto">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/ferramentas-texto.html">
+    <meta property="og:title" content="Ferramentas de Texto - TestCodePro">
+    <meta property="og:description" content="Conjunto completo de ferramentas para manipulação de texto: contar, limpar, converter e organizar texto de forma eficiente.">
+    <meta property="og:image" content="https://testcodepro.com/assets/texto-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/ferramentas-texto.html">
+    <meta property="twitter:title" content="Ferramentas de Texto - TestCodePro">
+    <meta property="twitter:description" content="Ferramentas completas para manipulação de texto online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/texto-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/ferramentas-texto.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Ferramentas de Texto",
+        "url": "https://testcodepro.com/ferramentas-texto.html",
+        "description": "Conjunto de ferramentas para manipulação e análise de texto",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Ferramentas de Texto - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .text-analyzer {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .text-editor-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .editor-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+        }
+
+        .btn-small.success {
+            background: var(--success);
+        }
+
+        .text-editor {
+            width: 100%;
+            height: 400px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .text-editor:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        /* Statistics Panel */
+        .stats-panel {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .stats-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            color: var(--primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-category {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .category-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .tool-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .tool-btn {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tool-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .tool-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Action Buttons */
+        .main-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Success Toast */
+        .toast {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .feature-description {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .text-analyzer {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-panel {
+                max-width: none;
+                min-width: auto;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main-actions .btn-primary,
+            .main-actions .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .text-editor {
+                height: 300px;
+            }
+
+            .toast {
+                right: 10px;
+                left: 10px;
+                transform: translateY(-100%);
+            }
+
+            .toast.show {
+                transform: translateY(0);
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/pt/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/pt/">Início</a></li>
+                <li><a href="/pt/#ferramentas">Ferramentas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="/pt/">Contato</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Português ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option active" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">📝 Ferramentas de Texto</h1>
+                <p class="tool-description">
+                    Conjunto completo de ferramentas para análise, limpeza e transformação de texto. 
+                    Conte caracteres, organize linhas, remova duplicatas e muito mais.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Text Analyzer -->
+                <div class="text-analyzer">
+                    <div class="text-editor-section">
+                        <div class="editor-header">
+                            <span class="editor-title">Editor de Texto</span>
+                            <div class="editor-actions">
+                                <button class="btn-small" onclick="clearText()">Limpar</button>
+                                <button class="btn-small" onclick="copyText()" id="copyBtn">Copiar</button>
+                            </div>
+                        </div>
+                        <textarea id="textInput" class="text-editor" 
+                                  placeholder="Digite ou cole seu texto aqui para analisar e manipular..."
+                                  oninput="updateStats()"></textarea>
+                    </div>
+
+                    <!-- Statistics Panel -->
+                    <div class="stats-panel">
+                        <div class="stats-title">📊 Estatísticas</div>
+                        <div class="stat-item">
+                            <span class="stat-label">Caracteres</span>
+                            <span class="stat-value" id="charCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Caracteres (sem espaços)</span>
+                            <span class="stat-value" id="charCountNoSpaces">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Palavras</span>
+                            <span class="stat-value" id="wordCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Linhas</span>
+                            <span class="stat-value" id="lineCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Parágrafos</span>
+                            <span class="stat-value" id="paragraphCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Tempo de leitura</span>
+                            <span class="stat-value" id="readingTime">0min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Grid -->
+                <div class="tools-grid">
+                    <!-- Limpeza -->
+                    <div class="tool-category">
+                        <div class="category-title">🧹 Limpeza</div>
+                        <div class="tool-buttons">
+                            <button class="tool-btn" onclick="removeExtraSpaces()">Remover Espaços Extras</button>
+                            <button class="tool-btn" onclick="removeAllSpaces()">Remover Todos os Espaços</button>
+                            <button class="tool-btn" onclick="removeEmptyLines()">Remover Linhas Vazias</button>
+                            <button class="tool-btn" onclick="removeLineBreaks()">Remover Quebras de Linha</button>
+                            <button class="tool-btn" onclick="removeSpecialChars()">Remover Chars Especiais</button>
+                            <button class="tool-btn" onclick="removeAccents()">Remover Acentos</button>
+                        </div>
+                    </div>
+
+                    <!-- Transformação -->
+                    <div class="tool-category">
+                        <div class="category-title">🔄 Transformação</div>
+                        <div class="tool-buttons">
+                            <button class="tool-btn" onclick="toUpperCase()">MAIÚSCULAS</button>
+                            <button class="tool-btn" onclick="toLowerCase()">minúsculas</button>
+                            <button class="tool-btn" onclick="toTitleCase()">Primeira Maiúscula</button>
+                            <button class="tool-btn" onclick="toggleCase()">aLtErNaR cAsO</button>
+                            <button class="tool-btn" onclick="tabsToSpaces()">Tabs → Espaços</button>
+                            <button class="tool-btn" onclick="spacesToTabs()">Espaços → Tabs</button>
+                        </div>
+                    </div>
+
+                    <!-- Organização -->
+                    <div class="tool-category">
+                        <div class="category-title">📋 Organização</div>
+                        <div class="tool-buttons">
+                            <button class="tool-btn" onclick="sortLines()">Ordenar Linhas A-Z</button>
+                            <button class="tool-btn" onclick="sortLinesDesc()">Ordenar Linhas Z-A</button>
+                            <button class="tool-btn" onclick="removeDuplicateLines()">Remover Duplicadas</button>
+                            <button class="tool-btn" onclick="reverseLines()">Inverter Ordem</button>
+                            <button class="tool-btn" onclick="shuffleLines()">Embaralhar Linhas</button>
+                            <button class="tool-btn" onclick="numberLines()">Numerar Linhas</button>
+                        </div>
+                    </div>
+
+                    <!-- Conversão -->
+                    <div class="tool-category">
+                        <div class="category-title">🔧 Conversão</div>
+                        <div class="tool-buttons">
+                            <button class="tool-btn" onclick="convertToHTML()">Converter para HTML</button>
+                            <button class="tool-btn" onclick="convertFromHTML()">HTML → Texto</button>
+                            <button class="tool-btn" onclick="addLineNumbers()">Adicionar Números</button>
+                            <button class="tool-btn" onclick="extractEmails()">Extrair Emails</button>
+                            <button class="tool-btn" onclick="extractURLs()">Extrair URLs</button>
+                            <button class="tool-btn" onclick="wordWrap()">Quebrar Linhas</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Actions -->
+                <div class="main-actions">
+                    <button class="btn-primary" onclick="updateStats()">📊 Recalcular Estatísticas</button>
+                    <button class="btn-secondary" onclick="undoLastAction()">↶ Desfazer Última Ação</button>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Sobre as Ferramentas</h2>
+                <p class="info-text">
+                    Este conjunto de ferramentas oferece funcionalidades abrangentes para manipulação e análise de texto, 
+                    ideal para escritores, desenvolvedores, editores e qualquer pessoa que trabalhe com conteúdo textual.
+                </p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-title">📊 Análise de Texto</div>
+                        <div class="feature-description">Conte caracteres, palavras, linhas e calcule tempo de leitura em tempo real.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">🧹 Limpeza Avançada</div>
+                        <div class="feature-description">Remova espaços extras, linhas vazias, caracteres especiais e acentos.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">🔄 Transformações</div>
+                        <div class="feature-description">Altere entre maiúsculas/minúsculas e converta tabs em espaços.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">📋 Organização</div>
+                        <div class="feature-description">Ordene linhas alfabeticamente, remova duplicatas e organize conteúdo.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">🔧 Conversões</div>
+                        <div class="feature-description">Converta para HTML, extraia emails/URLs e formate texto.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-title">↶ Controle de Ações</div>
+                        <div class="feature-description">Função de desfazer para reverter alterações indesejadas.</div>
+                    </div>
+                </div>
+
+                <p class="info-text" style="margin-top: 1.5rem;">
+                    <strong>Dica:</strong> Todas as operações são realizadas localmente no seu navegador, garantindo privacidade e velocidade no processamento do seu texto.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let textHistory = [];
+        let currentHistoryIndex = -1;
+
+        // Update statistics in real-time
+        function updateStats() {
+            const text = document.getElementById('textInput').value;
+            
+            // Basic counts
+            const charCount = text.length;
+            const charCountNoSpaces = text.replace(/\s/g, '').length;
+            const words = text.trim() ? text.trim().split(/\s+/) : [];
+            const wordCount = words.length === 1 && words[0] === '' ? 0 : words.length;
+            const lines = text ? text.split('\n') : [];
+            const lineCount = lines.length;
+            
+            // Paragraph count (separated by double line breaks)
+            const paragraphs = text.trim() ? text.split(/\n\s*\n/) : [];
+            const paragraphCount = paragraphs.length === 1 && paragraphs[0] === '' ? 0 : paragraphs.length;
+            
+            // Reading time (average 200 words per minute)
+            const readingTime = Math.ceil(wordCount / 200);
+            
+            // Update display
+            document.getElementById('charCount').textContent = charCount.toLocaleString();
+            document.getElementById('charCountNoSpaces').textContent = charCountNoSpaces.toLocaleString();
+            document.getElementById('wordCount').textContent = wordCount.toLocaleString();
+            document.getElementById('lineCount').textContent = lineCount.toLocaleString();
+            document.getElementById('paragraphCount').textContent = paragraphCount.toLocaleString();
+            document.getElementById('readingTime').textContent = readingTime + 'min';
+        }
+
+        // Save text to history for undo functionality
+        function saveToHistory() {
+            const text = document.getElementById('textInput').value;
+            textHistory = textHistory.slice(0, currentHistoryIndex + 1);
+            textHistory.push(text);
+            currentHistoryIndex = textHistory.length - 1;
+            
+            // Limit history to 50 entries
+            if (textHistory.length > 50) {
+                textHistory.shift();
+                currentHistoryIndex--;
+            }
+        }
+
+        // Apply transformation and update stats
+        function applyTransformation(transformFunction) {
+            saveToHistory();
+            const text = document.getElementById('textInput').value;
+            const result = transformFunction(text);
+            document.getElementById('textInput').value = result;
+            updateStats();
+            showToast('Transformação aplicada!');
+        }
+
+        // Cleaning functions
+        function removeExtraSpaces() {
+            applyTransformation(text => text.replace(/[ \t]+/g, ' ').replace(/\n +/g, '\n').replace(/ +\n/g, '\n'));
+        }
+
+        function removeAllSpaces() {
+            applyTransformation(text => text.replace(/\s/g, ''));
+        }
+
+        function removeEmptyLines() {
+            applyTransformation(text => text.split('\n').filter(line => line.trim() !== '').join('\n'));
+        }
+
+        function removeLineBreaks() {
+            applyTransformation(text => text.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim());
+        }
+
+        function removeSpecialChars() {
+            applyTransformation(text => text.replace(/[^\w\s\-.,!?;:()"']/g, ''));
+        }
+
+        function removeAccents() {
+            applyTransformation(text => text
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^\x00-\x7F]/g, function(char) {
+                    const accents = {
+                        'á': 'a', 'à': 'a', 'ã': 'a', 'â': 'a', 'ä': 'a',
+                        'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+                        'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
+                        'ó': 'o', 'ò': 'o', 'õ': 'o', 'ô': 'o', 'ö': 'o',
+                        'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
+                        'ç': 'c', 'ñ': 'n',
+                        'Á': 'A', 'À': 'A', 'Ã': 'A', 'Â': 'A', 'Ä': 'A',
+                        'É': 'E', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
+                        'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
+                        'Ó': 'O', 'Ò': 'O', 'Õ': 'O', 'Ô': 'O', 'Ö': 'O',
+                        'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
+                        'Ç': 'C', 'Ñ': 'N'
+                    };
+                    return accents[char] || char;
+                }));
+        }
+
+        // Transformation functions
+        function toUpperCase() {
+            applyTransformation(text => text.toUpperCase());
+        }
+
+        function toLowerCase() {
+            applyTransformation(text => text.toLowerCase());
+        }
+
+        function toTitleCase() {
+            applyTransformation(text => text.replace(/\w\S*/g, (txt) => 
+                txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()));
+        }
+
+        function toggleCase() {
+            applyTransformation(text => text.split('').map(char => 
+                char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()).join(''));
+        }
+
+        function tabsToSpaces() {
+            applyTransformation(text => text.replace(/\t/g, '    '));
+        }
+
+        function spacesToTabs() {
+            applyTransformation(text => text.replace(/    /g, '\t'));
+        }
+
+        // Organization functions
+        function sortLines() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                return lines.sort((a, b) => a.localeCompare(b)).join('\n');
+            });
+        }
+
+        function sortLinesDesc() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                return lines.sort((a, b) => b.localeCompare(a)).join('\n');
+            });
+        }
+
+        function removeDuplicateLines() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                const unique = [...new Set(lines)];
+                return unique.join('\n');
+            });
+        }
+
+        function reverseLines() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                return lines.reverse().join('\n');
+            });
+        }
+
+        function shuffleLines() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                for (let i = lines.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [lines[i], lines[j]] = [lines[j], lines[i]];
+                }
+                return lines.join('\n');
+            });
+        }
+
+        function numberLines() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                return lines.map((line, index) => `${index + 1}. ${line}`).join('\n');
+            });
+        }
+
+        // Conversion functions
+        function convertToHTML() {
+            applyTransformation(text => {
+                return text
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;')
+                    .replace(/\n/g, '<br>\n');
+            });
+        }
+
+        function convertFromHTML() {
+            applyTransformation(text => {
+                return text
+                    .replace(/<br\s*\/?>/gi, '\n')
+                    .replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>')
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#39;/g, "'")
+                    .replace(/&amp;/g, '&')
+                    .replace(/<[^>]*>/g, '');
+            });
+        }
+
+        function addLineNumbers() {
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                const padding = lines.length.toString().length;
+                return lines.map((line, index) => 
+                    `${(index + 1).toString().padStart(padding, '0')} | ${line}`
+                ).join('\n');
+            });
+        }
+
+        function extractEmails() {
+            applyTransformation(text => {
+                const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+                const emails = text.match(emailRegex) || [];
+                return [...new Set(emails)].join('\n');
+            });
+        }
+
+        function extractURLs() {
+            applyTransformation(text => {
+                const urlRegex = /https?:\/\/[^\s]+/g;
+                const urls = text.match(urlRegex) || [];
+                return [...new Set(urls)].join('\n');
+            });
+        }
+
+        function wordWrap() {
+            const maxLength = parseInt(prompt('Número máximo de caracteres por linha:', '80')) || 80;
+            applyTransformation(text => {
+                const lines = text.split('\n');
+                return lines.map(line => {
+                    if (line.length <= maxLength) return line;
+                    
+                    const words = line.split(' ');
+                    const wrappedLines = [];
+                    let currentLine = '';
+                    
+                    for (const word of words) {
+                        if ((currentLine + ' ' + word).length > maxLength) {
+                            if (currentLine) {
+                                wrappedLines.push(currentLine);
+                                currentLine = word;
+                            } else {
+                                wrappedLines.push(word);
+                            }
+                        } else {
+                            currentLine = currentLine ? currentLine + ' ' + word : word;
+                        }
+                    }
+                    
+                    if (currentLine) {
+                        wrappedLines.push(currentLine);
+                    }
+                    
+                    return wrappedLines.join('\n');
+                }).join('\n');
+            });
+        }
+
+        // Utility functions
+        function clearText() {
+            saveToHistory();
+            document.getElementById('textInput').value = '';
+            updateStats();
+            showToast('Texto limpo!');
+        }
+
+        function copyText() {
+            const text = document.getElementById('textInput').value;
+            const button = document.getElementById('copyBtn');
+            
+            if (!text.trim()) {
+                showToast('Nada para copiar!', 'error');
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    fallbackCopyToClipboard(text, button);
+                });
+            } else {
+                fallbackCopyToClipboard(text, button);
+            }
+        }
+
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                showToast('Erro ao copiar!', 'error');
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✅ Copiado!';
+            buttonElement.classList.add('success');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('success');
+            }, 2000);
+            
+            showToast('Texto copiado!');
+        }
+
+        function undoLastAction() {
+            if (currentHistoryIndex > 0) {
+                currentHistoryIndex--;
+                document.getElementById('textInput').value = textHistory[currentHistoryIndex];
+                updateStats();
+                showToast('Ação desfeita!');
+            } else {
+                showToast('Nenhuma ação para desfazer!', 'error');
+            }
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast show ${type}`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            
+            // Add sample text
+            const sampleText = `Bem-vindo às Ferramentas de Texto!
+
+Este é um exemplo de texto para demonstrar as funcionalidades disponíveis.
+
+Você pode:
+- Contar caracteres e palavras
+- Remover espaços extras   
+- CONVERTER ENTRE maiúsculas e minúsculas
+- Ordenar linhas alfabeticamente
+- Remover linhas duplicadas
+
+Experimente as diferentes ferramentas usando os botões disponíveis.
+
+Email de exemplo: contato@exemplo.com
+URL de exemplo: https://exemplo.com
+
+Texto com acentuação: João, José, María, çã`;
+            
+            document.getElementById('textInput').value = sampleText;
+            updateStats();
+            saveToHistory();
+        });
+    </script>
+
+    <script>
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            const currentPath = window.location.pathname;
+            const filename = currentPath.split('/').pop();
+            window.location.href = '/' + lang + '/' + filename;
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                var dropdown = document.getElementById('languageDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

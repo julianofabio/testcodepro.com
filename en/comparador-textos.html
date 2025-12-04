@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comparador de textos online - Compare two texts side by side e identifique diferenças, alterações e semelhanças de forma visual e intuitiva.">
+    <meta name="keywords" content="comparar textos, diff text, comparador online, diferenças texto, merge text, compare documents, text comparison">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/comparador-textos.html">
+    <meta property="og:title" content="Text Comparator - TestCodePro">
+    <meta property="og:description" content="Compare two texts side by side e identifique diferenças, alterações e semelhanças de forma visual.">
+    <meta property="og:image" content="https://testcodepro.com/assets/comparador-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/comparador-textos.html">
+    <meta property="twitter:title" content="Text Comparator - TestCodePro">
+    <meta property="twitter:description" content="Compare textos online e identifique diferenças visualmente.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/comparador-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/comparador-textos.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Text Comparator",
+        "url": "https://testcodepro.com/comparador-textos.html",
+        "description": "Ferramenta online para comparar textos e identificar diferenças",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Text Comparator - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --added: #22c55e;
+            --removed: #ef4444;
+            --modified: #f59e0b;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .text-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .char-count {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .text-input {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Comparison Result */
+        .comparison-result {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 8px;
+        }
+
+        .result-stats {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .stat-icon.added { background: var(--added); }
+        .stat-icon.removed { background: var(--removed); }
+        .stat-icon.modified { background: var(--modified); }
+
+        .result-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .diff-panel {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1rem;
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        .diff-line {
+            padding: 0.25rem 0.5rem;
+            margin: 0.125rem 0;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .diff-line.added {
+            background: rgba(34, 197, 94, 0.2);
+            border-left: 3px solid var(--added);
+        }
+
+        .diff-line.removed {
+            background: rgba(239, 68, 68, 0.2);
+            border-left: 3px solid var(--removed);
+        }
+
+        .diff-line.unchanged {
+            color: var(--text-secondary);
+        }
+
+        /* Legend */
+        .legend {
+            background: var(--surface-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .comparison-grid,
+            .result-content {
+                grid-template-columns: 1fr;
+            }
+
+            .result-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls .btn-primary,
+            .controls .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .text-input {
+                height: 200px;
+            }
+
+            .diff-panel {
+                height: 300px;
+            }
+
+            .legend-items {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/en/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/#ferramentas">Tools</a></li>
+                <li><a href="sobre.html">About</a></li>
+                <li><a href="/en/">Contact</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">📊 Text Comparator</h1>
+                <p class="tool-description">
+                    Compare two texts side by side e identifique diferenças, alterações e semelhanças de forma visual e intuitiva.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <div class="comparison-grid">
+                    <div class="text-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Original Text</span>
+                            <span id="charCount1" class="char-count">0 caracteres</span>
+                        </div>
+                        <textarea id="text1" class="text-input" placeholder="Cole ou digite o primeiro texto aqui..."></textarea>
+                    </div>
+                    
+                    <div class="text-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Modified Text</span>
+                            <span id="charCount2" class="char-count">0 caracteres</span>
+                        </div>
+                        <textarea id="text2" class="text-input" placeholder="Cole ou digite o segundo texto aqui..."></textarea>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button onclick="compareTexts()" class="btn-primary">Compare Textos</button>
+                    <button onclick="clearTexts()" class="btn-secondary">Clear Tudo</button>
+                </div>
+
+                <!-- Comparison Result -->
+                <div id="comparisonResult" class="comparison-result">
+                    <div class="result-header">
+                        <div class="result-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon added"></div>
+                                <span>Adicionado: <span id="addedCount">0</span> linhas</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon removed"></div>
+                                <span>Removido: <span id="removedCount">0</span> linhas</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon modified"></div>
+                                <span>Total de diferenças: <span id="totalChanges">0</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-content">
+                        <div class="diff-panel">
+                            <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Original Text</h4>
+                            <div id="diff1"></div>
+                        </div>
+                        
+                        <div class="diff-panel">
+                            <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Modified Text</h4>
+                            <div id="diff2"></div>
+                        </div>
+                    </div>
+
+                    <div class="legend">
+                        <div class="legend-title">Legenda:</div>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="stat-icon added"></div>
+                                <span>Texto adicionado</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="stat-icon removed"></div>
+                                <span>Texto removido</span>
+                            </div>
+                            <div class="legend-item">
+                                <div style="width: 12px; height: 12px; background: var(--text-secondary); border-radius: 50%;"></div>
+                                <span>Texto sem alterações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Como usar o Comparador</h2>
+                <p class="info-text">
+                    O Text Comparator é ideal para identificar diferenças entre duas versões de um documento, código ou qualquer texto:
+                </p>
+                <ul class="feature-list">
+                    <li>Compare documentos antes e depois de edições</li>
+                    <li>Identifique mudanças em código fonte</li>
+                    <li>Analise diferenças em contratos ou textos legais</li>
+                    <li>Verifique alterações em conteúdo web</li>
+                    <li>Compare versões de artigos ou textos acadêmicos</li>
+                    <li>Identifique adições, remoções e modificações</li>
+                </ul>
+                <p class="info-text">
+                    A ferramenta utiliza algoritmos avançados de comparação para destacar visualmente as diferenças, 
+                    facilitando a identificação rápida de alterações. As linhas são comparadas individualmente e 
+                    classificadas como adicionadas, removidas ou inalteradas.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Character count functionality
+        document.getElementById('text1').addEventListener('input', function() {
+            document.getElementById('charCount1').textContent = this.value.length + ' caracteres';
+        });
+
+        document.getElementById('text2').addEventListener('input', function() {
+            document.getElementById('charCount2').textContent = this.value.length + ' caracteres';
+        });
+
+        // Clear texts function
+        function clearTexts() {
+            document.getElementById('text1').value = '';
+            document.getElementById('text2').value = '';
+            document.getElementById('charCount1').textContent = '0 caracteres';
+            document.getElementById('charCount2').textContent = '0 caracteres';
+            document.getElementById('comparisonResult').style.display = 'none';
+        }
+
+        // Compare texts function
+        function compareTexts() {
+            const text1 = document.getElementById('text1').value;
+            const text2 = document.getElementById('text2').value;
+
+            if (!text1.trim() && !text2.trim()) {
+                alert('Por favor, digite algum texto para comparar.');
+                return;
+            }
+
+            const lines1 = text1.split('\n');
+            const lines2 = text2.split('\n');
+
+            const diff = computeDiff(lines1, lines2);
+            displayDiff(diff, lines1, lines2);
+        }
+
+        // Simple diff algorithm (Longest Common Subsequence based)
+        function computeDiff(lines1, lines2) {
+            const m = lines1.length;
+            const n = lines2.length;
+            const lcs = [];
+
+            // Initialize LCS table
+            for (let i = 0; i <= m; i++) {
+                lcs[i] = [];
+                for (let j = 0; j <= n; j++) {
+                    lcs[i][j] = 0;
+                }
+            }
+
+            // Build LCS table
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (lines1[i - 1] === lines2[j - 1]) {
+                        lcs[i][j] = lcs[i - 1][j - 1] + 1;
+                    } else {
+                        lcs[i][j] = Math.max(lcs[i - 1][j], lcs[i][j - 1]);
+                    }
+                }
+            }
+
+            // Generate diff
+            const diff = [];
+            let i = m, j = n;
+
+            while (i > 0 || j > 0) {
+                if (i > 0 && j > 0 && lines1[i - 1] === lines2[j - 1]) {
+                    diff.unshift({ type: 'unchanged', line1: i - 1, line2: j - 1, text: lines1[i - 1] });
+                    i--;
+                    j--;
+                } else if (j > 0 && (i === 0 || lcs[i][j - 1] >= lcs[i - 1][j])) {
+                    diff.unshift({ type: 'added', line2: j - 1, text: lines2[j - 1] });
+                    j--;
+                } else if (i > 0) {
+                    diff.unshift({ type: 'removed', line1: i - 1, text: lines1[i - 1] });
+                    i--;
+                }
+            }
+
+            return diff;
+        }
+
+        // Display diff results
+        function displayDiff(diff, lines1, lines2) {
+            const diff1Container = document.getElementById('diff1');
+            const diff2Container = document.getElementById('diff2');
+            const addedCountEl = document.getElementById('addedCount');
+            const removedCountEl = document.getElementById('removedCount');
+            const totalChangesEl = document.getElementById('totalChanges');
+
+            diff1Container.innerHTML = '';
+            diff2Container.innerHTML = '';
+
+            let addedCount = 0;
+            let removedCount = 0;
+            let line1Num = 1;
+            let line2Num = 1;
+
+            diff.forEach(item => {
+                if (item.type === 'unchanged') {
+                    // Add to both sides
+                    const div1 = document.createElement('div');
+                    div1.className = 'diff-line unchanged';
+                    div1.textContent = `${line1Num}: ${item.text}`;
+                    diff1Container.appendChild(div1);
+
+                    const div2 = document.createElement('div');
+                    div2.className = 'diff-line unchanged';
+                    div2.textContent = `${line2Num}: ${item.text}`;
+                    diff2Container.appendChild(div2);
+
+                    line1Num++;
+                    line2Num++;
+                } else if (item.type === 'removed') {
+                    // Add to left side only
+                    const div1 = document.createElement('div');
+                    div1.className = 'diff-line removed';
+                    div1.textContent = `${line1Num}: ${item.text}`;
+                    diff1Container.appendChild(div1);
+
+                    removedCount++;
+                    line1Num++;
+                } else if (item.type === 'added') {
+                    // Add to right side only
+                    const div2 = document.createElement('div');
+                    div2.className = 'diff-line added';
+                    div2.textContent = `${line2Num}: ${item.text}`;
+                    diff2Container.appendChild(div2);
+
+                    addedCount++;
+                    line2Num++;
+                }
+            });
+
+            // Update statistics
+            addedCountEl.textContent = addedCount;
+            removedCountEl.textContent = removedCount;
+            totalChangesEl.textContent = addedCount + removedCount;
+
+            // Show result
+            document.getElementById('comparisonResult').style.display = 'block';
+
+            // Scroll to result
+            document.getElementById('comparisonResult').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+    </script>
+
+    <script>
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            const currentPath = window.location.pathname;
+            const filename = currentPath.split('/').pop();
+            window.location.href = '/' + lang + '/' + filename;
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                var dropdown = document.getElementById('languageDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

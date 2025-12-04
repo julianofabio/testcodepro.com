@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor de arquivos para PDF online - Converta DOCX, XLSX, TXT, HTML, CSV, JPG, PNG para PDF. Ferramenta gratuita de conversão de documentos.">
+    <meta name="keywords" content="conversor pdf, docx para pdf, xlsx para pdf, txt para pdf, html para pdf, csv para pdf, jpg para pdf, png para pdf">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/conversor-pdf.html">
+    <meta property="og:title" content="Conversor a PDF - TestCodePro">
+    <meta property="og:description" content="Converta diversos tipos de arquivo para PDF: DOCX, XLSX, TXT, HTML, CSV, JPG, PNG. Conversão rápida e gratuita.">
+    <meta property="og:image" content="https://testcodepro.com/assets/pdf-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/conversor-pdf.html">
+    <meta property="twitter:title" content="Conversor a PDF - TestCodePro">
+    <meta property="twitter:description" content="Converta arquivos para PDF online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/pdf-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/conversor-pdf.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- jsPDF Library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Conversor a PDF",
+        "url": "https://testcodepro.com/conversor-pdf.html",
+        "description": "Conversor online de diversos formatos de arquivo para PDF",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Conversor a PDF - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .converter-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .converter-mode {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .converter-mode.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .converter-mode:hover {
+            border-color: var(--primary);
+        }
+
+        .mode-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .mode-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .supported-formats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .format-tag {
+            background: var(--surface);
+            color: var(--text-primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Upload Area */
+        .upload-section {
+            margin-top: 2rem;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: var(--background);
+        }
+
+        .upload-area:hover,
+        .upload-area.dragover {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtext {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* Text Input Area */
+        .text-input-section {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .text-input-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .text-input {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        /* File List */
+        .file-list {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .file-list-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .file-icon {
+            font-size: 1.5rem;
+        }
+
+        .file-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--error);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #dc2626;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Progress */
+        .progress-section {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .limitations-box {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+            margin-top: 1.5rem;
+        }
+
+        .limitations-title {
+            font-weight: 600;
+            color: var(--warning);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .converter-modes {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls .btn-primary,
+            .controls .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .file-item {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .file-actions {
+                justify-content: center;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/es/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/es/">Inicio</a></li>
+                <li><a href="/es/#ferramentas">Herramientas</a></li>
+                <li><a href="sobre.html">Acerca de</a></li>
+                <li><a href="/es/">Contacto</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Español ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option active" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">📄 Conversor a PDF</h1>
+                <p class="tool-description">
+                    Converta diversos tipos de arquivo para PDF: documentos, planilhas, textos, 
+                    páginas web e imagens. Conversão rápida e gratuita.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Convertir Modes -->
+                <div class="converter-modes">
+                    <div class="converter-mode active" data-mode="file">
+                        <div class="mode-title">📁 Upload de Arquivos</div>
+                        <div class="mode-description">Faça upload de arquivos do seu computador para converter para PDF</div>
+                        <div class="supported-formats">
+                            <span class="format-tag">DOCX</span>
+                            <span class="format-tag">XLSX</span>
+                            <span class="format-tag">TXT</span>
+                            <span class="format-tag">HTML</span>
+                            <span class="format-tag">CSV</span>
+                            <span class="format-tag">JPG</span>
+                            <span class="format-tag">PNG</span>
+                        </div>
+                    </div>
+
+                    <div class="converter-mode" data-mode="text">
+                        <div class="mode-title">📝 Texto para PDF</div>
+                        <div class="mode-description">Digite ou cole texto diretamente para gerar um PDF</div>
+                        <div class="supported-formats">
+                            <span class="format-tag">Texto simples</span>
+                            <span class="format-tag">HTML</span>
+                            <span class="format-tag">Markdown</span>
+                        </div>
+                    </div>
+
+                    <div class="converter-mode" data-mode="url">
+                        <div class="mode-title">🌐 URL para PDF</div>
+                        <div class="mode-description">Converta páginas web diretamente de URLs para PDF</div>
+                        <div class="supported-formats">
+                            <span class="format-tag">Páginas web</span>
+                            <span class="format-tag">HTML online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Area -->
+                <div class="upload-section" id="uploadSection">
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" class="file-input" multiple 
+                               accept=".docx,.xlsx,.txt,.html,.csv,.jpg,.jpeg,.png" 
+                               onchange="handleFileSelect(event)">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">Clique aqui ou arraste arquivos</div>
+                        <div class="upload-subtext">Suportados: DOCX, XLSX, TXT, HTML, CSV, JPG, PNG (máx. 10MB cada)</div>
+                    </div>
+                </div>
+
+                <!-- Text Input Section -->
+                <div class="text-input-section" id="textInputSection">
+                    <label class="text-input-label">Digite o texto para converter em PDF:</label>
+                    <textarea id="textInput" class="text-input" 
+                              placeholder="Digite seu texto aqui... Suporte básico para HTML também é aceito."></textarea>
+                </div>
+
+                <!-- URL Input Section -->
+                <div class="text-input-section" id="urlInputSection">
+                    <label class="text-input-label">Digite a URL para converter em PDF:</label>
+                    <input type="url" id="urlInput" class="text-input" style="height: auto; padding: 1rem;"
+                           placeholder="https://exemplo.com">
+                    <div style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                        Nota: Conversão de URL para PDF tem limitações em ambiente web. Para melhores resultados, use extensões de navegador.
+                    </div>
+                </div>
+
+                <!-- File List -->
+                <div class="file-list" id="fileList">
+                    <div class="file-list-title">Arquivos Selecionados:</div>
+                    <div id="fileItems"></div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button onclick="convertToPDF()" class="btn-primary" id="convertBtn" disabled>
+                        Convertir a PDF
+                    </button>
+                    <button onclick="clearAll()" class="btn-secondary">Limpiar Tudo</button>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-section" id="progressSection">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Preparando conversão...</div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Acerca de a Conversão para PDF</h2>
+                <p class="info-text">
+                    Esta ferramenta oferece diferentes métodos para converter arquivos e conteúdo para PDF. 
+                    Cada formato tem suas particularidades e limitações específicas.
+                </p>
+                
+                <div class="limitations-box">
+                    <div class="limitations-title">⚠️ Limitações Técnicas</div>
+                    <ul style="color: var(--text-secondary); margin: 0; padding-left: 1.5rem;">
+                        <li><strong>Arquivos Office (DOCX, XLSX):</strong> Conversão limitada a texto básico devido a restrições do navegador</li>
+                        <li><strong>Imagens (JPG, PNG):</strong> Conversão completa suportada</li>
+                        <li><strong>Texto e HTML:</strong> Conversão completa com formatação básica</li>
+                        <li><strong>URLs:</strong> Limitado pelo CORS e políticas de segurança</li>
+                        <li><strong>Tamanho máximo:</strong> 10MB por arquivo para garantir performance</li>
+                    </ul>
+                </div>
+
+                <p class="info-text" style="margin-top: 1.5rem;">
+                    <strong>Para conversões mais avançadas:</strong> Recomendamos usar ferramentas desktop especializadas 
+                    ou serviços online dedicados para documentos complexos com formatação avançada.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let selectedFiles = [];
+        let currentMode = 'file';
+
+        // Mode switching
+        document.querySelectorAll('.converter-mode').forEach(mode => {
+            mode.addEventListener('click', function() {
+                document.querySelectorAll('.converter-mode').forEach(m => m.classList.remove('active'));
+                this.classList.add('active');
+                currentMode = this.getAttribute('data-mode');
+                updateInterface();
+            });
+        });
+
+        // Update interface based on selected mode
+        function updateInterface() {
+            // Hide all sections
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('textInputSection').style.display = 'none';
+            document.getElementById('urlInputSection').style.display = 'none';
+            
+            // Show relevant section
+            switch (currentMode) {
+                case 'file':
+                    document.getElementById('uploadSection').style.display = 'block';
+                    break;
+                case 'text':
+                    document.getElementById('textInputSection').style.display = 'block';
+                    break;
+                case 'url':
+                    document.getElementById('urlInputSection').style.display = 'block';
+                    break;
+            }
+            
+            updateConvertButton();
+        }
+
+        // File drag and drop
+        const uploadArea = document.querySelector('.upload-area');
+        
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            handleFileSelect({ target: { files: files } });
+        });
+
+        // Handle file selection
+        function handleFileSelect(event) {
+            const files = Array.from(event.target.files);
+            const validFiles = [];
+            
+            files.forEach(file => {
+                if (file.size > 10 * 1024 * 1024) { // 10MB limit
+                    alert(`Arquivo ${file.name} é muito grande. Máximo 10MB.`);
+                    return;
+                }
+                
+                const validTypes = [
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // DOCX
+                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // XLSX
+                    'text/plain', // TXT
+                    'text/html', // HTML
+                    'text/csv', // CSV
+                    'image/jpeg', // JPG
+                    'image/png' // PNG
+                ];
+                
+                if (!validTypes.includes(file.type) && !file.name.match(/\.(docx|xlsx|txt|html|csv|jpg|jpeg|png)$/i)) {
+                    alert(`Tipo de arquivo não suportado: ${file.name}`);
+                    return;
+                }
+                
+                validFiles.push(file);
+            });
+            
+            selectedFiles = [...selectedFiles, ...validFiles];
+            displayFileList();
+            updateConvertButton();
+        }
+
+        // Display file list
+        function displayFileList() {
+            const fileList = document.getElementById('fileList');
+            const fileItems = document.getElementById('fileItems');
+            
+            if (selectedFiles.length === 0) {
+                fileList.style.display = 'none';
+                return;
+            }
+            
+            fileList.style.display = 'block';
+            fileItems.innerHTML = '';
+            
+            selectedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                
+                const fileIcon = getFileIcon(file.type, file.name);
+                const fileSize = formatFileSize(file.size);
+                
+                fileItem.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-icon">${fileIcon}</div>
+                        <div class="file-details">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${fileSize}</div>
+                        </div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-small" onclick="removeFile(${index})">Eliminar</button>
+                    </div>
+                `;
+                
+                fileItems.appendChild(fileItem);
+            });
+        }
+
+        // Get file icon based on type
+        function getFileIcon(type, name) {
+            if (type.includes('word') || name.endsWith('.docx')) return '📄';
+            if (type.includes('sheet') || name.endsWith('.xlsx')) return '📊';
+            if (type.includes('text') || name.endsWith('.txt')) return '📝';
+            if (type.includes('html') || name.endsWith('.html')) return '🌐';
+            if (type.includes('csv') || name.endsWith('.csv')) return '📋';
+            if (type.includes('image')) return '🖼️';
+            return '📁';
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Remove file
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            displayFileList();
+            updateConvertButton();
+        }
+
+        // Update convert button
+        function updateConvertButton() {
+            const convertBtn = document.getElementById('convertBtn');
+            let canConvert = false;
+            
+            switch (currentMode) {
+                case 'file':
+                    canConvert = selectedFiles.length > 0;
+                    break;
+                case 'text':
+                    canConvert = document.getElementById('textInput').value.trim() !== '';
+                    break;
+                case 'url':
+                    canConvert = document.getElementById('urlInput').value.trim() !== '';
+                    break;
+            }
+            
+            convertBtn.disabled = !canConvert;
+        }
+
+        // Text input change detection
+        document.getElementById('textInput').addEventListener('input', updateConvertButton);
+        document.getElementById('urlInput').addEventListener('input', updateConvertButton);
+
+        // Convert to PDF
+        async function convertToPDF() {
+            const progressSection = document.getElementById('progressSection');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            progressSection.style.display = 'block';
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                switch (currentMode) {
+                    case 'text':
+                        await convertTextToPDF(doc, progressFill, progressText);
+                        break;
+                    case 'file':
+                        await convertFilesToPDF(doc, progressFill, progressText);
+                        break;
+                    case 'url':
+                        await convertURLToPDF(doc, progressFill, progressText);
+                        break;
+                }
+                
+                // Download the PDF
+                const timestamp = new Date().getTime();
+                doc.save(`converted_${timestamp}.pdf`);
+                
+                progressText.textContent = 'Conversión completada! Download iniciado.';
+                
+                setTimeout(() => {
+                    progressSection.style.display = 'none';
+                    progressFill.style.width = '0%';
+                }, 2000);
+                
+            } catch (error) {
+                alert('Errorr en la conversión: ' + error.message);
+                progressSection.style.display = 'none';
+                progressFill.style.width = '0%';
+            }
+        }
+
+        // Convert text to PDF
+        async function convertTextToPDF(doc, progressFill, progressText) {
+            const text = document.getElementById('textInput').value;
+            progressText.textContent = 'Procesando texto...';
+            progressFill.style.width = '50%';
+            
+            // Simple text to PDF conversion
+            const lines = doc.splitTextToSize(text, 180);
+            let y = 20;
+            
+            lines.forEach(line => {
+                if (y > 280) { // New page
+                    doc.addPage();
+                    y = 20;
+                }
+                doc.text(line, 10, y);
+                y += 7;
+            });
+            
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Finalizando PDF...';
+        }
+
+        // Convert files to PDF
+        async function convertFilesToPDF(doc, progressFill, progressText) {
+            let currentPage = false;
+            
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const file = selectedFiles[i];
+                progressText.textContent = `Procesando ${file.name}...`;
+                progressFill.style.width = `${(i / selectedFiles.length) * 100}%`;
+                
+                if (currentPage) {
+                    doc.addPage();
+                }
+                
+                if (file.type.includes('image')) {
+                    await addImageToPDF(doc, file);
+                } else {
+                    await addTextFileToPDF(doc, file);
+                }
+                
+                currentPage = true;
+            }
+            
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Finalizando PDF...';
+        }
+
+        // Add image to PDF
+        function addImageToPDF(doc, file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Calculate dimensions to fit page
+                        const maxWidth = 190;
+                        const maxHeight = 270;
+                        let { width, height } = img;
+                        
+                        if (width > maxWidth) {
+                            height = (height * maxWidth) / width;
+                            width = maxWidth;
+                        }
+                        
+                        if (height > maxHeight) {
+                            width = (width * maxHeight) / height;
+                            height = maxHeight;
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        const imgData = canvas.toDataURL('image/jpeg', 0.8);
+                        doc.addImage(imgData, 'JPEG', 10, 10, width, height);
+                        resolve();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Add text file to PDF
+        function addTextFileToPDF(doc, file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    let content = e.target.result;
+                    
+                    // Basic processing for different file types
+                    if (file.name.endsWith('.html')) {
+                        // Strip HTML tags (basic)
+                        content = content.replace(/<[^>]*>/g, '');
+                    } else if (file.name.endsWith('.csv')) {
+                        // Format CSV slightly better
+                        content = content.split('\n').map(line => 
+                            line.split(',').join(' | ')
+                        ).join('\n');
+                    }
+                    
+                    // Add title
+                    doc.setFontSize(16);
+                    doc.text(file.name, 10, 20);
+                    doc.setFontSize(12);
+                    
+                    // Add content
+                    const lines = doc.splitTextToSize(content, 180);
+                    let y = 35;
+                    
+                    lines.forEach(line => {
+                        if (y > 280) { // New page
+                            doc.addPage();
+                            y = 20;
+                        }
+                        doc.text(line, 10, y);
+                        y += 7;
+                    });
+                    
+                    resolve();
+                };
+                reader.readAsText(file);
+            });
+        }
+
+        // Convert URL to PDF (limited functionality)
+        async function convertURLToPDF(doc, progressFill, progressText) {
+            const url = document.getElementById('urlInput').value;
+            progressText.textContent = 'Tentando acessar URL...';
+            progressFill.style.width = '50%';
+            
+            // Note: This is very limited due to CORS restrictions
+            doc.setFontSize(16);
+            doc.text('Conversão de URL para PDF', 10, 20);
+            doc.setFontSize(12);
+            doc.text(`URL: ${url}`, 10, 40);
+            doc.text('Nota: Conversão de URL limitada por restrições de segurança do navegador.', 10, 60);
+            doc.text('Para melhores resultados, use extensões de navegador ou ferramentas desktop.', 10, 75);
+            
+            progressFill.style.width = '100%';
+            progressText.textContent = 'Finalizando PDF...';
+        }
+
+        // Clear all
+        function clearAll() {
+            selectedFiles = [];
+            document.getElementById('textInput').value = '';
+            document.getElementById('urlInput').value = '';
+            document.getElementById('fileInput').value = '';
+            displayFileList();
+            updateConvertButton();
+            document.getElementById('progressSection').style.display = 'none';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateInterface();
+        });
+    </script>
+
+    <script>
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            const currentPath = window.location.pathname;
+            const filename = currentPath.split('/').pop();
+            window.location.href = '/' + lang + '/' + filename;
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                var dropdown = document.getElementById('languageDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

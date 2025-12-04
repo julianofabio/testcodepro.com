@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TestCodePro - Free developer tools organized by category. Documents, Converters, Validators, Generators and more.">
+    <meta name="keywords" content="developer tools, document generator, validator, converter, formatter, dev tools">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>TestCodePro - Developer Tools</title>
+    
+    <!-- Language Selector CSS -->
+    <link rel="stylesheet" href="/css/language-selector.css">
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .language-option:hover {
+            background: rgba(0,255,136,0.1);
+            color: var(--primary);
+        }
+
+        .language-option.active {
+            color: var(--primary);
+            background: rgba(0,255,136,0.05);
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+
+        .category-nav-content {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .category-nav-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-nav-item {
+            white-space: nowrap;
+            padding: 0.75rem 1rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-nav-item:hover,
+        .category-nav-item.active {
+            background: var(--primary);
+            color: var(--background);
+            border-color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Search Section */
+        .search-section {
+            background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(255,107,0,0.05) 100%);
+            padding: 3rem 0;
+            margin-top: -1px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-wrapper {
+            position: relative;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-wrapper:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 40px rgba(0,255,136,0.15);
+        }
+
+        .search-wrapper.focused {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,255,136,0.1), 0 8px 40px rgba(0,255,136,0.15);
+        }
+
+        .search-icon {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-left: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .search-wrapper.focused .search-icon {
+            color: var(--primary);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem 0.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .search-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,255,136,0.3);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-top: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+        }
+
+        .search-result-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(0,255,136,0.1);
+        }
+
+        .search-result-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .search-result-content {
+            flex: 1;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .search-no-results {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Popular Section */
+        .popular-section {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .popular-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .popular-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .popular-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .popular-card {
+            background: var(--surface);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popular-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(255,107,0,0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .popular-card:hover::before {
+            opacity: 1;
+        }
+
+        .popular-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,255,136,0.2);
+        }
+
+        .popular-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .popular-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .popular-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .popular-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .popular-card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .popular-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .popular-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Category Sections */
+        .category-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-section:last-child {
+            border-bottom: none;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .category-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .view-all-btn {
+            background: var(--surface-light);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .view-all-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(255,107,0,0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,255,136,0.15);
+        }
+
+        .tool-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tool-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .search-wrapper {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-button {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .popular-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .popular-card {
+                padding: 1.5rem;
+            }
+
+            .category-nav-content {
+                padding: 0 1rem;
+            }
+
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tool-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#documents">Documents</a></li>
+                <li><a href="#converters">Converters</a></li>
+                <li><a href="#validators">Validators</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">
+                                🇺🇸 English
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('es')">
+                                🇪🇸 Español
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('pt')">
+                                🇧🇷 Português
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="category-nav-content">
+            <a href="#popular" class="category-nav-item">🔥 Most Popular</a>
+            <a href="#documents" class="category-nav-item">📋 Documents</a>
+            <a href="#converters" class="category-nav-item">🔄 Converters</a>
+            <a href="#validators" class="category-nav-item">✅ Validators</a>
+            <a href="#generators" class="category-nav-item">🎲 Generators</a>
+            <a href="#formatters" class="category-nav-item">🎨 Formatters</a>
+            <a href="#security" class="category-nav-item">🔐 Security</a>
+            <a href="#development" class="category-nav-item">💻 Development</a>
+            <a href="#utilities" class="category-nav-item">🛠️ Utilities</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Developer Tools</h1>
+                <p>Complete set of free tools organized by category. Quickly find what you need for web development.</p>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <div class="search-wrapper" id="searchWrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Type the name of the tool you're looking for...">
+                        <button class="search-button" onclick="performSearch()">
+                            Search
+                        </button>
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Tools Section -->
+        <section id="popular" class="popular-section">
+            <div class="container">
+                <div class="popular-header">
+                    <h2 class="popular-title">🔥 Most Popular</h2>
+                    <p class="popular-subtitle">The most used tools by our users</p>
+                </div>
+                
+                <div class="popular-grid">
+                    <!-- Document Generators -->
+                    <a href="gerador-documentos-index.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-icon">🎲</span>
+                            <h3 class="popular-card-title">Document Generators & Validators</h3>
+                            <p class="popular-card-description">Generate and validate documents from Brazil, USA, Germany, India, UK, and Canada. Fictitious but mathematically correct documents.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">⚡ Instant</span>
+                                <span class="popular-stat">🛡️ Secure</span>
+                                <span class="popular-stat">⭐ 4.9/5</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Code Formatter -->
+                    <a href="formatador.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-icon">🎨</span>
+                            <h3 class="popular-card-title">Code Formatter</h3>
+                            <p class="popular-card-description">Format JSON, XML, HTML, YAML, Python, JavaScript and more. Automatic indentation and validation.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">🔧 9 Formats</span>
+                                <span class="popular-stat">✅ Validation</span>
+                                <span class="popular-stat">⭐ 4.9/5</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Password Generator -->
+                    <a href="gerador-senhas.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-icon">🔐</span>
+                            <h3 class="popular-card-title">Password Generator</h3>
+                            <p class="popular-card-description">Create secure and customizable passwords with different complexity levels. Essential for online security.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">⚡ Instant</span>
+                                <span class="popular-stat">🛡️ Secure</span>
+                                <span class="popular-stat">⭐ 4.9/5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- QR Code Generator -->
+                    <a href="gerador-qrcode.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-icon">📱</span>
+                            <h3 class="popular-card-title">QR Code Generator</h3>
+                            <p class="popular-card-description">Create QR codes for URLs, text, email, phone, WiFi and more. High quality download.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">📸 HD Quality</span>
+                                <span class="popular-stat">💾 Download</span>
+                                <span class="popular-stat">⭐ 4.8/5</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- API Tester -->
+                    <a href="api-client.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-icon">⚙️</span>
+                            <h3 class="popular-card-title">Online API Tester</h3>
+                            <p class="popular-card-description">API and REST microservices tester</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">📸 HD Quality</span>
+                                <span class="popular-stat">💾 Download</span>
+                                <span class="popular-stat">⭐ 4.8/5</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Regex Tester -->
+                    <a href="regex-tester.html" class="popular-card">
+                        <div class="popular-card-content">
+                            <span class="popular-icon">⚙️</span>
+                            <h3 class="popular-card-title">Regex/Regular Expression Tester</h3>
+                            <p class="popular-card-description">Test and validate regular expressions online. View matches, capture groups and test regex patterns with text in real time.</p>
+                            <div class="popular-stats">
+                                <span class="popular-stat">📸 HD Quality</span>
+                                <span class="popular-stat">💾 Download</span>
+                                <span class="popular-stat">⭐ 4.8/5</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents Section -->
+        <section id="documents" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">📋</span>
+                            Document Generators & Validators
+                        </h2>
+                        <p class="category-description">Generate and validate documents from Brazil, USA, Germany, UK, Canada and India</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Credit Card Generator -->
+                    <a href="gerador-cartao-credito.html" class="tool-card">
+                        <span class="tool-icon">💳</span>
+                        <h3 class="tool-title">Credit Card Generator</h3>
+                        <p class="tool-description">Create fictitious credit card numbers for testing.</p>
+                    </a>
+                    
+                    <!-- Brazilian Document Validator -->
+                    <a href="validador-documentos.html" class="tool-card">
+                        <span class="tool-icon">📄</span>
+                        <h3 class="tool-title">Brazilian Document Validator</h3>
+                        <p class="tool-description">CPF, CNPJ, RG, CEP and Voter ID validator. Fast and accurate verification of Brazilian documents.</p>
+                    </a>
+
+                    <!-- Brazilian Document Generator -->
+                    <a href="gerador-documentos.html" class="tool-card">
+                        <span class="tool-icon">🎲</span>
+                        <h3 class="tool-title">Brazilian Document Generator</h3>
+                        <p class="tool-description">Generate valid CPF, CNPJ, RG, CEP, CNH, PIS, Passport, Voter ID, bank account and vehicle plates for testing. Fictitious but mathematically correct documents.</p>
+                    </a>
+
+                    <!-- American Document Generator -->
+                    <a href="gerador-documentos-usa.html" class="tool-card">
+                        <span class="tool-icon">🎲</span>
+                        <h3 class="tool-title">American Document Generator</h3>
+                        <p class="tool-description">Generate SSN, Driver's License, Passport Number, State ID Number, Vehicle Registration, ZIP Code. Fictitious but mathematically correct documents.</p>
+                    </a>
+                    
+                    <!-- German Document Generator -->
+                    <a href="gerador-documentos-alemanha.html" class="tool-card">
+                        <span class="tool-icon">🎲</span>
+                        <h3 class="tool-title">German Document Generator</h3>
+                        <p class="tool-description">Generate Steueridentifikationsnummer, Personalausweis, Führerschein, Reisepass, Postleitzahl (PLZ) and other documents. Fictitious but mathematically correct documents.</p>
+                    </a>
+                    
+                    <!-- British Document Generator -->
+                    <a href="gerador-documentos-reino-unido.html" class="tool-card">
+                        <span class="tool-icon">🎲</span>
+                        <h3 class="tool-title">British Document Generator</h3>
+                        <p class="tool-description">Generate National Insurance Number, Driving Licence, Passport Number, NHS Number, Postcode and other documents. Fictitious but mathematically correct documents.</p>
+                    </a>
+        
+                    <!-- Canadian Document Generator -->
+                    <a href="gerador-documentos-canada.html" class="tool-card">
+                        <span class="tool-icon">🎲</span>
+                        <h3 class="tool-title">Canadian Document Generator</h3>
+                        <p class="tool-description">Generate Social Insurance Number, Driver's Licence, Health Card, Passport Number, Postal Code and other documents. Fictitious but mathematically correct documents.</p>
+                    </a>
+                    
+                    <!-- Indian Document Generator -->
+                    <a href="gerador-documentos-india.html" class="tool-card">
+                        <span class="tool-icon">🎲</span>
+                        <h3 class="tool-title">Indian Document Generator</h3>
+                        <p class="tool-description">Generate Aadhaar Number, PAN Card, Driving Licence, Voter ID Card, Passport Number, PIN Code and other documents. Fictitious but mathematically correct documents.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Converters Section -->
+        <section id="converters" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">🔄</span>
+                            Converters
+                        </h2>
+                        <p class="category-description">Convert between different formats, bases and data types</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Base Converter -->
+                    <a href="conversor-bases.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔢</span>
+                            <h3 class="tool-title">Base Converter</h3>
+                            <p class="tool-description">Convert between binary, octal, decimal and hexadecimal.</p>
+                        </div>
+                    </a>
+
+                    <!-- Timestamp Converter -->
+                    <a href="conversor-timestamp.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🕐</span>
+                            <h3 class="tool-title">Timestamp Converter</h3>
+                            <p class="tool-description">Convert UNIX timestamp to readable date and vice versa.</p>
+                        </div>
+                    </a>
+
+                    <!-- PDF Converter -->
+                    <a href="conversor-pdf.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📄</span>
+                            <h3 class="tool-title">PDF Converter</h3>
+                            <p class="tool-description">Convert DOCX, XLSX, TXT, HTML, CSV, JPG, PNG to PDF.</p>
+                        </div>
+                    </a>
+
+                    <!-- TOON Converter -->
+                    <a href="conversor-toon.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔄</span>
+                            <h3 class="tool-title">TOON Converter</h3>
+                            <p class="tool-description">Convert between TOON, JSON and XML formats easily.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validators Section -->
+        <section id="validators" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">✅</span>
+                            Validators
+                        </h2>
+                        <p class="category-description">Validate data, formats and code structures</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Password Validator -->
+                    <a href="validador-senha.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔐</span>
+                            <h3 class="tool-title">Password Validator</h3>
+                            <p class="tool-description">Test if your password is strong with detailed security analysis.</p>
+                        </div>
+                    </a>
+
+                    <!-- Format Validator -->
+                    <a href="validador-formatos.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">✅</span>
+                            <h3 class="tool-title">Format Validator</h3>
+                            <p class="tool-description">Validate JSON, YAML, XML and TOON with error detection.</p>
+                        </div>
+                    </a>
+
+                    <!-- Regex Tester -->
+                    <a href="regex-tester.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔍</span>
+                            <h3 class="tool-title">Regex Tester</h3>
+                            <p class="tool-description">Test regular expressions with match visualization.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generators Section -->
+        <section id="generators" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">🎲</span>
+                            Generators
+                        </h2>
+                        <p class="category-description">Generate data, codes and unique identifiers</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- UUID Generator -->
+                    <a href="gerador-uuid.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔑</span>
+                            <h3 class="tool-title">UUID Generator</h3>
+                            <p class="tool-description">Generate universal unique identifiers (UUID) v1, v4 and v7.</p>
+                        </div>
+                    </a>
+
+                    <!-- Hash Generator -->
+                    <a href="gerador-hash.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🛡️</span>
+                            <h3 class="tool-title">Hash Generator</h3>
+                            <p class="tool-description">Generate MD5, SHA-256, SHA-512 hashes and other algorithms.</p>
+                        </div>
+                    </a>
+
+                    <!-- API Keys Generator -->
+                    <a href="gerador-apikeys.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔐</span>
+                            <h3 class="tool-title">API Keys Generator</h3>
+                            <p class="tool-description">Create secure API keys with different formats.</p>
+                        </div>
+                    </a>
+
+                    <!-- Lorem Ipsum Generator -->
+                    <a href="gerador-lorem-ipsum.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📝</span>
+                            <h3 class="tool-title">Lorem Ipsum Generator</h3>
+                            <p class="tool-description">Generate customized placeholder text for design.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formatters Section -->
+        <section id="formatters" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">🎨</span>
+                            Formatters
+                        </h2>
+                        <p class="category-description">Format and organize code, text and data</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Code Formatter -->
+                    <a href="formatador.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🎨</span>
+                            <h3 class="tool-title">Code Formatter</h3>
+                            <p class="tool-description">Format JSON, XML, HTML, YAML, Python and JavaScript.</p>
+                        </div>
+                    </a>
+
+                    <!-- Beautifier/Minifier -->
+                    <a href="beautifier-minifier.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🎨</span>
+                            <h3 class="tool-title">Beautifier/Minifier</h3>
+                            <p class="tool-description">Format or compress HTML, CSS and JavaScript.</p>
+                        </div>
+                    </a>
+
+                    <!-- Encoder/Decoder -->
+                    <a href="encoder-decoder.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔄</span>
+                            <h3 class="tool-title">Encoder/Decoder</h3>
+                            <p class="tool-description">Encode and decode Base64, URL and HTML.</p>
+                        </div>
+                    </a>
+
+                    <!-- Text Tools -->
+                    <a href="ferramentas-texto.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📝</span>
+                            <h3 class="tool-title">Text Tools</h3>
+                            <p class="tool-description">Count characters, organize lines and transform text.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section id="security" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">🔐</span>
+                            Security
+                        </h2>
+                        <p class="category-description">Tools for encryption, passwords and security</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Password Generator -->
+                    <a href="gerador-senhas.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔐</span>
+                            <h3 class="tool-title">Password Generator</h3>
+                            <p class="tool-description">Create secure and customizable passwords with specific criteria.</p>
+                        </div>
+                    </a>
+
+                    <!-- Password Validator -->
+                    <a href="validador-senha.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔐</span>
+                            <h3 class="tool-title">Password Validator</h3>
+                            <p class="tool-description">Evaluate your password strength with detailed analysis.</p>
+                        </div>
+                    </a>
+
+                    <!-- Hash Generator -->
+                    <a href="gerador-hash.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🛡️</span>
+                            <h3 class="tool-title">Hash Generator</h3>
+                            <p class="tool-description">Generate cryptographic hashes MD5, SHA-256, SHA-512.</p>
+                        </div>
+                    </a>
+
+                    <!-- API Keys Generator -->
+                    <a href="gerador-apikeys.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔑</span>
+                            <h3 class="tool-title">API Keys Generator</h3>
+                            <p class="tool-description">Create secure API keys for authentication.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Section -->
+        <section id="development" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">💻</span>
+                            Development
+                        </h2>
+                        <p class="category-description">Specific tools for development and debugging</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- API Client -->
+                    <a href="api-client.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🌐</span>
+                            <h3 class="tool-title">API Client</h3>
+                            <p class="tool-description">HTTP/REST request tester alternative to Postman.</p>
+                        </div>
+                    </a>
+
+                    <!-- Regex Tester -->
+                    <a href="regex-tester.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🔍</span>
+                            <h3 class="tool-title">Regex Tester</h3>
+                            <p class="tool-description">Test regular expressions with pre-defined patterns.</p>
+                        </div>
+                    </a>
+
+                    <!-- Beautifier/Minifier -->
+                    <a href="beautifier-minifier.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">🎨</span>
+                            <h3 class="tool-title">Beautifier/Minifier</h3>
+                            <p class="tool-description">Optimize code for development or production.</p>
+                        </div>
+                    </a>
+
+                    <!-- Text Comparator -->
+                    <a href="comparador-textos.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📊</span>
+                            <h3 class="tool-title">Text Comparator</h3>
+                            <p class="tool-description">Compare texts side by side with difference highlighting.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utilities Section -->
+        <section id="utilities" class="category-section">
+            <div class="container">
+                <div class="category-header">
+                    <div>
+                        <h2 class="category-title">
+                            <span class="category-icon">🛠️</span>
+                            Utilities
+                        </h2>
+                        <p class="category-description">Various tools for the developer's daily routine</p>
+                    </div>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- QR Code Generator -->
+                    <a href="gerador-qrcode.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📱</span>
+                            <h3 class="tool-title">QR Code Generator</h3>
+                            <p class="tool-description">Create customized QR codes for multiple uses.</p>
+                        </div>
+                    </a>
+
+                    <!-- Credit Card Generator -->
+                    <a href="gerador-cartao-credito.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">💳</span>
+                            <h3 class="tool-title">Card Generator</h3>
+                            <p class="tool-description">Generate credit card numbers for testing.</p>
+                        </div>
+                    </a>
+
+                    <!-- Text Tools -->
+                    <a href="ferramentas-texto.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📝</span>
+                            <h3 class="tool-title">Text Tools</h3>
+                            <p class="tool-description">Count characters, organize lines and transform text.</p>
+                        </div>
+                    </a>
+
+                    <!-- Lorem Ipsum Generator -->
+                    <a href="gerador-lorem-ipsum.html" class="tool-card">
+                        <div class="tool-card-content">
+                            <span class="tool-icon">📝</span>
+                            <h3 class="tool-title">Lorem Ipsum Generator</h3>
+                            <p class="tool-description">Generate placeholder text for design and prototyping.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="#documents">Documents</a>
+                <a href="#converters">Converters</a>
+                <a href="#validators">Validators</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 TestCodePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language selector functionality
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            window.location.href = '/' + lang + '/';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                document.getElementById('languageDropdown').classList.remove('show');
+            }
+        });
+
+        // Search functionality
+        const tools = [
+            // Documents
+            { name: 'Brazilian Document Generator', icon: '🎲', url: 'gerador-documentos.html', description: 'Generate CPF, CNPJ, RG and other documents', keywords: 'cpf cnpj rg brazilian document generate' },
+            { name: 'American Document Generator', icon: '🎲', url: 'gerador-documentos-usa.html', description: 'Generate SSN, Driver\'s License, Passport Number, State ID Number, Vehicle Registration, ZIP Code and other documents', keywords: 'SSN Driver License Passport Number ID Vehicle Registration ZIP Code American Documents' },
+            { name: 'German Document Generator', icon: '🎲', url: 'gerador-documentos-alemanha.html', description: 'Generate Steueridentifikationsnummer, Personalausweis, Führerschein, Reisepass, Postleitzahl (PLZ) and other documents', keywords: 'Postleitzahl PLZ Reisepass Führerschein Personalausweis Steueridentifikationsnummer German Documents' },
+            { name: 'British Document Generator', icon: '🎲', url: 'gerador-documentos-reino-unido.html', description: 'Generate National Insurance Number, Driving Licence, Passport Number, NHS Number, Postcode and other documents', keywords: 'National Insurance Number Driving Licence Passport Number NHS Number Postcode British Documents' },
+            { name: 'Canadian Document Generator', icon: '🎲', url: 'gerador-documentos-canada.html', description: 'Generate Social Insurance Number, Driver\'s Licence, Health Card, Passport Number, Postal Code and other documents', keywords: 'Social Insurance Number Driver Licence Health Card Passport Number Postal Code Canadian Documents' },
+            { name: 'Indian Document Generator', icon: '🎲', url: 'gerador-documentos-india.html', description: 'Generate Aadhaar Number, PAN Card, Driving Licence, Voter ID Card, Passport Number, PIN Code and other documents', keywords: 'Aadhaar Number PAN Card Driving Licence Voter ID Card Passport Number PIN Code Indian Documents' },
+            
+            // Validators
+            { name: 'Password Validator', icon: '🔐', url: 'validador-senha.html', description: 'Test if your password is strong', keywords: 'password validate test security', category: 'validators' },
+            { name: 'Format Validator', icon: '✅', url: 'validador-formatos.html', description: 'Validate JSON, YAML, XML and TOON', keywords: 'json yaml xml validate format', category: 'validators' },
+            { name: 'Regex Tester', icon: '🔍', url: 'regex-tester.html', description: 'Test regular expressions', keywords: 'validate regex regular expression', category: 'development' },
+            
+            // Formatters
+            { name: 'Beautifier/Minifier', icon: '🎨', url: 'beautifier-minifier.html', description: 'Format or compress HTML, CSS and JS', keywords: 'beautify minify html css javascript', category: 'formatters' },
+            { name: 'Code Formatter', icon: '🎨', url: 'formatador.html', description: 'Format JSON, XML, HTML and more', keywords: 'format code json xml html yaml python Java C# JavaScript TOON', category: 'formatters' },
+            
+            // Generators
+            { name: 'Password Generator', icon: '🔐', url: 'gerador-senhas.html', description: 'Create secure and customizable passwords', keywords: 'password generate secure strong', category: 'security' },
+            { name: 'QR Code Generator', icon: '📱', url: 'gerador-qrcode.html', description: 'Create customized QR codes', keywords: 'qr code generate qrcode', category: 'utilities' },
+            { name: 'UUID Generator', icon: '🔑', url: 'gerador-uuid.html', description: 'Generate universal unique identifiers', keywords: 'uuid generate unique identifier', category: 'generators' },
+            { name: 'Hash Generator', icon: '🛡️', url: 'gerador-hash.html', description: 'Generate MD5, SHA-256 and other hashes', keywords: 'hash md5 sha256 generate', category: 'security' },
+            { name: 'Lorem Ipsum Generator', icon: '📝', url: 'gerador-lorem-ipsum.html', description: 'Generate placeholder text for design', keywords: 'lorem ipsum text placeholder', category: 'utilities' },
+            
+            // Converters
+            { name: 'Base Converter', icon: '🔢', url: 'conversor-bases.html', description: 'Convert between numeric bases', keywords: 'binary decimal hexadecimal convert', category: 'converters' },
+            { name: 'Timestamp Converter', icon: '🕐', url: 'conversor-timestamp.html', description: 'Convert UNIX timestamp to date', keywords: 'timestamp unix date convert', category: 'converters' },
+            { name: 'PDF Converter', icon: '📄', url: 'conversor-pdf.html', description: 'Convert documents to PDF', keywords: 'pdf convert docx xlsx', category: 'converters' },
+            
+            // Development
+            { name: 'API Client', icon: '🌐', url: 'api-client.html', description: 'HTTP/REST request tester', keywords: 'api http rest client postman', category: 'development' },
+            { name: 'Text Comparator', icon: '📊', url: 'comparador-textos.html', description: 'Compare texts side by side', keywords: 'compare text difference diff', category: 'development' },
+            
+            // Utilities
+            { name: 'Text Tools', icon: '📝', url: 'ferramentas-texto.html', description: 'Count characters, organize lines', keywords: 'text counter characters lines', category: 'utilities' },
+            { name: 'Encoder/Decoder', icon: '🔄', url: 'encoder-decoder.html', description: 'Encode and decode text', keywords: 'base64 url encode decode', category: 'formatters' },
+            { name: 'Credit Card Generator', icon: '💳', url: 'gerador-cartao-credito.html', description: 'Generate card numbers for testing', keywords: 'credit card visa mastercard', category: 'utilities' }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchWrapper = document.getElementById('searchWrapper');
+
+        // Search input focus/blur events
+        searchInput.addEventListener('focus', () => {
+            searchWrapper.classList.add('focused');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                searchWrapper.classList.remove('focused');
+                searchResults.style.display = 'none';
+            }, 200);
+        });
+
+        // Search input events
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const filteredTools = tools.filter(tool => 
+                tool.name.toLowerCase().includes(query) ||
+                tool.description.toLowerCase().includes(query) ||
+                tool.keywords.toLowerCase().includes(query)
+            );
+
+            displaySearchResults(filteredTools, query);
+        });
+
+        // Enter key to search
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+
+        function displaySearchResults(results, query) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-no-results">No tool found for "' + query + '"</div>';
+            } else {
+                searchResults.innerHTML = results.slice(0, 8).map(tool => `
+                    <div class="search-result-item" onclick="window.location.href='${tool.url}'">
+                        <span class="search-result-icon">${tool.icon}</span>
+                        <div class="search-result-content">
+                            <div class="search-result-title">${tool.name}</div>
+                            <div class="search-result-description">${tool.description}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            searchResults.style.display = 'block';
+        }
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (!query) {
+                return;
+            }
+
+            const tool = tools.find(tool => 
+                tool.name.toLowerCase().includes(query) ||
+                tool.keywords.toLowerCase().includes(query)
+            );
+
+            if (tool) {
+                window.location.href = tool.url;
+            } else {
+                // Scroll to relevant category if no exact match
+                const category = tools.find(t => t.category && t.category.includes(query))?.category;
+                if (category) {
+                    document.getElementById(category).scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                }
+            }
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchWrapper.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Category navigation highlighting
+        function updateActiveNavItem() {
+            const sections = document.querySelectorAll('.category-section, .popular-section');
+            const navItems = document.querySelectorAll('.category-nav-item');
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 200 && rect.bottom >= 200) {
+                    navItems.forEach(item => item.classList.remove('active'));
+                    const targetId = section.id;
+                    const targetNav = document.querySelector(`[href="#${targetId}"]`);
+                    if (targetNav) {
+                        targetNav.classList.add('active');
+                    }
+                }
+            });
+        }
+
+        // Smooth scroll for category navigation
+        document.querySelectorAll('.category-nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav item on scroll
+        window.addEventListener('scroll', updateActiveNavItem);
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.tool-card, .popular-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.6s ease ${(index % 4) * 0.1}s, transform 0.6s ease ${(index % 4) * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

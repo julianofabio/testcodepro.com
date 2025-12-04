@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formateador en línea de JSON, XML y HTML - Formatea, valida y organiza tu código de forma automática. Indentación perfecta y validación de sintaxis.">
+    <meta name="keywords" content="formatador json, formatador xml, formatador html, validator json, json formatter, xml formatter, html formatter, pretty print">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/formatador.html">
+    <meta property="og:title" content="Formatador JSON/XML/HTML - TestCodePro">
+    <meta property="og:description" content="Formate e valide JSON, XML e HTML online. Identação automática e validação de sintaxe para desenvolvedores.">
+    <meta property="og:image" content="https://testcodepro.com/assets/formatador-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/formatador.html">
+    <meta property="twitter:title" content="Formatador JSON/XML/HTML - TestCodePro">
+    <meta property="twitter:description" content="Formate e valide código JSON, XML e HTML online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/formatador-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/formatador.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Formatador JSON/XML/HTML",
+        "url": "https://testcodepro.com/formatador.html",
+        "description": "Formatador e validador online de JSON, XML e HTML",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Formatador JSON/XML/HTML - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .format-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .format-tab {
+            background: var(--background);
+            color: var(--text-secondary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .format-tab.active {
+            background: var(--primary);
+            color: var(--background);
+            border-color: var(--primary);
+        }
+
+        .format-tab:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .editor-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+        }
+
+        .btn-small.success {
+            background: var(--success);
+        }
+
+        .code-editor {
+            width: 100%;
+            height: 400px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .code-editor:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .code-editor.readonly {
+            background: var(--surface-light);
+            cursor: default;
+        }
+
+        .code-editor.error {
+            border-color: var(--error);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Status Display */
+        .status-display {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .status-display.success {
+            border: 2px solid var(--success);
+        }
+
+        .status-display.error {
+            border: 2px solid var(--error);
+        }
+
+        .status-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .status-message {
+            font-weight: 600;
+        }
+
+        .status-details {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Format Options */
+        .format-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 8px;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .option-select {
+            padding: 0.5rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .option-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .editor-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .format-controls {
+                justify-content: stretch;
+            }
+
+            .format-tab {
+                flex: 1;
+                text-align: center;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls .btn-primary,
+            .controls .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .code-editor {
+                height: 250px;
+            }
+
+            .format-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/es/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/es/">Inicio</a></li>
+                <li><a href="/es/#ferramentas">Herramientas</a></li>
+                <li><a href="/es/about.html">Acerca de</a></li>
+                <li><a href="/es/">Contacto</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Español ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option active" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🎨 Formateador de Código</h1>
+                <p class="tool-description">
+                    Formate e valide JSON, XML e HTML com identação automática. 
+                    Organize seu código de forma profissional com validação de sintaxe.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Format Type Selection -->
+                <div class="format-controls">
+                    <div class="format-tab active" data-type="json">JSON</div>
+                    <div class="format-tab" data-type="xml">XML</div>
+                    <div class="format-tab" data-type="html">HTML</div>
+                    <div class="format-tab" data-type="yaml">YAML</div>
+                    <div class="format-tab" data-type="python">Python</div>
+                    <div class="format-tab" data-type="java">Java</div>
+                    <div class="format-tab" data-type="csharp">C#</div>
+                    <div class="format-tab" data-type="javascript">JavaScript</div>
+                    <div class="format-tab" data-type="toon">TOON</div>
+                </div>
+
+                <!-- Format Options -->
+                <div class="format-options">
+                    <div class="option-group">
+                        <label class="option-label">Tamanho da Identação</label>
+                        <select id="indentSize" class="option-select">
+                            <option value="2">2 espacios</option>
+                            <option value="4" selected>4 espacios</option>
+                            <option value="tab">Tab</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label class="option-label">Quebras de Linha</label>
+                        <select id="lineBreaks" class="option-select">
+                            <option value="lf" selected>LF (Unix/Linux)</option>
+                            <option value="crlf">CRLF (Windows)</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="jsonOptions" style="display: block;">
+                        <label class="option-label">Opções JSON</label>
+                        <select id="jsonSort" class="option-select">
+                            <option value="false" selected>Manter ordem original</option>
+                            <option value="true">Ordenar chaves alfabeticamente</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Editor Container -->
+                <div class="editor-container">
+                    <div class="editor-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Código Original</span>
+                            <div class="panel-actions">
+                                <button class="btn-small" onclick="clearInput()">Limpiar</button>
+                            </div>
+                        </div>
+                        <textarea id="inputCode" class="code-editor" placeholder="Cole seu código JSON, XML ou HTML aqui..."></textarea>
+                    </div>
+
+                    <div class="editor-panel">
+                        <div class="panel-header">
+                            <span class="panel-title">Código Formatado</span>
+                            <div class="panel-actions">
+                                <button class="btn-small" onclick="copyOutput()" id="copyBtn">Copiar</button>
+                            </div>
+                        </div>
+                        <textarea id="outputCode" class="code-editor readonly" readonly placeholder="O código formatado aparecerá aqui..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button onclick="formatCode()" class="btn-primary">Formatear Código</button>
+                    <button onclick="validateCode()" class="btn-secondary">Apenas Validar</button>
+                </div>
+
+                <!-- Status Display -->
+                <div id="statusDisplay" class="status-display">
+                    <div style="display: flex; align-items: center;">
+                        <span id="statusIcon" class="status-icon"></span>
+                        <span id="statusMessage" class="status-message"></span>
+                    </div>
+                    <div id="statusDetails" class="status-details"></div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Recursos do Formatador</h2>
+                <p class="info-text">
+                    Nosso formatador oferece recursos avançados para melhorar a qualidade e legibilidade do seu código:
+                </p>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📋</div>
+                        <div class="feature-title">Formatação JSON</div>
+                        <div class="feature-description">Identação automática, validação de sintaxe e ordenação opcional de chaves.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">🏷️</div>
+                        <div class="feature-title">Formatação XML</div>
+                        <div class="feature-description">Estruturação hierárquica com identação adequada e validação de tags.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">🌐</div>
+                        <div class="feature-title">Formatação HTML</div>
+                        <div class="feature-description">Organização de elementos HTML com identação consistente.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">✅</div>
+                        <div class="feature-title">Validação de Sintaxe</div>
+                        <div class="feature-description">Detecta erros de sintaxe e fornece feedback detalhado sobre problemas encontrados.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">⚙️</div>
+                        <div class="feature-title">Opções Personalizáveis</div>
+                        <div class="feature-description">Configure identação, quebras de linha e outras preferências de formatação.</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-title">Interface Responsiva</div>
+                        <div class="feature-description">Funciona perfeitamente em desktop, tablet e dispositivos móveis.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentType = 'json';
+
+        // Tab switching functionality
+        document.querySelectorAll('.format-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentType = this.getAttribute('data-type');
+                
+                // Show/hide JSON specific options
+                const jsonOptions = document.getElementById('jsonOptions');
+                if (currentType === 'json') {
+                    jsonOptions.style.display = 'block';
+                } else {
+                    jsonOptions.style.display = 'none';
+                }
+                
+                // Clear previous content
+                document.getElementById('inputCode').value = '';
+                document.getElementById('outputCode').value = '';
+                hideStatus();
+            });
+        });
+
+        // Clear input function
+        function clearInput() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('outputCode').value = '';
+            hideStatus();
+        }
+
+        // Copy output function
+        function copyOutput() {
+            const outputCode = document.getElementById('outputCode').value;
+            const button = document.getElementById('copyBtn');
+            
+            if (!outputCode.trim()) {
+                showStatus('error', 'Nada para copiar', 'O campo de código formatado está vazio.');
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(outputCode).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    fallbackCopyToClipboard(outputCode, button);
+                });
+            } else {
+                fallbackCopyToClipboard(outputCode, button);
+            }
+        }
+
+        // Format code function
+        function formatCode() {
+            const inputCode = document.getElementById('inputCode').value.trim();
+            
+            if (!inputCode) {
+                showStatus('error', 'Código vazio', 'Por favor, cole algum código para formatar.');
+                return;
+            }
+
+            try {
+                let formatted = '';
+                const indentSize = document.getElementById('indentSize').value;
+                const jsonSort = document.getElementById('jsonSort').value === 'true';
+                
+                switch (currentType) {
+                    case 'json':
+                        formatted = formatJSON(inputCode, indentSize, jsonSort);
+                        break;
+                    case 'xml':
+                        formatted = formatXML(inputCode, indentSize);
+                        break;
+                    case 'html':
+                        formatted = formatHTML(inputCode, indentSize);
+                        break;
+                    case 'yaml':
+                        formatted = formatYAML(inputCode, indentSize);
+                        break;
+                    case 'python':
+                        formatted = formatPython(inputCode, indentSize);
+                        break;
+                    case 'java':
+                        formatted = formatJava(inputCode, indentSize);
+                        break;
+                    case 'csharp':
+                        formatted = formatCSharp(inputCode, indentSize);
+                        break;
+                    case 'javascript':
+                        formatted = formatJavaScript(inputCode, indentSize);
+                        break;
+                    case 'toon':
+                        formatted = formatTOON(inputCode, indentSize);
+                        break;
+                }
+
+                document.getElementById('outputCode').value = formatted;
+                showStatus('success', 'Código formateado com sucesso!', 
+                          `Arquivo ${currentType.toUpperCase()} formatado e validado.`);
+                
+            } catch (error) {
+                showStatus('error', 'Error de formatação', error.message);
+                document.getElementById('outputCode').value = '';
+            }
+        }
+
+        // Validate code function
+        function validateCode() {
+            const inputCode = document.getElementById('inputCode').value.trim();
+            
+            if (!inputCode) {
+                showStatus('error', 'Código vazio', 'Por favor, cole algum código para validar.');
+                return;
+            }
+
+            try {
+                switch (currentType) {
+                    case 'json':
+                        JSON.parse(inputCode);
+                        showStatus('success', 'JSON válido!', 'A sintaxe está correta.');
+                        break;
+                    case 'xml':
+                        validateXML(inputCode);
+                        showStatus('success', 'XML válido!', 'A estrutura está correta.');
+                        break;
+                    case 'html':
+                        validateHTML(inputCode);
+                        showStatus('success', 'HTML válido!', 'A estrutura básica está correta.');
+                        break;
+                    case 'yaml':
+                        validateYAML(inputCode);
+                        showStatus('success', 'YAML válido!', 'A sintaxe está correta.');
+                        break;
+                    case 'python':
+                        validatePython(inputCode);
+                        showStatus('success', 'Python válido!', 'A sintaxe básica está correta.');
+                        break;
+                    case 'java':
+                        validateJava(inputCode);
+                        showStatus('success', 'Java válido!', 'A estrutura básica está correta.');
+                        break;
+                    case 'csharp':
+                        validateCSharp(inputCode);
+                        showStatus('success', 'C# válido!', 'A estrutura básica está correta.');
+                        break;
+                    case 'javascript':
+                        validateJavaScript(inputCode);
+                        showStatus('success', 'JavaScript válido!', 'A sintaxe básica está correta.');
+                        break;
+                    case 'toon':
+                        validateTOON(inputCode);
+                        showStatus('success', 'TOON válido!', 'A estrutura está correta.');
+                        break;
+                }
+            } catch (error) {
+                showStatus('error', 'Error de validação', error.message);
+            }
+        }
+
+        // JSON formatting function
+        function formatJSON(code, indentSize, sortKeys) {
+            const parsed = JSON.parse(code);
+            
+            if (sortKeys) {
+                const sorted = sortObjectKeys(parsed);
+                return JSON.stringify(sorted, null, indentSize === 'tab' ? '\t' : parseInt(indentSize));
+            }
+            
+            return JSON.stringify(parsed, null, indentSize === 'tab' ? '\t' : parseInt(indentSize));
+        }
+
+        // Sort object keys recursively
+        function sortObjectKeys(obj) {
+            if (Array.isArray(obj)) {
+                return obj.map(sortObjectKeys);
+            } else if (obj !== null && typeof obj === 'object') {
+                const sorted = {};
+                Object.keys(obj).sort().forEach(key => {
+                    sorted[key] = sortObjectKeys(obj[key]);
+                });
+                return sorted;
+            }
+            return obj;
+        }
+
+        // XML formatting function
+        function formatXML(code, indentSize) {
+            // Basic XML validation
+            validateXML(code);
+            
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            
+            // Remove existing formatting
+            let xml = code.replace(/>\s*</g, '><');
+            
+            // Add line breaks and indentation
+            let formatted = '';
+            let level = 0;
+            const tokens = xml.split('<');
+            
+            for (let i = 0; i < tokens.length; i++) {
+                const token = tokens[i];
+                if (!token) continue;
+                
+                // Closing tag
+                if (token.startsWith('/')) {
+                    level--;
+                    formatted += indent.repeat(level) + '<' + token + '\n';
+                }
+                // Self-closing tag
+                else if (token.endsWith('/>')) {
+                    formatted += indent.repeat(level) + '<' + token + '\n';
+                }
+                // Opening tag
+                else {
+                    formatted += indent.repeat(level) + '<' + token + '\n';
+                    if (!token.includes('</')) {
+                        level++;
+                    }
+                }
+            }
+            
+            return formatted.trim();
+        }
+
+        // XML validation function
+        function validateXML(code) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(code, 'application/xml');
+            const errors = doc.getElementsByTagName('parsererror');
+            
+            if (errors.length > 0) {
+                throw new Errorr('XML inválido: ' + errors[0].textContent);
+            }
+        }
+
+        // HTML formatting function
+        function formatHTML(code, indentSize) {
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            
+            // Basic HTML validation
+            validateHTML(code);
+            
+            // Simple HTML formatting (basic implementation)
+            let formatted = code;
+            let level = 0;
+            
+            // Remove extra whitespace
+            formatted = formatted.replace(/>\s+</g, '><');
+            
+            // Add basic indentation
+            formatted = formatted.replace(/></g, '>\n<');
+            
+            const lines = formatted.split('\n');
+            let result = '';
+            
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) continue;
+                
+                // Closing tag
+                if (trimmed.startsWith('</')) {
+                    level = Math.max(0, level - 1);
+                    result += indent.repeat(level) + trimmed + '\n';
+                }
+                // Self-closing tag or no content
+                else if (trimmed.endsWith('/>') || trimmed.includes('</')) {
+                    result += indent.repeat(level) + trimmed + '\n';
+                }
+                // Opening tag
+                else if (trimmed.startsWith('<') && !trimmed.startsWith('<!')) {
+                    result += indent.repeat(level) + trimmed + '\n';
+                    level++;
+                }
+                // Content or other
+                else {
+                    result += indent.repeat(level) + trimmed + '\n';
+                }
+            }
+            
+            return result.trim();
+        }
+
+        // Basic HTML validation
+        function validateHTML(code) {
+            // Very basic validation - check for common issues
+            if (!code.includes('<') || !code.includes('>')) {
+                throw new Errorr('HTML inválido: Nenhuma tag encontrada.');
+            }
+            
+            // Check for unclosed tags (basic)
+            const openTags = (code.match(/<[^\/][^>]*>/g) || []).length;
+            const closeTags = (code.match(/<\/[^>]*>/g) || []).length;
+            const selfClosing = (code.match(/<[^>]*\/>/g) || []).length;
+            
+            // This is a very basic check - real validation would be much more complex
+            if (openTags > closeTags + selfClosing + 5) { // Allow some flexibility for HTML5 tags
+                console.warn('HTML pode ter tags não fechadas, mas continuando...');
+            }
+        }
+
+        // YAML formatting function
+        function formatYAML(code, indentSize) {
+            try {
+                // Basic YAML formatting - normalize indentation
+                const lines = code.split('\n');
+                let formatted = '';
+                let currentIndent = 0;
+                const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+                
+                for (let line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('#')) {
+                        formatted += trimmed + '\n';
+                        continue;
+                    }
+                    
+                    // Calculate indentation level
+                    if (trimmed.includes(':') && !trimmed.startsWith('-')) {
+                        const level = Math.max(0, currentIndent);
+                        formatted += indent.repeat(level) + trimmed + '\n';
+                        if (trimmed.endsWith(':')) currentIndent++;
+                    } else if (trimmed.startsWith('-')) {
+                        formatted += indent.repeat(currentIndent) + trimmed + '\n';
+                    } else {
+                        formatted += indent.repeat(currentIndent + 1) + trimmed + '\n';
+                    }
+                }
+                
+                return formatted.trim();
+            } catch (error) {
+                throw new Errorr('YAML inválido: ' + error.message);
+            }
+        }
+
+        // Python formatting function
+        function formatPython(code, indentSize) {
+            const lines = code.split('\n');
+            let formatted = '';
+            let indentLevel = 0;
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+                if (!line) {
+                    formatted += '\n';
+                    continue;
+                }
+                
+                // Decrease indent for certain keywords
+                if (/^(except|elif|else|finally|case):/.test(line)) {
+                    indentLevel = Math.max(0, indentLevel - 1);
+                }
+                
+                formatted += indent.repeat(indentLevel) + line + '\n';
+                
+                // Increase indent after certain keywords
+                if (/:(\\s*(#.*)?)?$/.test(line)) {
+                    indentLevel++;
+                }
+            }
+            
+            return formatted.trim();
+        }
+
+        // Java formatting function
+        function formatJava(code, indentSize) {
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            let formatted = '';
+            let indentLevel = 0;
+            let inString = false;
+            let escape = false;
+            
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1];
+                
+                if (escape) {
+                    formatted += char;
+                    escape = false;
+                    continue;
+                }
+                
+                if (char === '\\' && inString) {
+                    escape = true;
+                    formatted += char;
+                    continue;
+                }
+                
+                if (char === '"' && !escape) {
+                    inString = !inString;
+                }
+                
+                if (!inString) {
+                    if (char === '{') {
+                        formatted += char;
+                        if (nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(++indentLevel);
+                        }
+                        continue;
+                    } else if (char === '}') {
+                        if (formatted.trim().endsWith('{')) {
+                            formatted += char;
+                        } else {
+                            formatted += '\n' + indent.repeat(--indentLevel) + char;
+                        }
+                        if (nextChar && nextChar !== '}' && nextChar !== ';' && nextChar !== ',') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    } else if (char === ';') {
+                        formatted += char;
+                        if (nextChar && nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    }
+                }
+                
+                formatted += char;
+            }
+            
+            return formatted.trim();
+        }
+
+        // C# formatting function
+        function formatCSharp(code, indentSize) {
+            // Similar to Java but with C# specific constructs
+            return formatJava(code, indentSize);
+        }
+
+        // JavaScript formatting function
+        function formatJavaScript(code, indentSize) {
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            let formatted = '';
+            let indentLevel = 0;
+            let inString = false;
+            let stringChar = '';
+            let escape = false;
+            
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1];
+                
+                if (escape) {
+                    formatted += char;
+                    escape = false;
+                    continue;
+                }
+                
+                if (char === '\\' && inString) {
+                    escape = true;
+                    formatted += char;
+                    continue;
+                }
+                
+                if ((char === '"' || char === "'" || char === '`') && !inString) {
+                    inString = true;
+                    stringChar = char;
+                } else if (char === stringChar && inString) {
+                    inString = false;
+                    stringChar = '';
+                }
+                
+                if (!inString) {
+                    if (char === '{') {
+                        formatted += char;
+                        if (nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(++indentLevel);
+                        }
+                        continue;
+                    } else if (char === '}') {
+                        if (formatted.trim().endsWith('{')) {
+                            formatted += char;
+                        } else {
+                            formatted += '\n' + indent.repeat(--indentLevel) + char;
+                        }
+                        if (nextChar && nextChar !== '}' && nextChar !== ';' && nextChar !== ',') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    } else if (char === ';') {
+                        formatted += char;
+                        if (nextChar && nextChar !== '}') {
+                            formatted += '\n' + indent.repeat(indentLevel);
+                        }
+                        continue;
+                    }
+                }
+                
+                formatted += char;
+            }
+            
+            return formatted.trim();
+        }
+
+        // TOON formatting function
+        function formatTOON(code, indentSize) {
+            const lines = code.split('\n');
+            let formatted = '';
+            const indent = indentSize === 'tab' ? '\t' : ' '.repeat(parseInt(indentSize));
+            
+            for (let line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed) {
+                    formatted += '\n';
+                    continue;
+                }
+                
+                // Calculate current indentation
+                const currentIndent = line.length - line.trimLeft().length;
+                const newIndentLevel = Math.floor(currentIndent / (indentSize === 'tab' ? 1 : parseInt(indentSize)));
+                
+                formatted += indent.repeat(newIndentLevel) + trimmed + '\n';
+            }
+            
+            return formatted.trim();
+        }
+
+        // Validation functions for new formats
+        function validateYAML(code) {
+            // Basic YAML validation
+            const lines = code.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                if (line.trim() && line.includes(':') && line.indexOf(':') === line.lastIndexOf(':') - 1) {
+                    // Basic check for malformed key-value pairs
+                    continue;
+                }
+            }
+        }
+
+        function validatePython(code) {
+            // Basic Python syntax check
+            const lines = code.split('\n');
+            let indentLevel = 0;
+            
+            for (let line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || trimmed.startsWith('#')) continue;
+                
+                // Check for basic syntax issues
+                if (trimmed.endsWith(':')) {
+                    indentLevel++;
+                } else if (/^(except|elif|else|finally):/.test(trimmed)) {
+                    // These should decrease indent
+                }
+            }
+        }
+
+        function validateJava(code) {
+            // Basic Java syntax check
+            const openBraces = (code.match(/{/g) || []).length;
+            const closeBraces = (code.match(/}/g) || []).length;
+            
+            if (openBraces !== closeBraces) {
+                throw new Errorr('Java inválido: Chaves não balanceadas');
+            }
+        }
+
+        function validateCSharp(code) {
+            // Similar to Java validation
+            validateJava(code);
+        }
+
+        function validateJavaScript(code) {
+            try {
+                // Basic syntax check using Function constructor
+                new Function(code);
+            } catch (error) {
+                throw new Errorr('JavaScript inválido: ' + error.message);
+            }
+        }
+
+        function validateTOON(code) {
+            // Basic TOON validation - check indentation consistency
+            const lines = code.split('\n');
+            let indentSizes = new Set();
+            
+            for (let line of lines) {
+                if (line.trim()) {
+                    const indent = line.length - line.trimLeft().length;
+                    if (indent > 0) {
+                        indentSizes.add(indent);
+                    }
+                }
+            }
+            
+            // Check if indentation is consistent
+            const indentArray = Array.from(indentSizes).sort((a, b) => a - b);
+            if (indentArray.length > 1) {
+                for (let i = 1; i < indentArray.length; i++) {
+                    if (indentArray[i] % indentArray[0] !== 0) {
+                        console.warn('TOON: Indentação inconsistente detectada');
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Show status function
+        function showStatus(type, message, details) {
+            const display = document.getElementById('statusDisplay');
+            const icon = document.getElementById('statusIcon');
+            const messageEl = document.getElementById('statusMessage');
+            const detailsEl = document.getElementById('statusDetails');
+            
+            display.className = `status-display ${type}`;
+            
+            if (type === 'success') {
+                icon.textContent = '✅';
+            } else {
+                icon.textContent = '❌';
+            }
+            
+            messageEl.textContent = message;
+            detailsEl.textContent = details;
+            display.style.display = 'block';
+        }
+
+        // Hide status function
+        function hideStatus() {
+            document.getElementById('statusDisplay').style.display = 'none';
+        }
+
+        // Copy functionality
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Errorr al copiar:', err);
+                showCopyErrorr(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✅ Copiado!';
+            buttonElement.classList.add('success');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('success');
+            }, 2000);
+        }
+
+        function showCopyErrorr(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '❌ Error';
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

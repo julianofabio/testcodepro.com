@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de documentos da Alemania - Número de ID Fiscal, Cédula de Identidad, Licencia de Conducir, Pasaporte e PLZ para testes.">
+    <meta name="keywords" content="gerador documentos alemanha, steueridentifikationsnummer, personalausweis, führerschein, plz generator">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>Generador de Documentos Alemania - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .document-card {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .document-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .document-icon {
+            font-size: 1.5rem;
+        }
+
+        .document-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: var(--surface);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            user-select: all;
+            cursor: text;
+        }
+
+        .document-description {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #16a34a;
+            transform: translateY(-1px);
+        }
+
+        .btn-small.copied {
+            background: var(--primary);
+        }
+
+        .btn-regenerate {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-regenerate:hover {
+            background: #5555eb;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--surface-light);
+            border: 2px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/es/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/es/">Inicio</a></li>
+                <li><a href="/es/#ferramentas">Herramientas</a></li>
+                <li><a href="/es/about.html">Acerca de</a></li>
+                <li><a href="/es/">Contacto</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Español ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option active" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <div class="country-flag">🇩🇪</div>
+                <h1 class="tool-title">Generador de Documentos Alemania</h1>
+                <p class="tool-description">
+                    Gere documentos da Alemania válidos para testes e desenvolvimento. 
+                    Todos os números são fictícios e devem ser usados apenas para fins de teste.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Documents Grid -->
+                <div class="documents-grid">
+                    <!-- Número de ID Fiscal -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Número de ID Fiscal</span>
+                            <span class="document-icon">🆔</span>
+                        </div>
+                        <div class="document-value" id="steuerID">12 345 678 901</div>
+                        <div class="document-description">Número de identificação fiscal alemão (11 dígitos)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('steuerID', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateSteuerID()">Generar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Cédula de Identidad -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Cédula de Identidad</span>
+                            <span class="document-icon">🪪</span>
+                        </div>
+                        <div class="document-value" id="personalausweis">T22000129</div>
+                        <div class="document-description">Documento de identidade alemão (9 caracteres)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('personalausweis', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateCédula de Identidad()">Generar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Licencia de Conducir -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Licencia de Conducir</span>
+                            <span class="document-icon">🚗</span>
+                        </div>
+                        <div class="document-value" id="fuehrerschein">B21234567C89</div>
+                        <div class="document-description">Carteira de motorista alemã (12 caracteres)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('fuehrerschein', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateFuehrerschein()">Generar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Pasaporte -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Pasaporte</span>
+                            <span class="document-icon">📘</span>
+                        </div>
+                        <div class="document-value" id="reisepass">C12J4K5L9</div>
+                        <div class="document-description">Pasaporte alemão (9 caracteres)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('reisepass', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePasaporte()">Generar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- PLZ -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Código Postal (PLZ)</span>
+                            <span class="document-icon">📮</span>
+                        </div>
+                        <div class="document-value" id="plz">10115</div>
+                        <div class="document-description">Código postal alemão (5 dígitos)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('plz', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePLZ()">Generar Novo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Generar Todos os Documentos</button>
+                </div>
+
+                <!-- Warning -->
+                <div class="warning-box">
+                    <div class="warning-title">
+                        ⚠️ Aviso Importante
+                    </div>
+                    <div class="warning-text">
+                        Todos os documentos gerados são fictícios e destinados exclusivamente para fins de teste, 
+                        desenvolvimento e demonstração. O uso destes números para fins fraudulentos é ilegal 
+                        e pode resultar em consequências legais graves. Use com responsabilidade.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Generate Número de ID Fiscal (11 digits)
+        function generateSteuerID() {
+            let steuerID = '';
+            
+            // First 10 digits (with some restrictions)
+            for (let i = 0; i < 10; i++) {
+                steuerID += Math.floor(Math.random() * 10);
+            }
+            
+            // Check digit calculation (simplified)
+            let checkDigit = calculateSteuerCheckDigit(steuerID);
+            steuerID += checkDigit;
+            
+            // Format as XX XXX XXX XXX
+            const formatted = steuerID.replace(/(\d{2})(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 $4');
+            document.getElementById('steuerID').textContent = formatted;
+        }
+
+        // Generate Cédula de Identidad (German ID)
+        function generateCédula de Identidad() {
+            // Format: Letter + 8 digits
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let personalausweis = letters[Math.floor(Math.random() * letters.length)];
+            
+            for (let i = 0; i < 8; i++) {
+                personalausweis += Math.floor(Math.random() * 10);
+            }
+            
+            document.getElementById('personalausweis').textContent = personalausweis;
+        }
+
+        // Generate Licencia de Conducir (Driver's License)
+        function generateFuehrerschein() {
+            // Format: Letter + 8 digits + 3 letters/digits
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let fuehrerschein = letters[Math.floor(Math.random() * letters.length)];
+            
+            for (let i = 0; i < 8; i++) {
+                fuehrerschein += Math.floor(Math.random() * 10);
+            }
+            
+            for (let i = 0; i < 3; i++) {
+                if (Math.random() > 0.5) {
+                    fuehrerschein += letters[Math.floor(Math.random() * letters.length)];
+                } else {
+                    fuehrerschein += Math.floor(Math.random() * 10);
+                }
+            }
+            
+            document.getElementById('fuehrerschein').textContent = fuehrerschein;
+        }
+
+        // Generate Pasaporte (Passport)
+        function generatePasaporte() {
+            // Format: Letter + 8 digits/letters
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            const chars = letters + numbers;
+            
+            let reisepass = letters[Math.floor(Math.random() * letters.length)];
+            
+            for (let i = 0; i < 8; i++) {
+                reisepass += chars[Math.floor(Math.random() * chars.length)];
+            }
+            
+            document.getElementById('reisepass').textContent = reisepass;
+        }
+
+        // Generate PLZ (Código Postal)
+        function generatePLZ() {
+            // German postal codes: 5 digits, 01xxx to 99xxx
+            const plz = Math.floor(Math.random() * 99000) + 1000;
+            document.getElementById('plz').textContent = plz.toString().padStart(5, '0');
+        }
+
+        // Simplified check digit calculation for Steuer-ID
+        function calculateSteuerCheckDigit(number) {
+            let sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(number[i]) * (i + 1);
+            }
+            return sum % 10;
+        }
+
+        // Generate all documents
+        function generateAllDocuments() {
+            generateSteuerID();
+            generateCédula de Identidad();
+            generateFuehrerschein();
+            generatePasaporte();
+            generatePLZ();
+        }
+
+        // Copy function
+        function copyValue(elementId, buttonElement) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopy(text, buttonElement);
+                });
+            } else {
+                fallbackCopy(text, buttonElement);
+            }
+        }
+
+        function fallbackCopy(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Errorr al copiar:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = '✅ Copiado!';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.textContent = originalText;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Initialize documents on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAllDocuments();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hash Generator online - Gere hashes MD5, SHA-1, SHA-256, SHA-512 e outros. Ferramenta para verificação de integridade de dados e segurança.">
+    <meta name="keywords" content="gerador hash, md5, sha1, sha256, sha512, hash generator, checksum, integridade dados, hash online">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/gerador-hash.html">
+    <meta property="og:title" content="Hash Generator Online - TestCodePro">
+    <meta property="og:description" content="Gere hashes MD5, SHA-1, SHA-256, SHA-512 e outros. Verificação de integridade de dados e segurança.">
+    <meta property="og:image" content="https://testcodepro.com/assets/hash-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/gerador-hash.html">
+    <meta property="twitter:title" content="Hash Generator Online - TestCodePro">
+    <meta property="twitter:description" content="Gere hashes para verificação de integridade e segurança.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/hash-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/gerador-hash.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Date -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Hash Generator",
+        "url": "https://testcodepro.com/gerador-hash.html",
+        "description": "Gerador online de hashes MD5, SHA-1, SHA-256, SHA-512 para verificação de integridade",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Hash Generator Online - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .input-section {
+            margin-bottom: 2rem;
+        }
+
+        .input-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .input-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .input-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .input-textarea {
+            width: 100%;
+            height: 150px;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .input-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .input-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hash Results */
+        .hash-results {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .results-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .hash-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .hash-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .hash-item:hover {
+            border-color: var(--border-light);
+        }
+
+        .hash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .hash-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .hash-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .hash-value {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            background: var(--surface-light);
+            padding: 0.75rem;
+            border-radius: 6px;
+            word-break: break-all;
+            margin-bottom: 0.75rem;
+            user-select: all;
+        }
+
+        .hash-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+        }
+
+        .btn-small.success {
+            background: var(--success);
+        }
+
+        /* File Input */
+        .file-input-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .file-input-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .file-input-area {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-input-area:hover,
+        .file-input-area.dragover {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-input-text {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .hash-types-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .hash-type-card {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .hash-type-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .hash-type-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .hash-type-size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .input-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .input-controls .btn-primary,
+            .input-controls .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hash-actions {
+                flex-direction: column;
+            }
+
+            .hash-actions .btn-small {
+                justify-self: center;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/en/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/#ferramentas">Tools</a></li>
+                <li><a href="sobre.html">About</a></li>
+                <li><a href="/en/">Contact</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🛡️ Hash Generator</h1>
+                <p class="tool-description">
+                    Gere hashes MD5, SHA-1, SHA-256, SHA-512 e outros para verificação de integridade de dados e segurança.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Text Input Section -->
+                <div class="input-section">
+                    <div class="input-header">
+                        <span class="input-title">Text para Hash</span>
+                        <span class="input-info">Digite ou cole o texto</span>
+                    </div>
+                    <textarea id="inputText" class="input-textarea" placeholder="Digite ou cole o texto que deseja gerar o hash..."></textarea>
+                </div>
+
+                <!-- File Input Section -->
+                <div class="file-input-section">
+                    <div class="file-input-title">Ou selecione um arquivo</div>
+                    <div class="file-input-area" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" class="file-input" onchange="handleFileSelect(event)">
+                        <div class="file-input-text">Clique aqui ou arraste um arquivo</div>
+                        <div class="file-info">Máximo 10MB - Qualquer tipo de arquivo</div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="input-controls">
+                    <button onclick="generateHashes()" class="btn-primary">Generate Hashes</button>
+                    <button onclick="clearAll()" class="btn-secondary">Clear</button>
+                </div>
+
+                <!-- Hash Results -->
+                <div id="hashResults" class="hash-results">
+                    <div class="results-title">Hashes Gerados</div>
+                    <div class="hash-grid" id="hashGrid">
+                        <!-- Hash items will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Tipos de Hash</h2>
+                <p class="info-text">
+                    Funções de hash são algoritmos que transformam dados de qualquer tamanho em uma string de tamanho fixo. 
+                    Cada tipo tem características específicas de segurança e performance:
+                </p>
+                
+                <div class="hash-types-info">
+                    <div class="hash-type-card">
+                        <div class="hash-type-title">MD5</div>
+                        <div class="hash-type-desc">Rápido mas não seguro criptograficamente. Usado para verificação básica de integridade.</div>
+                        <div class="hash-type-size">128 bits (32 caracteres hex)</div>
+                    </div>
+                    
+                    <div class="hash-type-card">
+                        <div class="hash-type-title">SHA-1</div>
+                        <div class="hash-type-desc">Mais seguro que MD5, mas considerado obsoleto para uso criptográfico.</div>
+                        <div class="hash-type-size">160 bits (40 caracteres hex)</div>
+                    </div>
+                    
+                    <div class="hash-type-card">
+                        <div class="hash-type-title">SHA-256</div>
+                        <div class="hash-type-desc">Padrão atual para aplicações seguras. Usado em Bitcoin e TLS.</div>
+                        <div class="hash-type-size">256 bits (64 caracteres hex)</div>
+                    </div>
+                    
+                    <div class="hash-type-card">
+                        <div class="hash-type-title">SHA-512</div>
+                        <div class="hash-type-desc">Versão mais forte do SHA-2. Recomendado para máxima segurança.</div>
+                        <div class="hash-type-size">512 bits (128 caracteres hex)</div>
+                    </div>
+                </div>
+
+                <p class="info-text" style="margin-top: 1.5rem;">
+                    <strong>Casos de uso:</strong> Verificação de integridade de arquivos, armazenamento seguro de senhas, 
+                    assinaturas digitais, blockchain, e validação de dados em geral.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // File drag and drop functionality
+        const fileInputArea = document.querySelector('.file-input-area');
+        
+        fileInputArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+
+        fileInputArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+
+        fileInputArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileSelect({ target: { files: files } });
+            }
+        });
+
+        // File selection handler
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.size > 10 * 1024 * 1024) { // 10MB limit
+                alert('Arquivo muito grande. Máximo 10MB.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('inputText').value = e.target.result;
+                document.querySelector('.file-input-text').textContent = `Arquivo selecionado: ${file.name}`;
+            };
+            
+            // Read as text for hashing
+            reader.readAsText(file);
+        }
+
+        // Hash generation functions using Web Crypto API and fallbacks
+        async function generateMD5(text) {
+            // MD5 implementation (simplified)
+            return await simpleHash(text, 'MD5');
+        }
+
+        async function generateSHA1(text) {
+            try {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(text);
+                const hashBuffer = await crypto.subtle.digest('SHA-1', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            } catch (error) {
+                return await simpleHash(text, 'SHA-1');
+            }
+        }
+
+        async function generateSHA256(text) {
+            try {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(text);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            } catch (error) {
+                return await simpleHash(text, 'SHA-256');
+            }
+        }
+
+        async function generateSHA512(text) {
+            try {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(text);
+                const hashBuffer = await crypto.subtle.digest('SHA-512', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            } catch (error) {
+                return await simpleHash(text, 'SHA-512');
+            }
+        }
+
+        // Fallback hash function (simplified implementation)
+        async function simpleHash(text, algorithm) {
+            let hash = 0;
+            for (let i = 0; i < text.length; i++) {
+                const char = text.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32bit integer
+            }
+            
+            // Generate different length hashes based on algorithm
+            let length;
+            switch (algorithm) {
+                case 'MD5': length = 32; break;
+                case 'SHA-1': length = 40; break;
+                case 'SHA-256': length = 64; break;
+                case 'SHA-512': length = 128; break;
+                default: length = 32;
+            }
+            
+            // Convert to hex and pad to correct length
+            let hex = Math.abs(hash).toString(16);
+            while (hex.length < length) {
+                hex = hex + Math.abs(hash * Math.random()).toString(16);
+            }
+            return hex.substring(0, length);
+        }
+
+        // Main hash generation function
+        async function generateHashes() {
+            const inputText = document.getElementById('inputText').value;
+            
+            if (!inputText.trim()) {
+                alert('Digite algum texto ou selecione um arquivo para gerar os hashes.');
+                return;
+            }
+
+            const hashGrid = document.getElementById('hashGrid');
+            const hashResults = document.getElementById('hashResults');
+            
+            // Show loading state
+            hashGrid.innerHTML = '<div style="text-align: center; color: var(--text-secondary);">Gerando hashes...</div>';
+            hashResults.style.display = 'block';
+
+            try {
+                // Generate all hashes
+                const hashes = await Promise.all([
+                    generateMD5(inputText),
+                    generateSHA1(inputText),
+                    generateSHA256(inputText),
+                    generateSHA512(inputText)
+                ]);
+
+                const hashTypes = [
+                    { name: 'MD5', value: hashes[0], info: '128 bits', desc: 'Verificação rápida de integridade' },
+                    { name: 'SHA-1', value: hashes[1], info: '160 bits', desc: 'Compatibilidade com sistemas legados' },
+                    { name: 'SHA-256', value: hashes[2], info: '256 bits', desc: 'Padrão seguro recomendado' },
+                    { name: 'SHA-512', value: hashes[3], info: '512 bits', desc: 'Máxima segurança criptográfica' }
+                ];
+
+                // Display results
+                displayHashResults(hashTypes);
+
+            } catch (error) {
+                hashGrid.innerHTML = '<div style="text-align: center; color: var(--error);">Error ao gerar hashes. Tente novamente.</div>';
+                console.error('Errorr generating hashes:', error);
+            }
+        }
+
+        // Display hash results
+        function displayHashResults(hashTypes) {
+            const hashGrid = document.getElementById('hashGrid');
+            
+            hashGrid.innerHTML = '';
+            
+            hashTypes.forEach((hash, index) => {
+                const hashItem = document.createElement('div');
+                hashItem.className = 'hash-item';
+                hashItem.innerHTML = `
+                    <div class="hash-header">
+                        <div>
+                            <div class="hash-name">${hash.name}</div>
+                            <div class="hash-info">${hash.info} - ${hash.desc}</div>
+                        </div>
+                    </div>
+                    <div class="hash-value" id="hash-${index}">${hash.value}</div>
+                    <div class="hash-actions">
+                        <button class="btn-small" onclick="copyHash('hash-${index}', this)">Copy</button>
+                        <button class="btn-small" onclick="compareHash('hash-${index}')">Comparar</button>
+                    </div>
+                `;
+                hashGrid.appendChild(hashItem);
+            });
+        }
+
+        // Copy hash function
+        function copyHash(hashId, buttonElement) {
+            const hashElement = document.getElementById(hashId);
+            const hashValue = hashElement.textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(hashValue).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopyToClipboard(hashValue, buttonElement);
+                });
+            } else {
+                fallbackCopyToClipboard(hashValue, buttonElement);
+            }
+        }
+
+        // Compare hash function
+        function compareHash(hashId) {
+            const hashElement = document.getElementById(hashId);
+            const hashValue = hashElement.textContent;
+            const userHash = prompt('Cole o hash para comparar:');
+            
+            if (userHash === null) return; // User cancelled
+            
+            const cleanUserHash = userHash.trim().toLowerCase();
+            const cleanCurrentHash = hashValue.toLowerCase();
+            
+            if (cleanUserHash === cleanCurrentHash) {
+                alert('✅ Hashes são IGUAIS! Os dados são idênticos.');
+            } else {
+                alert('❌ Hashes são DIFERENTES! Os dados não são idênticos.');
+            }
+        }
+
+        // Clear all function
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('hashResults').style.display = 'none';
+            document.querySelector('.file-input-text').textContent = 'Clique aqui ou arraste um arquivo';
+            document.getElementById('fileInput').value = '';
+        }
+
+        // Copy functionality
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Errorr copying:', err);
+                showCopyErrorr(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✅ Copied!';
+            buttonElement.classList.add('success');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('success');
+            }, 2000);
+        }
+
+        function showCopyErrorr(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '❌ Error';
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

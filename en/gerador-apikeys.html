@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="API Key Generator seguras online - Crie chaves de API personalizáveis com diferentes formatos, comprimentos e caracteres. Ferramenta para desenvolvedores.">
+    <meta name="keywords" content="gerador api key, api key generator, chave api, api token, secret key, bearer token, jwt secret">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/gerador-apikeys.html">
+    <meta property="og:title" content="API Key Generator - TestCodePro">
+    <meta property="og:description" content="Generate secure API keys com formatos personalizáveis para seus projetos e integrações.">
+    <meta property="og:image" content="https://testcodepro.com/assets/apikey-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/gerador-apikeys.html">
+    <meta property="twitter:title" content="API Key Generator - TestCodePro">
+    <meta property="twitter:description" content="Generate secure API keys online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/apikey-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/gerador-apikeys.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "API Key Generator",
+        "url": "https://testcodepro.com/gerador-apikeys.html",
+        "description": "Gerador de chaves de API seguras e personalizáveis",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>API Key Generator - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .api-key-generator {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .format-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .format-option {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .format-option.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .format-option:hover {
+            border-color: var(--primary);
+        }
+
+        .format-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .format-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .format-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .format-example {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: var(--surface-light);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .config-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .config-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .config-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .config-input,
+        .config-select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .config-input:focus,
+        .config-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .range-input {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: var(--background);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .range-input::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .range-value {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--background);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            accent-color: var(--primary);
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Generated Keys Display */
+        .generated-keys {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .keys-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .keys-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .generate-multiple-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .generate-multiple-btn:hover {
+            background: #5555eb;
+        }
+
+        .keys-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--background);
+        }
+
+        .key-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .key-item:last-child {
+            border-bottom: none;
+        }
+
+        .key-value {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            user-select: all;
+            flex: 1;
+            word-break: break-all;
+            margin-right: 1rem;
+        }
+
+        .key-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #16a34a;
+        }
+
+        .btn-small.copied {
+            background: var(--primary);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .security-tips {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+            margin-top: 1.5rem;
+        }
+
+        .security-tips-title {
+            font-weight: 600;
+            color: var(--warning);
+            margin-bottom: 0.75rem;
+        }
+
+        .security-tips ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .security-tips li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .format-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .config-section {
+                grid-template-columns: 1fr;
+            }
+
+            .keys-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .key-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: stretch;
+            }
+
+            .key-actions {
+                justify-content: center;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/en/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="#ferramentas">Tools</a></li>
+                <li><a href="sobre.html">About</a></li>
+                <li><a href="index.html">Contact</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🔐 API Key Generator</h1>
+                <p class="tool-description">
+                    Generate secure API keys e personalizáveis para seus projetos. 
+                    Diferentes formatos e níveis de segurança disponíveis.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <div class="api-key-generator">
+                    <!-- Format Selection -->
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Formato da API Key</h3>
+                        <div class="format-selector">
+                            <label class="format-option active">
+                                <input type="radio" name="format" value="hex" checked>
+                                <div class="format-title">Hexadecimal</div>
+                                <div class="format-description">Caracteres 0-9 e A-F</div>
+                                <div class="format-example">a1b2c3d4e5f6...</div>
+                            </label>
+                            
+                            <label class="format-option">
+                                <input type="radio" name="format" value="base64">
+                                <div class="format-title">Base64</div>
+                                <div class="format-description">Caracteres A-Z, a-z, 0-9, +, /</div>
+                                <div class="format-example">aB3cD5eF7gH...</div>
+                            </label>
+                            
+                            <label class="format-option">
+                                <input type="radio" name="format" value="alphanumeric">
+                                <div class="format-title">Alfanumérico</div>
+                                <div class="format-description">Apenas letras e números</div>
+                                <div class="format-example">aB3cD5eF7gH...</div>
+                            </label>
+                            
+                            <label class="format-option">
+                                <input type="radio" name="format" value="uuid">
+                                <div class="format-title">UUID v4</div>
+                                <div class="format-description">Formato padrão UUID</div>
+                                <div class="format-example">123e4567-e89b-12d3...</div>
+                            </label>
+                            
+                            <label class="format-option">
+                                <input type="radio" name="format" value="custom">
+                                <div class="format-title">Personalizado</div>
+                                <div class="format-description">Defina seus caracteres</div>
+                                <div class="format-example">Configurável</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Configuration Section -->
+                    <div class="config-section">
+                        <div class="config-group">
+                            <label class="config-label">
+                                Comprimento
+                                <span id="lengthValue" class="range-value">32</span>
+                            </label>
+                            <input type="range" id="keyLength" class="range-input" min="8" max="128" value="32">
+                        </div>
+
+                        <div class="config-group">
+                            <label class="config-label">Prefix (Opcional)</label>
+                            <input type="text" id="keyPrefix" class="config-input" placeholder="sk_live_">
+                        </div>
+
+                        <div class="config-group" id="customCharsGroup" style="display: none;">
+                            <label class="config-label">Caracteres Personalizados</label>
+                            <input type="text" id="customChars" class="config-input" placeholder="ABCDEFabcdef0123456789">
+                        </div>
+
+                        <div class="config-group">
+                            <label class="config-label">Quantidade</label>
+                            <input type="number" id="keyQuantity" class="config-input" min="1" max="50" value="1">
+                        </div>
+                    </div>
+
+                    <!-- Custom Options -->
+                    <div class="config-group" id="customOptions" style="display: none;">
+                        <label class="config-label">Tipos de Caracteres</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeUpper" checked>
+                                <label for="includeUpper">Maiúsculas (A-Z)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeLower" checked>
+                                <label for="includeLower">Minúsculas (a-z)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeNumbers" checked>
+                                <label for="includeNumbers">Números (0-9)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="includeSymbols">
+                                <label for="includeSymbols">Símbolos (!@#$%^&*)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="generateAPIKeys()" class="btn-primary">Generate API Key(s)</button>
+
+                    <!-- Generated Keys Display -->
+                    <div id="generatedKeys" class="generated-keys">
+                        <div class="keys-header">
+                            <span class="keys-title">API Keys Geradas</span>
+                            <button class="generate-multiple-btn" onclick="generateMultipleKeys()">Generate 10 Mais</button>
+                        </div>
+                        <div id="keysList" class="keys-list">
+                            <!-- Keys will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">About API Keys</h2>
+                <p class="info-text">
+                    API Keys são identificadores únicos usados para autenticar e autorizar acesso a APIs e serviços. 
+                    Elas funcionam como senhas que permitem que aplicações se identifiquem quando fazem requisições.
+                </p>
+                
+                <div class="security-tips">
+                    <div class="security-tips-title">⚠️ Dicas de Segurança</div>
+                    <ul>
+                        <li>Nunca exponha API keys em código público (GitHub, etc.)</li>
+                        <li>Use variáveis de ambiente para armazenar keys</li>
+                        <li>Implemente rotação regular de keys</li>
+                        <li>Use diferentes keys para diferentes ambientes (dev, staging, prod)</li>
+                        <li>Monitore o uso das keys para detectar atividades suspeitas</li>
+                        <li>Implemente rate limiting baseado em keys</li>
+                        <li>Revogue imediatamente keys comprometidas</li>
+                    </ul>
+                </div>
+
+                <p class="info-text" style="margin-top: 1.5rem;">
+                    <strong>Formatos comuns:</strong> Hexadecimal para simplicidade, Base64 para densidade, 
+                    UUID para compatibilidade universal, e formatos personalizados para necessidades específicas.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Format selection
+        document.querySelectorAll('input[name="format"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.format-option').forEach(option => option.classList.remove('active'));
+                this.closest('.format-option').classList.add('active');
+                
+                const format = this.value;
+                const customCharsGroup = document.getElementById('customCharsGroup');
+                const customOptions = document.getElementById('customOptions');
+                
+                if (format === 'custom') {
+                    customCharsGroup.style.display = 'block';
+                    customOptions.style.display = 'block';
+                } else {
+                    customCharsGroup.style.display = 'none';
+                    customOptions.style.display = 'none';
+                }
+            });
+        });
+
+        // Length slider
+        document.getElementById('keyLength').addEventListener('input', function(e) {
+            document.getElementById('lengthValue').textContent = e.target.value;
+        });
+
+        // Generate API Keys
+        function generateAPIKeys() {
+            const quantity = parseInt(document.getElementById('keyQuantity').value);
+            const keys = [];
+            
+            for (let i = 0; i < quantity; i++) {
+                keys.push(generateSingleKey());
+            }
+            
+            displayKeys(keys);
+        }
+
+        // Generate single API key
+        function generateSingleKey() {
+            const format = document.querySelector('input[name="format"]:checked').value;
+            const length = parseInt(document.getElementById('keyLength').value);
+            const prefix = document.getElementById('keyPrefix').value;
+            
+            let key = '';
+            
+            switch (format) {
+                case 'hex':
+                    key = generateHexKey(length);
+                    break;
+                case 'base64':
+                    key = generateBase64Key(length);
+                    break;
+                case 'alphanumeric':
+                    key = generateAlphanumericKey(length);
+                    break;
+                case 'uuid':
+                    key = generateUUID();
+                    break;
+                case 'custom':
+                    key = generateCustomKey(length);
+                    break;
+            }
+            
+            return prefix + key;
+        }
+
+        // Generate hexadecimal key
+        function generateHexKey(length) {
+            const chars = '0123456789ABCDEF';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Generate base64 key
+        function generateBase64Key(length) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Generate alphanumeric key
+        function generateAlphanumericKey(length) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Generate UUID v4
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        // Generate custom key
+        function generateCustomKey(length) {
+            let chars = document.getElementById('customChars').value;
+            
+            if (!chars) {
+                // Build charset based on checkboxes
+                chars = '';
+                if (document.getElementById('includeUpper').checked) {
+                    chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                }
+                if (document.getElementById('includeLower').checked) {
+                    chars += 'abcdefghijklmnopqrstuvwxyz';
+                }
+                if (document.getElementById('includeNumbers').checked) {
+                    chars += '0123456789';
+                }
+                if (document.getElementById('includeSymbols').checked) {
+                    chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+                }
+            }
+            
+            if (!chars) {
+                alert('Selecione pelo menos um tipo de caractere ou defina caracteres personalizados.');
+                return '';
+            }
+            
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Display generated keys
+        function displayKeys(keys) {
+            const container = document.getElementById('keysList');
+            const resultsDiv = document.getElementById('generatedKeys');
+            
+            // Clear existing keys or add to existing ones
+            if (keys.length === 1 && container.children.length === 0) {
+                container.innerHTML = '';
+            }
+            
+            keys.forEach((key, index) => {
+                const keyItem = document.createElement('div');
+                keyItem.className = 'key-item';
+                keyItem.innerHTML = `
+                    <div class="key-value">${key}</div>
+                    <div class="key-actions">
+                        <button class="btn-small" onclick="copyKey('${key}', this)">Copy</button>
+                    </div>
+                `;
+                container.appendChild(keyItem);
+            });
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        // Generate multiple keys
+        function generateMultipleKeys() {
+            const keys = [];
+            for (let i = 0; i < 10; i++) {
+                keys.push(generateSingleKey());
+            }
+            displayKeys(keys);
+        }
+
+        // Copy key function
+        function copyKey(key, buttonElement) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(key).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopyToClipboard(key, buttonElement);
+                });
+            } else {
+                fallbackCopyToClipboard(key, buttonElement);
+            }
+        }
+
+        // Fallback copy method
+        function fallbackCopyToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Errorr copying:', err);
+                showCopyErrorr(buttonElement);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Show copy success feedback
+        function showCopySuccess(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✅ Copiada!';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Show copy error feedback
+        function showCopyErrorr(buttonElement) {
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '❌ Error';
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+            }, 2000);
+        }
+
+        // Initialize with sample key
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAPIKeys();
+        });
+    </script>
+</body>
+</html>

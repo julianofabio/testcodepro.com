@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de documentos do Reino Unido - NINO, Driving Licence, Passport, NHS Number e Postcode para testes.">
+    <meta name="keywords" content="gerador documentos reino unido, nino generator, nhs number generator, uk postcode generator">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <title>Gerador de Documentos Reino Unido - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .document-card {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .document-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .document-icon {
+            font-size: 1.5rem;
+        }
+
+        .document-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: var(--surface);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            user-select: all;
+            cursor: text;
+        }
+
+        .document-description {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #16a34a;
+            transform: translateY(-1px);
+        }
+
+        .btn-small.copied {
+            background: var(--primary);
+        }
+
+        .btn-regenerate {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-regenerate:hover {
+            background: #5555eb;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--surface-light);
+            border: 2px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/pt/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/pt/">Início</a></li>
+                <li><a href="/pt/#ferramentas">Ferramentas</a></li>
+                <li><a href="/pt/about.html">Sobre</a></li>
+                <li><a href="/pt/">Contato</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 Português ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option active" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <div class="country-flag">🇬🇧</div>
+                <h1 class="tool-title">Gerador de Documentos Reino Unido</h1>
+                <p class="tool-description">
+                    Gere documentos do Reino Unido válidos para testes e desenvolvimento. 
+                    Todos os números são fictícios e devem ser usados apenas para fins de teste.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <!-- Documents Grid -->
+                <div class="documents-grid">
+                    <!-- NINO -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">National Insurance Number</span>
+                            <span class="document-icon">🆔</span>
+                        </div>
+                        <div class="document-value" id="nino">AB123456C</div>
+                        <div class="document-description">Número de seguro nacional (NINO) - identificação fiscal/previdenciária</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('nino', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateNINO()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Driving Licence -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Driving Licence</span>
+                            <span class="document-icon">🚗</span>
+                        </div>
+                        <div class="document-value" id="drivingLicence">JOHNS801261AB9CD</div>
+                        <div class="document-description">Carteira de motorista do Reino Unido (16 caracteres)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('drivingLicence', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateDrivingLicence()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Passport -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Passport Number</span>
+                            <span class="document-icon">📘</span>
+                        </div>
+                        <div class="document-value" id="passport">123456789</div>
+                        <div class="document-description">Passaporte do Reino Unido (9 dígitos)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('passport', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePassport()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- NHS Number -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">NHS Number</span>
+                            <span class="document-icon">🏥</span>
+                        </div>
+                        <div class="document-value" id="nhsNumber">123 456 7890</div>
+                        <div class="document-description">Número do sistema de saúde nacional (10 dígitos)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('nhsNumber', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generateNHSNumber()">Gerar Novo</button>
+                        </div>
+                    </div>
+
+                    <!-- Postcode -->
+                    <div class="document-card">
+                        <div class="document-header">
+                            <span class="document-title">Postcode</span>
+                            <span class="document-icon">📮</span>
+                        </div>
+                        <div class="document-value" id="postcode">SW1A 1AA</div>
+                        <div class="document-description">Código postal do Reino Unido (formato padrão)</div>
+                        <div class="document-actions">
+                            <button class="btn-small" onclick="copyValue('postcode', this)">Copiar</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePostcode()">Gerar Novo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Gerar Todos os Documentos</button>
+                </div>
+
+                <!-- Warning -->
+                <div class="warning-box">
+                    <div class="warning-title">
+                        ⚠️ Aviso Importante
+                    </div>
+                    <div class="warning-text">
+                        Todos os documentos gerados são fictícios e destinados exclusivamente para fins de teste, 
+                        desenvolvimento e demonstração. O uso destes números para fins fraudulentos é ilegal 
+                        e pode resultar em consequências legais graves. Use com responsabilidade.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Generate NINO (National Insurance Number)
+        function generateNINO() {
+            // Format: 2 letters + 6 digits + 1 letter
+            const firstLetters = 'ABCEGHJKLMNOPRSTWXYZ'; // Excluding D, F, I, Q, U, V
+            const lastLetters = 'ABCD';
+            
+            let nino = '';
+            nino += firstLetters[Math.floor(Math.random() * firstLetters.length)];
+            nino += firstLetters[Math.floor(Math.random() * firstLetters.length)];
+            
+            for (let i = 0; i < 6; i++) {
+                nino += Math.floor(Math.random() * 10);
+            }
+            
+            nino += lastLetters[Math.floor(Math.random() * lastLetters.length)];
+            
+            document.getElementById('nino').textContent = nino;
+        }
+
+        // Generate UK Driving Licence
+        function generateDrivingLicence() {
+            // Simplified format based on surname + forename + date + additional codes
+            const surnames = ['SMITH', 'JOHNS', 'BROWN', 'WILLI', 'JONES', 'DAVIS', 'MILLE', 'WILSO'];
+            const surname = surnames[Math.floor(Math.random() * surnames.length)];
+            
+            // Date section (YYMDD format where YY is last 2 digits of year, M is month, DD is day)
+            const year = Math.floor(Math.random() * 50) + 50; // 50-99 (1950-1999)
+            const month = Math.floor(Math.random() * 12) + 1;
+            const day = Math.floor(Math.random() * 28) + 1;
+            
+            // For females, add 5 to the month
+            const genderMonth = month + (Math.random() > 0.5 ? 5 : 0);
+            
+            const dateSection = year.toString().padStart(2, '0') + 
+                               genderMonth.toString().padStart(1, '0') + 
+                               day.toString().padStart(2, '0');
+            
+            // Additional random characters
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let additionalChars = '';
+            for (let i = 0; i < 5; i++) {
+                if (Math.random() > 0.3) {
+                    additionalChars += letters[Math.floor(Math.random() * letters.length)];
+                } else {
+                    additionalChars += Math.floor(Math.random() * 10);
+                }
+            }
+            
+            const drivingLicence = surname + dateSection + additionalChars;
+            document.getElementById('drivingLicence').textContent = drivingLicence;
+        }
+
+        // Generate UK Passport Number
+        function generatePassport() {
+            // UK passport: 9 digits
+            const passport = Math.floor(Math.random() * 900000000 + 100000000).toString();
+            document.getElementById('passport').textContent = passport;
+        }
+
+        // Generate NHS Number
+        function generateNHSNumber() {
+            // NHS number: 10 digits with check digit algorithm
+            let nhsNumber = '';
+            
+            // Generate first 9 digits
+            for (let i = 0; i < 9; i++) {
+                nhsNumber += Math.floor(Math.random() * 10);
+            }
+            
+            // Calculate check digit
+            let checkDigit = calculateNHSCheckDigit(nhsNumber);
+            nhsNumber += checkDigit;
+            
+            // Format as XXX XXX XXXX
+            const formatted = nhsNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+            document.getElementById('nhsNumber').textContent = formatted;
+        }
+
+        // Generate UK Postcode
+        function generatePostcode() {
+            const areas = ['SW', 'NW', 'SE', 'NE', 'WC', 'EC', 'W', 'E', 'N', 'S'];
+            const letters = 'ABDEFGHJLNPQRSTUWXYZ'; // Excluding C, I, K, M, O, V
+            
+            const area = areas[Math.floor(Math.random() * areas.length)];
+            const district = Math.floor(Math.random() * 99) + 1;
+            const sector = Math.floor(Math.random() * 9) + 1;
+            
+            let unit = '';
+            unit += letters[Math.floor(Math.random() * letters.length)];
+            unit += letters[Math.floor(Math.random() * letters.length)];
+            
+            const postcode = `${area}${district} ${sector}${unit}`;
+            document.getElementById('postcode').textContent = postcode;
+        }
+
+        // Calculate NHS check digit using Modulus 11 algorithm
+        function calculateNHSCheckDigit(number) {
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(number[i]) * (10 - i);
+            }
+            
+            let remainder = sum % 11;
+            let checkDigit = 11 - remainder;
+            
+            if (checkDigit === 11) {
+                checkDigit = 0;
+            } else if (checkDigit === 10) {
+                // If check digit would be 10, generate a new number
+                return Math.floor(Math.random() * 10);
+            }
+            
+            return checkDigit;
+        }
+
+        // Generate all documents
+        function generateAllDocuments() {
+            generateNINO();
+            generateDrivingLicence();
+            generatePassport();
+            generateNHSNumber();
+            generatePostcode();
+        }
+
+        // Copy function
+        function copyValue(elementId, buttonElement) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(buttonElement);
+                }).catch(() => {
+                    fallbackCopy(text, buttonElement);
+                });
+            } else {
+                fallbackCopy(text, buttonElement);
+            }
+        }
+
+        function fallbackCopy(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(buttonElement);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopySuccess(buttonElement) {
+            const originalText = buttonElement.textContent;
+            buttonElement.textContent = '✅ Copiado!';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.textContent = originalText;
+                buttonElement.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Initialize documents on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAllDocuments();
+        });
+    </script>
+</body>
+</html>

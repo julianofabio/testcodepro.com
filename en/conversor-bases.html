@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82YB2GDGX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C82YB2GDGX');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor de bases numéricas online - Convert numbers between binário, octal, decimal, hexadecimal e outras bases. Ferramenta gratuita para desenvolvedores.">
+    <meta name="keywords" content="conversor bases, binário, decimal, hexadecimal, octal, base64, conversão números, number base converter">
+    <meta name="author" content="TestCodePro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://testcodepro.com/conversor-bases.html">
+    <meta property="og:title" content="Number Base Convert - TestCodePro">
+    <meta property="og:description" content="Convert numbers between diferentes bases: binário, octal, decimal, hexadecimal e outras bases numéricas.">
+    <meta property="og:image" content="https://testcodepro.com/assets/conversor-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://testcodepro.com/conversor-bases.html">
+    <meta property="twitter:title" content="Number Base Convert - TestCodePro">
+    <meta property="twitter:description" content="Convert numbers between diferentes bases numéricas online.">
+    <meta property="twitter:image" content="https://testcodepro.com/assets/conversor-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testcodepro.com/conversor-bases.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Number Base Convert",
+        "url": "https://testcodepro.com/conversor-bases.html",
+        "description": "Conversor online de bases numéricas: binário, octal, decimal, hexadecimal",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "TestCodePro"
+        }
+    }
+    </script>
+
+    <title>Number Base Convert - TestCodePro</title>
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #ff6b00;
+            --background: #0a0a0f;
+            --surface: #141420;
+            --surface-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3c7;
+            --text-muted: #7a7a8a;
+            --border: #2a2a3e;
+            --border-light: #3a3a4e;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 255, 136, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 255, 136, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 255, 136, 0.2);
+            --shadow-glow: 0 0 20px rgba(0, 255, 136, 0.3);
+            
+            /* Typography */
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--background) 0%, #0f0f1a 100%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚡';
+            font-size: 1.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .base-panel {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .base-panel.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .base-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .base-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .base-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .base-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--surface-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .base-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .base-input.error {
+            border-color: var(--error);
+        }
+
+        .input-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-small {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: #5555eb;
+        }
+
+        .btn-small.success {
+            background: var(--success);
+        }
+
+        .error-message {
+            font-size: 0.8rem;
+            color: var(--error);
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--background);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Custom Base */
+        .custom-base-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .custom-base-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .custom-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .custom-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .custom-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .custom-input {
+            padding: 0.5rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .bases-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .base-info-card {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .base-info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .base-info-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tool-content {
+                padding: 1.5rem;
+            }
+
+            .tool-header {
+                padding: 1rem 0;
+            }
+
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quick-actions .btn-primary,
+            .quick-actions .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .custom-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        /* Language Selector */
+        .language-selector { position: relative; display: inline-block; }
+        .language-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .language-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .language-dropdown {
+            position: absolute;
+            top: 100%; right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: none;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+        .language-dropdown.show { display: block; }
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+        .language-option:hover { background: rgba(0,255,136,0.1); color: var(--primary); }
+        .language-option.active { color: var(--primary); background: rgba(0,255,136,0.05); }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/en/" class="logo">TestCodePro</a>
+            <ul class="nav-links">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/#ferramentas">Tools</a></li>
+                <li><a href="sobre.html">About</a></li>
+                <li><a href="/en/">Contact</a></li>
+            
+                <li>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 English ▼
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
+                            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 Español</div>
+                            <div class="language-option" onclick="changeLanguage('pt')">🇧🇷 Português</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tool Header -->
+            <div class="tool-header">
+                <h1 class="tool-title">🔢 Conversor de Bases</h1>
+                <p class="tool-description">
+                    Convert numbers between diferentes bases numéricas: binário, octal, decimal, hexadecimal e bases personalizadas.
+                </p>
+            </div>
+
+            <!-- Tool Content -->
+            <div class="tool-content">
+                <div class="converter-grid">
+                    <!-- Binary -->
+                    <div class="base-panel" data-base="2">
+                        <div class="base-header">
+                            <span class="base-title">Binary</span>
+                            <span class="base-info">Base 2</span>
+                        </div>
+                        <input type="text" class="base-input" data-base="2" placeholder="Digite números binários (0, 1)">
+                        <div class="input-controls">
+                            <button class="btn-small" onclick="copyValue(2)">Copy</button>
+                            <button class="btn-small" onclick="clearValue(2)">Clear</button>
+                        </div>
+                        <div class="error-message" id="error-2"></div>
+                    </div>
+
+                    <!-- Octal -->
+                    <div class="base-panel" data-base="8">
+                        <div class="base-header">
+                            <span class="base-title">Octal</span>
+                            <span class="base-info">Base 8</span>
+                        </div>
+                        <input type="text" class="base-input" data-base="8" placeholder="Digite números octais (0-7)">
+                        <div class="input-controls">
+                            <button class="btn-small" onclick="copyValue(8)">Copy</button>
+                            <button class="btn-small" onclick="clearValue(8)">Clear</button>
+                        </div>
+                        <div class="error-message" id="error-8"></div>
+                    </div>
+
+                    <!-- Decimal -->
+                    <div class="base-panel" data-base="10">
+                        <div class="base-header">
+                            <span class="base-title">Decimal</span>
+                            <span class="base-info">Base 10</span>
+                        </div>
+                        <input type="text" class="base-input" data-base="10" placeholder="Digite números decimais (0-9)">
+                        <div class="input-controls">
+                            <button class="btn-small" onclick="copyValue(10)">Copy</button>
+                            <button class="btn-small" onclick="clearValue(10)">Clear</button>
+                        </div>
+                        <div class="error-message" id="error-10"></div>
+                    </div>
+
+                    <!-- Hexadecimal -->
+                    <div class="base-panel" data-base="16">
+                        <div class="base-header">
+                            <span class="base-title">Hexadecimal</span>
+                            <span class="base-info">Base 16</span>
+                        </div>
+                        <input type="text" class="base-input" data-base="16" placeholder="Digite números hex (0-9, A-F)">
+                        <div class="input-controls">
+                            <button class="btn-small" onclick="copyValue(16)">Copy</button>
+                            <button class="btn-small" onclick="clearValue(16)">Clear</button>
+                        </div>
+                        <div class="error-message" id="error-16"></div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="btn-primary" onclick="convertAllFromActive()">Convert de Ativo</button>
+                    <button class="btn-secondary" onclick="clearAll()">Clear Tudo</button>
+                </div>
+
+                <!-- Custom Base Section -->
+                <div class="custom-base-section">
+                    <div class="custom-base-title">Conversão para Base Personalizada</div>
+                    <div class="custom-controls">
+                        <div class="custom-input-group">
+                            <label class="custom-label">Número (Decimal)</label>
+                            <input type="text" id="customNumber" class="custom-input" placeholder="Enter a number decimal">
+                        </div>
+                        <div class="custom-input-group">
+                            <label class="custom-label">Base de Destino</label>
+                            <input type="number" id="customBase" class="custom-input" placeholder="2-36" min="2" max="36" value="2">
+                        </div>
+                        <div class="custom-input-group">
+                            <label class="custom-label">Result</label>
+                            <input type="text" id="customResult" class="custom-input" readonly placeholder="Result aparecerá aqui">
+                        </div>
+                        <div class="custom-input-group">
+                            <label class="custom-label" style="opacity: 0;">.</label>
+                            <button class="btn-primary" onclick="convertCustom()" style="width: 100%;">Convert</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">About Bases Numéricas</h2>
+                <p class="info-text">
+                    Bases numéricas são sistemas de numeração que usam diferentes quantidades de dígitos para representar números. 
+                    Cada base tem suas aplicações específicas na computação e matemática:
+                </p>
+                
+                <div class="bases-info">
+                    <div class="base-info-card">
+                        <div class="base-info-title">Binary (Base 2)</div>
+                        <div class="base-info-desc">Usa apenas 0 e 1. Base fundamental dos computadores e sistemas digitais.</div>
+                    </div>
+                    
+                    <div class="base-info-card">
+                        <div class="base-info-title">Octal (Base 8)</div>
+                        <div class="base-info-desc">Usa dígitos 0-7. Comum em sistemas Unix para permissões de arquivo.</div>
+                    </div>
+                    
+                    <div class="base-info-card">
+                        <div class="base-info-title">Decimal (Base 10)</div>
+                        <div class="base-info-desc">Usa dígitos 0-9. Sistema numérico padrão usado no dia a dia.</div>
+                    </div>
+                    
+                    <div class="base-info-card">
+                        <div class="base-info-title">Hexadecimal (Base 16)</div>
+                        <div class="base-info-desc">Usa 0-9 e A-F. Muito usado em programação para cores e endereços de memória.</div>
+                    </div>
+                </div>
+
+                <p class="info-text" style="margin-top: 1.5rem;">
+                    <strong>Dica:</strong> Enter a number em qualquer base e ele será automaticamente convertido para as outras bases. 
+                    Use a seção de base personalizada para converter para bases de 2 a 36.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let activeBase = 10;
+
+        // Add event listeners to all base inputs
+        document.querySelectorAll('.base-input').forEach(input => {
+            input.addEventListener('input', function() {
+                const base = parseInt(this.dataset.base);
+                activeBase = base;
+                
+                // Update active panel
+                document.querySelectorAll('.base-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                this.closest('.base-panel').classList.add('active');
+                
+                // Convert to other bases
+                convertFromBase(this.value, base);
+            });
+
+            input.addEventListener('focus', function() {
+                const base = parseInt(this.dataset.base);
+                activeBase = base;
+                
+                // Update active panel
+                document.querySelectorAll('.base-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                this.closest('.base-panel').classList.add('active');
+            });
+        });
+
+        // Convert from a specific base to all others
+        function convertFromBase(value, fromBase) {
+            clearErrorrs();
+            
+            if (!value.trim()) {
+                clearAllExcept(fromBase);
+                return;
+            }
+
+            try {
+                // Validate input for the specific base
+                if (!isValidForBase(value, fromBase)) {
+                    showErrorr(fromBase, `Dígitos inválidos para base ${fromBase}`);
+                    return;
+                }
+
+                // Convert to decimal first
+                const decimalValue = parseInt(value, fromBase);
+                
+                if (isNaN(decimalValue)) {
+                    showErrorr(fromBase, 'Número inválido');
+                    return;
+                }
+
+                // Convert to all other bases
+                const bases = [2, 8, 10, 16];
+                bases.forEach(base => {
+                    if (base !== fromBase) {
+                        const input = document.querySelector(`[data-base="${base}"]`);
+                        input.value = decimalValue.toString(base).toUpperCase();
+                    }
+                });
+
+            } catch (error) {
+                showErrorr(fromBase, 'Conversion error');
+            }
+        }
+
+        // Validate if input is valid for a specific base
+        function isValidForBase(value, base) {
+            const cleanValue = value.replace(/\s/g, '').toUpperCase();
+            
+            for (let char of cleanValue) {
+                let digitValue;
+                
+                if (char >= '0' && char <= '9') {
+                    digitValue = parseInt(char);
+                } else if (char >= 'A' && char <= 'Z') {
+                    digitValue = char.charCodeAt(0) - 'A'.charCodeAt(0) + 10;
+                } else {
+                    return false; // Invalid character
+                }
+                
+                if (digitValue >= base) {
+                    return false; // Digit not valid for this base
+                }
+            }
+            
+            return true;
+        }
+
+        // Show error message
+        function showErrorr(base, message) {
+            const errorEl = document.getElementById(`error-${base}`);
+            const input = document.querySelector(`[data-base="${base}"]`);
+            
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+            input.classList.add('error');
+        }
+
+        // Clear all error messages
+        function clearErrorrs() {
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.base-input').forEach(input => {
+                input.classList.remove('error');
+            });
+        }
+
+        // Clear all inputs except specified base
+        function clearAllExcept(exceptBase) {
+            const bases = [2, 8, 10, 16];
+            bases.forEach(base => {
+                if (base !== exceptBase) {
+                    const input = document.querySelector(`[data-base="${base}"]`);
+                    input.value = '';
+                }
+            });
+        }
+
+        // Clear all inputs
+        function clearAll() {
+            document.querySelectorAll('.base-input').forEach(input => {
+                input.value = '';
+            });
+            clearErrorrs();
+            
+            // Remove active state
+            document.querySelectorAll('.base-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            activeBase = 10;
+        }
+
+        // Clear specific base value
+        function clearValue(base) {
+            const input = document.querySelector(`[data-base="${base}"]`);
+            input.value = '';
+            
+            if (base === activeBase) {
+                clearAllExcept(base);
+            }
+            
+            clearErrorrs();
+        }
+
+        // Copy value from specific base
+        function copyValue(base) {
+            const input = document.querySelector(`[data-base="${base}"]`);
+            const value = input.value;
+            
+            if (!value.trim()) {
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(value).then(() => {
+                    showCopyFeedback(base);
+                }).catch(() => {
+                    fallbackCopy(value, base);
+                });
+            } else {
+                fallbackCopy(value, base);
+            }
+        }
+
+        // Convert from currently active base
+        function convertAllFromActive() {
+            const activeInput = document.querySelector(`[data-base="${activeBase}"]`);
+            if (activeInput && activeInput.value.trim()) {
+                convertFromBase(activeInput.value, activeBase);
+            }
+        }
+
+        // Custom base conversion
+        function convertCustom() {
+            const numberInput = document.getElementById('customNumber');
+            const baseInput = document.getElementById('customBase');
+            const resultInput = document.getElementById('customResult');
+            
+            const number = numberInput.value.trim();
+            const base = parseInt(baseInput.value);
+            
+            if (!number) {
+                alert('Enter a number decimal');
+                return;
+            }
+            
+            if (base < 2 || base > 36) {
+                alert('Base deve estar entre 2 e 36');
+                return;
+            }
+            
+            try {
+                const decimalValue = parseInt(number, 10);
+                if (isNaN(decimalValue)) {
+                    alert('Número decimal inválido');
+                    return;
+                }
+                
+                const result = decimalValue.toString(base).toUpperCase();
+                resultInput.value = result;
+                
+            } catch (error) {
+                alert('Conversion error');
+            }
+        }
+
+        // Copy feedback
+        function showCopyFeedback(base) {
+            const button = document.querySelector(`[data-base="${base}"] + .input-controls .btn-small`);
+            const originalText = button.textContent;
+            
+            button.textContent = '✓ Copiado';
+            button.classList.add('success');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('success');
+            }, 2000);
+        }
+
+        // Fallback copy method
+        function fallbackCopy(text, base) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyFeedback(base);
+            } catch (err) {
+                console.error('Errorr copying:', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Initialize with decimal active
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('[data-base="10"]').closest('.base-panel').classList.add('active');
+        });
+    </script>
+
+    <script>
+        function toggleLanguageDropdown() {
+            document.getElementById('languageDropdown').classList.toggle('show');
+        }
+        function changeLanguage(lang) {
+            localStorage.setItem('testcodepro-language', lang);
+            const currentPath = window.location.pathname;
+            const filename = currentPath.split('/').pop();
+            window.location.href = '/' + lang + '/' + filename;
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                var dropdown = document.getElementById('languageDropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>
