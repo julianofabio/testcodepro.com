@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://testcodepro.com/</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/"/>
+  </url>
+
+  <!-- Páginas Principais por Idioma -->
+  <url>
+    <loc>https://testcodepro.com/en/</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/"/>
+  </url>
+
+  <!-- Ferramentas - Versão Inglês -->
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-index.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-index.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/formatador.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/formatador.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/formatador.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/formatador.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-senhas.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-senhas.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-senhas.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-senhas.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-qrcode.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-qrcode.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-qrcode.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-qrcode.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/api-client.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/api-client.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/api-client.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/api-client.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/regex-tester.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/regex-tester.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/regex-tester.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/regex-tester.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-cartao-credito.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-cartao-credito.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-cartao-credito.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-cartao-credito.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/validador-documentos-brasileiros.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/validador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/validador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/validador-documentos-brasileiros.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-brasileiros.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-brasileiros.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-americanos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-americanos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-americanos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-americanos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-alemaes.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-alemaes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-alemaes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-alemaes.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-britanicos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-britanicos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-britanicos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-britanicos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-canadenses.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-canadenses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-canadenses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-canadenses.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-documentos-indianos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-indianos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-indianos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-indianos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-uuid.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-uuid.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-uuid.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-uuid.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-hash.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-hash.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-hash.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-hash.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-apikeys.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-apikeys.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-apikeys.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-apikeys.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/gerador-lorem-ipsum.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-lorem-ipsum.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-lorem-ipsum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-lorem-ipsum.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/validador-senha.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/validador-senha.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/validador-senha.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/validador-senha.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/en/ferramentas-texto.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/ferramentas-texto.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/ferramentas-texto.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/ferramentas-texto.html"/>
+  </url>
+
+  <!-- Ferramentas - Versão Português -->
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-index.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-index.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/formatador.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/formatador.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/formatador.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/formatador.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-senhas.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-senhas.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-senhas.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-senhas.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-qrcode.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-qrcode.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-qrcode.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-qrcode.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/api-client.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/api-client.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/api-client.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/api-client.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/regex-tester.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/regex-tester.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/regex-tester.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/regex-tester.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-cartao-credito.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-cartao-credito.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-cartao-credito.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-cartao-credito.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/validador-documentos-brasileiros.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/validador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/validador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/validador-documentos-brasileiros.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-brasileiros.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-brasileiros.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-americanos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-americanos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-americanos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-americanos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-alemaes.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-alemaes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-alemaes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-alemaes.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-britanicos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-britanicos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-britanicos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-britanicos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-canadenses.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-canadenses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-canadenses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-canadenses.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-documentos-indianos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-indianos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-indianos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-indianos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-uuid.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-uuid.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-uuid.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-uuid.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-hash.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-hash.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-hash.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-hash.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-apikeys.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-apikeys.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-apikeys.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-apikeys.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/gerador-lorem-ipsum.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-lorem-ipsum.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-lorem-ipsum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-lorem-ipsum.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/validador-senha.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/validador-senha.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/validador-senha.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/validador-senha.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/pt/ferramentas-texto.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/ferramentas-texto.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/ferramentas-texto.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/ferramentas-texto.html"/>
+  </url>
+
+  <!-- Ferramentas - Versão Espanhol -->
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-index.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-index.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/formatador.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/formatador.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/formatador.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/formatador.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-senhas.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-senhas.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-senhas.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-senhas.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-qrcode.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-qrcode.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-qrcode.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-qrcode.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/api-client.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/api-client.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/api-client.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/api-client.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/regex-tester.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/regex-tester.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/regex-tester.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/regex-tester.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-cartao-credito.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-cartao-credito.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-cartao-credito.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-cartao-credito.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/validador-documentos-brasileiros.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/validador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/validador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/validador-documentos-brasileiros.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-brasileiros.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-brasileiros.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-brasileiros.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-americanos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-americanos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-americanos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-americanos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-alemaes.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-alemaes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-alemaes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-alemaes.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-britanicos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-britanicos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-britanicos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-britanicos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-canadenses.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-canadenses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-canadenses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-canadenses.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-documentos-indianos.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-documentos-indianos.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-documentos-indianos.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-documentos-indianos.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-uuid.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-uuid.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-uuid.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-uuid.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-hash.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-hash.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-hash.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-hash.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-apikeys.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-apikeys.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-apikeys.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-apikeys.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/gerador-lorem-ipsum.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/gerador-lorem-ipsum.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/gerador-lorem-ipsum.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/gerador-lorem-ipsum.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/validador-senha.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/validador-senha.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/validador-senha.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/validador-senha.html"/>
+  </url>
+
+  <url>
+    <loc>https://testcodepro.com/es/ferramentas-texto.html</loc>
+    <lastmod>2024-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://testcodepro.com/en/ferramentas-texto.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://testcodepro.com/pt/ferramentas-texto.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://testcodepro.com/es/ferramentas-texto.html"/>
+  </url>
+
+</urlset>
