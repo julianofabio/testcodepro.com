@@ -12,12 +12,12 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gerador de documentos da Alemania - Número de ID Fiscal, Cédula de Identidad, Licencia de Conducir, Pasaporte e PLZ para testes.">
+    <meta name="description" content="Gerador de documentos da Alemanha - Steueridentifikationsnummer, Personalausweis, Führerschein, Reisepass e PLZ para testes.">
     <meta name="keywords" content="gerador documentos alemanha, steueridentifikationsnummer, personalausweis, führerschein, plz generator">
     <meta name="author" content="TestCodePro">
     <meta name="robots" content="index, follow">
     
-    <title>Generador de Documentos Alemania - TestCodePro</title>
+    <title>Gerador de Documentos Alemanha - TestCodePro</title>
     
     <style>
         :root {
@@ -439,9 +439,9 @@
             <!-- Tool Header -->
             <div class="tool-header">
                 <div class="country-flag">🇩🇪</div>
-                <h1 class="tool-title">Generador de Documentos Alemania</h1>
+                <h1 class="tool-title">Gerador de Documentos Alemanha</h1>
                 <p class="tool-description">
-                    Gere documentos da Alemania válidos para testes e desenvolvimento. 
+                    Gere documentos da Alemanha válidos para testes e desenvolvimento. 
                     Todos os números são fictícios e devem ser usados apenas para fins de teste.
                 </p>
             </div>
@@ -450,80 +450,80 @@
             <div class="tool-content">
                 <!-- Documents Grid -->
                 <div class="documents-grid">
-                    <!-- Número de ID Fiscal -->
+                    <!-- Steueridentifikationsnummer -->
                     <div class="document-card">
                         <div class="document-header">
-                            <span class="document-title">Número de ID Fiscal</span>
+                            <span class="document-title">Steueridentifikationsnummer</span>
                             <span class="document-icon">🆔</span>
                         </div>
                         <div class="document-value" id="steuerID">12 345 678 901</div>
                         <div class="document-description">Número de identificação fiscal alemão (11 dígitos)</div>
                         <div class="document-actions">
                             <button class="btn-small" onclick="copyValue('steuerID', this)">Copiar</button>
-                            <button class="btn-small btn-regenerate" onclick="generateSteuerID()">Generar Novo</button>
+                            <button class="btn-small btn-regenerate" onclick="generateSteuerID()">Gerar Novo</button>
                         </div>
                     </div>
 
-                    <!-- Cédula de Identidad -->
+                    <!-- Personalausweis -->
                     <div class="document-card">
                         <div class="document-header">
-                            <span class="document-title">Cédula de Identidad</span>
+                            <span class="document-title">Personalausweis</span>
                             <span class="document-icon">🪪</span>
                         </div>
                         <div class="document-value" id="personalausweis">T22000129</div>
                         <div class="document-description">Documento de identidade alemão (9 caracteres)</div>
                         <div class="document-actions">
                             <button class="btn-small" onclick="copyValue('personalausweis', this)">Copiar</button>
-                            <button class="btn-small btn-regenerate" onclick="generateCédula de Identidad()">Generar Novo</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePersonalausweis()">Gerar Novo</button>
                         </div>
                     </div>
 
-                    <!-- Licencia de Conducir -->
+                    <!-- Führerschein -->
                     <div class="document-card">
                         <div class="document-header">
-                            <span class="document-title">Licencia de Conducir</span>
+                            <span class="document-title">Führerschein</span>
                             <span class="document-icon">🚗</span>
                         </div>
                         <div class="document-value" id="fuehrerschein">B21234567C89</div>
                         <div class="document-description">Carteira de motorista alemã (12 caracteres)</div>
                         <div class="document-actions">
                             <button class="btn-small" onclick="copyValue('fuehrerschein', this)">Copiar</button>
-                            <button class="btn-small btn-regenerate" onclick="generateFuehrerschein()">Generar Novo</button>
+                            <button class="btn-small btn-regenerate" onclick="generateFuehrerschein()">Gerar Novo</button>
                         </div>
                     </div>
 
-                    <!-- Pasaporte -->
+                    <!-- Reisepass -->
                     <div class="document-card">
                         <div class="document-header">
-                            <span class="document-title">Pasaporte</span>
+                            <span class="document-title">Reisepass</span>
                             <span class="document-icon">📘</span>
                         </div>
                         <div class="document-value" id="reisepass">C12J4K5L9</div>
-                        <div class="document-description">Pasaporte alemão (9 caracteres)</div>
+                        <div class="document-description">Passaporte alemão (9 caracteres)</div>
                         <div class="document-actions">
                             <button class="btn-small" onclick="copyValue('reisepass', this)">Copiar</button>
-                            <button class="btn-small btn-regenerate" onclick="generatePasaporte()">Generar Novo</button>
+                            <button class="btn-small btn-regenerate" onclick="generateReisepass()">Gerar Novo</button>
                         </div>
                     </div>
 
                     <!-- PLZ -->
                     <div class="document-card">
                         <div class="document-header">
-                            <span class="document-title">Código Postal (PLZ)</span>
+                            <span class="document-title">Postleitzahl (PLZ)</span>
                             <span class="document-icon">📮</span>
                         </div>
                         <div class="document-value" id="plz">10115</div>
                         <div class="document-description">Código postal alemão (5 dígitos)</div>
                         <div class="document-actions">
                             <button class="btn-small" onclick="copyValue('plz', this)">Copiar</button>
-                            <button class="btn-small btn-regenerate" onclick="generatePLZ()">Generar Novo</button>
+                            <button class="btn-small btn-regenerate" onclick="generatePLZ()">Gerar Novo</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Controls -->
                 <div class="controls">
-                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Generar Todos os Documentos</button>
+                    <button class="btn-primary" onclick="generateAllDocuments()">🔄 Gerar Todos os Documentos</button>
                 </div>
 
                 <!-- Warning -->
@@ -542,7 +542,7 @@
     </main>
 
     <script>
-        // Generate Número de ID Fiscal (11 digits)
+        // Generate Steueridentifikationsnummer (11 digits)
         function generateSteuerID() {
             let steuerID = '';
             
@@ -560,8 +560,8 @@
             document.getElementById('steuerID').textContent = formatted;
         }
 
-        // Generate Cédula de Identidad (German ID)
-        function generateCédula de Identidad() {
+        // Generate Personalausweis (German ID)
+        function generatePersonalausweis() {
             // Format: Letter + 8 digits
             const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             let personalausweis = letters[Math.floor(Math.random() * letters.length)];
@@ -573,7 +573,7 @@
             document.getElementById('personalausweis').textContent = personalausweis;
         }
 
-        // Generate Licencia de Conducir (Driver's License)
+        // Generate Führerschein (Driver's License)
         function generateFuehrerschein() {
             // Format: Letter + 8 digits + 3 letters/digits
             const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -594,8 +594,8 @@
             document.getElementById('fuehrerschein').textContent = fuehrerschein;
         }
 
-        // Generate Pasaporte (Passport)
-        function generatePasaporte() {
+        // Generate Reisepass (Passport)
+        function generateReisepass() {
             // Format: Letter + 8 digits/letters
             const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const numbers = '0123456789';
@@ -610,7 +610,7 @@
             document.getElementById('reisepass').textContent = reisepass;
         }
 
-        // Generate PLZ (Código Postal)
+        // Generate PLZ (Postal Code)
         function generatePLZ() {
             // German postal codes: 5 digits, 01xxx to 99xxx
             const plz = Math.floor(Math.random() * 99000) + 1000;
@@ -629,9 +629,9 @@
         // Generate all documents
         function generateAllDocuments() {
             generateSteuerID();
-            generateCédula de Identidad();
+            generatePersonalausweis();
             generateFuehrerschein();
-            generatePasaporte();
+            generateReisepass();
             generatePLZ();
         }
 
@@ -665,7 +665,7 @@
                 document.execCommand('copy');
                 showCopySuccess(buttonElement);
             } catch (err) {
-                console.error('Errorr al copiar:', err);
+                console.error('Erro ao copiar:', err);
             } finally {
                 document.body.removeChild(textArea);
             }
